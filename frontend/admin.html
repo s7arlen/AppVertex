@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #ef4444;
-            --primary-dark: #dc2626;
+            --primary: #800020;
+            --primary-dark: #600018;
             --bg-dark: #080c10;
             --bg-card: #141922;
             --border: #1e2535;
@@ -53,8 +53,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(239,68,68,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(239,68,68,0.04) 1px, transparent 1px);
+                linear-gradient(rgba(128, 0, 32, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(128, 0, 32, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
             animation: gridPulse 4s ease-in-out infinite;
         }
@@ -69,7 +69,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(239,68,68,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -116,8 +116,8 @@
             align-items: center;
             justify-content: center;
             gap: 0.4rem;
-            background: rgba(239,68,68,0.1);
-            border: 1px solid rgba(239,68,68,0.2);
+            background: rgba(128, 0, 32, 0.1);
+            border: 1px solid rgba(128, 0, 32, 0.2);
             color: var(--primary);
             font-size: 0.75rem;
             padding: 0.3rem 0.75rem;
@@ -151,7 +151,7 @@
         .login-form input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+            box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1);
         }
 
         .login-btn {
@@ -184,8 +184,8 @@
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .login-error {
-            background: rgba(239,68,68,0.1);
-            border: 1px solid rgba(239,68,68,0.3);
+            background: rgba(128, 0, 32, 0.1);
+            border: 1px solid rgba(128, 0, 32, 0.3);
             color: #fca5a5;
             padding: 0.75rem 1rem;
             border-radius: 8px;
@@ -258,7 +258,7 @@
         }
 
         .nav-item:hover, .nav-item.active {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(128, 0, 32, 0.1);
             color: var(--text);
         }
 
@@ -700,7 +700,7 @@
                     <div class="item-content"><strong>${escapeHTML(t.name)}</strong><br><small>${escapeHTML(t.role)}</small></div>
                     <div class="item-actions">
                         <button class="btn-icon" onclick="editTestimonialById('${t.id}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn-icon" onclick="deleteTestimonial('${t.id}')" style="color:#ef4444;"><i class="fas fa-trash"></i></button>
+                        <button class="btn-icon" onclick="deleteTestimonial('${t.id}')" style="color:#800020;"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             `).join('');
@@ -719,7 +719,7 @@
                     <div class="item-content"><strong>${escapeHTML(p.name)}</strong><br><small>${escapeHTML(p.category)}</small></div>
                     <div class="item-actions">
                         <button class="btn-icon" onclick="editProjectById('${p.id}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn-icon" onclick="deleteProject('${p.id}')" style="color:#ef4444;"><i class="fas fa-trash"></i></button>
+                        <button class="btn-icon" onclick="deleteProject('${p.id}')" style="color:#800020;"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             `).join('');
@@ -795,7 +795,7 @@
 
             const cat = document.getElementById('projectCategory').value;
             let emoji = '🚀';
-            let color = 'linear-gradient(135deg,#7f1d1d,#991b1b)';
+            let color = 'linear-gradient(135deg,#500014,#6b001b)';
 
             if (cat === 'ecommerce') { emoji = '🛍️'; color = 'linear-gradient(135deg,#7c2d12,#ea580c)'; }
             else if (cat === 'school') { emoji = '🎓'; color = 'linear-gradient(135deg,#1e1b4b,#4338ca)'; }
