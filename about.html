@@ -395,26 +395,23 @@
     <!-- ═══════════════════════════════════════════════════
          MOBILE BOTTOM NAVIGATION DOCK
          ═══════════════════════════════════════════════════ -->
-    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
-        <div class="dock-items-row">
-            <a href="index.html" class="dock-item ">
-                <i class="fas fa-home"></i>
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Navigation">
+        <div class="dock-items-row" data-active="-1">
+            <span class="dock-active-slider" aria-hidden="true" style="opacity: 0;"></span>
+            <a href="index.html" class="dock-item" aria-label="Home" data-index="0">
+                <i class="fa-solid fa-house"></i>
                 <span>HOME</span>
             </a>
-            <a href="work.html" class="dock-item ">
-                <i class="fas fa-briefcase"></i>
+            <a href="work.html" class="dock-item" aria-label="Work" data-index="1">
+                <i class="fa-solid fa-laptop-code"></i>
                 <span>WORK</span>
             </a>
-            <a href="services.html" class="dock-item ">
-                <i class="fas fa-th-large"></i>
+            <a href="services.html" class="dock-item" aria-label="Services" data-index="2">
+                <i class="fa-solid fa-layer-group"></i>
                 <span>SERVICES</span>
             </a>
-            <a href="upskill.html" class="dock-item ">
-                <i class="fas fa-graduation-cap"></i>
-                <span>UPSKILL</span>
-            </a>
-            <a href="contact.html" class="dock-item ">
-                <i class="fas fa-envelope"></i>
+            <a href="contact.html" class="dock-item" aria-label="Contact" data-index="3">
+                <i class="fa-solid fa-paper-plane"></i>
                 <span>CONTACT</span>
             </a>
         </div>

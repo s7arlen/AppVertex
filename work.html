@@ -527,26 +527,23 @@
     <!-- ═══════════════════════════════════════════════════
          MOBILE BOTTOM NAVIGATION DOCK
          ═══════════════════════════════════════════════════ -->
-    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
-        <div class="dock-items-row">
-            <a href="index.html" class="dock-item ">
-                <i class="fas fa-home"></i>
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Navigation">
+        <div class="dock-items-row" data-active="1">
+            <span class="dock-active-slider" aria-hidden="true"></span>
+            <a href="index.html" class="dock-item" aria-label="Home" data-index="0">
+                <i class="fa-solid fa-house"></i>
                 <span>HOME</span>
             </a>
-            <a href="work.html" class="dock-item active">
-                <i class="fas fa-briefcase"></i>
+            <a href="work.html" class="dock-item active" aria-label="Work" data-index="1">
+                <i class="fa-solid fa-laptop-code"></i>
                 <span>WORK</span>
             </a>
-            <a href="services.html" class="dock-item ">
-                <i class="fas fa-th-large"></i>
+            <a href="services.html" class="dock-item" aria-label="Services" data-index="2">
+                <i class="fa-solid fa-layer-group"></i>
                 <span>SERVICES</span>
             </a>
-            <a href="upskill.html" class="dock-item ">
-                <i class="fas fa-graduation-cap"></i>
-                <span>UPSKILL</span>
-            </a>
-            <a href="contact.html" class="dock-item ">
-                <i class="fas fa-envelope"></i>
+            <a href="contact.html" class="dock-item" aria-label="Contact" data-index="3">
+                <i class="fa-solid fa-paper-plane"></i>
                 <span>CONTACT</span>
             </a>
         </div>
@@ -831,5 +828,78 @@
     });
 </script>
 
+    <script>
+        // ─── Dynamic Projects & Settings Sync from Admin Panel ───
+        (function() {
+            function escapeHTML(str) {
+                return String(str || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+            }
+            function safeImageSrc(val) {
+                if (!val) return '';
+                const s = String(val).trim();
+                if (/^(https?:\/\/|data:image\/|hero-|logo\.|\.\/)/i.test(s) || /\.(png|jpg|jpeg|webp|svg)$/i.test(s)) return s;
+                return '';
+            }
+            function renderDynamicWorkProjects(projects) {
+                if (!projects || projects.length === 0) return;
+                const grid = document.getElementById('caseStudiesGrid');
+                if (!grid) return;
+                grid.innerHTML = projects.map(p => {
+                    const cat = (p.category || 'startup').toLowerCase();
+                    const catNorm = cat.includes('school') ? 'institutional' : (cat.includes('ecommerce') ? 'ecommerce' : (cat.includes('brand') ? 'branding' : 'saas'));
+                    const year = p.year || 2026;
+                    const name = p.name || 'Project';
+                    const desc = p.description || '';
+                    const techList = Array.isArray(p.technologies) ? p.technologies : (p.technologies ? String(p.technologies).split(',') : []);
+                    const pills = techList.map(t => `<span class="case-tech-pill">${escapeHTML(t.trim())}</span>`).join('');
+                    const link = p.link || 'contact.html';
+                    const isExternal = link.startsWith('http');
+                    const imgSrc = safeImageSrc(p.image);
+                    const mediaContent = imgSrc
+                        ? `<img src="${imgSrc}" alt="${escapeHTML(name)}" style="width:100%;height:100%;object-fit:cover;">`
+                        : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${escapeHTML(p.color || '#155E75')};font-size:3rem;">${escapeHTML(p.emoji || '🚀')}</div>`;
+
+                    return `
+                        <div class="case-card" data-category="${catNorm}">
+                            <div class="case-media">
+                                <span class="case-media-tag">${escapeHTML(p.categoryLabel || cat.toUpperCase())}</span>
+                                <span class="case-year">${escapeHTML(year)}</span>
+                                ${mediaContent}
+                            </div>
+                            <div class="case-body">
+                                <div>
+                                    <h3 class="case-title">${escapeHTML(name)}</h3>
+                                    <p class="case-desc">${escapeHTML(desc)}</p>
+                                    <div class="case-tech-pills">
+                                        ${pills}
+                                    </div>
+                                </div>
+                                <div class="case-footer">
+                                    <span class="case-client">Status: Production Live</span>
+                                    <a href="${escapeHTML(link)}" ${isExternal ? 'target="_blank" rel="noopener"' : ''} class="case-cta-link">View Project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            try {
+                const locP = localStorage.getItem('appvertex_projects');
+                if (locP) renderDynamicWorkProjects(JSON.parse(locP));
+                const locF = localStorage.getItem('appvertex_footer');
+                if (locF) {
+                    const yr = JSON.parse(locF).year;
+                    if (yr) document.querySelectorAll('.footer-text').forEach(el => el.textContent = el.textContent.replace(/© \d{4}/, `© ${yr}`));
+                }
+            } catch(e) {}
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'appvertex_projects' && e.newValue) {
+                    try { renderDynamicWorkProjects(JSON.parse(e.newValue)); } catch(err){}
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

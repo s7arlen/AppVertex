@@ -367,26 +367,23 @@
     <!-- ═══════════════════════════════════════════════════
          MOBILE BOTTOM NAVIGATION DOCK
          ═══════════════════════════════════════════════════ -->
-    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
-        <div class="dock-items-row">
-            <a href="index.html" class="dock-item ">
-                <i class="fas fa-home"></i>
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Navigation">
+        <div class="dock-items-row" data-active="3">
+            <span class="dock-active-slider" aria-hidden="true"></span>
+            <a href="index.html" class="dock-item" aria-label="Home" data-index="0">
+                <i class="fa-solid fa-house"></i>
                 <span>HOME</span>
             </a>
-            <a href="work.html" class="dock-item ">
-                <i class="fas fa-briefcase"></i>
+            <a href="work.html" class="dock-item" aria-label="Work" data-index="1">
+                <i class="fa-solid fa-laptop-code"></i>
                 <span>WORK</span>
             </a>
-            <a href="services.html" class="dock-item ">
-                <i class="fas fa-th-large"></i>
+            <a href="services.html" class="dock-item" aria-label="Services" data-index="2">
+                <i class="fa-solid fa-layer-group"></i>
                 <span>SERVICES</span>
             </a>
-            <a href="upskill.html" class="dock-item ">
-                <i class="fas fa-graduation-cap"></i>
-                <span>UPSKILL</span>
-            </a>
-            <a href="contact.html" class="dock-item active">
-                <i class="fas fa-envelope"></i>
+            <a href="contact.html" class="dock-item active" aria-label="Contact" data-index="3">
+                <i class="fa-solid fa-paper-plane"></i>
                 <span>CONTACT</span>
             </a>
         </div>
@@ -651,8 +648,47 @@
                 }
             }, { passive: true });
         })();
-        // ─── Contact Form Submission & Intake Sync ───
+                // ─── Contact Form Submission & Intake Sync ───
         (function() {
+            function applyStudioSettings(settings) {
+                if (!settings) return;
+                if (settings.email) {
+                    document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+                        a.href = `mailto:${settings.email}`;
+                        const span = a.querySelector('span');
+                        if (span) span.textContent = settings.email;
+                        else if (a.textContent.includes('@')) a.textContent = settings.email;
+                    });
+                }
+                if (settings.whatsapp) {
+                    const cleanPhone = settings.whatsapp.replace(/[^0-9]/g, '');
+                    document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+                        const currentHref = a.getAttribute('href') || '';
+                        const textParam = currentHref.includes('?text=') ? currentHref.substring(currentHref.indexOf('?text=')) : '';
+                        a.href = `https://wa.me/${cleanPhone}${textParam}`;
+                        const span = a.querySelector('span');
+                        if (span && span.textContent.includes('+')) span.textContent = settings.whatsapp;
+                        else if (a.textContent.includes('+')) a.textContent = settings.whatsapp;
+                    });
+                }
+            }
+
+            try {
+                const s = localStorage.getItem('appvertex_settings');
+                if (s) applyStudioSettings(JSON.parse(s));
+                const f = localStorage.getItem('appvertex_footer');
+                if (f) {
+                    const yr = JSON.parse(f).year;
+                    if (yr) document.querySelectorAll('.footer-text').forEach(el => el.textContent = el.textContent.replace(/© \d{4}/, `© ${yr}`));
+                }
+            } catch(e) {}
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'appvertex_settings' && e.newValue) {
+                    try { applyStudioSettings(JSON.parse(e.newValue)); } catch(err){}
+                }
+            });
+
             const form = document.getElementById('contactPageForm');
             if (!form) return;
             form.addEventListener('submit', (e) => {
@@ -679,6 +715,10 @@
                     const existing = JSON.parse(localStorage.getItem('appvertex_inquiries') || '[]');
                     existing.unshift(newInq);
                     localStorage.setItem('appvertex_inquiries', JSON.stringify(existing));
+                    window.dispatchEvent(new StorageEvent('storage', {
+                        key: 'appvertex_inquiries',
+                        newValue: JSON.stringify(existing)
+                    }));
                 } catch(err) {
                     console.warn('Inquiry storage notice:', err);
                 }
