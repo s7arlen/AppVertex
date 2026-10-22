@@ -3671,10 +3671,10 @@
             }
 
             /* ═══════════════════════════════════════════════════
-               MOBILE BOTTOM NAVIGATION (NORMAL FULL-WIDTH ANIMATED BAR)
+               MOBILE BOTTOM NAVIGATION (EXPANDING FLUID PILL)
                ═══════════════════════════════════════════════════ */
             body {
-                padding-bottom: calc(64px + env(safe-area-inset-bottom, 12px)) !important;
+                padding-bottom: calc(66px + env(safe-area-inset-bottom, 12px)) !important;
             }
 
             .mobile-bottom-dock {
@@ -3686,158 +3686,117 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 margin: 0 !important;
-                height: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
-                padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+                height: calc(62px + env(safe-area-inset-bottom, 0px)) !important;
+                padding: 0 1rem env(safe-area-inset-bottom, 0px) 1rem !important;
                 z-index: 1000 !important;
-                background: rgba(255, 255, 255, 0.94) !important;
+                background: rgba(255, 255, 255, 0.95) !important;
                 backdrop-filter: blur(24px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-                border-top: 1px solid rgba(14, 116, 144, 0.12) !important;
+                border-top: 1px solid rgba(14, 116, 144, 0.1) !important;
                 border-left: none !important;
                 border-right: none !important;
                 border-bottom: none !important;
                 border-radius: 0 !important;
-                box-shadow: 0 -4px 24px rgba(19, 37, 41, 0.06), 0 -1px 4px rgba(14, 116, 144, 0.03) !important;
+                box-shadow: 0 -4px 20px rgba(19, 37, 41, 0.05) !important;
                 box-sizing: border-box !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
             }
 
             .dock-items-row {
-                display: grid !important;
-                grid-template-columns: repeat(4, 1fr) !important;
-                height: 58px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                height: 62px !important;
                 width: 100% !important;
+                max-width: 440px !important;
+                margin: 0 auto !important;
                 position: relative !important;
                 box-sizing: border-box !important;
-                margin: 0 !important;
-            }
-
-            /* Fluid Sliding Glowing Top Indicator Beam */
-            .dock-indicator-track {
-                position: absolute !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 25% !important;
-                height: 3px !important;
-                display: flex !important;
-                justify-content: center !important;
-                transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-                pointer-events: none !important;
-                z-index: 10 !important;
-            }
-
-            .dock-indicator-beam {
-                display: block !important;
-                width: 38px !important;
-                height: 3px !important;
-                border-radius: 0 0 4px 4px !important;
-                background: linear-gradient(90deg, #0E7490 0%, #06B6D4 100%) !important;
-                box-shadow: 0 2px 8px rgba(14, 116, 144, 0.55), 0 0 12px rgba(6, 182, 212, 0.35) !important;
-                transition: width 0.25s ease !important;
-            }
-
-            .dock-items-row[data-active="0"] .dock-indicator-track {
-                transform: translateX(0%) !important;
-            }
-            .dock-items-row[data-active="1"] .dock-indicator-track {
-                transform: translateX(100%) !important;
-            }
-            .dock-items-row[data-active="2"] .dock-indicator-track {
-                transform: translateX(200%) !important;
-            }
-            .dock-items-row[data-active="3"] .dock-indicator-track {
-                transform: translateX(300%) !important;
             }
 
             .dock-item {
                 display: flex !important;
-                flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
-                gap: 0.12rem !important;
+                height: 44px !important;
+                padding: 0 12px !important;
+                border-radius: 999px !important;
                 text-decoration: none !important;
-                color: #526E77 !important;
-                opacity: 0.8 !important;
-                position: relative !important;
-                z-index: 2 !important;
-                height: 100% !important;
-                border-radius: 0 !important;
-                transition: color 0.22s ease, opacity 0.22s ease !important;
-                padding: 0 !important;
-                -webkit-tap-highlight-color: transparent !important;
-            }
-
-            .dock-icon-box {
-                width: 44px !important;
-                height: 28px !important;
-                border-radius: 14px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-                position: relative !important;
+                color: #64748B !important;
                 background: transparent !important;
+                border: 1px solid transparent !important;
+                transition: all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+                -webkit-tap-highlight-color: transparent !important;
+                position: relative !important;
+                flex: 0 0 auto !important;
             }
 
             .dock-item i {
-                font-size: 1.12rem !important;
-                transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.22s ease !important;
-                color: inherit !important;
+                font-size: 1.15rem !important;
+                color: #64748B !important;
+                transition: color 0.25s ease, transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+                flex-shrink: 0 !important;
             }
 
-            .dock-item span {
-                font-family: var(--font-secondary) !important;
-                font-size: 0.58rem !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.07em !important;
-                text-transform: uppercase !important;
-                line-height: 1 !important;
-                color: inherit !important;
-                transition: color 0.22s ease, transform 0.2s ease, font-weight 0.2s ease !important;
-            }
-
-            /* Active State Animation */
-            .dock-item.active {
+            .dock-label {
+                font-family: var(--font-primary) !important;
+                font-size: 0.82rem !important;
+                font-weight: 700 !important;
+                letter-spacing: -0.01em !important;
                 color: var(--steel-blue) !important;
-                opacity: 1 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                max-width: 0 !important;
+                opacity: 0 !important;
+                transform: translateX(-4px) !important;
+                transition: max-width 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                            opacity 0.25s ease, 
+                            transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                            margin 0.32s ease !important;
+                margin-left: 0 !important;
             }
 
-            .dock-item.active .dock-icon-box {
-                background: rgba(14, 116, 144, 0.09) !important;
-                transform: translateY(-2px) !important;
+            /* Active State: Expanding Pill Badge */
+            .dock-item.active {
+                background: linear-gradient(135deg, rgba(14, 116, 144, 0.12) 0%, rgba(14, 116, 144, 0.05) 100%) !important;
+                border: 1px solid rgba(14, 116, 144, 0.18) !important;
+                box-shadow: 0 2px 10px rgba(14, 116, 144, 0.08) !important;
+                padding: 0 16px !important;
+                color: var(--steel-blue) !important;
+                flex: 0 1 auto !important;
             }
 
             .dock-item.active i {
                 color: var(--steel-blue) !important;
-                animation: dockTabBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+                transform: scale(1.08) !important;
+                animation: tabPop 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
             }
 
-            .dock-item.active span {
-                font-weight: 700 !important;
-                color: var(--steel-blue) !important;
-                transform: translateY(-1px) !important;
+            .dock-item.active .dock-label {
+                max-width: 80px !important;
+                opacity: 1 !important;
+                transform: translateX(0) !important;
+                margin-left: 8px !important;
             }
 
-            /* Tap Tactile Squash */
-            .dock-item:active .dock-icon-box {
-                transform: scale(0.88) !important;
+            .dock-item:active {
+                transform: scale(0.92) !important;
             }
 
-            @keyframes dockTabBounce {
-                0%   { transform: scale(0.85); }
+            @keyframes tabPop {
+                0%   { transform: scale(0.8); }
                 50%  { transform: scale(1.22); }
-                75%  { transform: scale(0.96); }
                 100% { transform: scale(1.08); }
             }
 
-            .dock-center-cta {
+            .dock-center-cta,
+            .dock-indicator-track,
+            .dock-active-slider {
                 display: none !important;
             }
 
             .floating-whatsapp-btn {
                 position: fixed !important;
-                bottom: calc(72px + env(safe-area-inset-bottom, 12px)) !important;
+                bottom: calc(74px + env(safe-area-inset-bottom, 12px)) !important;
                 right: 16px !important;
                 width: 50px !important;
                 height: 50px !important;
@@ -3853,7 +3812,11 @@
             }
 
             .scroll-to-top-btn {
-                display: none !important;
+                bottom: calc(74px + 52px + env(safe-area-inset-bottom, 12px)) !important;
+                right: 18px !important;
+                width: 44px !important;
+                height: 44px !important;
+                z-index: 997 !important;
             }
 
             /* Section Mobile Adaptations */
@@ -5888,37 +5851,25 @@
     </button>
 
     <!-- ═══════════════════════════════════════════════════
-         12. MOBILE BOTTOM NAVIGATION (FULL-WIDTH ANIMATED BAR)
+         12. MOBILE BOTTOM NAVIGATION (EXPANDING FLUID PILL)
          ═══════════════════════════════════════════════════ -->
     <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Navigation">
-        <div class="dock-items-row" data-active="0">
-            <!-- Fluid Sliding Glowing Indicator Beam -->
-            <div class="dock-indicator-track" aria-hidden="true">
-                <span class="dock-indicator-beam"></span>
-            </div>
+        <div class="dock-items-row">
             <a href="index.html" class="dock-item active" aria-label="Home" data-index="0">
-                <div class="dock-icon-box">
-                    <i class="fa-solid fa-house"></i>
-                </div>
-                <span>HOME</span>
+                <i class="fa-solid fa-house"></i>
+                <span class="dock-label">Home</span>
             </a>
             <a href="work.html" class="dock-item" aria-label="Work" data-index="1">
-                <div class="dock-icon-box">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <span>WORK</span>
+                <i class="fa-solid fa-laptop-code"></i>
+                <span class="dock-label">Work</span>
             </a>
             <a href="services.html" class="dock-item" aria-label="Services" data-index="2">
-                <div class="dock-icon-box">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <span>SERVICES</span>
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="dock-label">Services</span>
             </a>
             <a href="contact.html" class="dock-item" aria-label="Contact" data-index="3">
-                <div class="dock-icon-box">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </div>
-                <span>CONTACT</span>
+                <i class="fa-solid fa-paper-plane"></i>
+                <span class="dock-label">Contact</span>
             </a>
         </div>
     </nav>
