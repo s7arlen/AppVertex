@@ -15,21 +15,21 @@
     <style>
         :root {
             /* ═══════════════════════════════════════════════════
-               APPVERTEX ROSEWOOD MIST DESIGN TOKENS
+               APPVERTEX SAPPHIRE MARINA DESIGN TOKENS
                ═══════════════════════════════════════════════════ */
-            --primary: #A64F5D;                  /* Rosewood Studio Accent */
-            --primary-dark: #873747;             /* Deep Burgundy */
-            --primary-darker: #642A3A;           /* Plum Charcoal Dark */
-            --primary-soft: rgba(166, 79, 93, 0.08);
-            --primary-glow: rgba(166, 79, 93, 0.22);
-            --bg-canvas: #FCF8F7;                /* Studio Warm Off-White */
+            --primary: #0284C7;                  /* Rosewood Studio Accent */
+            --primary-dark: #0369A1;             /* Deep Burgundy */
+            --primary-darker: #074B6E;           /* Plum Charcoal Dark */
+            --primary-soft: rgba(2, 132, 199, 0.08);
+            --primary-glow: rgba(2, 132, 199, 0.22);
+            --bg-canvas: #F4F8FA;                /* Studio Warm Off-White */
             --surface-white: #FFFFFF;            /* White Card Surface */
-            --surface-subtle: #FFFDFC;           /* Porcelain Highlight */
-            --border: #E8D6D9;                   /* Rosewood Border */
-            --border-hover: #D5B9BF;             /* Interactive Border */
-            --text-main: #351B25;                /* Plum Charcoal Primary */
-            --text-muted: #775963;               /* Mauve Slate Secondary */
-            --text-subtle: #9B8189;              /* Light Muted */
+            --surface-subtle: #F9FCFE;           /* Porcelain Highlight */
+            --border: #CEE3EE;                   /* Rosewood Border */
+            --border-hover: #B5D4E6;             /* Interactive Border */
+            --text-main: #0C2533;                /* Plum Charcoal Primary */
+            --text-muted: #3F6175;               /* Mauve Slate Secondary */
+            --text-subtle: #7092A5;              /* Light Muted */
             --success: #10B981;
             --success-soft: rgba(16, 185, 129, 0.1);
             --warning: #F59E0B;
@@ -48,13 +48,13 @@
             --radius-lg: 16px;
             --radius-full: 9999px;
 
-            --shadow-subtle: 0 4px 20px rgba(91, 43, 57, 0.04);
-            --shadow-card: 0 6px 24px rgba(91, 43, 57, 0.06);
-            --shadow-elevated: 0 16px 40px rgba(91, 43, 57, 0.10);
+            --shadow-subtle: 0 4px 20px rgba(3, 105, 161, 0.04);
+            --shadow-card: 0 6px 24px rgba(3, 105, 161, 0.06);
+            --shadow-elevated: 0 16px 40px rgba(3, 105, 161, 0.10);
             
-            --gradient-btn: linear-gradient(105deg, #A95764 0%, #964653 50%, #783444 100%);
-            --gradient-accent: linear-gradient(135deg, #A64F5D 0%, #873747 100%);
-            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #FFF8F7 60%, #F8EAEA 100%);
+            --gradient-btn: linear-gradient(105deg, #0284C7 0%, #0369A1 50%, #075985 100%);
+            --gradient-accent: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #F5F9FA 60%, #F8EAEA 100%);
 
             --transition-fast: 0.18s ease;
             --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -93,8 +93,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(166, 79, 93, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(166, 79, 93, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(2, 132, 199, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(2, 132, 199, 0.04) 1px, transparent 1px);
             background-size: 36px 36px;
             pointer-events: none;
         }
@@ -104,7 +104,7 @@
             position: absolute;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(166, 79, 93, 0.09) 0%, rgba(249, 232, 232, 0.3) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.09) 0%, rgba(249, 232, 232, 0.3) 40%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -147,7 +147,7 @@
             height: 40px;
             border-radius: 10px;
             object-fit: cover;
-            box-shadow: 0 4px 12px rgba(135, 55, 71, 0.2);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
         }
 
         .login-logo span {
@@ -168,7 +168,7 @@
             justify-content: center;
             gap: 0.45rem;
             background: var(--primary-soft);
-            border: 1px solid rgba(166, 79, 93, 0.2);
+            border: 1px solid rgba(2, 132, 199, 0.2);
             color: var(--primary);
             font-family: var(--font-secondary);
             font-size: 0.72rem;
@@ -236,12 +236,12 @@
             gap: 0.5rem;
             transition: all var(--transition-smooth);
             margin-top: 0.5rem;
-            box-shadow: 0 4px 14px rgba(135, 55, 71, 0.22);
+            box-shadow: 0 4px 14px rgba(3, 105, 161, 0.22);
         }
 
         .login-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(135, 55, 71, 0.32);
+            box-shadow: 0 6px 18px rgba(3, 105, 161, 0.32);
         }
 
         .login-error {
@@ -272,7 +272,7 @@
             position: sticky;
             top: 0;
             z-index: 95;
-            box-shadow: 0 2px 10px rgba(91, 43, 57, 0.04);
+            box-shadow: 0 2px 10px rgba(3, 105, 161, 0.04);
         }
 
         .mobile-brand {
@@ -368,7 +368,7 @@
             height: 32px;
             border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 3px 8px rgba(135, 55, 71, 0.15);
+            box-shadow: 0 3px 8px rgba(3, 105, 161, 0.15);
         }
 
         .logo span { color: var(--primary); }
@@ -443,7 +443,7 @@
             color: var(--primary);
             font-weight: 700;
             border-left: 3px solid var(--primary);
-            box-shadow: inset 0 0 0 1px rgba(166, 79, 93, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(2, 132, 199, 0.08);
         }
 
         .sidebar-footer {
@@ -470,7 +470,7 @@
             font-size: 0.9rem;
             font-weight: 700;
             color: white;
-            box-shadow: 0 3px 8px rgba(135, 55, 71, 0.2);
+            box-shadow: 0 3px 8px rgba(3, 105, 161, 0.2);
         }
 
         .admin-user-email {
@@ -570,12 +570,12 @@
             background: var(--gradient-btn);
             color: #FFFFFF;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(135, 55, 71, 0.18);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.18);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(135, 55, 71, 0.28);
+            box-shadow: 0 6px 16px rgba(3, 105, 161, 0.28);
         }
 
         .btn-secondary {
