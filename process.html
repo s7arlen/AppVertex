@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process &amp; Blueprint | AppVertex Digital Studio</title>
+    <meta name="description" content="Discover the AppVertex 5-phase engineering blueprint — from architectural discovery to production deployment with predictable timelines.">
+    <link rel="canonical" href="https://s7arlen.github.io/AppVertex/process.html">
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Master Rosewood Mist Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .process-timeline {
+            position: relative;
+            margin: 4rem auto;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 39px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--burgundy) 0%, var(--rose-light) 50%, var(--border) 100%);
+        }
+
+        .process-step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.25rem;
+            position: relative;
+        }
+
+        .process-step-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid var(--border);
+            box-shadow: 0 8px 24px rgba(91, 43, 57, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            z-index: 2;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .process-step-item:hover .process-step-badge {
+            transform: scale(1.06);
+            border-color: var(--burgundy);
+        }
+
+        .process-step-num {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--burgundy);
+            line-height: 1;
+        }
+
+        .process-step-dur {
+            font-family: var(--font-secondary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .process-step-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            box-shadow: 0 4px 18px rgba(91, 43, 57, 0.03);
+            flex-grow: 1;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .process-step-card:hover {
+            transform: translateX(4px);
+            border-color: var(--rose-light);
+        }
+
+        .process-step-tag {
+            font-family: var(--font-secondary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dusty-rose);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .process-step-desc {
+            font-size: 0.94rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1.25rem 0;
+        }
+
+        .process-deliverables-title {
+            font-family: var(--font-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-deliverables-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .process-deliv-chip {
+            background: var(--porcelain);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 0.25rem 0.65rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .guarantee-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F7 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 1.75rem;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 2.25rem;
+            color: var(--burgundy);
+            margin-bottom: 1.25rem;
+        }
+
+        .guarantee-title {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 24px !important;
+            }
+            .process-step-badge {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            .process-step-num {
+                font-size: 1rem !important;
+            }
+            .process-step-dur {
+                display: none !important;
+            }
+            .process-step-item {
+                gap: 1.25rem !important;
+            }
+            .guarantees-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════
+         HEADER / NAVIGATION
+         ═══════════════════════════════════════════════════ -->
+    <header id="siteHeader">
+        <div class="container">
+            <div class="nav-inner">
+                <!-- Logo -->
+                <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
+                    <span class="logo-monogram" aria-hidden="true">
+                        <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#873747"/>
+                            <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#A64F5D"/>
+                        </svg>
+                    </span>
+                    <span class="logo-text">AppVertex</span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="nav-menu" aria-label="Main Navigation">
+                    <a href="index.html" class="nav-link ">HOME</a>
+                    <a href="services.html" class="nav-link ">SERVICES</a>
+                    <a href="about.html" class="nav-link ">ABOUT</a>
+                    <a href="work.html" class="nav-link ">WORK</a>
+                    <a href="process.html" class="nav-link active">PROCESS</a>
+                    <a href="upskill.html" class="nav-link ">UPSKILL</a>
+                </nav>
+
+                <!-- Desktop CTA -->
+                <a href="contact.html" class="nav-cta-btn ">GET IN TOUCH</a>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">✕</button>
+        <a href="index.html" class="nav-link mobile-link ">HOME</a>
+        <a href="services.html" class="nav-link mobile-link ">SERVICES</a>
+        <a href="about.html" class="nav-link mobile-link ">ABOUT</a>
+        <a href="work.html" class="nav-link mobile-link ">WORK</a>
+        <a href="process.html" class="nav-link mobile-link active">PROCESS</a>
+        <a href="upskill.html" class="nav-link mobile-link ">UPSKILL</a>
+        <a href="contact.html" class="btn btn-primary mobile-link" style="margin-top: 1rem;">GET IN TOUCH <span class="arr">→</span></a>
+    </div>
+
+<main id="mainContent">
+    <!-- Subpage Hero Banner -->
+    <section class="subpage-hero" aria-label="Process Overview">
+        <div class="hero-rosewood-curves" aria-hidden="true">
+            <svg viewBox="0 0 1440 400" fill="none" preserveAspectRatio="none">
+                <path d="M0 400 C400 320, 800 380, 1200 280 C1350 240, 1440 260, 1440 260 L1440 0 L0 0 Z" fill="url(#processHeroGrad)" opacity="0.35"/>
+                <defs>
+                    <linearGradient id="processHeroGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#FFF8F7"/>
+                        <stop offset="50%" stop-color="#F9E8E8"/>
+                        <stop offset="100%" stop-color="#E9C1C5"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="container subpage-hero-content">
+            <span class="subpage-badge">
+                <span class="subpage-badge-dot"></span>
+                PROVEN STUDIO BLUEPRINT
+            </span>
+            <h1 class="subpage-title">
+                Predictable timelines.<br>
+                <span class="accent">Transparent sprints.</span>
+            </h1>
+            <p class="subpage-desc">
+                We believe the best client experiences arise from transparent, structured workflows. Here is the exact five-phase blueprint we use to turn complex product visions into dependable, battle-tested software.
+            </p>
+            <div class="subpage-actions">
+                <a href="contact.html" class="btn btn-primary">BOOK DISCOVERY CALL <span class="arr">→</span></a>
+                <a href="work.html" class="btn btn-secondary">VIEW SHIPPED WORK</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section class="container" style="padding: 4rem 1.5rem;">
+        <div class="text-center" style="max-width: 640px; margin: 0 auto 3rem;">
+            <p class="section-eyebrow">THE 5-PHASE SPRINT BLUEPRINT</p>
+            <h2 class="section-title">From Concept to Production Launch</h2>
+            <p class="section-lead">Every phase ends with a concrete, testable milestone so you always know where your project stands.</p>
+        </div>
+
+        <div class="process-timeline">
+            <!-- Phase 01: Discovery & Strategy -->
+            <div class="process-step-item">
+                <div class="process-step-badge">
+                    <span class="process-step-num">01</span>
+                    <span class="process-step-dur">WEEK 1</span>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-tag">Phase 01 • Architecture Discovery</div>
+                    <h3 class="process-step-title">Discovery &amp; Technical Requirements</h3>
+                    <p class="process-step-desc">
+                        We begin by unpacking your business objectives, target audience journeys, and technical constraints. We define system boundaries, data models, integration APIs, and establish an exact Sprint Roadmap.
+                    </p>
+                    <div class="process-deliverables-title">Phase Deliverables</div>
+                    <div class="process-deliverables-list">
+                        <span class="process-deliv-chip">System Architecture Doc</span>
+                        <span class="process-deliv-chip">Sprint Timeline</span>
+                        <span class="process-deliv-chip">API Contract Spec</span>
+                        <span class="process-deliv-chip">Tech Feasibility Map</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 02: Information Architecture & Wireframes -->
+            <div class="process-step-item">
+                <div class="process-step-badge">
+                    <span class="process-step-num">02</span>
+                    <span class="process-step-dur">WEEK 2</span>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-tag">Phase 02 • Structural Design</div>
+                    <h3 class="process-step-title">Information Architecture &amp; User Flows</h3>
+                    <p class="process-step-desc">
+                        Before making things visual, we ensure the structural logic is rock-solid. We establish page hierarchies, user journeys, navigation models, and low-fidelity prototypes to eliminate friction before writing code.
+                    </p>
+                    <div class="process-deliverables-title">Phase Deliverables</div>
+                    <div class="process-deliverables-list">
+                        <span class="process-deliv-chip">Low-Fidelity Wireframes</span>
+                        <span class="process-deliv-chip">Clickable Flow Models</span>
+                        <span class="process-deliv-chip">Database Schemas</span>
+                        <span class="process-deliv-chip">Content Strategy Map</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 03: High-Fidelity UI/UX & Design Tokens -->
+            <div class="process-step-item">
+                <div class="process-step-badge">
+                    <span class="process-step-num">03</span>
+                    <span class="process-step-dur">WEEKS 3-4</span>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-tag">Phase 03 • Visual Craftsmanship</div>
+                    <h3 class="process-step-title">High-Fidelity UI/UX &amp; Design Systems</h3>
+                    <p class="process-step-desc">
+                        We craft custom Rosewood Mist visual interfaces in Figma, specifying bespoke design tokens, fluid typography scales, interactive micro-animations, and responsive layouts across desktop and mobile screens.
+                    </p>
+                    <div class="process-deliverables-title">Phase Deliverables</div>
+                    <div class="process-deliverables-list">
+                        <span class="process-deliv-chip">Interactive Figma Prototypes</span>
+                        <span class="process-deliv-chip">Color &amp; Typography Tokens</span>
+                        <span class="process-deliv-chip">Component Library</span>
+                        <span class="process-deliv-chip">Mobile Responsive Specs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 04: Production Engineering -->
+            <div class="process-step-item">
+                <div class="process-step-badge">
+                    <span class="process-step-num">04</span>
+                    <span class="process-step-dur">WEEKS 5-7</span>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-tag">Phase 04 • Clean Code Execution</div>
+                    <h3 class="process-step-title">Production Engineering &amp; Integrations</h3>
+                    <p class="process-step-desc">
+                        Our engineers write modular, maintainable, and type-safe code. We connect databases, configure real-time webhooks, optimize rendering cycles for 100/100 Core Web Vitals, and run continuous staging builds.
+                    </p>
+                    <div class="process-deliverables-title">Phase Deliverables</div>
+                    <div class="process-deliverables-list">
+                        <span class="process-deliv-chip">Full Git Repository Access</span>
+                        <span class="process-deliv-chip">Live Staging URL</span>
+                        <span class="process-deliv-chip">API Integrations</span>
+                        <span class="process-deliv-chip">Weekly Review Demos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 05: QA, Security Audit & Launch -->
+            <div class="process-step-item">
+                <div class="process-step-badge">
+                    <span class="process-step-num">05</span>
+                    <span class="process-step-dur">WEEK 8</span>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-tag">Phase 05 • Deployment &amp; Protection</div>
+                    <h3 class="process-step-title">Quality Assurance, Security &amp; Cutover</h3>
+                    <p class="process-step-desc">
+                        Comprehensive cross-device stress testing, security penetration checks, WCAG accessibility validation, DNS migration, and production deployment with a guaranteed 30-day post-launch warranty.
+                    </p>
+                    <div class="process-deliverables-title">Phase Deliverables</div>
+                    <div class="process-deliverables-list">
+                        <span class="process-deliv-chip">Production DNS Launch</span>
+                        <span class="process-deliv-chip">30-Day Code Warranty</span>
+                        <span class="process-deliv-chip">Uptime Monitoring Setup</span>
+                        <span class="process-deliv-chip">Handover Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Studio Guarantees -->
+        <div style="margin: 5rem 0 2rem; text-align: center;">
+            <p class="section-eyebrow">OUR COMMITMENT</p>
+            <h2 class="section-title">The AppVertex Quality Standard</h2>
+        </div>
+
+        <div class="guarantees-grid">
+            <div class="guarantee-card">
+                <i class="fa-solid fa-code-branch guarantee-icon"></i>
+                <h3 class="guarantee-title">100% Code Ownership</h3>
+                <p class="guarantee-desc">You own every line of code, design file, and asset with zero lock-in or recurring proprietary studio fees.</p>
+            </div>
+            <div class="guarantee-card">
+                <i class="fa-solid fa-gauge-high guarantee-icon"></i>
+                <h3 class="guarantee-title">Performance Guarantee</h3>
+                <p class="guarantee-desc">We target 95+ Core Web Vitals scores across desktop and mobile, ensuring speed that drives conversions.</p>
+            </div>
+            <div class="guarantee-card">
+                <i class="fa-solid fa-shield-check guarantee-icon"></i>
+                <h3 class="guarantee-title">30-Day Post-Launch SLA</h3>
+                <p class="guarantee-desc">Immediate bug triage and adjustments within 30 days of release at absolutely zero extra charge.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- ═══════════════════════════════════════════════════
+         FLOATING WHATSAPP BUTTON
+         ═══════════════════════════════════════════════════ -->
+    <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="floating-whatsapp-btn" 
+       aria-label="Chat with AppVertex on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ═══════════════════════════════════════════════════
+         SCROLL TO TOP BUTTON (WITH READING PROGRESS)
+         ═══════════════════════════════════════════════════ -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top of page" title="Scroll to top">
+        <svg class="scroll-progress-ring" width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+            <circle class="progress-ring-bg" cx="23" cy="23" r="20"></circle>
+            <circle class="progress-ring-fill" id="scrollProgressCircle" cx="23" cy="23" r="20"></circle>
+        </svg>
+        <i class="fa-solid fa-arrow-up scroll-top-icon" aria-hidden="true"></i>
+    </button>
+
+    <!-- ═══════════════════════════════════════════════════
+         MOBILE BOTTOM NAVIGATION DOCK
+         ═══════════════════════════════════════════════════ -->
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
+        <div class="dock-items-row">
+            <a href="index.html" class="dock-item ">
+                <i class="fas fa-home"></i>
+                <span>HOME</span>
+            </a>
+            <a href="work.html" class="dock-item ">
+                <i class="fas fa-briefcase"></i>
+                <span>WORK</span>
+            </a>
+            <a href="services.html" class="dock-item ">
+                <i class="fas fa-th-large"></i>
+                <span>SERVICES</span>
+            </a>
+            <a href="upskill.html" class="dock-item ">
+                <i class="fas fa-graduation-cap"></i>
+                <span>UPSKILL</span>
+            </a>
+            <a href="contact.html" class="dock-item ">
+                <i class="fas fa-envelope"></i>
+                <span>CONTACT</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════
+         STRUCTURED STUDIO FOOTER
+         ═══════════════════════════════════════════════════ -->
+    <footer id="siteFooter" class="site-footer-premium">
+        <!-- Flowing Abstract Curves Background Layer -->
+        <div class="footer-rosewood-curves" aria-hidden="true">
+            <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M-100 600 C300 460, 700 620, 1100 400 C1300 280, 1500 330, 1600 260 L1600 600 Z" fill="url(#footerBlushGrad)" opacity="0.45"/>
+                <path d="M-50 600 C250 510, 650 380, 1050 460 C1280 510, 1450 370, 1550 410 L1550 600 Z" fill="url(#footerDustyGrad)" opacity="0.22"/>
+                <path d="M900 600 C1100 500, 1300 460, 1450 430 L1450 600 Z" fill="url(#footerBurgundyGrad)" opacity="0.12"/>
+                <path d="M0 120 C400 70, 800 150, 1200 95 C1350 75, 1440 85, 1440 85 L1440 0 L0 0 Z" fill="url(#footerTopShimmer)" opacity="0.4"/>
+                
+                <defs>
+                    <linearGradient id="footerBlushGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#FFF8F7" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#F9E8E8" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#E9C1C5" stop-opacity="0.25"/>
+                    </linearGradient>
+                    <linearGradient id="footerDustyGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#E9C1C5" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#C9858E" stop-opacity="0.15"/>
+                    </linearGradient>
+                    <linearGradient id="footerBurgundyGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#C9858E" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#873747" stop-opacity="0.18"/>
+                    </linearGradient>
+                    <linearGradient id="footerTopShimmer" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#FCF5F4" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="footer-top-hairline" aria-hidden="true"></div>
+
+        <div class="container footer-content-container">
+            <!-- Premium Pre-Footer Conversion Card -->
+            <div class="footer-cta-card">
+                <div class="footer-cta-ambient" aria-hidden="true"></div>
+                <div class="footer-cta-left">
+                    <span class="footer-cta-pill">
+                        <span class="cta-pill-dot"></span>
+                        START A CONVERSATION
+                    </span>
+                    <h3 class="footer-cta-title">
+                        Ready to build your next <span class="accent-word">digital product?</span>
+                    </h3>
+                    <p class="footer-cta-desc">
+                        Direct collaboration with founders, sprint-driven execution, and dependable custom software architectures.
+                    </p>
+                </div>
+                <div class="footer-cta-right">
+                    <a href="contact.html" class="btn-rosewood-cta footer-cta-btn">
+                        Get a Free Quote <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27d%20like%20to%20discuss%20a%20project." 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn-rosewood-outline footer-wa-btn">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Main Columns Grid -->
+            <div class="footer-top-grid">
+                <!-- Brand Info -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
+                        <span class="logo-monogram" aria-hidden="true">
+                            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#873747"/>
+                                <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#A64F5D"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">AppVertex</span>
+                    </a>
+                    <p class="footer-brand-bio">
+                        Premium digital product and software development studio crafting fast, high-converting platforms and dependable custom architectures.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span class="status-pill-text">Available for New Projects</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-nav-col">
+                    <div class="footer-col-title">
+                        <span>NAVIGATION</span>
+                    </div>
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html"><span class="nav-arr">›</span> Home</a></li>
+                        <li><a href="services.html"><span class="nav-arr">›</span> Services</a></li>
+                        <li><a href="about.html"><span class="nav-arr">›</span> About</a></li>
+                        <li><a href="work.html"><span class="nav-arr">›</span> Work</a></li>
+                        <li><a href="process.html"><span class="nav-arr">›</span> Process</a></li>
+                        <li><a href="upskill.html"><span class="nav-arr">›</span> Upskill</a></li>
+                    </ul>
+                </div>
+
+                <!-- Solutions List -->
+                <div class="footer-nav-col">
+                    <div class="footer-col-title">
+                        <span>SOLUTIONS</span>
+                    </div>
+                    <ul class="footer-nav-list">
+                        <li><a href="services.html"><span class="nav-arr">›</span> Web Design</a></li>
+                        <li><a href="services.html"><span class="nav-arr">›</span> Web Development</a></li>
+                        <li><a href="services.html"><span class="nav-arr">›</span> UI / UX Design</a></li>
+                        <li><a href="services.html"><span class="nav-arr">›</span> Digital Products</a></li>
+                        <li><a href="services.html"><span class="nav-arr">›</span> Business Software</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Links -->
+                <div class="footer-nav-col">
+                    <div class="footer-col-title">
+                        <span>CONNECT</span>
+                    </div>
+                    <ul class="footer-nav-list footer-connect-list">
+                        <li>
+                            <a href="mailto:leston@appvertex.in" class="footer-connect-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>leston@appvertex.in</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/919322971253" target="_blank" rel="noopener noreferrer" class="footer-connect-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+91 93229 71253</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/s7arlen/AppVertex" target="_blank" rel="noopener noreferrer" class="footer-connect-link">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub Repository</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="footer-connect-link footer-quote-link">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Request Proposal ↗</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom-row">
+                <div class="footer-bottom-left">
+                    <p class="footer-text">© 2026 AppVertex Studio. All rights reserved.</p>
+                    <span class="footer-dot-divider">•</span>
+                    <span class="footer-craft-text">Built with precision &amp; modern web architectures</span>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="admin.html" class="footer-admin-link">
+                        <i class="fas fa-lock"></i>
+                        <span>Admin Portal</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ─── Mobile Drawer Toggle ───
+        (function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const drawer = document.getElementById('mobileDrawer');
+            const drawerClose = document.getElementById('mobileDrawerClose');
+            if (!menuBtn || !drawer) return;
+
+            function openDrawer() {
+                drawer.classList.add('open');
+                menuBtn.classList.add('active');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeDrawer() {
+                drawer.classList.remove('open');
+                menuBtn.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', () => {
+                if (drawer.classList.contains('open')) closeDrawer();
+                else openDrawer();
+            });
+
+            if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+            drawer.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
+        })();
+
+        // ─── Scroll to Top Button & Reading Progress ───
+        (function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            const circle = document.getElementById('scrollProgressCircle');
+            if (!btn) return;
+
+            const totalLength = 125.66;
+            let ticking = false;
+
+            function updateScrollProgress() {
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+                if (scrollY > 320) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+
+                if (circle && docHeight > 0) {
+                    const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
+                    const offset = totalLength - (progress * totalLength);
+                    circle.style.strokeDashoffset = offset.toFixed(2);
+                }
+
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateScrollProgress);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            updateScrollProgress();
+        })();
+
+        // ─── Header Scroll Background Elevation ───
+        (function() {
+            const header = document.getElementById('siteHeader');
+            if (!header) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+</html>

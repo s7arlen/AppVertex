@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://s7arlen.github.io/AppVertex/sitemap.xml
