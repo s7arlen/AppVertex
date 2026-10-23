@@ -2506,13 +2506,7 @@
             document.getElementById('modeStatusText').textContent = "Studio Admin Active (Zero-Latency Cross-Tab Sync)";
 
             loadFromLocalStorage();
-            if (projects.length === 0 && testimonials.length === 0) {
-                projects = [...DEFAULT_PROJECTS];
-                testimonials = [...DEFAULT_TESTIMONIALS];
-                inquiries = [...DEFAULT_INQUIRIES];
-                applications = [...DEFAULT_APPLICATIONS];
-                saveToLocalStorage();
-            }
+            saveToLocalStorage();
             refreshAllUI();
             if (!silent) showToast("Admin console active. Public site sync enabled!", "info");
         }
@@ -2528,12 +2522,17 @@
             showToast("Logged out of Admin Console", "info");
         }
 
-        // Auto-restore active session
+        // Auto-restore active session & perform immediate cold-start render
+        loadFromLocalStorage();
         try {
             if (localStorage.getItem('appvertex_admin_session') === 'active') {
                 handleLocalMode(true);
+            } else {
+                refreshAllUI();
             }
-        } catch(e) {}
+        } catch(e) {
+            refreshAllUI();
+        }
 
         // ─── STORAGE SYNC HELPERS ───
         function saveToLocalStorage() {
@@ -2561,18 +2560,30 @@
                 const locF = localStorage.getItem('appvertex_footer');
                 const locS = localStorage.getItem('appvertex_settings');
                 
-                if (locT) testimonials = JSON.parse(locT);
-                if (locP) projects = JSON.parse(locP);
-                if (locI) inquiries = JSON.parse(locI);
-                else inquiries = [...DEFAULT_INQUIRIES];
+                try {
+                    const parsedP = locP ? JSON.parse(locP) : null;
+                    projects = (Array.isArray(parsedP) && parsedP.length > 0) ? parsedP : [...DEFAULT_PROJECTS];
+                } catch(e) { projects = [...DEFAULT_PROJECTS]; }
 
-                if (locA) applications = JSON.parse(locA);
-                else applications = [...DEFAULT_APPLICATIONS];
+                try {
+                    const parsedT = locT ? JSON.parse(locT) : null;
+                    testimonials = (Array.isArray(parsedT) && parsedT.length > 0) ? parsedT : [...DEFAULT_TESTIMONIALS];
+                } catch(e) { testimonials = [...DEFAULT_TESTIMONIALS]; }
+
+                try {
+                    const parsedI = locI ? JSON.parse(locI) : null;
+                    inquiries = (Array.isArray(parsedI) && parsedI.length > 0) ? parsedI : [...DEFAULT_INQUIRIES];
+                } catch(e) { inquiries = [...DEFAULT_INQUIRIES]; }
+
+                try {
+                    const parsedA = locA ? JSON.parse(locA) : null;
+                    applications = (Array.isArray(parsedA) && parsedA.length > 0) ? parsedA : [...DEFAULT_APPLICATIONS];
+                } catch(e) { applications = [...DEFAULT_APPLICATIONS]; }
 
                 if (locS) {
-                    studioSettings = { ...studioSettings, ...JSON.parse(locS) };
+                    try { studioSettings = { ...studioSettings, ...JSON.parse(locS) }; } catch(e){}
                 } else if (locF) {
-                    studioSettings.footerYear = JSON.parse(locF).year || "2026";
+                    try { studioSettings.footerYear = JSON.parse(locF).year || "2026"; } catch(e){}
                 }
             } catch(e) {
                 console.warn("Storage parse error:", e);
@@ -2883,8 +2894,22 @@
                 if (clickAttr.includes(`'${id}'`)) link.classList.add('active');
             });
 
-            // Close mobile sidebar on selection
-            toggleSidebar(false);
+            // Re-render target section to guarantee fresh contents
+            if (id === 'projects') renderProjects();
+            else if (id === 'testimonials') renderTestimonials();
+            else if (id === 'inquiries') renderInquiries();
+            else if (id === 'applications') renderApplications();
+            else if (id === 'dashboard') {
+                updateStats();
+                renderRecentProjects();
+                renderRecentInquiries();
+                renderRecentApplications();
+            }
+
+            // Close mobile sidebar on selection only on mobile viewports
+            if (window.innerWidth <= 1024) {
+                toggleSidebar(false);
+            }
         }
 
         function toggleSidebar(open = null) {
@@ -2914,6 +2939,14 @@
             return '';
         };
 
+        const normCat = (cat) => {
+            const c = String(cat || '').toLowerCase().trim();
+            if (c.includes('school') || c.includes('institution') || c.includes('edu')) return 'school';
+            if (c.includes('ecom') || c.includes('boutique') || c.includes('store')) return 'ecommerce';
+            if (c.includes('brand') || c.includes('identity')) return 'brand';
+            return 'startup';
+        };
+
         // ─── RENDER PROJECTS ───
         function setProjectCategoryFilter(cat, btn) {
             activeProjectCategory = cat;
@@ -2927,11 +2960,17 @@
             if (!list) return;
 
             const q = (document.getElementById('projectSearchInput')?.value || '').toLowerCase().trim();
-            let filtered = projects.filter(p => {
-                const matchCat = (activeProjectCategory === 'all') || (p.category === activeProjectCategory);
-                const matchQuery = !q || (p.name && p.name.toLowerCase().includes(q)) ||
-                                   (p.description && p.description.toLowerCase().includes(q)) ||
-                                   (Array.isArray(p.technologies) && p.technologies.some(t => t.toLowerCase().includes(q)));
+            let filtered = (Array.isArray(projects) ? projects : []).filter(p => {
+                if (!p) return false;
+                const pCat = normCat(p.category);
+                const matchCat = (activeProjectCategory === 'all') || (pCat === activeProjectCategory);
+                const techList = Array.isArray(p.technologies) 
+                    ? p.technologies 
+                    : (p.technologies ? String(p.technologies).split(',') : []);
+                const matchQuery = !q || 
+                    String(p.name || '').toLowerCase().includes(q) ||
+                    String(p.description || '').toLowerCase().includes(q) ||
+                    techList.some(t => String(t || '').toLowerCase().includes(q));
                 return matchCat && matchQuery;
             });
 
@@ -2941,27 +2980,34 @@
             }
 
             list.innerHTML = filtered.map(p => {
-                const rawTech = Array.isArray(p.technologies) ? p.technologies : (p.technologies ? String(p.technologies).split(',') : []);
-                const techChips = rawTech.slice(0, 3).map(t => `<span class="tech-pill">${escapeHTML(t.trim())}</span>`).join('');
+                const rawTech = Array.isArray(p.technologies) 
+                    ? p.technologies 
+                    : (p.technologies ? String(p.technologies).split(',') : []);
+                const techChips = rawTech
+                    .map(t => String(t || '').trim())
+                    .filter(t => t.length > 0)
+                    .slice(0, 3)
+                    .map(t => `<span class="tech-pill">${escapeHTML(t)}</span>`)
+                    .join('');
                 const imgSrc = safeImageSrc(p.image);
 
                 return `
                     <div class="list-item">
                         ${imgSrc 
-                            ? `<img src="${imgSrc}" class="item-image" alt="${escapeHTML(p.name)}">`
+                            ? `<img src="${imgSrc}" class="item-image" alt="${escapeHTML(p.name || 'Project')}">`
                             : `<div class="item-image" style="background:var(--bg-canvas); display:flex; align-items:center; justify-content:center; font-size:1.8rem;">${escapeHTML(p.emoji || '🚀')}</div>`
                         }
                         <div class="item-content">
                             <div class="item-content-header">
-                                <span class="item-title">${escapeHTML(p.name)}</span>
-                                <span class="category-tag-pill">${escapeHTML(p.categoryLabel || (p.category || 'startup').toUpperCase())}</span>
+                                <span class="item-title">${escapeHTML(p.name || 'Untitled Project')}</span>
+                                <span class="category-tag-pill">${escapeHTML(p.categoryLabel || normCat(p.category).toUpperCase())}</span>
                                 <span class="year-tag-pill">${escapeHTML(p.year || 2026)}</span>
                             </div>
                             <p class="item-desc">${escapeHTML(p.description || 'No description provided.')}</p>
                             <div class="item-tech-tags">${techChips}</div>
                         </div>
                         <div class="item-actions">
-                            ${p.link && p.link !== '#contact' ? `<a href="${escapeHTML(p.link)}" target="_blank" class="btn-icon" title="Open Live Site"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                            ${p.link && p.link !== '#contact' ? `<a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="btn-icon" title="Open Live Site"><i class="fas fa-external-link-alt"></i></a>` : ''}
                             <button class="btn-icon" onclick="editProjectById('${p.id}')" title="Edit"><i class="fas fa-edit"></i></button>
                             <button class="btn-icon btn-danger" onclick="deleteProject('${p.id}')" title="Delete"><i class="fas fa-trash"></i></button>
                         </div>
@@ -2973,7 +3019,7 @@
         function renderRecentProjects() {
             const container = document.getElementById('dashboardRecentProjects');
             if (!container) return;
-            const topProjects = projects.slice(0, 3);
+            const topProjects = (Array.isArray(projects) ? projects : []).slice(0, 3);
             if (topProjects.length === 0) {
                 container.innerHTML = `<p style="color:var(--text-muted); font-size:0.9rem;">No projects yet. Click "+ New Project" to get started.</p>`;
                 return;
@@ -2983,8 +3029,8 @@
                     <div style="display:flex; align-items:center; gap:0.75rem;">
                         <span style="font-size:1.3rem;">${escapeHTML(p.emoji || '🚀')}</span>
                         <div>
-                            <strong>${escapeHTML(p.name)}</strong>
-                            <div style="font-size:0.75rem; color:var(--text-muted);">${escapeHTML(p.categoryLabel || p.category)} · ${escapeHTML(p.year || 2026)}</div>
+                            <strong>${escapeHTML(p.name || 'Untitled Project')}</strong>
+                            <div style="font-size:0.75rem; color:var(--text-muted);">${escapeHTML(p.categoryLabel || normCat(p.category).toUpperCase())} · ${escapeHTML(p.year || 2026)}</div>
                         </div>
                     </div>
                     <button class="btn-icon" onclick="editProjectById('${p.id}')"><i class="fas fa-edit"></i></button>
@@ -2998,10 +3044,12 @@
             if (!list) return;
 
             const q = (document.getElementById('testimonialSearchInput')?.value || '').toLowerCase().trim();
-            let filtered = testimonials.filter(t => {
-                return !q || (t.name && t.name.toLowerCase().includes(q)) ||
-                             (t.role && t.role.toLowerCase().includes(q)) ||
-                             (t.text && t.text.toLowerCase().includes(q));
+            let filtered = (Array.isArray(testimonials) ? testimonials : []).filter(t => {
+                if (!t) return false;
+                return !q || 
+                    String(t.name || '').toLowerCase().includes(q) ||
+                    String(t.role || '').toLowerCase().includes(q) ||
+                    String(t.text || '').toLowerCase().includes(q);
             });
 
             if (filtered.length === 0) {
@@ -3015,16 +3063,16 @@
                 return `
                     <div class="list-item">
                         ${imgSrc 
-                            ? `<img src="${imgSrc}" class="item-image avatar" alt="${escapeHTML(t.name)}">`
+                            ? `<img src="${imgSrc}" class="item-image avatar" alt="${escapeHTML(t.name || 'Client')}">`
                             : `<div class="item-image avatar" style="background:var(--primary); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1.1rem;">${escapeHTML(t.initials || 'AV')}</div>`
                         }
                         <div class="item-content">
                             <div class="item-content-header">
-                                <span class="item-title">${escapeHTML(t.name)}</span>
+                                <span class="item-title">${escapeHTML(t.name || 'Anonymous')}</span>
                                 <span style="color:#F59E0B; font-size:0.9rem;">${stars}</span>
                                 <span class="year-tag-pill">${escapeHTML(t.role || 'Client')}</span>
                             </div>
-                            <p class="item-desc" style="font-style:italic;">"${escapeHTML(t.text)}"</p>
+                            <p class="item-desc" style="font-style:italic;">"${escapeHTML(t.text || '')}"</p>
                         </div>
                         <div class="item-actions">
                             <button class="btn-icon" onclick="editTestimonialById('${t.id}')" title="Edit"><i class="fas fa-edit"></i></button>
@@ -3067,16 +3115,18 @@
             if (!list) return;
 
             const q = (document.getElementById('inquirySearchInput')?.value || '').toLowerCase().trim();
-            let filtered = inquiries.filter(i => {
+            let filtered = (Array.isArray(inquiries) ? inquiries : []).filter(i => {
+                if (!i) return false;
                 let s = i.status || 'new';
                 if (s === 'unread') s = 'new';
                 if (s === 'responded' && activeInquiryFilter === 'in_discussion') s = 'in_discussion';
 
                 const matchStatus = (activeInquiryFilter === 'all') || (s === activeInquiryFilter) || (activeInquiryFilter === 'new' && (i.status === 'unread' || i.status === 'new'));
-                const matchQuery = !q || (i.name && i.name.toLowerCase().includes(q)) ||
-                                   (i.email && i.email.toLowerCase().includes(q)) ||
-                                   (i.company && i.company.toLowerCase().includes(q)) ||
-                                   (i.message && i.message.toLowerCase().includes(q));
+                const matchQuery = !q || 
+                    String(i.name || '').toLowerCase().includes(q) ||
+                    String(i.email || '').toLowerCase().includes(q) ||
+                    String(i.company || '').toLowerCase().includes(q) ||
+                    String(i.message || '').toLowerCase().includes(q);
                 return matchStatus && matchQuery;
             });
 
@@ -3238,12 +3288,14 @@
             if (!list) return;
 
             const q = (document.getElementById('applicationSearchInput')?.value || '').toLowerCase().trim();
-            let filtered = applications.filter(a => {
+            let filtered = (Array.isArray(applications) ? applications : []).filter(a => {
+                if (!a) return false;
                 const matchStatus = (activeApplicationFilter === 'all') || (a.status === activeApplicationFilter);
-                const matchQuery = !q || (a.name && a.name.toLowerCase().includes(q)) ||
-                                   (a.email && a.email.toLowerCase().includes(q)) ||
-                                   (a.track && a.track.toLowerCase().includes(q)) ||
-                                   (a.background && a.background.toLowerCase().includes(q));
+                const matchQuery = !q || 
+                    String(a.name || '').toLowerCase().includes(q) ||
+                    String(a.email || '').toLowerCase().includes(q) ||
+                    String(a.track || '').toLowerCase().includes(q) ||
+                    String(a.background || '').toLowerCase().includes(q);
                 return matchStatus && matchQuery;
             });
 
@@ -3386,7 +3438,7 @@
             if (p) {
                 document.getElementById('projectId').value = p.id || '';
                 document.getElementById('projectName').value = p.name || '';
-                if (p.category) document.getElementById('projectCategory').value = p.category;
+                if (p.category) document.getElementById('projectCategory').value = normCat(p.category);
                 document.getElementById('projectYear').value = p.year || 2026;
                 document.getElementById('projectDesc').value = p.description || '';
                 document.getElementById('projectTech').value = Array.isArray(p.technologies) ? p.technologies.slice(0, 3).join(', ') : (p.technologies || '');
@@ -3867,7 +3919,8 @@
             }, 3200);
         }
 
-        // Expose to window for inline onclick handlers
+        // Expose to window for inline onclick & oninput handlers
+        window.handleAuthSubmit = handleAuthSubmit;
         window.handleLogin = handleLogin;
         window.handleRegister = handleRegister;
         window.handleForgotPassword = handleForgotPassword;
@@ -3911,6 +3964,18 @@
         window.addSampleApplication = addSampleApplication;
         window.clearArchivedApplications = clearArchivedApplications;
         window.exportApplicationsCSV = exportApplicationsCSV;
+
+        // Render & State Sync Exports
+        window.renderProjects = renderProjects;
+        window.renderTestimonials = renderTestimonials;
+        window.renderInquiries = renderInquiries;
+        window.renderApplications = renderApplications;
+        window.renderRecentProjects = renderRecentProjects;
+        window.renderRecentInquiries = renderRecentInquiries;
+        window.renderRecentApplications = renderRecentApplications;
+        window.updateStats = updateStats;
+        window.refreshAllUI = refreshAllUI;
+        window.showToast = showToast;
     </script>
 </body>
 </html>
