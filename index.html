@@ -2448,15 +2448,14 @@
 
         .founder-tile {
             position: relative;
-            background: linear-gradient(135deg, #F0F8FA 0%, #E3F2F7 50%, #D4EBF2 100%);
-            border: 1px solid rgba(14, 116, 144, 0.22);
-            border-radius: 16px;
-            padding: 1.75rem 1.65rem;
-            box-shadow: 0 10px 28px rgba(14, 116, 144, 0.07), 0 1px 0 inset rgba(255, 255, 255, 0.95);
-            transition: border-color var(--transition-fast),
-                        box-shadow var(--transition-fast),
-                        transform 0.2s ease,
-                        background 0.3s ease;
+            background: linear-gradient(155deg, #FFFFFF 0%, #F4FAFC 45%, #E3F1F7 100%);
+            border: 1px solid rgba(14, 116, 144, 0.18);
+            border-radius: 18px;
+            padding: 1.85rem 1.75rem;
+            box-shadow: 0 1px 0 inset rgba(255, 255, 255, 1),
+                        0 8px 24px -4px rgba(14, 116, 144, 0.08),
+                        0 1px 3px rgba(14, 116, 144, 0.04);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -2464,10 +2463,11 @@
         }
 
         .founder-tile:hover {
-            background: linear-gradient(135deg, #EBF5F8 0%, #DCEEF5 50%, #CDE6EF 100%);
-            border-color: rgba(14, 116, 144, 0.38);
-            box-shadow: 0 16px 36px rgba(14, 116, 144, 0.12),
-                        0 1px 0 inset rgba(255, 255, 255, 1);
+            background: linear-gradient(155deg, #FFFFFF 0%, #EDF7FB 40%, #DAEEF6 100%);
+            border-color: rgba(14, 116, 144, 0.35);
+            box-shadow: 0 1px 0 inset rgba(255, 255, 255, 1),
+                        0 16px 36px -6px rgba(14, 116, 144, 0.14),
+                        0 4px 10px rgba(14, 116, 144, 0.05);
             transform: translateY(-3px);
         }
 
@@ -2475,7 +2475,7 @@
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(circle 320px at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.65), transparent 75%);
+            background: radial-gradient(circle 320px at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.8), transparent 75%);
             opacity: 0;
             transition: opacity 0.35s ease;
             z-index: 2;
@@ -2490,7 +2490,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 0.95rem;
             flex-wrap: wrap;
             gap: 0.5rem;
             position: relative;
@@ -2503,9 +2503,9 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #2D4A58;
-            background-color: rgba(82, 109, 122, 0.12);
-            border: 1px solid rgba(82, 109, 122, 0.2);
+            color: #0E7490;
+            background-color: rgba(14, 116, 144, 0.10);
+            border: 1px solid rgba(14, 116, 144, 0.2);
             padding: 0.3rem 0.65rem;
             border-radius: 6px;
             display: inline-flex;
@@ -2517,17 +2517,17 @@
             font-family: var(--font-secondary);
             font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #52616B;
+            color: #0E7490;
         }
 
         .founder-tile-name {
             font-family: var(--font-primary);
-            font-size: 1.45rem;
+            font-size: 1.48rem;
             font-weight: 800;
             letter-spacing: -0.025em;
-            color: #11161B;
+            color: #0F172A;
             margin-bottom: 0.65rem;
             line-height: 1.2;
             position: relative;
@@ -2536,10 +2536,10 @@
 
         .founder-tile-bio {
             font-family: var(--font-primary);
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: #475569;
-            margin-bottom: 1.25rem;
+            font-size: 0.89rem;
+            line-height: 1.62;
+            color: #334155;
+            margin-bottom: 1.3rem;
             position: relative;
             z-index: 1;
             flex-grow: 1;
@@ -2550,7 +2550,7 @@
             align-items: center;
             justify-content: space-between;
             padding-top: 1rem;
-            border-top: 1px solid rgba(82, 109, 122, 0.16);
+            border-top: 1px solid rgba(14, 116, 144, 0.14);
             position: relative;
             z-index: 1;
         }
@@ -2560,15 +2560,15 @@
             align-items: center;
             gap: 0.45rem;
             font-family: var(--font-primary);
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--steel-blue);
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #0E7490;
             transition: color var(--transition-fast), transform var(--transition-fast);
             text-decoration: none;
         }
 
         .founder-tile-link:hover {
-            color: var(--primary);
+            color: #155E75;
             transform: translateX(3px);
             text-decoration: none;
         }
@@ -4530,9 +4530,9 @@
                 box-sizing: border-box !important;
                 padding: 1.75rem 1.5rem !important;
                 border-radius: var(--radius-md) !important;
-                background: linear-gradient(135deg, #F0F8FA 0%, #E3F2F7 50%, #D4EBF2 100%) !important;
-                border: 1px solid rgba(14, 116, 144, 0.22) !important;
-                box-shadow: 0 6px 20px rgba(14, 116, 144, 0.08), 0 1px 0 inset rgba(255, 255, 255, 0.95) !important;
+                background: linear-gradient(155deg, #FFFFFF 0%, #F4FAFC 45%, #E3F1F7 100%) !important;
+                border: 1px solid rgba(14, 116, 144, 0.18) !important;
+                box-shadow: 0 1px 0 inset rgba(255, 255, 255, 1), 0 8px 24px rgba(14, 116, 144, 0.08) !important;
             }
 
             .founder-tile-top {
