@@ -657,35 +657,7 @@
             transform: scale(0.96);
         }
 
-        /* Studio Live Status Indicator at Bottom */
-        .mobile-drawer-status {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-secondary);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #557482;
-            margin-top: 0.5rem;
-            position: relative;
-            z-index: 2;
-        }
 
-        .mobile-drawer-status .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: #10B981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-            animation: statusPulse 2s infinite;
-        }
-
-        @keyframes statusPulse {
-            0%, 100% { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25); }
-            50%      { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.08); }
-        }
 
         /* ═══════════════════════════════════════════════════
         /* ═══════════════════════════════════════════════════
