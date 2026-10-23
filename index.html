@@ -6215,7 +6215,7 @@
                     card.addEventListener('click', () => {
                         if (hasMovedDuringDrag) return;
                         if (idx !== activeIndex) {
-                            goToProject(idx);
+                            goToProject(idx, true);
                         } else if (proj.liveUrl) {
                             if (proj.liveUrl.startsWith('http')) {
                                 window.open(proj.liveUrl, '_blank', 'noopener,noreferrer');
@@ -6230,7 +6230,7 @@
                         if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
                             if (idx !== activeIndex) {
-                                goToProject(idx);
+                                goToProject(idx, true);
                             } else if (proj.liveUrl) {
                                 if (proj.liveUrl.startsWith('http')) {
                                     window.open(proj.liveUrl, '_blank', 'noopener,noreferrer');
@@ -6250,7 +6250,7 @@
                         dot.setAttribute('aria-label', `Go to project ${idx + 1}: ${proj.title}`);
                         dot.setAttribute('role', 'tab');
                         dot.setAttribute('aria-selected', idx === activeIndex ? 'true' : 'false');
-                        dot.addEventListener('click', () => goToProject(idx));
+                        dot.addEventListener('click', () => goToProject(idx, true));
                         paginationRow.appendChild(dot);
                     }
                 });
@@ -6386,26 +6386,93 @@
                 }, 140);
             }
 
-            function goToProject(idx) {
+            // ─── Automatic Slideshow & Autoplay Controls ───
+            const AUTOPLAY_INTERVAL = 4000; // 4 seconds per project card
+            let autoPlayTimer = null;
+            let isSectionInView = true;
+            let isUserHovering = false;
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+                autoPlayTimer = setInterval(() => {
+                    if (!isDragging && !isAnimating && isSectionInView && !isUserHovering && !document.hidden) {
+                        nextProject(false);
+                    }
+                }, AUTOPLAY_INTERVAL);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayTimer) {
+                    clearInterval(autoPlayTimer);
+                    autoPlayTimer = null;
+                }
+            }
+
+            function resetAutoPlay() {
+                stopAutoPlay();
+                if (!isUserHovering && isSectionInView) {
+                    startAutoPlay();
+                }
+            }
+
+            function goToProject(idx, isUserAction = false) {
                 if (isAnimating) return;
                 isAnimating = true;
                 const total = projects.length;
                 activeIndex = (idx + total) % total;
                 updateFanGeometry();
                 updateInfoPanel();
+                if (isUserAction) {
+                    resetAutoPlay();
+                }
                 setTimeout(() => { isAnimating = false; }, 450);
             }
 
-            function nextProject() {
-                goToProject(activeIndex + 1);
+            function nextProject(isUserAction = false) {
+                goToProject(activeIndex + 1, isUserAction);
             }
 
-            function prevProject() {
-                goToProject(activeIndex - 1);
+            function prevProject(isUserAction = false) {
+                goToProject(activeIndex - 1, isUserAction);
             }
 
-            if (prevBtn) prevBtn.addEventListener('click', prevProject);
-            if (nextBtn) nextBtn.addEventListener('click', nextProject);
+            if (prevBtn) prevBtn.addEventListener('click', () => prevProject(true));
+            if (nextBtn) nextBtn.addEventListener('click', () => nextProject(true));
+
+            // Pause autoplay on mouse hover over stage or info panel
+            stage.addEventListener('mouseenter', () => {
+                isUserHovering = true;
+                stopAutoPlay();
+            });
+            stage.addEventListener('mouseleave', () => {
+                isUserHovering = false;
+                if (isSectionInView) startAutoPlay();
+            });
+
+            if (infoStage) {
+                infoStage.addEventListener('mouseenter', () => {
+                    isUserHovering = true;
+                    stopAutoPlay();
+                });
+                infoStage.addEventListener('mouseleave', () => {
+                    isUserHovering = false;
+                    if (isSectionInView) startAutoPlay();
+                });
+            }
+
+            if (paginationRow) {
+                paginationRow.addEventListener('mouseenter', () => {
+                    isUserHovering = true;
+                    stopAutoPlay();
+                });
+                paginationRow.addEventListener('mouseleave', () => {
+                    isUserHovering = false;
+                    if (isSectionInView) startAutoPlay();
+                });
+            }
 
             // Drag / Swipe handling
             let isDragging = false;
@@ -6420,6 +6487,7 @@
                 startX = e.clientX;
                 startY = e.clientY;
                 stage.classList.add('is-dragging');
+                stopAutoPlay();
             });
 
             window.addEventListener('mousemove', (e) => {
@@ -6438,12 +6506,13 @@
                 if (hasMovedDuringDrag) {
                     const deltaX = window.event ? window.event.clientX - startX : 0;
                     if (deltaX < -45) {
-                        nextProject();
+                        nextProject(true);
                     } else if (deltaX > 45) {
-                        prevProject();
+                        prevProject(true);
                     }
                     setTimeout(() => { hasMovedDuringDrag = false; }, 50);
                 }
+                resetAutoPlay();
             });
 
             // Touch Swipe
@@ -6455,6 +6524,7 @@
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
                 hasMovedDuringDrag = false;
+                stopAutoPlay();
             }, { passive: true });
 
             stage.addEventListener('touchmove', (e) => {
@@ -6472,27 +6542,28 @@
                 const deltaY = e.changedTouches[0].clientY - touchStartY;
                 if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY)) {
                     if (deltaX < 0) {
-                        nextProject();
+                        nextProject(true);
                     } else {
-                        prevProject();
+                        prevProject(true);
                     }
                 }
+                resetAutoPlay();
             });
 
             // Keyboard navigation
             stage.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                     e.preventDefault();
-                    nextProject();
+                    nextProject(true);
                 } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                     e.preventDefault();
-                    prevProject();
+                    prevProject(true);
                 } else if (e.key === 'Home') {
                     e.preventDefault();
-                    goToProject(0);
+                    goToProject(0, true);
                 } else if (e.key === 'End') {
                     e.preventDefault();
-                    goToProject(projects.length - 1);
+                    goToProject(projects.length - 1, true);
                 }
             });
 
@@ -6500,19 +6571,35 @@
                 updateFanGeometry();
             });
 
-            // Entrance reveal with IntersectionObserver
+            // Viewport Visibility & Entrance Reveal with IntersectionObserver
             if ('IntersectionObserver' in window) {
+                const projectsSection = document.getElementById('projects') || stage;
                 const obs = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
+                            isSectionInView = true;
                             stage.style.opacity = '1';
                             updateFanGeometry();
-                            obs.unobserve(stage);
+                            startAutoPlay();
+                        } else {
+                            isSectionInView = false;
+                            stopAutoPlay();
                         }
                     });
-                }, { threshold: 0.15 });
-                obs.observe(stage);
+                }, { threshold: 0.1 });
+                obs.observe(projectsSection);
+            } else {
+                startAutoPlay();
             }
+
+            // Tab switch handling
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopAutoPlay();
+                } else if (isSectionInView && !isUserHovering) {
+                    startAutoPlay();
+                }
+            });
 
             // Expose update API for dynamic CMS data
             window.updateFanCarouselData = function(newProjects) {
@@ -6532,6 +6619,7 @@
                 }));
                 activeIndex = 0;
                 renderDeck();
+                resetAutoPlay();
             };
 
             // Global reinit alias
