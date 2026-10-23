@@ -277,6 +277,61 @@
             text-decoration: none;
         }
 
+        /* Dynamic Capsule Status Pill (Concept 1: Apple Dynamic Island) */
+        .capsule-status-pill {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.22);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+
+        .capsule-status-pill:hover,
+        .capsule-status-pill:active {
+            background: rgba(16, 185, 129, 0.16);
+            border-color: rgba(16, 185, 129, 0.35);
+            transform: scale(0.97);
+        }
+
+        .capsule-status-dot {
+            width: 6.5px;
+            height: 6.5px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+            animation: capsulePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes capsulePulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+            }
+            50% {
+                opacity: 0.65;
+                transform: scale(0.85);
+                box-shadow: 0 0 0 4.5px rgba(16, 185, 129, 0.1);
+            }
+        }
+
+        .capsule-status-text {
+            font-family: var(--font-secondary);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #065F46;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
         .brand-logo .logo-monogram {
             display: inline-flex;
             align-items: center;
@@ -3489,14 +3544,48 @@
                 max-width: 100% !important;
             }
 
+            /* ─── Apple Dynamic Capsule (Concept 1: Floating Island Header) ─── */
             header#siteHeader {
-                padding: 0.85rem 0 !important;
-                background-color: rgba(255, 253, 252, 0.94) !important;
-                border-bottom: 1px solid rgba(14, 116, 144, 0.12) !important;
+                position: fixed !important;
+                top: 12px !important;
+                left: 14px !important;
+                right: 14px !important;
+                width: calc(100% - 28px) !important;
+                max-width: 480px !important;
+                margin: 0 auto !important;
+                padding: 0.38rem 0.55rem 0.38rem 1.05rem !important;
+                height: 52px !important;
+                border-radius: 9999px !important;
+                background: rgba(255, 255, 255, 0.84) !important;
+                backdrop-filter: blur(20px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+                border: 1px solid rgba(14, 116, 144, 0.16) !important;
+                box-shadow: 0 12px 32px -4px rgba(14, 116, 144, 0.14),
+                            0 2px 6px -1px rgba(0, 0, 0, 0.04),
+                            0 1px 0 inset rgba(255, 255, 255, 0.95) !important;
+                transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                            background 0.3s ease,
+                            border-color 0.3s ease,
+                            box-shadow 0.3s ease !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                align-items: center !important;
+                z-index: 1000 !important;
+            }
+
+            header#siteHeader.scrolled {
+                top: 8px !important;
+                background: rgba(255, 255, 255, 0.94) !important;
+                border-color: rgba(14, 116, 144, 0.22) !important;
+                box-shadow: 0 14px 36px -4px rgba(14, 116, 144, 0.20),
+                            0 4px 10px -2px rgba(0, 0, 0, 0.06),
+                            0 1px 0 inset rgba(255, 255, 255, 1) !important;
             }
 
             header#siteHeader .container {
-                padding: 0 1.25rem !important;
+                padding: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
             }
 
             .nav-inner {
@@ -3504,6 +3593,7 @@
                 display: flex !important;
                 align-items: center !important;
                 justify-content: space-between !important;
+                gap: 0.5rem !important;
             }
 
             .nav-menu,
@@ -3511,29 +3601,89 @@
                 display: none !important;
             }
 
+            .brand-logo {
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                text-decoration: none !important;
+                flex-shrink: 0 !important;
+            }
+
+            .brand-logo .logo-monogram {
+                width: 26px !important;
+                height: 26px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .brand-logo .logo-monogram svg {
+                width: 22px !important;
+                height: 19px !important;
+            }
+
+            .brand-logo .logo-text {
+                font-family: var(--font-primary) !important;
+                font-size: 1.02rem !important;
+                font-weight: 700 !important;
+                letter-spacing: -0.02em !important;
+                color: var(--text-primary) !important;
+            }
+
+            /* Live status pill in capsule */
+            .capsule-status-pill {
+                display: inline-flex !important;
+            }
+
+            /* Sleek tactile capsule trigger */
             .hamburger-btn {
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
                 align-items: center !important;
-                gap: 5px !important;
+                gap: 4px !important;
                 width: 36px !important;
                 height: 36px !important;
-                padding: 4px !important;
-                background: transparent !important;
-                border: none !important;
+                border-radius: 50% !important;
+                background: rgba(14, 116, 144, 0.06) !important;
+                border: 1px solid rgba(14, 116, 144, 0.12) !important;
                 cursor: pointer !important;
+                transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
                 z-index: 1001 !important;
-                margin-left: auto !important;
+            }
+
+            .hamburger-btn:hover {
+                background: rgba(14, 116, 144, 0.12) !important;
+                border-color: rgba(14, 116, 144, 0.24) !important;
+            }
+
+            .hamburger-btn:active {
+                transform: scale(0.92) !important;
+                background: rgba(14, 116, 144, 0.16) !important;
             }
 
             .hamburger-btn span {
                 display: block !important;
-                width: 22px !important;
-                height: 2px !important;
+                width: 16px !important;
+                height: 1.8px !important;
                 background-color: var(--text-primary) !important;
                 border-radius: 2px !important;
-                transition: all var(--transition-fast) !important;
+                transition: transform 0.25s ease, opacity 0.25s ease !important;
+            }
+
+            .hamburger-btn.open span:nth-child(1) {
+                transform: translateY(5.8px) rotate(45deg) !important;
+            }
+
+            .hamburger-btn.open span:nth-child(2) {
+                opacity: 0 !important;
+            }
+
+            .hamburger-btn.open span:nth-child(3) {
+                transform: translateY(-5.8px) rotate(-45deg) !important;
             }
 
             #hero {
@@ -3902,6 +4052,21 @@
             .filter-btn {
                 padding: 0.42rem 0.65rem !important;
                 font-size: 0.72rem !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header#siteHeader {
+                left: 10px !important;
+                right: 10px !important;
+                width: calc(100% - 20px) !important;
+                padding-left: 0.85rem !important;
+            }
+            .capsule-status-pill .capsule-status-text {
+                display: none !important;
+            }
+            .capsule-status-pill {
+                padding: 4px 6px !important;
             }
         }
         
@@ -4933,6 +5098,12 @@
                         </svg>
                     </span>
                     <span class="logo-text">AppVertex</span>
+                </a>
+
+                <!-- Mobile Dynamic Status Capsule (Apple Island Feature) -->
+                <a href="contact.html" class="capsule-status-pill" aria-label="Studio status: Open for Q4 projects">
+                    <span class="capsule-status-dot"></span>
+                    <span class="capsule-status-text">Q4 OPEN</span>
                 </a>
 
                 <!-- Desktop Navigation Menu -->
