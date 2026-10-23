@@ -2106,48 +2106,6 @@
             max-width: 60%;
         }
 
-        /* ─── Nav Arrow Buttons ─── */
-        .fan-nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--burgundy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 30;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.18, 0.9, 0.25, 1);
-            box-shadow: 0 6px 20px var(--shadow-soft);
-        }
-
-        .fan-nav-prev {
-            left: max(10px, calc(50% - 380px));
-        }
-
-        .fan-nav-next {
-            right: max(10px, calc(50% - 380px));
-        }
-
-        .fan-nav-arrow:hover {
-            background: var(--burgundy);
-            color: #FFFFFF;
-            border-color: var(--burgundy);
-            transform: translateY(-50%) scale(1.08);
-            box-shadow: 0 12px 30px rgba(21, 94, 117, 0.25);
-        }
-
-        .fan-nav-arrow:active {
-            transform: translateY(-50%) scale(0.96);
-        }
-
         /* ─── Synchronized Project Info Panel ─── */
         .project-info-stage {
             position: relative;
@@ -2307,8 +2265,6 @@
 
         /* ─── Responsive Breakpoints ─── */
         @media (max-width: 1024px) {
-            .fan-nav-prev { left: 8px; }
-            .fan-nav-next { right: 8px; }
             .fan-card {
                 width: 420px;
                 height: 350px;
@@ -2342,14 +2298,6 @@
                 border-radius: 14px;
             }
 
-            .fan-nav-arrow {
-                width: 40px;
-                height: 40px;
-            }
-
-            .fan-nav-prev { left: 4px; }
-            .fan-nav-next { right: 4px; }
-
             .project-info-stage {
                 padding: 0 0.5rem;
             }
@@ -2369,7 +2317,6 @@
         /* Reduced Motion Fallback */
         @media (prefers-reduced-motion: reduce) {
             .fan-card,
-            .fan-nav-arrow,
             .project-info-stage,
             .fan-page-dot {
                 transition: none !important;
@@ -5404,20 +5351,10 @@
 
                 <!-- 3D Fan Carousel Stage -->
                 <div class="fan-carousel-stage" id="fanCarouselStage" tabindex="0" role="region" aria-label="Interactive 3D Fan Carousel of Projects">
-                    <!-- Nav Arrow Left -->
-                    <button class="fan-nav-arrow fan-nav-prev" id="fanPrevBtn" aria-label="Previous project (Left Arrow)" title="Previous Project">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    </button>
-
                     <!-- The 3D Fan Deck Track -->
                     <div class="fan-deck" id="fanDeck">
                         <!-- Cards are populated and dynamically managed by JavaScript -->
                     </div>
-
-                    <!-- Nav Arrow Right -->
-                    <button class="fan-nav-arrow fan-nav-next" id="fanNextBtn" aria-label="Next project (Right Arrow)" title="Next Project">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
                 </div>
 
                 <!-- Synchronized Project Information Panel -->

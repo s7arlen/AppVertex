@@ -2063,48 +2063,6 @@
             max-width: 60%;
         }
 
-        /* ─── Nav Arrow Buttons ─── */
-        .fan-nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--burgundy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 30;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.18, 0.9, 0.25, 1);
-            box-shadow: 0 6px 20px var(--shadow-soft);
-        }
-
-        .fan-nav-prev {
-            left: max(10px, calc(50% - 380px));
-        }
-
-        .fan-nav-next {
-            right: max(10px, calc(50% - 380px));
-        }
-
-        .fan-nav-arrow:hover {
-            background: var(--burgundy);
-            color: #FFFFFF;
-            border-color: var(--burgundy);
-            transform: translateY(-50%) scale(1.08);
-            box-shadow: 0 12px 30px rgba(21, 94, 117, 0.25);
-        }
-
-        .fan-nav-arrow:active {
-            transform: translateY(-50%) scale(0.96);
-        }
-
         /* ─── Synchronized Project Info Panel ─── */
         .project-info-stage {
             position: relative;
@@ -2264,8 +2222,6 @@
 
         /* ─── Responsive Breakpoints ─── */
         @media (max-width: 1024px) {
-            .fan-nav-prev { left: 8px; }
-            .fan-nav-next { right: 8px; }
             .fan-card {
                 width: 420px;
                 height: 350px;
@@ -2299,14 +2255,6 @@
                 border-radius: 14px;
             }
 
-            .fan-nav-arrow {
-                width: 40px;
-                height: 40px;
-            }
-
-            .fan-nav-prev { left: 4px; }
-            .fan-nav-next { right: 4px; }
-
             .project-info-stage {
                 padding: 0 0.5rem;
             }
@@ -2326,7 +2274,6 @@
         /* Reduced Motion Fallback */
         @media (prefers-reduced-motion: reduce) {
             .fan-card,
-            .fan-nav-arrow,
             .project-info-stage,
             .fan-page-dot {
                 transition: none !important;
