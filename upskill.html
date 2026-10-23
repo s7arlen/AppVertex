@@ -232,15 +232,42 @@
     <!-- Subpage Hero Banner -->
     <section class="subpage-hero" aria-label="Upskill Overview">
         <div class="hero-rosewood-curves" aria-hidden="true">
-            <svg viewBox="0 0 1440 400" fill="none" preserveAspectRatio="none">
-                <path d="M0 400 C400 320, 800 380, 1200 280 C1350 240, 1440 260, 1440 260 L1440 0 L0 0 Z" fill="url(#upskillHeroGrad)" opacity="0.35"/>
+            <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="upskillHeroGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#F9F8F5"/>
-                        <stop offset="50%" stop-color="#E3F3F7"/>
-                        <stop offset="100%" stop-color="#BAE6ED"/>
+                    <linearGradient id="upskillGlowBase" x1="100%" y1="30%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#BAE6ED" stop-opacity="0.55"/>
+                        <stop offset="50%" stop-color="#E3F3F7" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#FCFBF8" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="upskillWaveCyan" x1="100%" y1="15%" x2="10%" y2="90%">
+                        <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.32"/>
+                        <stop offset="45%" stop-color="#BAE6ED" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#E3F3F7" stop-opacity="0.08"/>
+                    </linearGradient>
+                    <linearGradient id="upskillWaveFrostedRibbon" x1="100%" y1="25%" x2="0%" y2="85%">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+                        <stop offset="40%" stop-color="#F9F8F5" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#BAE6ED" stop-opacity="0.24"/>
+                    </linearGradient>
+                    <linearGradient id="upskillWaveBurgundyCorner" x1="100%" y1="40%" x2="30%" y2="100%">
+                        <stop offset="0%" stop-color="#155E75" stop-opacity="0.32"/>
+                        <stop offset="55%" stop-color="#0E7490" stop-opacity="0.18"/>
+                        <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.05"/>
                     </linearGradient>
                 </defs>
+
+                <!-- Ambient soft glow spotlights matching Home Hero -->
+                <circle cx="1200" cy="380" r="420" fill="url(#upskillGlowBase)"/>
+                <circle cx="200" cy="150" r="280" fill="url(#upskillGlowBase)" opacity="0.45"/>
+
+                <!-- Sweeping dusty cyan outer curve -->
+                <path d="M 1440 160 C 1220 220 1050 320 1100 420 C 1160 510 900 560 620 590 C 430 600 220 600 0 600 L 0 580 L 1440 580 Z" fill="url(#upskillWaveCyan)"/>
+
+                <!-- Translucent frosted wave ribbon with delicate white stroke -->
+                <path d="M 1440 260 C 1190 320 980 400 940 480 C 910 530 680 570 470 600 L 1440 600 Z" fill="url(#upskillWaveFrostedRibbon)" stroke="rgba(255, 255, 255, 0.75)" stroke-width="1.5"/>
+
+                <!-- Deep Burgundy / Rosewood corner accent curve -->
+                <path d="M 1440 380 C 1240 430 1080 500 1010 560 C 970 590 900 600 800 600 L 1440 600 Z" fill="url(#upskillWaveBurgundyCorner)"/>
             </svg>
         </div>
         <div class="container subpage-hero-content">
