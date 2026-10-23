@@ -2307,6 +2307,28 @@
         let activeInquiryFilter = 'all';
         let activeApplicationFilter = 'all';
 
+        // ─── UTILITY & NORMALIZATION HELPERS ───
+        function escapeHTML(str) {
+            return String(str || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+
+        function safeImageSrc(url) {
+            if (!url || typeof url !== 'string') return '';
+            const clean = url.trim();
+            if (/^(https?:\/\/|data:image\/|hero-|logo\.|\.\/)/i.test(clean) || /\.(png|jpg|jpeg|webp|svg)$/i.test(clean)) {
+                return clean;
+            }
+            return '';
+        }
+
+        function normCat(cat) {
+            const c = String(cat || '').toLowerCase().trim();
+            if (c.includes('school') || c.includes('institution') || c.includes('edu')) return 'school';
+            if (c.includes('ecom') || c.includes('boutique') || c.includes('store')) return 'ecommerce';
+            if (c.includes('brand') || c.includes('identity')) return 'brand';
+            return 'startup';
+        }
+
         const DEFAULT_PROJECTS = [
             {
                 id: "loretto-portal",
@@ -2644,18 +2666,6 @@
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('adminPanel').classList.remove('visible');
             showToast("Logged out of Admin Console", "info");
-        }
-
-        // Auto-restore active session & perform immediate cold-start render
-        loadFromLocalStorage();
-        try {
-            if (localStorage.getItem('appvertex_admin_session') === 'active') {
-                handleLocalMode(true);
-            } else {
-                refreshAllUI();
-            }
-        } catch(e) {
-            refreshAllUI();
         }
 
         // ─── STORAGE SYNC HELPERS ───
@@ -3053,23 +3063,7 @@
             }
         }
 
-        const escapeHTML = (str) => String(str || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-        const safeImageSrc = (url) => {
-            if (!url || typeof url !== 'string') return '';
-            const clean = url.trim();
-            if (/^(https?:\/\/|data:image\/|hero-|logo\.|\.\/)/i.test(clean) || /\.(png|jpg|jpeg|webp|svg)$/i.test(clean)) {
-                return clean;
-            }
-            return '';
-        };
 
-        const normCat = (cat) => {
-            const c = String(cat || '').toLowerCase().trim();
-            if (c.includes('school') || c.includes('institution') || c.includes('edu')) return 'school';
-            if (c.includes('ecom') || c.includes('boutique') || c.includes('store')) return 'ecommerce';
-            if (c.includes('brand') || c.includes('identity')) return 'brand';
-            return 'startup';
-        };
 
         // ─── RENDER PROJECTS ───
         function setProjectCategoryFilter(cat, btn) {
@@ -4100,6 +4094,22 @@
         window.updateStats = updateStats;
         window.refreshAllUI = refreshAllUI;
         window.showToast = showToast;
+
+        // ─── INITIALIZATION ON BOOT ───
+        function initAdminConsole() {
+            loadFromLocalStorage();
+            try {
+                if (localStorage.getItem('appvertex_admin_session') === 'active') {
+                    handleLocalMode(true);
+                } else {
+                    refreshAllUI();
+                }
+            } catch(e) {
+                console.warn("Init admin error:", e);
+                refreshAllUI();
+            }
+        }
+        initAdminConsole();
     </script>
 </body>
 </html>

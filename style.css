@@ -3341,6 +3341,13 @@
             flex-wrap: wrap;
         }
 
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .footer-dot-divider {
             color: var(--border);
         }
