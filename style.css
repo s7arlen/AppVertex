@@ -2175,6 +2175,10 @@
             box-shadow: 0 2px 8px var(--shadow-soft);
         }
 
+        .fan-action-secondary .btn-text-mobile {
+            display: none;
+        }
+
         .fan-action-secondary:hover {
             background: var(--porcelain);
             border-color: var(--burgundy);
@@ -2255,19 +2259,129 @@
                 border-radius: 14px;
             }
 
+            /* ─── Concept 4: Floating Dual-Pill Bar (Minimal & Clean) ─── */
             .project-info-stage {
-                padding: 0 0.5rem;
+                padding: 0 0.75rem !important;
+                max-width: 440px !important;
             }
 
+            .project-info-top {
+                margin-bottom: 0.5rem !important;
+                justify-content: center !important;
+            }
+
+            /* Single sleek accent indicator (replaces cluttered 5 boxy tech chips) */
+            .project-info-category {
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.45rem !important;
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.12em !important;
+                text-transform: uppercase !important;
+                color: var(--burgundy) !important;
+                background: rgba(14, 116, 144, 0.08) !important;
+                padding: 0.28rem 0.85rem !important;
+                border-radius: 9999px !important;
+                border: 1px solid rgba(14, 116, 144, 0.16) !important;
+            }
+
+            .project-info-category::before {
+                content: '';
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: var(--burgundy);
+                box-shadow: 0 0 6px rgba(14, 116, 144, 0.45);
+            }
+
+            .project-info-tech {
+                display: none !important;
+            }
+
+            .project-info-title {
+                font-size: clamp(1.22rem, 5vw, 1.55rem) !important;
+                font-weight: 800 !important;
+                letter-spacing: -0.02em !important;
+                margin-bottom: 0.45rem !important;
+                line-height: 1.25 !important;
+            }
+
+            .project-info-desc {
+                font-size: 0.88rem !important;
+                line-height: 1.55 !important;
+                color: var(--text-secondary) !important;
+                max-width: 360px !important;
+                margin: 0 auto 1.15rem !important;
+            }
+
+            /* Side-by-side floating compact dual pills */
             .project-info-actions {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.65rem;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 0.65rem !important;
+                width: 100% !important;
+                max-width: 340px !important;
+                margin: 0 auto !important;
             }
 
             .fan-action-btn {
-                width: 100%;
-                justify-content: center;
+                flex: 1 1 0 !important;
+                width: auto !important;
+                min-width: 0 !important;
+                padding: 0.62rem 0.85rem !important;
+                border-radius: 9999px !important;
+                font-size: 0.74rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.06em !important;
+                text-transform: uppercase !important;
+                justify-content: center !important;
+                text-align: center !important;
+                white-space: nowrap !important;
+                box-sizing: border-box !important;
+            }
+
+            .fan-action-primary {
+                background: var(--burgundy) !important;
+                color: #FFFFFF !important;
+                border: 1px solid var(--burgundy) !important;
+                box-shadow: 0 4px 14px rgba(14, 116, 144, 0.22) !important;
+            }
+
+            .fan-action-secondary {
+                background: #FFFFFF !important;
+                color: var(--text-primary) !important;
+                border: 1px solid var(--border) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+            }
+
+            .fan-action-secondary .btn-text-full {
+                display: none !important;
+            }
+
+            .fan-action-secondary .btn-text-mobile {
+                display: inline !important;
+            }
+
+            .fan-action-btn:active {
+                transform: scale(0.96) !important;
+            }
+
+            .fan-pagination-row {
+                margin-top: 1.25rem !important;
+                gap: 0.45rem !important;
+            }
+
+            .fan-page-dot {
+                width: 20px !important;
+                height: 3.5px !important;
+            }
+
+            .fan-page-dot.active {
+                width: 34px !important;
             }
         }
 
