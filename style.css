@@ -3455,8 +3455,8 @@
                 width: calc(100% - 28px) !important;
                 max-width: 480px !important;
                 margin: 0 auto !important;
-                padding: 0.38rem 0.55rem 0.38rem 1.05rem !important;
-                height: 52px !important;
+                padding: 0.45rem 0.65rem 0.45rem 1.15rem !important;
+                height: 60px !important;
                 border-radius: 9999px !important;
                 background: rgba(255, 255, 255, 0.84) !important;
                 backdrop-filter: blur(20px) saturate(180%) !important;
@@ -3506,27 +3506,27 @@
             .brand-logo {
                 display: inline-flex !important;
                 align-items: center !important;
-                gap: 0.5rem !important;
+                gap: 0.55rem !important;
                 text-decoration: none !important;
                 flex-shrink: 0 !important;
             }
 
             .brand-logo .logo-monogram {
-                width: 26px !important;
-                height: 26px !important;
+                width: 28px !important;
+                height: 28px !important;
                 display: inline-flex !important;
                 align-items: center !important;
                 justify-content: center !important;
             }
 
             .brand-logo .logo-monogram svg {
-                width: 22px !important;
-                height: 19px !important;
+                width: 24px !important;
+                height: 21px !important;
             }
 
             .brand-logo .logo-text {
                 font-family: var(--font-primary) !important;
-                font-size: 1.02rem !important;
+                font-size: 1.08rem !important;
                 font-weight: 700 !important;
                 letter-spacing: -0.02em !important;
                 color: var(--text-primary) !important;
@@ -3538,9 +3538,9 @@
                 flex-direction: column !important;
                 justify-content: center !important;
                 align-items: center !important;
-                gap: 4px !important;
-                width: 36px !important;
-                height: 36px !important;
+                gap: 4.5px !important;
+                width: 40px !important;
+                height: 40px !important;
                 border-radius: 50% !important;
                 background: rgba(14, 116, 144, 0.06) !important;
                 border: 1px solid rgba(14, 116, 144, 0.12) !important;
@@ -3564,15 +3564,15 @@
 
             .hamburger-btn span {
                 display: block !important;
-                width: 16px !important;
-                height: 1.8px !important;
+                width: 18px !important;
+                height: 2px !important;
                 background-color: var(--text-primary) !important;
                 border-radius: 2px !important;
                 transition: transform 0.25s ease, opacity 0.25s ease !important;
             }
 
             .hamburger-btn.open span:nth-child(1) {
-                transform: translateY(5.8px) rotate(45deg) !important;
+                transform: translateY(6.5px) rotate(45deg) !important;
             }
 
             .hamburger-btn.open span:nth-child(2) {
@@ -3580,7 +3580,7 @@
             }
 
             .hamburger-btn.open span:nth-child(3) {
-                transform: translateY(-5.8px) rotate(-45deg) !important;
+                transform: translateY(-6.5px) rotate(-45deg) !important;
             }
 
             #hero {
