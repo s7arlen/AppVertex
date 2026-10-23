@@ -1787,7 +1787,7 @@
         }
 
         .projects-editorial-intro {
-            max-width: 640px;
+            max-width: 780px;
         }
 
         #projects .section-eyebrow {
@@ -1796,6 +1796,14 @@
 
         #projects .section-title {
             margin-bottom: 0.65rem;
+            white-space: nowrap;
+            font-size: clamp(1.75rem, 3.8vw, 3.2rem);
+        }
+
+        @media (max-width: 480px) {
+            #projects .section-title {
+                font-size: clamp(1.45rem, 6.8vw, 1.85rem);
+            }
         }
 
         .projects-sub-desc {
