@@ -3671,10 +3671,10 @@
             }
 
             /* ═══════════════════════════════════════════════════
-               MOBILE BOTTOM NAVIGATION (EXPANDING FLUID PILL)
+               MOBILE BOTTOM NAVIGATION DOCK (4 TABS)
                ═══════════════════════════════════════════════════ */
             body {
-                padding-bottom: calc(66px + env(safe-area-inset-bottom, 12px)) !important;
+                padding-bottom: calc(58px + env(safe-area-inset-bottom, 12px)) !important;
             }
 
             .mobile-bottom-dock {
@@ -3686,106 +3686,80 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 margin: 0 !important;
-                height: calc(62px + env(safe-area-inset-bottom, 0px)) !important;
-                padding: 0 1rem env(safe-area-inset-bottom, 0px) 1rem !important;
+                height: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+                padding: 0.35rem 0.5rem env(safe-area-inset-bottom, 0px) 0.5rem !important;
                 z-index: 1000 !important;
-                background: rgba(255, 255, 255, 0.95) !important;
-                backdrop-filter: blur(24px) saturate(180%) !important;
-                -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-                border-top: 1px solid rgba(14, 116, 144, 0.1) !important;
+                background-color: #FFFFFF !important;
+                border-top: 1px solid rgba(14, 116, 144, 0.12) !important;
                 border-left: none !important;
                 border-right: none !important;
                 border-bottom: none !important;
                 border-radius: 0 !important;
-                box-shadow: 0 -4px 20px rgba(19, 37, 41, 0.05) !important;
+                box-shadow: 0 -3px 16px rgba(19, 37, 41, 0.05) !important;
                 box-sizing: border-box !important;
             }
 
             .dock-items-row {
                 display: flex !important;
                 align-items: center !important;
-                justify-content: space-between !important;
-                height: 62px !important;
+                justify-content: space-around !important;
+                height: 100% !important;
                 width: 100% !important;
-                max-width: 440px !important;
-                margin: 0 auto !important;
-                position: relative !important;
-                box-sizing: border-box !important;
+                margin: 0 !important;
             }
 
             .dock-item {
                 display: flex !important;
+                flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
-                height: 44px !important;
-                padding: 0 12px !important;
-                border-radius: 999px !important;
+                gap: 0.28rem !important;
                 text-decoration: none !important;
-                color: #64748B !important;
+                color: #557482 !important;
+                flex: 1 !important;
+                height: 100% !important;
+                padding: 0.2rem 0 !important;
+                border-radius: 0 !important;
                 background: transparent !important;
-                border: 1px solid transparent !important;
-                transition: all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+                border: none !important;
+                box-shadow: none !important;
+                transition: color 0.18s ease, transform 0.15s ease !important;
                 -webkit-tap-highlight-color: transparent !important;
-                position: relative !important;
-                flex: 0 0 auto !important;
             }
 
             .dock-item i {
-                font-size: 1.15rem !important;
-                color: #64748B !important;
-                transition: color 0.25s ease, transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-                flex-shrink: 0 !important;
+                font-size: 1.22rem !important;
+                line-height: 1 !important;
+                color: inherit !important;
+                transition: color 0.18s ease, transform 0.15s ease !important;
             }
 
-            .dock-label {
-                font-family: var(--font-primary) !important;
-                font-size: 0.82rem !important;
+            .dock-item span {
+                font-family: var(--font-secondary) !important;
+                font-size: 0.62rem !important;
                 font-weight: 700 !important;
-                letter-spacing: -0.01em !important;
-                color: var(--steel-blue) !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                max-width: 0 !important;
-                opacity: 0 !important;
-                transform: translateX(-4px) !important;
-                transition: max-width 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                            opacity 0.25s ease, 
-                            transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-                            margin 0.32s ease !important;
-                margin-left: 0 !important;
+                letter-spacing: 0.08em !important;
+                text-transform: uppercase !important;
+                line-height: 1 !important;
+                color: inherit !important;
+                transition: color 0.18s ease !important;
             }
 
-            /* Active State: Expanding Pill Badge */
             .dock-item.active {
-                background: linear-gradient(135deg, rgba(14, 116, 144, 0.12) 0%, rgba(14, 116, 144, 0.05) 100%) !important;
-                border: 1px solid rgba(14, 116, 144, 0.18) !important;
-                box-shadow: 0 2px 10px rgba(14, 116, 144, 0.08) !important;
-                padding: 0 16px !important;
                 color: var(--steel-blue) !important;
-                flex: 0 1 auto !important;
             }
 
             .dock-item.active i {
                 color: var(--steel-blue) !important;
-                transform: scale(1.08) !important;
-                animation: tabPop 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
             }
 
-            .dock-item.active .dock-label {
-                max-width: 80px !important;
-                opacity: 1 !important;
-                transform: translateX(0) !important;
-                margin-left: 8px !important;
+            .dock-item.active span {
+                color: var(--steel-blue) !important;
+                font-weight: 800 !important;
             }
 
             .dock-item:active {
                 transform: scale(0.92) !important;
-            }
-
-            @keyframes tabPop {
-                0%   { transform: scale(0.8); }
-                50%  { transform: scale(1.22); }
-                100% { transform: scale(1.08); }
             }
 
             .dock-center-cta,
@@ -3796,7 +3770,7 @@
 
             .floating-whatsapp-btn {
                 position: fixed !important;
-                bottom: calc(74px + env(safe-area-inset-bottom, 12px)) !important;
+                bottom: calc(68px + env(safe-area-inset-bottom, 12px)) !important;
                 right: 16px !important;
                 width: 50px !important;
                 height: 50px !important;
@@ -3812,7 +3786,7 @@
             }
 
             .scroll-to-top-btn {
-                bottom: calc(74px + 52px + env(safe-area-inset-bottom, 12px)) !important;
+                bottom: calc(68px + 52px + env(safe-area-inset-bottom, 12px)) !important;
                 right: 18px !important;
                 width: 44px !important;
                 height: 44px !important;
@@ -5851,25 +5825,25 @@
     </button>
 
     <!-- ═══════════════════════════════════════════════════
-         12. MOBILE BOTTOM NAVIGATION (EXPANDING FLUID PILL)
+         12. MOBILE BOTTOM NAVIGATION DOCK (4 TABS)
          ═══════════════════════════════════════════════════ -->
-    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
         <div class="dock-items-row">
-            <a href="index.html" class="dock-item active" aria-label="Home" data-index="0">
-                <i class="fa-solid fa-house"></i>
-                <span class="dock-label">Home</span>
+            <a href="index.html" class="dock-item active" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span>HOME</span>
             </a>
-            <a href="work.html" class="dock-item" aria-label="Work" data-index="1">
-                <i class="fa-solid fa-laptop-code"></i>
-                <span class="dock-label">Work</span>
+            <a href="work.html" class="dock-item" aria-label="Work">
+                <i class="fas fa-briefcase"></i>
+                <span>WORK</span>
             </a>
-            <a href="services.html" class="dock-item" aria-label="Services" data-index="2">
-                <i class="fa-solid fa-layer-group"></i>
-                <span class="dock-label">Services</span>
+            <a href="services.html" class="dock-item" aria-label="Services">
+                <i class="fas fa-th-large"></i>
+                <span>SERVICES</span>
             </a>
-            <a href="contact.html" class="dock-item" aria-label="Contact" data-index="3">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span class="dock-label">Contact</span>
+            <a href="contact.html" class="dock-item" aria-label="Contact">
+                <i class="fas fa-envelope"></i>
+                <span>CONTACT</span>
             </a>
         </div>
     </nav>
@@ -6147,7 +6121,8 @@
                         const rawHref = item.getAttribute('href') || '';
                         const href = rawHref.replace('#', '').replace('.html', '');
                         const isHome = href === 'index' || href === '';
-                        const isActive = (href === activeId) || (activeId === 'hero' && isHome);
+                        const isWork = href === 'work' && activeId === 'projects';
+                        const isActive = (href === activeId) || isWork || (activeId === 'hero' && isHome);
                         item.classList.toggle('active', isActive);
                         if (isActive) activeIndex = idx;
                     });
