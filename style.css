@@ -2998,10 +2998,10 @@
             gap: 0.25rem;
             text-decoration: none;
             color: var(--secondary);
-            font-family: var(--font-secondary);
-            font-weight: 500;
+            font-family: var(--font-primary);
+            font-weight: 600;
             font-size: 0.68rem;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             padding: 0.35rem 0.6rem;
             border-radius: var(--radius-sm);
@@ -3734,10 +3734,10 @@
             }
 
             .dock-item span {
-                font-family: var(--font-secondary) !important;
-                font-size: 0.63rem !important;
+                font-family: var(--font-primary) !important;
+                font-size: 0.64rem !important;
                 font-weight: 700 !important;
-                letter-spacing: 0.08em !important;
+                letter-spacing: 0.04em !important;
                 text-transform: uppercase !important;
                 line-height: 1 !important;
                 color: inherit !important;
@@ -3760,7 +3760,7 @@
             .dock-item.active span {
                 color: var(--steel-blue) !important;
                 font-weight: 800 !important;
-                letter-spacing: 0.1em !important;
+                letter-spacing: 0.05em !important;
             }
 
             .dock-item:active {
