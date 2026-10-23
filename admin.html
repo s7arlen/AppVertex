@@ -1577,9 +1577,14 @@
             <img src="logo.png" alt="AppVertex">
             <span>AppVertex <strong>Studio</strong></span>
         </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()" aria-label="Toggle Navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+            <button class="btn btn-primary" onclick="saveAllChanges()" style="padding:0.35rem 0.75rem; font-size:0.75rem; font-weight:700;">
+                <i class="fas fa-save"></i> Save All
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </div>
 
     <!-- BACKDROP FOR MOBILE SIDEBAR -->
@@ -1664,14 +1669,19 @@
                             <div style="font-size:0.78rem; color:var(--text-muted);">Realtime cross-tab synchronization to client pages is enabled</div>
                         </div>
                     </div>
-                    <div class="quick-page-links">
-                        <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); align-self:center; margin-right:0.25rem;">PREVIEW:</span>
-                        <a href="index.html" class="page-link-pill" target="_blank">Home</a>
-                        <a href="work.html" class="page-link-pill" target="_blank">Work</a>
-                        <a href="services.html" class="page-link-pill" target="_blank">Services</a>
-                        <a href="process.html" class="page-link-pill" target="_blank">Process</a>
-                        <a href="about.html" class="page-link-pill" target="_blank">About</a>
-                        <a href="contact.html" class="page-link-pill" target="_blank">Contact</a>
+                    <div style="display:flex; align-items:center; gap:0.85rem; flex-wrap:wrap;">
+                        <button class="btn btn-primary" id="btnSaveAll" onclick="saveAllChanges()" style="padding:0.45rem 1.1rem; font-size:0.82rem; font-weight:700; box-shadow:0 4px 14px rgba(139,26,43,0.22); white-space:nowrap;">
+                            <i class="fas fa-save"></i> <span id="saveAllBtnText">Save All Changes</span> <span style="font-size:0.7rem; opacity:0.75; font-weight:400; margin-left:0.25rem;">(Ctrl+S)</span>
+                        </button>
+                        <div class="quick-page-links">
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); align-self:center; margin-right:0.25rem;">PREVIEW:</span>
+                            <a href="index.html" class="page-link-pill" target="_blank">Home</a>
+                            <a href="work.html" class="page-link-pill" target="_blank">Work</a>
+                            <a href="services.html" class="page-link-pill" target="_blank">Services</a>
+                            <a href="process.html" class="page-link-pill" target="_blank">Process</a>
+                            <a href="about.html" class="page-link-pill" target="_blank">About</a>
+                            <a href="contact.html" class="page-link-pill" target="_blank">Contact</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1947,9 +1957,14 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary" style="margin-top:0.5rem;" onclick="saveStudioSettings()">
-                            <i class="fas fa-save"></i> Save Settings
-                        </button>
+                        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+                            <button class="btn btn-secondary" onclick="saveStudioSettings()">
+                                <i class="fas fa-sliders-h"></i> Save Settings Only
+                            </button>
+                            <button class="btn btn-primary" onclick="saveAllChanges()">
+                                <i class="fas fa-save"></i> Save All Studio Data
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -3667,6 +3682,88 @@
             showToast("Studio settings saved and broadcasted!");
         }
 
+        // ─── MASTER SAVE ALL FOR ADMIN PANEL ───
+        async function saveAllChanges() {
+            const btn = document.getElementById('btnSaveAll');
+            const origHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>Saving all...</span>`;
+            }
+
+            // 1. Capture settings if currently in DOM
+            const fYr = document.getElementById('footerYear')?.value.trim();
+            const sStat = document.getElementById('studioStatus')?.value.trim();
+            const sEmail = document.getElementById('studioEmail')?.value.trim();
+            const sWa = document.getElementById('studioWhatsApp')?.value.trim();
+
+            if (fYr) studioSettings.footerYear = fYr;
+            if (sStat) studioSettings.status = sStat;
+            if (sEmail) studioSettings.email = sEmail;
+            if (sWa) studioSettings.whatsapp = sWa;
+
+            // 2. Persist to Local Storage
+            saveToLocalStorage();
+
+            // 3. Persist to Cloud Firestore if authenticated
+            let cloudSaved = false;
+            if (auth?.currentUser && db && !isLocalMode) {
+                try {
+                    for (const t of testimonials) await setDoc(doc(db, "testimonials", t.id), t);
+                    for (const p of projects) await setDoc(doc(db, "projects", p.id), p);
+                    for (const i of inquiries) await setDoc(doc(db, "inquiries", i.id), i);
+                    for (const a of applications) await setDoc(doc(db, "applications", a.id), a);
+                    await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
+                    await setDoc(doc(db, "settings", "studio"), studioSettings);
+                    cloudSaved = true;
+                } catch(cloudErr) {
+                    console.warn("Cloud sync notice during Save All:", cloudErr);
+                }
+            }
+
+            // 4. Broadcast changes across open tabs
+            try {
+                ['appvertex_testimonials', 'appvertex_projects', 'appvertex_inquiries', 'appvertex_applications', 'appvertex_settings', 'appvertex_footer'].forEach(key => {
+                    window.dispatchEvent(new StorageEvent('storage', {
+                        key: key,
+                        newValue: localStorage.getItem(key)
+                    }));
+                });
+            } catch(e) {}
+
+            // 5. Update UI
+            refreshAllUI();
+
+            // 6. Visual feedback
+            if (btn) {
+                btn.innerHTML = `<i class="fas fa-check"></i> <span>All Saved ✓</span>`;
+                btn.style.backgroundColor = '#10B981';
+                btn.style.borderColor = '#10B981';
+                setTimeout(() => {
+                    btn.innerHTML = origHtml;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                }, 3000);
+            }
+
+            const feedbackMsg = cloudSaved 
+                ? "All projects, testimonials, inquiries, applications & settings saved to Local Storage and Cloud Firestore!"
+                : "All projects, testimonials, inquiries, applications & settings saved successfully!";
+            showToast(feedbackMsg, "success");
+        }
+
+        // Global Keyboard Shortcut: Ctrl+S / Cmd+S triggers Save All
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                const adminPanel = document.getElementById('adminPanel');
+                if (adminPanel && adminPanel.classList.contains('visible')) {
+                    e.preventDefault();
+                    saveAllChanges();
+                }
+            }
+        });
+
         // ─── DATA BACKUP & RESTORE ───
         function downloadJSONBackup() {
             const backupPayload = {
@@ -3794,6 +3891,7 @@
         window.removeImage = removeImage;
         window.closeModal = closeModal;
         window.saveStudioSettings = saveStudioSettings;
+        window.saveAllChanges = saveAllChanges;
         window.downloadJSONBackup = downloadJSONBackup;
         window.importJSONBackup = importJSONBackup;
         window.generateCode = generateCode;
