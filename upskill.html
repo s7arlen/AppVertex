@@ -358,7 +358,7 @@
                 <p style="font-size: 0.95rem; color: var(--text-secondary);">Cohorts are capped at 12 students per track to ensure dedicated 1-on-1 attention.</p>
             </div>
 
-            <form id="upskillApplicationForm" onsubmit="event.preventDefault(); alert('Application received! We will reach out via WhatsApp/Email within 24 hours.');">
+            <form id="upskillApplicationForm">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
                     <div class="form-group">
                         <label class="form-label" for="appName">Full Name</label>
@@ -379,9 +379,9 @@
                         <label class="form-label" for="appTrack">Preferred Track</label>
                         <select id="appTrack" name="track" class="form-control" required>
                             <option value="">Select track...</option>
-                            <option value="frontend">Track 01: Modern Frontend Architecture</option>
-                            <option value="fullstack">Track 02: Fullstack &amp; Cloud Databases</option>
-                            <option value="uiux">Track 03: UI/UX &amp; Design Systems</option>
+                            <option value="Track 01: Modern Frontend Architecture">Track 01: Modern Frontend Architecture</option>
+                            <option value="Track 02: Fullstack &amp; Cloud Databases">Track 02: Fullstack &amp; Cloud Databases</option>
+                            <option value="Track 03: UI/UX &amp; Design Systems">Track 03: UI/UX &amp; Design Systems</option>
                         </select>
                     </div>
                 </div>
@@ -391,7 +391,7 @@
                     <textarea id="appBackground" name="background" class="form-control" rows="3" placeholder="Tell us about what you have built so far and what you hope to achieve..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px; justify-content: center;">
+                <button type="submit" id="upskillSubmitBtn" class="btn btn-primary" style="width: 100%; height: 50px; justify-content: center;">
                     SUBMIT APPLICATION <span class="arr">→</span>
                 </button>
             </form>
@@ -703,6 +703,98 @@
                     header.classList.remove('scrolled');
                 }
             }, { passive: true });
+        })();
+
+        // ─── Studio Settings & Dynamic Footer Sync ───
+        (function() {
+            try {
+                const s = localStorage.getItem('appvertex_settings');
+                if (s) {
+                    const settings = JSON.parse(s);
+                    if (settings.status) {
+                        document.querySelectorAll('.footer-status-pill').forEach(el => {
+                            const dot = el.querySelector('.status-pulse-dot');
+                            el.innerHTML = '';
+                            if (dot) el.appendChild(dot);
+                            el.appendChild(document.createTextNode(settings.status));
+                        });
+                    }
+                }
+                const f = localStorage.getItem('appvertex_footer');
+                if (f) {
+                    const yr = JSON.parse(f).year;
+                    if (yr) document.querySelectorAll('.footer-text').forEach(el => el.textContent = el.textContent.replace(/© \d{4}/, `© ${yr}`));
+                }
+            } catch(e) {}
+        })();
+
+        // ─── Upskill Mentorship Application Submission Pipeline ───
+        (function() {
+            const form = document.getElementById('upskillApplicationForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('upskillSubmitBtn') || form.querySelector('button[type="submit"]');
+                const origHtml = btn ? btn.innerHTML : 'SUBMIT APPLICATION';
+                if (btn) {
+                    btn.disabled = true;
+                    btn.textContent = 'RECEIVING APPLICATION...';
+                }
+
+                const trackSelect = document.getElementById('appTrack');
+                const trackText = trackSelect?.options[trackSelect.selectedIndex]?.text || trackSelect?.value || 'Track 01: Modern Frontend Architecture';
+
+                const application = {
+                    id: 'app-' + Date.now(),
+                    name: (document.getElementById('appName')?.value || '').trim(),
+                    email: (document.getElementById('appEmail')?.value || '').trim(),
+                    phone: (document.getElementById('appPhone')?.value || '').trim(),
+                    track: trackText,
+                    background: (document.getElementById('appBackground')?.value || '').trim(),
+                    date: 'Just now',
+                    createdAt: new Date().toISOString(),
+                    status: 'new'
+                };
+
+                // Dual-Storage: 1. Zero-latency local storage + Cross-tab event
+                try {
+                    const existing = JSON.parse(localStorage.getItem('appvertex_applications') || '[]');
+                    existing.unshift(application);
+                    localStorage.setItem('appvertex_applications', JSON.stringify(existing));
+                    window.dispatchEvent(new StorageEvent('storage', {
+                        key: 'appvertex_applications',
+                        newValue: JSON.stringify(existing)
+                    }));
+                } catch(err) {
+                    console.warn('Local application storage notice:', err);
+                }
+
+                // Dual-Storage: 2. Cloud Firestore push
+                try {
+                    const { default: firebaseConfig } = await import("./firebase-config.js");
+                    const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+                    const { getFirestore, doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                    const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
+                    const db = getFirestore(app);
+                    await setDoc(doc(db, "applications", application.id), application);
+                } catch(cloudErr) {
+                    console.info('Application saved locally; cloud note:', cloudErr);
+                }
+
+                if (btn) {
+                    btn.textContent = 'APPLICATION RECEIVED ✓';
+                    btn.style.backgroundColor = '#10B981';
+                    btn.style.borderColor = '#10B981';
+                    form.reset();
+                    setTimeout(() => {
+                        btn.innerHTML = origHtml;
+                        btn.style.backgroundColor = '';
+                        btn.style.borderColor = '';
+                        btn.disabled = false;
+                    }, 4500);
+                }
+            });
         })();
     </script>
 

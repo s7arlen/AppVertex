@@ -23,6 +23,20 @@ service cloud.firestore {
         && request.resource.data.name.size() <= 150;
     }
     
+    // Inquiries collection: public intake for client proposals, authenticated admin read/update/delete
+    match /inquiries/{inquiryId} {
+      allow create: if request.resource.data.name is string
+        && request.resource.data.email is string;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Applications collection: public intake for upskill mentorship, authenticated admin read/update/delete
+    match /applications/{applicationId} {
+      allow create: if request.resource.data.name is string
+        && request.resource.data.email is string;
+      allow read, update, delete: if request.auth != null;
+    }
+
     // Settings collection: public read, authenticated write
     match /settings/{settingId} {
       allow read: if true;
