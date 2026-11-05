@@ -1782,14 +1782,6 @@
                 <!-- SYSTEM MODE BANNER -->
                 <div class="system-mode-banner">
                     <div class="banner-left">
-                        <div class="system-mode-info">
-                            <div class="status-dot"></div>
-                            <div>
-                                <strong id="modeStatusText" class="mode-status-title">Studio Admin Active</strong>
-                                <span class="mode-status-subtitle">Live cross-tab sync</span>
-                            </div>
-                        </div>
-                        <div class="banner-divider"></div>
                         <div class="quick-page-links">
                             <span class="preview-label">Preview</span>
                             <a href="index.html" class="page-link-pill" target="_blank">Home</a>
@@ -2476,7 +2468,8 @@
                     document.getElementById('adminEmail').textContent = user.email;
                     document.getElementById('adminRole').textContent = "Cloud Admin";
                     document.getElementById('adminAvatar').textContent = (user.email[0] || 'A').toUpperCase();
-                    document.getElementById('modeStatusText').textContent = "Cloud Synchronized";
+                    const statusEl = document.getElementById('modeStatusText');
+                    if (statusEl) statusEl.textContent = "Cloud Synchronized";
                     loadDataFromCloud();
                 } else if (!isLocalMode) {
                     document.getElementById('loginScreen').style.display = 'flex';
@@ -2649,7 +2642,8 @@
             document.getElementById('adminEmail').textContent = "developer@appvertex.local";
             document.getElementById('adminRole').textContent = "Studio Admin";
             document.getElementById('adminAvatar').textContent = "A";
-            document.getElementById('modeStatusText').textContent = "Studio Admin Active";
+            const modeEl = document.getElementById('modeStatusText');
+            if (modeEl) modeEl.textContent = "Studio Admin Active";
 
             loadFromLocalStorage();
             saveToLocalStorage();

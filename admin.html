@@ -15,21 +15,22 @@
     <style>
         :root {
             /* ═══════════════════════════════════════════════════
-               APPVERTEX JUNIPER & DESERT SAND DESIGN TOKENS
+               APPVERTEX SIGNATURE BURGUNDY & ROSEWOOD TOKENS
                ═══════════════════════════════════════════════════ */
-            --primary: #0E7490;                  /* Rosewood Studio Accent */
-            --primary-dark: #155E75;             /* Deep Burgundy */
-            --primary-darker: #164E63;           /* Plum Charcoal Dark */
-            --primary-soft: rgba(14, 116, 144, 0.08);
-            --primary-glow: rgba(14, 116, 144, 0.22);
-            --bg-canvas: #F9F8F5;                /* Studio Warm Off-White */
+            --primary: #800F35;                  /* Signature AppVertex Burgundy */
+            --primary-dark: #5B1029;             /* Deep Burgundy */
+            --primary-darker: #400A1B;           /* Dark Wine Charcoal */
+            --primary-accent: #A61E4D;           /* Rich Berry Accent */
+            --primary-soft: rgba(128, 15, 53, 0.08);
+            --primary-glow: rgba(128, 15, 53, 0.22);
+            --bg-canvas: #FCFAFA;                /* Warm Studio Off-White */
             --surface-white: #FFFFFF;            /* White Card Surface */
-            --surface-subtle: #FCFBF8;           /* Porcelain Highlight */
-            --border: #D3E4E8;                   /* Rosewood Border */
-            --border-hover: #BDD7DE;             /* Interactive Border */
-            --text-main: #132529;                /* Plum Charcoal Primary */
-            --text-muted: #455A60;               /* Mauve Slate Secondary */
-            --text-subtle: #758C93;              /* Light Muted */
+            --surface-subtle: #FDF8F9;           /* Soft Blush Raised Surface */
+            --border: #E9DDE1;                   /* Rosewood Subtle Border */
+            --border-hover: #D8C7CD;             /* Interactive Border */
+            --text-main: #171316;                /* Plum Charcoal Primary */
+            --text-muted: #71666B;               /* Mauve Slate Secondary */
+            --text-subtle: #9B8E92;              /* Light Muted */
             --success: #10B981;
             --success-soft: rgba(16, 185, 129, 0.1);
             --warning: #F59E0B;
@@ -48,13 +49,13 @@
             --radius-lg: 16px;
             --radius-full: 9999px;
 
-            --shadow-subtle: 0 4px 20px rgba(14, 116, 144, 0.04);
-            --shadow-card: 0 6px 24px rgba(14, 116, 144, 0.06);
-            --shadow-elevated: 0 16px 40px rgba(14, 116, 144, 0.10);
+            --shadow-subtle: 0 4px 20px rgba(128, 15, 53, 0.04);
+            --shadow-card: 0 6px 24px rgba(128, 15, 53, 0.07);
+            --shadow-elevated: 0 16px 40px rgba(128, 15, 53, 0.12);
             
-            --gradient-btn: linear-gradient(105deg, #0E7490 0%, #155E75 50%, #164E63 100%);
-            --gradient-accent: linear-gradient(135deg, #0E7490 0%, #155E75 100%);
-            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #F9F8F5 60%, #E3F3F7 100%);
+            --gradient-btn: linear-gradient(105deg, #800F35 0%, #A61E4D 60%, #C8395E 100%);
+            --gradient-accent: linear-gradient(135deg, #800F35 0%, #A61E4D 100%);
+            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #FDF8F9 60%, #FBF0F3 100%);
 
             --transition-fast: 0.18s ease;
             --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -93,8 +94,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(14, 116, 144, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 116, 144, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(128, 15, 53, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(128, 15, 53, 0.04) 1px, transparent 1px);
             background-size: 32px 32px;
             pointer-events: none;
         }
@@ -104,7 +105,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(14, 116, 144, 0.08) 0%, rgba(227, 243, 247, 0.4) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(128, 15, 53, 0.09) 0%, rgba(251, 240, 243, 0.6) 45%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -120,7 +121,7 @@
             max-width: 420px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 16px 40px -10px rgba(19, 37, 41, 0.08), 0 2px 8px rgba(14, 116, 144, 0.04);
+            box-shadow: 0 16px 40px -10px rgba(23, 19, 22, 0.08), 0 2px 8px rgba(128, 15, 53, 0.04);
             animation: loginCardIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
@@ -151,7 +152,7 @@
             height: 36px;
             border-radius: 9px;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(14, 116, 144, 0.15);
+            box-shadow: 0 4px 10px rgba(128, 15, 53, 0.15);
         }
 
         .login-logo strong {
@@ -264,12 +265,12 @@
             gap: 0.55rem;
             transition: all var(--transition-smooth);
             margin-top: 0.75rem;
-            box-shadow: 0 4px 14px rgba(14, 116, 144, 0.22);
+            box-shadow: 0 4px 14px rgba(128, 15, 53, 0.22);
         }
 
         .login-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(14, 116, 144, 0.3);
+            box-shadow: 0 6px 18px rgba(128, 15, 53, 0.3);
         }
 
         .login-btn:active {
@@ -302,8 +303,8 @@
         .quick-dev-btn {
             width: 100%;
             padding: 0.75rem 1rem;
-            background: rgba(14, 116, 144, 0.04);
-            border: 1px solid rgba(14, 116, 144, 0.18);
+            background: rgba(128, 15, 53, 0.04);
+            border: 1px solid rgba(128, 15, 53, 0.18);
             border-radius: 10px;
             color: var(--primary);
             font-family: var(--font-primary);
@@ -318,7 +319,7 @@
         }
 
         .quick-dev-btn:hover {
-            background: rgba(14, 116, 144, 0.09);
+            background: rgba(128, 15, 53, 0.09);
             border-color: var(--primary);
             transform: translateY(-1px);
         }
@@ -355,7 +356,7 @@
             text-align: center;
             margin-top: 1.35rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(14, 116, 144, 0.08);
+            border-top: 1px solid rgba(128, 15, 53, 0.08);
         }
 
         .login-footer .back-link {
@@ -415,7 +416,7 @@
             position: sticky;
             top: 0;
             z-index: 95;
-            box-shadow: 0 2px 10px rgba(14, 116, 144, 0.04);
+            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.04);
         }
 
         .mobile-brand {
@@ -511,7 +512,7 @@
             height: 32px;
             border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 3px 8px rgba(14, 116, 144, 0.15);
+            box-shadow: 0 3px 8px rgba(128, 15, 53, 0.15);
         }
 
         .logo span { color: var(--primary); }
@@ -586,7 +587,7 @@
             color: var(--primary);
             font-weight: 700;
             border-left: 3px solid var(--primary);
-            box-shadow: inset 0 0 0 1px rgba(14, 116, 144, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(128, 15, 53, 0.08);
         }
 
         .sidebar-footer {
@@ -613,7 +614,7 @@
             font-size: 0.9rem;
             font-weight: 700;
             color: white;
-            box-shadow: 0 3px 8px rgba(14, 116, 144, 0.2);
+            box-shadow: 0 3px 8px rgba(128, 15, 53, 0.2);
         }
 
         .admin-user-email {
@@ -713,12 +714,12 @@
             background: var(--gradient-btn);
             color: #FFFFFF;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(14, 116, 144, 0.18);
+            box-shadow: 0 4px 12px rgba(128, 15, 53, 0.18);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(14, 116, 144, 0.28);
+            box-shadow: 0 6px 16px rgba(128, 15, 53, 0.28);
         }
 
         .btn-secondary {
@@ -759,7 +760,7 @@
             border-radius: var(--radius-md);
             padding: 0.75rem 1.25rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(14, 116, 144, 0.05);
+            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.05);
             position: sticky;
             top: 1rem;
             z-index: 50;
@@ -859,43 +860,58 @@
             margin-left: auto;
         }
 
+        @keyframes saveSuccessPop {
+            0% { transform: scale(0.96); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .btn-save-master {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            background: var(--primary);
+            gap: 0.55rem;
+            background: linear-gradient(135deg, #800F35 0%, #A61E4D 100%);
             color: #ffffff;
-            border: 1px solid transparent;
-            border-radius: var(--radius-sm);
-            padding: 0.42rem 0.95rem;
-            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-full);
+            padding: 0.48rem 1.15rem;
+            font-size: 0.82rem;
             font-weight: 700;
+            letter-spacing: 0.02em;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(14, 116, 144, 0.2);
-            transition: all var(--transition-fast);
+            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
         }
 
         .btn-save-master:hover {
-            background: var(--primary-dark);
-            box-shadow: 0 4px 12px rgba(14, 116, 144, 0.28);
+            background: linear-gradient(135deg, #96123E 0%, #B82356 100%);
+            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
             transform: translateY(-1px);
         }
 
         .btn-save-master:active {
             transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(128, 15, 53, 0.25);
         }
 
-        .save-shortcut-kbd {
-            font-size: 0.65rem;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.22);
-            color: #ffffff;
-            padding: 0.12rem 0.35rem;
-            border-radius: 4px;
-            letter-spacing: 0.02em;
-            margin-left: 0.2rem;
-            font-family: inherit;
+        .btn-save-master.is-saving,
+        .btn.is-saving {
+            background: linear-gradient(135deg, #A61E4D 0%, #C8395E 100%) !important;
+            opacity: 0.95;
+            cursor: wait;
+            pointer-events: none;
+            box-shadow: 0 0 0 3px rgba(166, 30, 77, 0.3) !important;
+        }
+
+        .btn-save-master.is-saved,
+        .btn.is-saved {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25), 0 4px 16px rgba(16, 185, 129, 0.35) !important;
+            animation: saveSuccessPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #ffffff !important;
+            pointer-events: none;
         }
 
         /* ───────────────────────────────────────────
@@ -938,7 +954,7 @@
         .stat-card:hover {
             transform: translateY(-2px);
             border-color: var(--border-hover);
-            box-shadow: 0 4px 14px rgba(14, 116, 144, 0.08);
+            box-shadow: 0 4px 14px rgba(128, 15, 53, 0.08);
         }
 
         .stat-card:hover::after { opacity: 1; }
@@ -1369,9 +1385,9 @@
             align-items: center;
             gap: 0.35rem;
             padding: 0.25rem 0.7rem;
-            background: rgba(14, 116, 144, 0.08);
-            color: #0e7490;
-            border: 1px solid rgba(14, 116, 144, 0.2);
+            background: rgba(128, 15, 53, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(128, 15, 53, 0.2);
             border-radius: 999px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -1697,7 +1713,7 @@
             <span>AppVertex <strong>Studio</strong></span>
         </div>
         <div style="display:flex; align-items:center; gap:0.5rem;">
-            <button class="btn btn-primary" onclick="saveAllChanges()" style="padding:0.35rem 0.75rem; font-size:0.75rem; font-weight:700;">
+            <button class="btn btn-primary" id="mobileSaveBtn" onclick="saveAllChanges()" style="padding:0.35rem 0.75rem; font-size:0.75rem; font-weight:700;">
                 <i class="fas fa-save"></i> Save All
             </button>
             <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()" aria-label="Toggle Navigation">
@@ -1782,14 +1798,6 @@
                 <!-- SYSTEM MODE BANNER -->
                 <div class="system-mode-banner">
                     <div class="banner-left">
-                        <div class="system-mode-info">
-                            <div class="status-dot"></div>
-                            <div>
-                                <strong id="modeStatusText" class="mode-status-title">Studio Admin Active</strong>
-                                <span class="mode-status-subtitle">Live cross-tab sync</span>
-                            </div>
-                        </div>
-                        <div class="banner-divider"></div>
                         <div class="quick-page-links">
                             <span class="preview-label">Preview</span>
                             <a href="index.html" class="page-link-pill" target="_blank">Home</a>
@@ -1804,7 +1812,6 @@
                         <button class="btn-save-master" id="btnSaveAll" onclick="saveAllChanges()" title="Save all changes (Ctrl+S)">
                             <i class="fas fa-save"></i>
                             <span id="saveAllBtnText">Save All</span>
-                            <kbd class="save-shortcut-kbd">Ctrl+S</kbd>
                         </button>
                     </div>
                 </div>
@@ -2333,54 +2340,70 @@
             {
                 id: "loretto-portal",
                 name: "Loretto Central School Portal",
+                title: "Loretto Central School Portal",
                 category: "school",
-                categoryLabel: "SCHOOL & INSTITUTIONAL",
+                categoryLabel: "Education Portal",
                 year: 2026,
-                image: "hero-devices.png",
+                image: "hero-rosewood-showcase.png",
+                previewImage: "hero-rosewood-showcase.png",
                 emoji: "🎓",
                 color: "linear-gradient(135deg,#1e1b4b,#4338ca)",
                 description: "Redesigned and developed the official website for Loretto Central School with modern UI, student intake portal, and responsive architecture.",
-                technologies: ["React.js", "Node.js", "MySQL"],
-                link: "https://lorettocentralschool.edu.in"
+                technologies: ["React.js", "Firebase", "Node.js"],
+                link: "https://lorettocentralschool.edu.in",
+                liveUrl: "https://lorettocentralschool.edu.in",
+                urlDisplay: "lorettocentral.in"
             },
             {
                 id: "launchpad-saas",
-                name: "LaunchPad Platform",
+                name: "LaunchPad SaaS Platform",
+                title: "LaunchPad SaaS Platform",
                 category: "startup",
-                categoryLabel: "SAAS & STARTUP",
+                categoryLabel: "SaaS & Startup",
                 year: 2025,
-                image: "hero-devices.png",
+                image: "hero-floating-phones-transparent.png",
+                previewImage: "hero-floating-phones-transparent.png",
                 emoji: "🚀",
                 color: "linear-gradient(135deg,#0f172a,#0284c7)",
                 description: "High-conversion landing experience and interactive analytics suite built for modern B2B SaaS teams.",
                 technologies: ["React", "Node.js", "PostgreSQL"],
-                link: "https://lorettocentralschool.edu.in"
+                link: "https://launchpad.dev",
+                liveUrl: "https://launchpad.dev",
+                urlDisplay: "launchpad.dev"
             },
             {
-                id: "nf-boutique",
-                name: "NF Boutique Store",
-                category: "ecommerce",
-                categoryLabel: "BRAND & E-COMMERCE",
+                id: "vimasneha-trust",
+                name: "Vimasneha Trust",
+                title: "Vimasneha Trust",
+                category: "brand",
+                categoryLabel: "Non-Profit Website",
                 year: 2024,
                 image: "hero-devices.png",
-                emoji: "🛍️",
+                previewImage: "hero-devices.png",
+                emoji: "🤝",
                 color: "linear-gradient(135deg,#7c2d12,#ea580c)",
-                description: "Bespoke fashion storefront engineered for maximum speed, seamless checkout, and luxury editorial aesthetics.",
-                technologies: ["Shopify Headless", "Tailwind CSS"],
-                link: "https://lorettocentralschool.edu.in"
+                description: "Clean, accessible website for Vimasneha trust showcasing their social initiatives and enabling donations.",
+                technologies: ["HTML/CSS", "JavaScript", "Firebase"],
+                link: "https://vimasneha.org",
+                liveUrl: "https://vimasneha.org",
+                urlDisplay: "vimasneha.org"
             },
             {
-                id: "greenmind-platform",
-                name: "GreenMind Platform",
+                id: "rosewood-stage",
+                name: "Rosewood Stage Studio",
+                title: "Rosewood Stage Studio",
                 category: "startup",
-                categoryLabel: "PLATFORM & METRICS",
+                categoryLabel: "Digital Showcase",
                 year: 2024,
-                image: "hero-devices.png",
-                emoji: "🌱",
+                image: "hero-rosewood-stage.png",
+                previewImage: "hero-rosewood-stage.png",
+                emoji: "🎨",
                 color: "linear-gradient(135deg,#14532d,#22c55e)",
-                description: "Interactive carbon accounting and sustainability tracker with real-time metric visualization and reports.",
-                technologies: ["Vue 3", "D3.js", "Supabase"],
-                link: "https://lorettocentralschool.edu.in"
+                description: "Interactive digital showcase and modern agency experience with fluid motion and responsive architecture.",
+                technologies: ["JavaScript", "CSS3", "WebGL"],
+                link: "https://s7arlen.github.io/AppVertex/",
+                liveUrl: "https://s7arlen.github.io/AppVertex/",
+                urlDisplay: "appvertex.in"
             }
         ];
 
@@ -2476,7 +2499,8 @@
                     document.getElementById('adminEmail').textContent = user.email;
                     document.getElementById('adminRole').textContent = "Cloud Admin";
                     document.getElementById('adminAvatar').textContent = (user.email[0] || 'A').toUpperCase();
-                    document.getElementById('modeStatusText').textContent = "Cloud Synchronized";
+                    const statusEl = document.getElementById('modeStatusText');
+                    if (statusEl) statusEl.textContent = "Cloud Synchronized";
                     loadDataFromCloud();
                 } else if (!isLocalMode) {
                     document.getElementById('loginScreen').style.display = 'flex';
@@ -2649,7 +2673,8 @@
             document.getElementById('adminEmail').textContent = "developer@appvertex.local";
             document.getElementById('adminRole').textContent = "Studio Admin";
             document.getElementById('adminAvatar').textContent = "A";
-            document.getElementById('modeStatusText').textContent = "Studio Admin Active";
+            const modeEl = document.getElementById('modeStatusText');
+            if (modeEl) modeEl.textContent = "Studio Admin Active";
 
             loadFromLocalStorage();
             saveToLocalStorage();
@@ -2668,7 +2693,52 @@
             showToast("Logged out of Admin Console", "info");
         }
 
-        // ─── STORAGE SYNC HELPERS ───
+        // ─── STORAGE SYNC HELPERS & CROSS-TAB BROADCAST ───
+        const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('appvertex_sync') : null;
+
+        function mergeProjects(localList, cloudList, deletedIds = []) {
+            const delSet = new Set(deletedIds || []);
+            const map = new Map();
+
+            if (Array.isArray(cloudList)) {
+                cloudList.forEach(cp => {
+                    const id = cp.id || cp.name;
+                    if (id && !delSet.has(id)) {
+                        map.set(id, cp);
+                    }
+                });
+            }
+
+            if (Array.isArray(localList)) {
+                localList.forEach(lp => {
+                    const id = lp.id || lp.name;
+                    if (id && !delSet.has(id)) {
+                        map.set(id, { ...(map.get(id) || {}), ...lp });
+                    }
+                });
+            }
+
+            return Array.from(map.values());
+        }
+
+        function mergeTestimonials(localList, cloudList, deletedIds = []) {
+            const delSet = new Set(deletedIds || []);
+            const map = new Map();
+            if (Array.isArray(cloudList)) {
+                cloudList.forEach(ct => {
+                    const id = ct.id || ct.name;
+                    if (id && !delSet.has(id)) map.set(id, ct);
+                });
+            }
+            if (Array.isArray(localList)) {
+                localList.forEach(lt => {
+                    const id = lt.id || lt.name;
+                    if (id && !delSet.has(id)) map.set(id, { ...(map.get(id) || {}), ...lt });
+                });
+            }
+            return Array.from(map.values());
+        }
+
         function saveToLocalStorage() {
             try {
                 localStorage.setItem('appvertex_testimonials', JSON.stringify(testimonials));
@@ -2677,6 +2747,18 @@
                 localStorage.setItem('appvertex_applications', JSON.stringify(applications));
                 localStorage.setItem('appvertex_footer', JSON.stringify({ year: studioSettings.footerYear }));
                 localStorage.setItem('appvertex_settings', JSON.stringify(studioSettings));
+
+                // Instant broadcast to live website tabs (index.html, work.html)
+                if (syncChannel) {
+                    syncChannel.postMessage({
+                        type: 'FULL_SYNC',
+                        projects: projects,
+                        testimonials: testimonials,
+                        settings: studioSettings,
+                        footerYear: studioSettings.footerYear,
+                        timestamp: Date.now()
+                    });
+                }
             } catch(err) {
                 console.warn("Storage quota notice:", err);
                 if (err.name === 'QuotaExceededError' || err.code === 22) {
@@ -2696,7 +2778,23 @@
                 
                 try {
                     const parsedP = locP ? JSON.parse(locP) : null;
-                    projects = (Array.isArray(parsedP) && parsedP.length > 0) ? parsedP : [...DEFAULT_PROJECTS];
+                    if (Array.isArray(parsedP) && parsedP.length > 0) {
+                        const fallbackPool = ['hero-rosewood-showcase.png', 'hero-floating-phones-transparent.png', 'hero-devices.png', 'hero-rosewood-stage.png'];
+                        projects = parsedP.map((p, i) => {
+                            const img = safeImageSrc(p.image || p.previewImage) || fallbackPool[i % fallbackPool.length];
+                            return {
+                                ...p,
+                                name: p.name || p.title || 'Project',
+                                title: p.title || p.name || 'Project',
+                                image: img,
+                                previewImage: img,
+                                link: p.link || p.liveUrl || '#contact',
+                                liveUrl: p.liveUrl || p.link || '#contact'
+                            };
+                        });
+                    } else {
+                        projects = [...DEFAULT_PROJECTS];
+                    }
                 } catch(e) { projects = [...DEFAULT_PROJECTS]; }
 
                 try {
@@ -2755,11 +2853,15 @@
             try {
                 const tSnap = await getDocs(collection(db, "testimonials"));
                 if (!tSnap.empty) {
-                    testimonials = tSnap.docs.map(d => ({id: d.id, ...d.data()}));
+                    const cloudT = tSnap.docs.map(d => ({id: d.id, ...d.data()}));
+                    const delT = JSON.parse(localStorage.getItem('appvertex_deleted_testimonials') || '[]');
+                    testimonials = mergeTestimonials(testimonials, cloudT, delT);
                 }
                 const pSnap = await getDocs(collection(db, "projects"));
                 if (!pSnap.empty) {
-                    projects = pSnap.docs.map(d => ({id: d.id, ...d.data()}));
+                    const cloudP = pSnap.docs.map(d => ({id: d.id, ...d.data()}));
+                    const delP = JSON.parse(localStorage.getItem('appvertex_deleted_projects') || '[]');
+                    projects = mergeProjects(projects, cloudP, delP);
                 }
                 try {
                     const inqSnap = await getDocs(collection(db, "inquiries"));
@@ -2909,7 +3011,7 @@
                         <div>
                             <div style="display:flex; align-items:center; gap:0.5rem;">
                                 <strong>${escapeHTML(app.name)}</strong>
-                                ${isNew ? '<span class="nav-badge" style="background:#EF4444; color:#fff; font-size:0.65rem; padding:0.15rem 0.45rem;">NEW APPLICANT</span>' : `<span class="nav-badge" style="background:rgba(14,116,144,0.1); color:#0e7490; font-size:0.65rem; padding:0.15rem 0.45rem;">${escapeHTML(app.status.toUpperCase())}</span>`}
+                                ${isNew ? '<span class="nav-badge" style="background:#EF4444; color:#fff; font-size:0.65rem; padding:0.15rem 0.45rem;">NEW APPLICANT</span>' : `<span class="nav-badge" style="background:rgba(128,15,53,0.1); color:var(--primary); font-size:0.65rem; padding:0.15rem 0.45rem;">${escapeHTML(app.status.toUpperCase())}</span>`}
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${escapeHTML(app.date || 'Recent')}</span>
                             </div>
                             <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">
@@ -3555,15 +3657,16 @@
 
             if (p) {
                 document.getElementById('projectId').value = p.id || '';
-                document.getElementById('projectName').value = p.name || '';
+                document.getElementById('projectName').value = p.name || p.title || '';
                 if (p.category) document.getElementById('projectCategory').value = normCat(p.category);
                 document.getElementById('projectYear').value = p.year || 2026;
                 document.getElementById('projectDesc').value = p.description || '';
                 document.getElementById('projectTech').value = Array.isArray(p.technologies) ? p.technologies.slice(0, 3).join(', ') : (p.technologies || '');
-                document.getElementById('projectLink').value = p.link || '';
-                if (safeImageSrc(p.image)) {
-                    currentProjectImage = p.image;
-                    document.getElementById('projectPreview').src = safeImageSrc(p.image);
+                document.getElementById('projectLink').value = p.link || p.liveUrl || '';
+                const imgVal = safeImageSrc(p.image || p.previewImage);
+                if (imgVal) {
+                    currentProjectImage = imgVal;
+                    document.getElementById('projectPreview').src = imgVal;
                     document.getElementById('projectPreview').style.display = 'block';
                     document.getElementById('projectPlaceholder').style.display = 'none';
                     document.getElementById('projectRemoveImageRow').style.display = 'block';
@@ -3727,9 +3830,22 @@
                 'ecommerce': 'BRAND & E-COMMERCE'
             };
 
+            const linkVal = document.getElementById('projectLink').value.trim() || '#contact';
+            let displayUrl = 'appvertex.in';
+            if (linkVal && linkVal.startsWith('http')) {
+                try {
+                    displayUrl = new URL(linkVal).hostname.replace(/^www\./, '');
+                } catch(e) {
+                    displayUrl = 'appvertex.in';
+                }
+            }
+            const fallbackPool = ['hero-rosewood-showcase.png', 'hero-floating-phones-transparent.png', 'hero-devices.png', 'hero-rosewood-stage.png'];
+            const finalImg = currentProjectImage || fallbackPool[Math.floor(Math.random() * fallbackPool.length)];
+
             const data = {
                 id,
                 name,
+                title: name,
                 category: cat,
                 categoryLabel: catLabels[cat] || cat.toUpperCase(),
                 emoji,
@@ -3737,11 +3853,23 @@
                 year: parseInt(document.getElementById('projectYear').value) || 2026,
                 description: document.getElementById('projectDesc').value.trim(),
                 technologies: document.getElementById('projectTech').value.split(',').map(t=>t.trim()).filter(t=>t).slice(0, 3),
-                link: document.getElementById('projectLink').value.trim() || '#contact',
-                image: currentProjectImage || ""
+                link: linkVal,
+                liveUrl: linkVal,
+                urlDisplay: displayUrl,
+                image: finalImg,
+                previewImage: finalImg,
+                altText: `${name} preview`,
+                updatedAt: Date.now()
             };
 
             try {
+                // Remove from deleted list if present
+                try {
+                    const del = JSON.parse(localStorage.getItem('appvertex_deleted_projects') || '[]');
+                    const filtered = del.filter(dId => dId !== id);
+                    localStorage.setItem('appvertex_deleted_projects', JSON.stringify(filtered));
+                } catch(e){}
+
                 if (auth?.currentUser && db && !isLocalMode) {
                     await setDoc(doc(db, "projects", id), data);
                 }
@@ -3763,6 +3891,15 @@
             if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             if (confirm("Delete this project from your portfolio?")) {
                 try {
+                    // Mark as deleted so cloud sync doesn't re-add it
+                    try {
+                        const del = JSON.parse(localStorage.getItem('appvertex_deleted_projects') || '[]');
+                        if (!del.includes(id)) {
+                            del.push(id);
+                            localStorage.setItem('appvertex_deleted_projects', JSON.stringify(del));
+                        }
+                    } catch(e){}
+
                     if (auth?.currentUser && db && !isLocalMode) {
                         await deleteDoc(doc(db, "projects", id));
                     }
@@ -3794,10 +3931,18 @@
                 rating,
                 text,
                 image: currentTestimonialImage || "",
-                initials: name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase() || 'AV'
+                initials: name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase() || 'AV',
+                updatedAt: Date.now()
             };
 
             try {
+                // Remove from deleted testimonials if present
+                try {
+                    const del = JSON.parse(localStorage.getItem('appvertex_deleted_testimonials') || '[]');
+                    const filtered = del.filter(dId => dId !== id);
+                    localStorage.setItem('appvertex_deleted_testimonials', JSON.stringify(filtered));
+                } catch(e){}
+
                 if (auth?.currentUser && db && !isLocalMode) {
                     await setDoc(doc(db, "testimonials", id), data);
                 }
@@ -3819,6 +3964,15 @@
             if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             if (confirm("Delete this testimonial?")) {
                 try {
+                    // Mark as deleted so cloud sync doesn't re-add it
+                    try {
+                        const del = JSON.parse(localStorage.getItem('appvertex_deleted_testimonials') || '[]');
+                        if (!del.includes(id)) {
+                            del.push(id);
+                            localStorage.setItem('appvertex_deleted_testimonials', JSON.stringify(del));
+                        }
+                    } catch(e){}
+
                     if (auth?.currentUser && db && !isLocalMode) {
                         await deleteDoc(doc(db, "testimonials", id));
                     }
@@ -3832,8 +3986,9 @@
             }
         }
 
-        async function saveStudioSettings() {
-            if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
+        async function saveStudioSettings(evt) {
+            const targetBtn = evt?.currentTarget || event?.target?.closest('button');
+            if (!auth?.currentUser && !isLocalMode) return;
             studioSettings.footerYear = document.getElementById('footerYear').value.trim() || "2026";
             studioSettings.status = document.getElementById('studioStatus').value.trim();
             studioSettings.email = document.getElementById('studioEmail').value.trim();
@@ -3849,17 +4004,28 @@
             }
             saveToLocalStorage();
             updateStats();
-            showToast("Studio settings saved and broadcasted!");
+            if (targetBtn) {
+                const orig = targetBtn.innerHTML;
+                targetBtn.classList.add('is-saved');
+                targetBtn.innerHTML = `<i class="fas fa-check"></i> <span>Saved</span>`;
+                setTimeout(() => {
+                    targetBtn.classList.remove('is-saved');
+                    targetBtn.innerHTML = orig;
+                }, 2000);
+            }
         }
 
         // ─── MASTER SAVE ALL FOR ADMIN PANEL ───
         async function saveAllChanges() {
             const btn = document.getElementById('btnSaveAll');
-            const origHtml = btn ? btn.innerHTML : '';
-            if (btn) {
-                btn.disabled = true;
-                btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>Saving all...</span>`;
-            }
+            const mobileBtn = document.getElementById('mobileSaveBtn');
+            const allBtns = [btn, mobileBtn].filter(Boolean);
+
+            allBtns.forEach(b => {
+                b.classList.remove('is-saved');
+                b.classList.add('is-saving');
+                b.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> <span>Saving...</span>`;
+            });
 
             // 1. Capture settings if currently in DOM
             const fYr = document.getElementById('footerYear')?.value.trim();
@@ -3876,7 +4042,6 @@
             saveToLocalStorage();
 
             // 3. Persist to Cloud Firestore if authenticated
-            let cloudSaved = false;
             if (auth?.currentUser && db && !isLocalMode) {
                 try {
                     for (const t of testimonials) await setDoc(doc(db, "testimonials", t.id), t);
@@ -3885,42 +4050,31 @@
                     for (const a of applications) await setDoc(doc(db, "applications", a.id), a);
                     await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
                     await setDoc(doc(db, "settings", "studio"), studioSettings);
-                    cloudSaved = true;
                 } catch(cloudErr) {
                     console.warn("Cloud sync notice during Save All:", cloudErr);
                 }
             }
 
-            // 4. Broadcast changes across open tabs
-            try {
-                ['appvertex_testimonials', 'appvertex_projects', 'appvertex_inquiries', 'appvertex_applications', 'appvertex_settings', 'appvertex_footer'].forEach(key => {
-                    window.dispatchEvent(new StorageEvent('storage', {
-                        key: key,
-                        newValue: localStorage.getItem(key)
-                    }));
-                });
-            } catch(e) {}
-
-            // 5. Update UI
+            // 4. Update UI
             refreshAllUI();
 
-            // 6. Visual feedback
-            if (btn) {
-                btn.innerHTML = `<i class="fas fa-check"></i> <span>All Saved ✓</span>`;
-                btn.style.backgroundColor = '#10B981';
-                btn.style.borderColor = '#10B981';
-                setTimeout(() => {
-                    btn.innerHTML = origHtml;
-                    btn.style.backgroundColor = '';
-                    btn.style.borderColor = '';
-                    btn.disabled = false;
-                }, 3000);
-            }
+            // 5. Tactile Button Micro-Animation Only (No Toast Messages)
+            allBtns.forEach(b => {
+                b.classList.remove('is-saving');
+                b.classList.add('is-saved');
+                b.innerHTML = `<i class="fas fa-check"></i> <span>Saved</span>`;
+            });
 
-            const feedbackMsg = cloudSaved 
-                ? "All projects, testimonials, inquiries, applications & settings saved to Local Storage and Cloud Firestore!"
-                : "All projects, testimonials, inquiries, applications & settings saved successfully!";
-            showToast(feedbackMsg, "success");
+            setTimeout(() => {
+                if (btn) {
+                    btn.classList.remove('is-saved');
+                    btn.innerHTML = `<i class="fas fa-save"></i> <span id="saveAllBtnText">Save All</span>`;
+                }
+                if (mobileBtn) {
+                    mobileBtn.classList.remove('is-saved');
+                    mobileBtn.innerHTML = `<i class="fas fa-save"></i> Save All`;
+                }
+            }, 2000);
         }
 
         // Global Keyboard Shortcut: Ctrl+S / Cmd+S triggers Save All

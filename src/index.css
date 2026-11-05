@@ -1605,11 +1605,15 @@
             transform: translateX(4px);
         }
 
-        /* 5-Column Structured Services Row (Clean Desktop UI) */
+        /* ═══════════════════════════════════════════════════
+           14. SERVICES SECTION — CONCEPT 2: 3D FLIP DOSSIER
+           ═══════════════════════════════════════════════════ */
         .services-grid-5 {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 1.5rem;
+            gap: 1.15rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .services-mobile-nav,
@@ -1617,130 +1621,357 @@
             display: none !important;
         }
 
-        .service-column {
-            background-color: rgba(255, 255, 255, 0.75);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 2.2rem 1.6rem 2rem;
+        /* 3D Flip Card Container */
+        .service-column.flip-card {
+            position: relative;
+            height: 425px;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            perspective: 1400px;
+            -webkit-perspective: 1400px;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+
+        .service-column.flip-card:focus-visible {
+            outline: 2px solid var(--steel-blue);
+            outline-offset: 4px;
+            border-radius: 16px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.34, 1.45, 0.64, 1), box-shadow 0.35s ease;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(10, 25, 33, 0.08), 0 2px 6px rgba(10, 25, 33, 0.04);
+        }
+
+        .service-column.flip-card:hover .flip-card-inner {
+            box-shadow: 0 16px 36px rgba(14, 116, 144, 0.16), 0 3px 10px rgba(10, 25, 33, 0.08);
+        }
+
+        .service-column.flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Card Faces */
+        .flip-card-face {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* ── FRONT FACE (EDITORIAL BACKGROUND IMAGE) ── */
+        .flip-card-front {
+            background-color: #08141B;
+            background-image: radial-gradient(circle at 85% 15%, rgba(14, 116, 144, 0.35), transparent 60%), linear-gradient(155deg, #07131a 0%, #0a212b 100%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             display: flex;
             flex-direction: column;
-            transition: all var(--transition-smooth);
-            position: relative;
-        }
-
-        .service-column:hover {
-            background-color: var(--surface-white);
-            border-color: var(--steel-blue-soft);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(14, 116, 144, 0.08);
-        }
-
-        .service-watermark {
-            display: none !important;
-        }
-
-        .service-card-top {
-            display: flex;
-            align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: 1.5rem;
+            transform: rotateY(0deg);
         }
 
-        .service-icon-box {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background-color: var(--bg-light);
+        .card-bg-img {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.35;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.85) contrast(1.1);
+        }
+
+        .service-column.flip-card:hover .card-bg-img {
+            transform: scale(1.06);
+            opacity: 0.5;
+            filter: brightness(0.92) contrast(1.15);
+        }
+
+        .card-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(8, 20, 27, 0.52) 0%, 
+                rgba(8, 20, 27, 0.32) 26%, 
+                rgba(8, 20, 27, 0.8) 64%, 
+                rgba(8, 20, 27, 0.98) 100%
+            );
+            pointer-events: none;
+        }
+
+        .front-content-wrap {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.35rem 1.15rem 1.25rem;
+            box-sizing: border-box;
+        }
+
+        .front-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .front-num {
+            font-family: var(--font-secondary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(8, 20, 27, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .front-tag {
+            font-family: var(--font-secondary);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 3px 9px;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .front-bottom-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.45rem;
+        }
+
+        .front-icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.26);
+            color: #38BDF8;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--steel-blue);
-            font-size: 1.15rem;
-            margin-bottom: 0;
-            transition: all var(--transition-fast);
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.15rem;
+            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
         }
 
-        .service-column:hover .service-icon-box {
-            background-color: var(--steel-blue);
-            border-color: var(--steel-blue);
+        .service-column.flip-card:hover .front-icon-box {
+            transform: translateY(-2px);
+            background: rgba(56, 189, 248, 0.22);
             color: #FFFFFF;
+            border-color: rgba(56, 189, 248, 0.5);
         }
 
-        .service-badge-wrap {
+        .front-title {
+            font-family: var(--font-primary);
+            font-weight: 800;
+            font-size: 1.05rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        .front-desc {
+            font-size: 0.77rem;
+            line-height: 1.45;
+            color: rgba(240, 244, 248, 0.9);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        /* ── BACK FACE (MINIMAL ARCHITECTURAL DOSSIER) ── */
+        .flip-card-back {
+            background: #FFFFFF linear-gradient(165deg, #FFFFFF 0%, #FAFBFD 55%, #F0F5F8 100%);
+            border: 1px solid rgba(14, 116, 144, 0.18);
+            box-shadow: 0 12px 30px rgba(10, 25, 33, 0.08);
+            transform: rotateY(180deg);
+        }
+
+        .back-content-wrap {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.35rem 1.25rem 1.25rem;
+            box-sizing: border-box;
+        }
+
+        .back-top-row {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid rgba(14, 116, 144, 0.1);
         }
 
-        .service-discipline-tag {
-            display: none !important;
-        }
-
-        .service-num {
-            font-family: var(--font-secondary);
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.12em;
-            color: var(--secondary);
-            margin-bottom: 0;
-        }
-
-        .service-name {
-            font-family: var(--font-primary);
+        .back-meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
             font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: -0.02em;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .service-desc {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: var(--secondary);
-            margin-bottom: 1.85rem;
-            flex-grow: 1;
-        }
-
-        .service-scope-list {
-            display: none !important;
-        }
-
-        .service-action-wrap {
-            margin-top: auto;
-        }
-
-        .service-cta-link {
-            font-family: var(--font-primary);
-            font-weight: 600;
-            font-size: 0.825rem;
+            letter-spacing: 0.14em;
             color: var(--steel-blue);
-            background: transparent;
-            border: none;
-            box-shadow: none;
+        }
+
+        .back-flip-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(14, 116, 144, 0.07);
+            border: 1px solid rgba(14, 116, 144, 0.18);
+            color: var(--steel-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .back-flip-btn:hover {
+            background: var(--steel-blue);
+            color: #FFFFFF;
+            border-color: var(--steel-blue);
+            transform: rotate(-180deg);
+        }
+
+        .back-header-block {
+            margin: 0.35rem 0 0.15rem;
+        }
+
+        .back-title {
+            font-family: var(--font-primary);
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .back-deliv-list {
+            list-style: none;
             padding: 0;
-            border-radius: 0;
-            display: inline-flex;
+            margin: 0.25rem 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .back-deliv-list li {
+            font-size: 0.76rem;
+            line-height: 1.42;
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.45rem;
+        }
+
+        .deliv-dash {
+            color: var(--dusty-rose);
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+            flex-shrink: 0;
+        }
+
+        .back-meta-chips {
+            display: flex;
             align-items: center;
             gap: 0.4rem;
-            transition: gap var(--transition-fast), color var(--transition-fast);
+            flex-wrap: wrap;
+            padding-top: 0.65rem;
+            margin-top: 0.4rem;
+            border-top: 1px solid rgba(14, 116, 144, 0.1);
         }
 
-        .service-cta-link:hover,
-        .service-cta-link:active {
-            background: transparent;
-            box-shadow: none;
-            transform: none;
-            color: var(--steel-blue-dark) !important;
-            gap: 0.65rem;
+        .meta-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--font-secondary);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--steel-blue);
+            background: rgba(14, 116, 144, 0.06);
+            border: 1px solid rgba(14, 116, 144, 0.12);
+            padding: 0.22rem 0.55rem;
+            border-radius: 999px;
         }
 
-        .service-cta-link .arr {
-            transition: transform var(--transition-fast);
+        .meta-chip i {
+            font-size: 0.65rem;
+            color: var(--rosewood);
         }
 
-        .service-cta-link:hover .arr {
+        .back-cta-wrap {
+            margin-top: 0.65rem;
+        }
+
+        .back-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.58rem 1rem;
+            background: var(--steel-blue);
+            color: #FFFFFF !important;
+            border-radius: var(--radius-full);
+            font-family: var(--font-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 14px rgba(14, 116, 144, 0.2);
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .back-cta-btn:hover {
+            background: var(--steel-blue-dark);
+            box-shadow: 0 6px 18px rgba(14, 116, 144, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .back-cta-btn .arr {
+            transition: transform 0.2s ease;
+        }
+
+        .back-cta-btn:hover .arr {
             transform: translateX(4px);
         }
 
@@ -4443,7 +4674,7 @@
                 opacity: 0.9 !important;
             }
 
-            /* Horizontal Swipe Reel for Cards */
+            /* Horizontal Swipe Reel for 3D Flip Cards */
             .services-grid-5 {
                 display: flex !important;
                 flex-direction: row !important;
@@ -4451,7 +4682,7 @@
                 overflow-x: auto !important;
                 scroll-snap-type: x mandatory !important;
                 -webkit-overflow-scrolling: touch !important;
-                gap: 1.15rem !important;
+                gap: 1rem !important;
                 padding: 0.5rem 0.25rem 1.25rem !important;
                 width: 100% !important;
                 scrollbar-width: none !important;
@@ -4460,152 +4691,49 @@
                 display: none !important;
             }
 
-            .service-column {
-                flex: 0 0 85vw !important;
-                max-width: 325px !important;
-                min-width: 275px !important;
+            .service-column.flip-card {
+                flex: 0 0 80vw !important;
+                max-width: 290px !important;
+                min-width: 255px !important;
+                height: 435px !important;
                 scroll-snap-align: center !important;
                 scroll-snap-stop: always !important;
                 box-sizing: border-box !important;
-                padding: 1.85rem 1.45rem !important;
-                border-radius: 20px !important;
-                background: #FFFFFF !important;
-                border: 1px solid rgba(14, 116, 144, 0.16) !important;
-                box-shadow: 0 10px 28px rgba(19, 37, 41, 0.07), 0 2px 6px rgba(14, 116, 144, 0.04) !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                text-align: left !important;
-                position: relative !important;
-                overflow: hidden !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
             }
 
-            .service-watermark {
-                display: none !important;
+            .flip-card-inner {
+                border-radius: 16px !important;
             }
 
-            .service-card-top {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                margin-bottom: 1.25rem !important;
-                position: relative !important;
-                z-index: 2 !important;
+            .flip-card-face {
+                border-radius: 16px !important;
             }
 
-            .service-icon-box {
-                width: 48px !important;
-                height: 48px !important;
-                border-radius: 14px !important;
-                background: linear-gradient(135deg, rgba(14, 116, 144, 0.12), rgba(14, 116, 144, 0.04)) !important;
-                border: 1px solid rgba(14, 116, 144, 0.2) !important;
-                color: var(--steel-blue) !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                font-size: 1.25rem !important;
-                margin-bottom: 0 !important;
-                box-shadow: 0 4px 10px rgba(14, 116, 144, 0.08) !important;
+            .front-content-wrap {
+                padding: 1.25rem 1.15rem 1.2rem !important;
             }
 
-            .service-badge-wrap {
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.4rem !important;
+            .front-title {
+                font-size: 1.15rem !important;
             }
 
-            .service-discipline-tag {
-                display: none !important;
+            .front-desc {
+                font-size: 0.8rem !important;
             }
 
-            .service-num {
-                font-family: var(--font-secondary) !important;
-                font-size: 0.85rem !important;
-                color: var(--secondary) !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.1em !important;
-                margin-bottom: 0 !important;
+            .back-content-wrap {
+                padding: 1.35rem 1.25rem 1.25rem !important;
             }
 
-            .service-name {
-                font-family: var(--font-primary) !important;
-                font-size: 1.22rem !important;
-                font-weight: 700 !important;
-                color: var(--text-primary) !important;
-                margin-bottom: 0.45rem !important;
-                letter-spacing: -0.015em !important;
-                position: relative !important;
-                z-index: 2 !important;
+            .back-title {
+                font-size: 1.15rem !important;
             }
 
-            .service-desc {
-                font-size: 0.88rem !important;
-                line-height: 1.55 !important;
-                color: var(--text-secondary) !important;
-                margin-bottom: 1.15rem !important;
-                flex-grow: 1 !important;
-                position: relative !important;
-                z-index: 2 !important;
-            }
-
-            .service-scope-list {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.5rem !important;
-                width: 100% !important;
-                margin-bottom: 1.35rem !important;
-                padding: 0.85rem 0.95rem !important;
-                background: rgba(249, 248, 245, 0.85) !important;
-                border-radius: 12px !important;
-                border: 1px solid rgba(14, 116, 144, 0.08) !important;
-                position: relative !important;
-                z-index: 2 !important;
-            }
-
-            .service-scope-chip {
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
+            .back-deliv-list li {
                 font-size: 0.78rem !important;
-                color: var(--text-primary) !important;
-                font-weight: 500 !important;
-            }
-
-            .service-scope-chip i {
-                color: var(--steel-blue) !important;
-                font-size: 0.72rem !important;
-            }
-
-            .service-action-wrap {
-                width: 100% !important;
-                position: relative !important;
-                z-index: 2 !important;
-            }
-
-            .service-cta-link {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-                padding: 0.78rem 1.15rem !important;
-                background: var(--steel-blue) !important;
-                color: #FFFFFF !important;
-                border-radius: var(--radius-full) !important;
-                font-size: 0.82rem !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.02em !important;
-                box-shadow: 0 4px 14px rgba(14, 116, 144, 0.22) !important;
-                transition: transform 0.2s ease, background-color 0.2s ease !important;
-                text-decoration: none !important;
-            }
-
-            .service-cta-link:hover,
-            .service-cta-link:active {
-                background: var(--steel-blue-dark) !important;
-                color: #FFFFFF !important;
-                transform: translateY(-1px) !important;
             }
 
             /* Mobile Reel Centered Pagination Dots */

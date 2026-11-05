@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
@@ -27,7 +27,7 @@
         }
 
         .contact-channel-card {
-            background: #FFFFFF;
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.5rem 1.75rem;
@@ -36,14 +36,14 @@
             gap: 1.25rem;
             margin-bottom: 1.25rem;
             text-decoration: none;
-            box-shadow: 0 4px 16px rgba(14, 116, 144, 0.03);
+            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.03);
             transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
         }
 
         .contact-channel-card:hover {
             transform: translateX(4px);
             border-color: var(--rose-light);
-            box-shadow: 0 8px 24px rgba(14, 116, 144, 0.08);
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.08);
         }
 
         .contact-channel-icon {
@@ -78,11 +78,11 @@
         }
 
         .contact-form-card {
-            background: #FFFFFF;
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 3rem 2.5rem;
-            box-shadow: 0 10px 32px rgba(14, 116, 144, 0.05);
+            box-shadow: 0 10px 32px rgba(128, 15, 53, 0.05);
         }
 
         .what-happens-box {
@@ -139,38 +139,140 @@
             }
         }
     </style>
+    <!-- Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('appvertex-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
 
     <!-- ═══════════════════════════════════════════════════
+         FIXED BACKGROUND SYSTEM (STATIONARY CANVAS LAYER)
+         Directly inspired by anideatech.com:
+         Fixed full-viewport background with smooth scrolling foreground.
+         ═══════════════════════════════════════════════════ -->
+    <div id="fixedBackgroundLayer" class="fixed-background-system" aria-hidden="true">
+        <!-- Solid Base Foundation -->
+        <div class="fixed-bg-base"></div>
+
+        <!-- Technical Architectural Micro-Grid, Fluted Louvers & Precision Ticks -->
+        <svg class="fixed-bg-grid" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <!-- Fluted Louvers (Vertical Architectural Pinstripes) -->
+                <pattern id="appv-fluted-louvers" width="8" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="4" y1="0" x2="4" y2="24" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.25"></line>
+                </pattern>
+                <!-- 24px Micro Grid -->
+                <pattern id="appv-micro-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.65" stroke-opacity="0.35"></path>
+                </pattern>
+                <!-- 72px Macro Crosshair Ticks -->
+                <pattern id="appv-macro-ticks" width="72" height="72" patternUnits="userSpaceOnUse">
+                    <path d="M 72 0 L 0 0 0 72" fill="none" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55"></path>
+                    <path d="M -3 0 L 3 0 M 0 -3 L 0 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 0 L 75 0 M 72 -3 L 72 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M -3 72 L 3 72 M 0 69 L 0 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 72 L 75 72 M 72 69 L 72 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#appv-fluted-louvers)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-micro-grid)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-macro-ticks)"></rect>
+        </svg>
+
+        <!-- Preserved Fine Grain Texture Layer -->
+        <div class="fixed-bg-grain"></div>
+
+        <!-- Ambient Atmospheric Glows (Stationary) -->
+        <div class="fixed-bg-ambient-top"></div>
+        <div class="fixed-bg-ambient-bottom"></div>
+
+                <!-- Stationary Organic Curved Ribbon Layer (Fixed Brand Signature) -->
+        <div class="fixed-bg-ribbon-curves" aria-hidden="true">
+            <svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Ambient Soft Glow Spotlight -->
+                    <linearGradient id="fixedGlowBase" x1="100%" y1="20%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#F5D6DF" stop-opacity="0.45"/>
+                        <stop offset="50%" stop-color="#FBF0F3" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#FDF8F9" stop-opacity="0"/>
+                    </linearGradient>
+
+                    <!-- Sweeping Dusty Cyan Wave -->
+                    <linearGradient id="fixedWaveCyan" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#C8395E" stop-opacity="0.32"/>
+                        <stop offset="45%" stop-color="#F5D6DF" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#FBF0F3" stop-opacity="0.04"/>
+                    </linearGradient>
+
+                    <!-- Translucent Frosted Ribbon -->
+                    <linearGradient id="fixedWaveFrosted" x1="100%" y1="20%" x2="0%" y2="85%">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75"/>
+                        <stop offset="40%" stop-color="#FCFAFA" stop-opacity="0.48"/>
+                        <stop offset="100%" stop-color="#F5D6DF" stop-opacity="0.18"/>
+                    </linearGradient>
+
+                    <!-- Deep Rosewood / Burgundy Accent Base -->
+                    <linearGradient id="fixedWaveRosewood" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#800F35" stop-opacity="0.28"/>
+                        <stop offset="55%" stop-color="#800F35" stop-opacity="0.16"/>
+                        <stop offset="100%" stop-color="#C8395E" stop-opacity="0.03"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Ambient Spotlight Glow in right-center -->
+                <circle cx="1200" cy="550" r="420" fill="url(#fixedGlowBase)"/>
+
+                <!-- Outer Cyan Fluid Wave -->
+                <path d="M 1440 220 C 1220 320 1060 460 1100 620 C 1140 760 920 860 680 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveCyan)"/>
+
+                <!-- Frosted Translucent Ribbon with Delicate Hairline Highlight Stroke -->
+                <path d="M 1440 360 C 1200 460 1020 580 980 720 C 950 820 820 880 620 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveFrosted)" 
+                      stroke="rgba(255, 255, 255, 0.7)" 
+                      stroke-width="1.5"/>
+
+                <!-- Deep Rosewood Anchoring Crest -->
+                <path d="M 1440 540 C 1260 620 1120 740 1060 840 C 1030 890 980 900 880 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveRosewood)"/>
+            </svg>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
          HEADER / NAVIGATION
          ═══════════════════════════════════════════════════ -->
-    <header id="siteHeader">
+        <header id="siteHeader">
         <div class="container">
             <div class="nav-inner">
-                <!-- Logo -->
+                <!-- Brand Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <span class="logo-monogram" aria-hidden="true">
-                        <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#155E75"/>
-                            <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#0E7490"/>
-                        </svg>
-                    </span>
+                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
                 <!-- Desktop Navigation Menu -->
                 <nav class="nav-menu" aria-label="Main Navigation">
-                    <a href="index.html" class="nav-link ">HOME</a>
-                    <a href="services.html" class="nav-link ">SERVICES</a>
-                    <a href="about.html" class="nav-link ">ABOUT</a>
-                    <a href="work.html" class="nav-link ">WORK</a>
-                    <a href="process.html" class="nav-link ">PROCESS</a>
-                    <a href="upskill.html" class="nav-link ">UPSKILL</a>
+                    <a href="index.html" class="nav-link">HOME</a>
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="work.html" class="nav-link">WORK</a>
+                    <a href="process.html" class="nav-link">PROCESS</a>
+                    <a href="about.html" class="nav-link">ABOUT US</a>
+                    <a href="contact.html" class="nav-link active">CONTACT</a>
                 </nav>
 
-                <!-- Desktop CTA -->
-                <a href="contact.html" class="nav-cta-btn active-cta">GET IN TOUCH</a>
+                <!-- Actions: Theme Toggle + CTA -->
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <a href="contact.html" class="nav-cta-btn">Book a Call</a>
+                </div>
 
                 <!-- Mobile Hamburger Button -->
                 <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -182,18 +284,22 @@
         </div>
     </header>
 
-    <!-- Mobile Drawer Navigation -->
+        <!-- Mobile Drawer Navigation -->
     <div class="mobile-drawer" id="mobileDrawer">
         <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">✕</button>
-        <a href="index.html" class="nav-link mobile-link ">HOME</a>
-        <a href="services.html" class="nav-link mobile-link ">SERVICES</a>
-        <a href="about.html" class="nav-link mobile-link ">ABOUT</a>
-        <a href="work.html" class="nav-link mobile-link ">WORK</a>
-        <a href="process.html" class="nav-link mobile-link ">PROCESS</a>
-        <a href="upskill.html" class="nav-link mobile-link ">UPSKILL</a>
-        <a href="contact.html" class="btn btn-primary mobile-link" style="margin-top: 1rem;">GET IN TOUCH <span class="arr">→</span></a>
+        <a href="index.html" class="nav-link mobile-link">HOME</a>
+        <a href="services.html" class="nav-link mobile-link">SERVICES</a>
+        <a href="work.html" class="nav-link mobile-link">WORK</a>
+        <a href="process.html" class="nav-link mobile-link">PROCESS</a>
+        <a href="about.html" class="nav-link mobile-link">ABOUT US</a>
+        <a href="contact.html" class="nav-link mobile-link active">CONTACT</a>
+        <div style="margin-top: 1.5rem; display: flex; gap: 14px; align-items: center;">
+            <button class="theme-toggle-btn" id="drawerThemeToggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="drawerThemeIcon"></i>
+            </button>
+            <a href="contact.html" class="btn btn-primary mobile-link" style="font-size: 0.95rem; padding: 12px 26px;">Book a Call <span class="arr">→</span></a>
+        </div>
     </div>
-
 <main id="mainContent">
     <!-- Subpage Hero Banner -->
     <section class="subpage-hero" aria-label="Contact Overview">
@@ -201,24 +307,24 @@
             <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="contactGlowBase" x1="100%" y1="30%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#BAE6ED" stop-opacity="0.55"/>
-                        <stop offset="50%" stop-color="#E3F3F7" stop-opacity="0.35"/>
-                        <stop offset="100%" stop-color="#FCFBF8" stop-opacity="0"/>
+                        <stop offset="0%" stop-color="#F5D6DF" stop-opacity="0.55"/>
+                        <stop offset="50%" stop-color="#FBF0F3" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#FDF8F9" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="contactWaveCyan" x1="100%" y1="15%" x2="10%" y2="90%">
-                        <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.32"/>
-                        <stop offset="45%" stop-color="#BAE6ED" stop-opacity="0.22"/>
-                        <stop offset="100%" stop-color="#E3F3F7" stop-opacity="0.08"/>
+                        <stop offset="0%" stop-color="#C8395E" stop-opacity="0.32"/>
+                        <stop offset="45%" stop-color="#F5D6DF" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#FBF0F3" stop-opacity="0.08"/>
                     </linearGradient>
                     <linearGradient id="contactWaveFrostedRibbon" x1="100%" y1="25%" x2="0%" y2="85%">
                         <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
-                        <stop offset="40%" stop-color="#F9F8F5" stop-opacity="0.55"/>
-                        <stop offset="100%" stop-color="#BAE6ED" stop-opacity="0.24"/>
+                        <stop offset="40%" stop-color="#FCFAFA" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#F5D6DF" stop-opacity="0.24"/>
                     </linearGradient>
                     <linearGradient id="contactWaveBurgundyCorner" x1="100%" y1="40%" x2="30%" y2="100%">
-                        <stop offset="0%" stop-color="#155E75" stop-opacity="0.32"/>
-                        <stop offset="55%" stop-color="#0E7490" stop-opacity="0.18"/>
-                        <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.05"/>
+                        <stop offset="0%" stop-color="#800F35" stop-opacity="0.32"/>
+                        <stop offset="55%" stop-color="#800F35" stop-opacity="0.18"/>
+                        <stop offset="100%" stop-color="#C8395E" stop-opacity="0.05"/>
                     </linearGradient>
                 </defs>
 
@@ -421,17 +527,17 @@
                 
                 <defs>
                     <linearGradient id="footerBlushGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#F9F8F5" stop-opacity="0.8"/>
-                        <stop offset="50%" stop-color="#E3F3F7" stop-opacity="0.5"/>
-                        <stop offset="100%" stop-color="#BAE6ED" stop-opacity="0.25"/>
+                        <stop offset="0%" stop-color="#FCFAFA" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#FBF0F3" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#F5D6DF" stop-opacity="0.25"/>
                     </linearGradient>
                     <linearGradient id="footerDustyGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#BAE6ED" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.15"/>
+                        <stop offset="0%" stop-color="#F5D6DF" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#C8395E" stop-opacity="0.15"/>
                     </linearGradient>
                     <linearGradient id="footerBurgundyGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.3"/>
-                        <stop offset="100%" stop-color="#155E75" stop-opacity="0.18"/>
+                        <stop offset="0%" stop-color="#C8395E" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#800F35" stop-opacity="0.18"/>
                     </linearGradient>
                     <linearGradient id="footerTopShimmer" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
@@ -479,8 +585,8 @@
                     <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
                         <span class="logo-monogram" aria-hidden="true">
                             <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#155E75"/>
-                                <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#0E7490"/>
+                                <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#800F35"/>
+                                <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#800F35"/>
                             </svg>
                         </span>
                         <span class="logo-text">AppVertex</span>
@@ -501,7 +607,7 @@
                         <li><a href="about.html"><span class="nav-arr">›</span> About</a></li>
                         <li><a href="work.html"><span class="nav-arr">›</span> Work</a></li>
                         <li><a href="process.html"><span class="nav-arr">›</span> Process</a></li>
-                        <li><a href="upskill.html"><span class="nav-arr">›</span> Upskill</a></li>
+                        <li><a href="contact.html"><span class="nav-arr">›</span> Contact</a></li>
                     </ul>
                 </div>
 
@@ -764,5 +870,82 @@
         })();
     </script>
 
+<script>
+        // ═══════════════════════════════════════════════════
+        // SUBTLE SCROLL REVEAL OBSERVER (ANIDEATECH INSPIRED)
+        // Restrained fade-and-rise animations as sections enter view
+        // ═══════════════════════════════════════════════════
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+                return;
+            }
+
+            const candidates = document.querySelectorAll(
+                'section > .container > .section-header, ' +
+                'section > .container > h2, ' +
+                '.service-card, .founder-tile, .project-card, .process-card, .testimonial-card, ' +
+                '.metrics-grid, .about-split-left, .about-split-right, .contact-card'
+            );
+            candidates.forEach(el => {
+                if (!el.classList.contains('reveal-on-scroll')) {
+                    el.classList.add('reveal-on-scroll');
+                }
+            });
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px -8% 0px',
+                    threshold: 0.1
+                });
+
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+            } else {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+            }
+        })();
+
+    </script>
+
+    <!-- Theme Management (Light & Dark Mode) -->
+    <script>
+        (function() {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const drawerToggleBtn = document.getElementById('drawerThemeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const drawerIcon = document.getElementById('drawerThemeIcon');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('appvertex-theme', theme);
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+                if (drawerIcon) {
+                    drawerIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            }
+
+            const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(initialTheme);
+
+            function toggleTheme() {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+            }
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
+        })();
+    </script>
 </body>
 </html>
+
