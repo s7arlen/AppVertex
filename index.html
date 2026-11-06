@@ -738,31 +738,41 @@
                 <div class="about-split-layout">
                     <!-- Left Column: Manifesto -->
                     <div class="about-split-left reveal-on-scroll">
-                        <p class="section-eyebrow">ABOUT APPVERTEX</p>
+                        <p class="section-eyebrow"><span class="dash"></span> ABOUT APPVERTEX</p>
                         <h2 class="section-title">
-                            We build digital products that<br>
-                            <span class="accent-text">actually work</span> for your business.
+                            Built by creators,<br>
+                            <span class="accent-text">for creators.</span>
                         </h2>
                         <p class="about-manifesto-text">
-                            AppVertex is a digital product studio founded to solve a simple problem: too many businesses have websites and software that look good but don't work the way the business actually operates. We fix that. Every project starts with understanding how your team works and what your customers need — then we build around that reality.
+                            We're <strong>AppVertex</strong> — an independent app studio founded by two friends obsessed with making the internet work better for small businesses. Quality software, honest pricing, and direct collaboration from day one.
                         </p>
                         <a href="#contact" class="editorial-link">
                             GET IN TOUCH <span class="arr">→</span>
                         </a>
                     </div>
 
-                    <!-- Right Column: Dual Info Tiles -->
+                    <!-- Right Column: Who We Are / Founders -->
                     <div class="about-split-right reveal-on-scroll">
-                        <div class="about-tile">
-                            <span class="tile-tag">FOUNDED</span>
-                            <h3 class="tile-val">2021</h3>
-                            <p class="tile-desc">Building dependable digital products from Mangaluru, India for clients worldwide.</p>
+                        <p class="section-eyebrow who-we-are-eyebrow"><span class="dash"></span> WHO WE ARE</p>
+
+                        <!-- Founder Card 1: Leston Coelho -->
+                        <div class="founder-card">
+                            <span class="founder-role">FOUNDER &amp; LEAD DEVELOPER</span>
+                            <h3 class="founder-name">Leston Coelho</h3>
+                            <p class="founder-bio">
+                                Turning ideas into elegant code. Leston leads development ensuring every site is fast, scalable, and built to last.
+                            </p>
+                            <a href="mailto:leston@appvertex.in" class="founder-email">leston@appvertex.in</a>
                         </div>
 
-                        <div class="about-tile">
-                            <span class="tile-tag">PHILOSOPHY</span>
-                            <h3 class="tile-val">Function First</h3>
-                            <p class="tile-desc">Great design serves the work. We build tools and experiences that people actually use.</p>
+                        <!-- Founder Card 2: Lenstar Monteiro -->
+                        <div class="founder-card">
+                            <span class="founder-role">CO-FOUNDER &amp; CREATIVE DIRECTOR</span>
+                            <h3 class="founder-name">Lenstar Monteiro</h3>
+                            <p class="founder-bio">
+                                Where design meets strategy. Lenstar crafts interfaces that are both beautiful and intuitive.
+                            </p>
+                            <a href="mailto:lenstar@appvertex.in" class="founder-email">lenstar@appvertex.in</a>
                         </div>
                     </div>
                 </div>
@@ -2233,7 +2243,7 @@
             const candidates = document.querySelectorAll(
                 'section > .container > .section-header, ' +
                 'section > .container > .section-title, ' +
-                '.process-step-item, .method-card, .testimonial-card, .about-tile, ' +
+                '.process-step-item, .method-card, .testimonial-card, .about-tile, .founder-card, ' +
                 '.metrics-bar-container, .contact-card, .footer-cta-card'
             );
             candidates.forEach(el => {

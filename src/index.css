@@ -4145,7 +4145,7 @@
             }
 
             .dock-item span {
-                font-family: var(--font-secondary) !important;
+                font-family: var(--font-primary) !important;
                 font-size: 0.63rem !important;
                 font-weight: 700 !important;
                 letter-spacing: 0.08em !important;
