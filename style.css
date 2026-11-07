@@ -167,13 +167,13 @@ ul, ol {
   width: 100%;
   height: 100%;
   color: var(--burgundy);
-  opacity: 0.12;
+  opacity: 0.16;
   transition: opacity 0.4s ease, color 0.4s ease;
 }
 
 [data-theme="dark"] .fixed-bg-grid {
   color: #FFFFFF;
-  opacity: 0.16;
+  opacity: 0.20;
 }
 
 .fixed-bg-grain {
