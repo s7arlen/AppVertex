@@ -241,51 +241,65 @@
         <div class="fixed-bg-ribbon-curves" aria-hidden="true">
             <svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <!-- Ambient Soft Glow Spotlight -->
+                    <!-- Ambient Soft Luminous Glow Spotlight -->
                     <linearGradient id="fixedGlowBase" x1="100%" y1="20%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#BAE6ED" stop-opacity="0.45"/>
-                        <stop offset="50%" stop-color="#E3F3F7" stop-opacity="0.25"/>
-                        <stop offset="100%" stop-color="#FCFBF8" stop-opacity="0"/>
+                        <stop offset="0%" stop-color="#FFD6E5" stop-opacity="0.68"/>
+                        <stop offset="50%" stop-color="#FFF0F5" stop-opacity="0.42"/>
+                        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
                     </linearGradient>
 
-                    <!-- Sweeping Dusty Cyan Wave -->
+                    <!-- Sweeping Radiant Rose/Burgundy Wave -->
+                    <linearGradient id="fixedWaveBurgundy" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#E83E8C" stop-opacity="0.48"/>
+                        <stop offset="45%" stop-color="#F783AC" stop-opacity="0.32"/>
+                        <stop offset="100%" stop-color="#FFE3EC" stop-opacity="0.10"/>
+                    </linearGradient>
+
+                    <!-- Sweeping Wave Alias (For templates referencing fixedWaveCyan) -->
                     <linearGradient id="fixedWaveCyan" x1="100%" y1="10%" x2="15%" y2="90%">
-                        <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.32"/>
-                        <stop offset="45%" stop-color="#BAE6ED" stop-opacity="0.2"/>
-                        <stop offset="100%" stop-color="#E3F3F7" stop-opacity="0.04"/>
+                        <stop offset="0%" stop-color="#E83E8C" stop-opacity="0.48"/>
+                        <stop offset="45%" stop-color="#F783AC" stop-opacity="0.32"/>
+                        <stop offset="100%" stop-color="#FFE3EC" stop-opacity="0.10"/>
                     </linearGradient>
 
-                    <!-- Translucent Frosted Ribbon -->
+                    <!-- Luminous Translucent Frosted Glass Ribbon -->
                     <linearGradient id="fixedWaveFrosted" x1="100%" y1="20%" x2="0%" y2="85%">
-                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75"/>
-                        <stop offset="40%" stop-color="#F9F8F5" stop-opacity="0.48"/>
-                        <stop offset="100%" stop-color="#BAE6ED" stop-opacity="0.18"/>
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                        <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.75"/>
+                        <stop offset="100%" stop-color="#FFDEEB" stop-opacity="0.36"/>
                     </linearGradient>
 
-                    <!-- Deep Rosewood / Burgundy Accent Base -->
+                    <!-- Vivid Anchoring Rose Crest (Replaces muddy dark tones) -->
+                    <linearGradient id="fixedWaveDeepBurgundy" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#B81D4C" stop-opacity="0.42"/>
+                        <stop offset="55%" stop-color="#D6336C" stop-opacity="0.26"/>
+                        <stop offset="100%" stop-color="#F783AC" stop-opacity="0.08"/>
+                    </linearGradient>
+
+                    <!-- Crest Alias (For templates referencing fixedWaveRosewood) -->
                     <linearGradient id="fixedWaveRosewood" x1="100%" y1="35%" x2="25%" y2="100%">
-                        <stop offset="0%" stop-color="#155E75" stop-opacity="0.28"/>
-                        <stop offset="55%" stop-color="#0E7490" stop-opacity="0.16"/>
-                        <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.03"/>
+                        <stop offset="0%" stop-color="#B81D4C" stop-opacity="0.42"/>
+                        <stop offset="55%" stop-color="#D6336C" stop-opacity="0.26"/>
+                        <stop offset="100%" stop-color="#F783AC" stop-opacity="0.08"/>
                     </linearGradient>
                 </defs>
 
                 <!-- Ambient Spotlight Glow in right-center -->
-                <circle cx="1200" cy="550" r="420" fill="url(#fixedGlowBase)"/>
+                <circle cx="1200" cy="550" r="440" fill="url(#fixedGlowBase)"/>
 
-                <!-- Outer Cyan Fluid Wave -->
+                <!-- Outer Radiant Fluid Wave -->
                 <path d="M 1440 220 C 1220 320 1060 460 1100 620 C 1140 760 920 860 680 900 L 1440 900 Z" 
-                      fill="url(#fixedWaveCyan)"/>
+                      fill="url(#fixedWaveBurgundy)"/>
 
-                <!-- Frosted Translucent Ribbon with Delicate Hairline Highlight Stroke -->
+                <!-- Frosted Translucent Ribbon with Radiant Hairline Highlight Stroke -->
                 <path d="M 1440 360 C 1200 460 1020 580 980 720 C 950 820 820 880 620 900 L 1440 900 Z" 
                       fill="url(#fixedWaveFrosted)" 
-                      stroke="rgba(255, 255, 255, 0.7)" 
-                      stroke-width="1.5"/>
+                      stroke="rgba(255, 255, 255, 0.95)" 
+                      stroke-width="2"/>
 
-                <!-- Deep Rosewood Anchoring Crest -->
+                <!-- Vivid Anchoring Crest -->
                 <path d="M 1440 540 C 1260 620 1120 740 1060 840 C 1030 890 980 900 880 900 L 1440 900 Z" 
-                      fill="url(#fixedWaveRosewood)"/>
+                      fill="url(#fixedWaveDeepBurgundy)"/>
             </svg>
         </div>
     </div>
