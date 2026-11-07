@@ -723,25 +723,15 @@ ul, ol {
   filter: drop-shadow(0 0 32px rgba(239, 135, 13, 0.35));
 }
 
-/* 2. Floating Translucent Glass Info Panel Card */
+/* 2. Hero Info Panel Card (Base Structure) */
 .hero-info-panel {
-  background: 
-    radial-gradient(100% 180% at 100% 100%, rgba(239, 135, 13, 0.15) 0%, rgba(255, 87, 34, 0.08) 45%, transparent 75%),
-    linear-gradient(140deg, #121622 0%, #161c2b 50%, #101420 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 2.25rem 2.75rem;
+  border-radius: 18px;
+  padding: 1.75rem 2.25rem;
   width: 100%;
-  box-shadow: 
-    0 24px 64px -12px rgba(0, 0, 0, 0.65),
-    0 0 35px rgba(239, 135, 13, 0.12),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 2.5rem;
   position: relative;
   z-index: 2;
   margin-bottom: 4.5rem;
@@ -750,17 +740,22 @@ ul, ol {
   overflow: hidden;
 }
 
-.hero-info-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(239, 135, 13, 0.3) 15%, #ef870d 50%, rgba(239, 135, 13, 0.3) 85%, transparent 100%);
-  opacity: 0.9;
+.hero-info-left {
+  flex: 1;
+  min-width: 0;
+  max-width: 640px;
 }
 
+.hero-info-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LIGHT MODE: Hero Info Panel (Original Light Theme Design)
+   ───────────────────────────────────────────────────────────── */
 [data-theme="light"] .hero-info-panel,
 html:not([data-theme="dark"]) .hero-info-panel {
   background: 
@@ -777,23 +772,40 @@ html:not([data-theme="dark"]) .hero-info-panel {
 
 [data-theme="light"] .hero-info-panel::before,
 html:not([data-theme="dark"]) .hero-info-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(239, 135, 13, 0.2) 20%, #ef870d 50%, rgba(239, 135, 13, 0.2) 80%, transparent 100%);
+  display: block;
 }
 
 [data-theme="light"] .hero-info-panel .hero-desc,
 html:not([data-theme="dark"]) .hero-info-panel .hero-desc {
-  color: #1a1514 !important;
-  font-size: 1.02rem;
-  line-height: 1.68;
+  color: #1a1514;
+  font-family: var(--font-primary);
+  font-size: 0.98rem;
+  line-height: 1.58;
   font-weight: 500;
   letter-spacing: -0.01em;
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(26, 21, 20, 0.08);
+  text-shadow: none;
 }
 
 [data-theme="light"] .hero-info-panel .hero-subnote,
 html:not([data-theme="dark"]) .hero-info-panel .hero-subnote {
-  color: #716a65 !important;
-  font-size: 0.85rem;
+  color: #716a65;
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  line-height: 1.45;
   font-weight: 450;
+  margin: 0;
+  padding-top: 12px;
+  text-shadow: none;
 }
 
 [data-theme="light"] .hero-info-panel .hero-btn-pill-primary,
@@ -812,26 +824,19 @@ html:not([data-theme="dark"]) .hero-info-panel .hero-btn-pill-primary {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
   text-decoration: none;
+  border: none;
 }
 
-.hero-btn-pill-primary:hover {
+[data-theme="light"] .hero-info-panel .hero-btn-pill-primary:hover,
+html:not([data-theme="dark"]) .hero-info-panel .hero-btn-pill-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   background: #18181b;
   color: #ffffff !important;
 }
 
-[data-theme="dark"] .hero-btn-pill-primary {
-  background: #ffffff;
-  color: #000000 !important;
-}
-
-[data-theme="dark"] .hero-btn-pill-primary:hover {
-  background: #f1f5f9;
-  color: #000000 !important;
-}
-
-.hero-btn-arrow-circle {
+[data-theme="light"] .hero-info-panel .hero-btn-arrow-circle,
+html:not([data-theme="dark"]) .hero-info-panel .hero-btn-arrow-circle {
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -844,45 +849,42 @@ html:not([data-theme="dark"]) .hero-info-panel .hero-btn-pill-primary {
   transition: transform 0.25s ease, background-color 0.2s ease;
 }
 
-[data-theme="dark"] .hero-btn-arrow-circle {
-  background: var(--color-brand);
-  color: #000000;
+[data-theme="light"] .hero-info-panel .hero-btn-arrow-circle svg path,
+html:not([data-theme="dark"]) .hero-info-panel .hero-btn-arrow-circle svg path {
+  stroke: #000000;
 }
 
-.hero-btn-pill-primary:hover .hero-btn-arrow-circle {
+[data-theme="light"] .hero-info-panel .hero-btn-pill-primary:hover .hero-btn-arrow-circle,
+html:not([data-theme="dark"]) .hero-info-panel .hero-btn-pill-primary:hover .hero-btn-arrow-circle {
   transform: translateX(3px);
   background: var(--color-service);
   color: #ffffff;
 }
 
-/* Secondary Pill Button */
-.hero-btn-pill-secondary {
-  background: rgba(255, 255, 255, 0.04);
-  color: #FFFFFF !important;
-  font-family: var(--font-primary);
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 12px 24px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  text-decoration: none;
+[data-theme="light"] .hero-info-panel .hero-btn-pill-primary:hover .hero-btn-arrow-circle svg path,
+html:not([data-theme="dark"]) .hero-info-panel .hero-btn-pill-primary:hover .hero-btn-arrow-circle svg path {
+  stroke: #ffffff;
 }
 
 [data-theme="light"] .hero-btn-pill-secondary,
 html:not([data-theme="dark"]) .hero-btn-pill-secondary {
   background: transparent;
   color: var(--text-primary) !important;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--border);
-}
-
-.hero-btn-pill-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 [data-theme="light"] .hero-btn-pill-secondary:hover,
@@ -890,6 +892,134 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   background: var(--blush);
   border-color: var(--burgundy);
   color: var(--burgundy) !important;
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DARK MODE: Hero Info Panel (Frosted Glassmorphism as requested)
+   ───────────────────────────────────────────────────────────── */
+[data-theme="dark"] .hero-info-panel {
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(239, 135, 13, 0.06) 100%),
+    rgba(15, 19, 29, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 24px 50px -12px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+[data-theme="dark"] .hero-info-panel:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 
+    0 28px 60px -12px rgba(0, 0, 0, 0.72),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .hero-info-panel::before {
+  display: none;
+}
+
+[data-theme="dark"] .hero-info-panel .hero-desc {
+  color: #f8fafc;
+  font-family: var(--font-primary);
+  font-size: 0.98rem;
+  line-height: 1.58;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .hero-info-panel .hero-subnote {
+  color: #94a3b8;
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  font-weight: 400;
+  margin: 0;
+  padding-top: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .hero-btn-pill-primary {
+  background: #ffffff;
+  color: #0f172a !important;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 5px 6px 5px 20px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+  text-decoration: none;
+  border: none;
+}
+
+[data-theme="dark"] .hero-btn-pill-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+  background: #f8fafc;
+  color: #0f172a !important;
+}
+
+[data-theme="dark"] .hero-btn-arrow-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ee860d;
+  color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+[data-theme="dark"] .hero-btn-arrow-circle svg path {
+  stroke: #000000;
+}
+
+[data-theme="dark"] .hero-btn-pill-primary:hover .hero-btn-arrow-circle {
+  transform: translateX(3px);
+}
+
+[data-theme="dark"] .hero-btn-pill-secondary {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #f8fafc !important;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 550;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+[data-theme="dark"] .hero-btn-pill-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #ffffff !important;
+  transform: translateY(-2px);
 }
 
 /* 3. Key Performance Indicators / Statistics Grid */
