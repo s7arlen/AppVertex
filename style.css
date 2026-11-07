@@ -11,19 +11,19 @@
 :root {
   --background: #FFFFFF;
   --surface: #FFFFFF;
-  --surface-raised: #FFF9FA;
-  --surface-alt: #FFF0F4;
+  --surface-raised: #FAFAFC;
+  --surface-alt: #F4F4F7;
   --burgundy: #800F35;
-  --burgundy-deep: #5B1029;
-  --burgundy-accent: #A61E4D;
-  --blush: #FFF0F5;
-  --rose-light: #FFDEEB;
-  --dusty-rose: #E83E8C;
+  --burgundy-deep: #4A081E;
+  --burgundy-accent: #9E1B42;
+  --blush: #F7F5F6;
+  --rose-light: #ECE7EB;
+  --dusty-rose: #8C3B53;
   --text-primary: #171316;
   --text-secondary: #71666B;
   --text-muted: #9B8E92;
-  --border: #E9DDE1;
-  --border-light: #F3EAED;
+  --border: #E8E4E7;
+  --border-light: #F2EFF1;
   --shadow-soft: rgba(128, 15, 53, 0.07);
   --shadow-medium: rgba(128, 15, 53, 0.13);
   --shadow-large: rgba(128, 15, 53, 0.2);
@@ -167,7 +167,7 @@ ul, ol {
   width: 100%;
   height: 100%;
   color: var(--burgundy);
-  opacity: 0.15;
+  opacity: 0.12;
   transition: opacity 0.4s ease, color 0.4s ease;
 }
 
@@ -189,13 +189,13 @@ ul, ol {
 
 .fixed-bg-ambient-top {
   position: absolute;
-  top: -25%;
-  right: -10%;
+  top: -20%;
+  right: -8%;
   width: 75vw;
   height: 75vh;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(232, 62, 140, 0.35) 0%, rgba(247, 131, 172, 0.20) 40%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(ellipse at 80% 25%, rgba(128, 15, 53, 0.07) 0%, rgba(228, 222, 226, 0.22) 40%, transparent 70%);
+  filter: blur(90px);
   pointer-events: none;
   transition: background 0.4s ease;
 }
@@ -204,11 +204,11 @@ ul, ol {
   position: absolute;
   bottom: -20%;
   left: -10%;
-  width: 65vw;
-  height: 65vh;
+  width: 60vw;
+  height: 60vh;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(240, 98, 146, 0.20) 0%, transparent 60%);
-  filter: blur(80px);
+  background: radial-gradient(ellipse at center, rgba(128, 15, 53, 0.03) 0%, transparent 60%);
+  filter: blur(90px);
   pointer-events: none;
   transition: background 0.4s ease;
 }
@@ -227,7 +227,7 @@ ul, ol {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 1;
+  opacity: 0.95;
   transition: opacity 0.4s ease;
 }
 
@@ -718,22 +718,20 @@ ul, ol {
 [data-theme="light"] .hero-info-panel,
 html:not([data-theme="dark"]) .hero-info-panel {
   background: 
-    radial-gradient(100% 180% at 100% 100%, rgba(200, 57, 94, 0.22) 0%, rgba(128, 15, 53, 0.08) 50%, transparent 75%),
-    radial-gradient(90% 120% at 0% 0%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 245, 248, 0.8) 60%, transparent 100%),
-    linear-gradient(140deg, #FFFFFF 0%, #FDF4F6 30%, #F8DEE5 70%, #F2C7D4 100%);
-  border: 1px solid rgba(128, 15, 53, 0.18);
+    radial-gradient(80% 120% at 100% 100%, rgba(128, 15, 53, 0.035) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 250, 252, 0.92) 50%, rgba(248, 245, 248, 0.88) 100%);
+  border: 1px solid rgba(128, 15, 53, 0.12);
   box-shadow: 
-    0 24px 64px -12px rgba(128, 15, 53, 0.15),
-    0 8px 24px -4px rgba(128, 15, 53, 0.08),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -1px 2px 0 rgba(128, 15, 53, 0.06);
+    0 20px 48px -12px rgba(17, 17, 26, 0.07),
+    0 6px 18px -4px rgba(128, 15, 53, 0.03),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 }
 
 [data-theme="light"] .hero-info-panel::before,
 html:not([data-theme="dark"]) .hero-info-panel::before {
-  background: linear-gradient(90deg, transparent 0%, rgba(128, 15, 53, 0.2) 15%, var(--burgundy) 50%, rgba(128, 15, 53, 0.2) 85%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(128, 15, 53, 0.12) 20%, #800F35 50%, rgba(128, 15, 53, 0.12) 80%, transparent 100%);
 }
 
 [data-theme="light"] .hero-info-panel .hero-desc,
