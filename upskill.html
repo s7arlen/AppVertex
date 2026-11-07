@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upskill Academy | AppVertex Digital Studio</title>
     <meta name="description" content="AppVertex Upskill — Master modern production engineering, fullstack web architectures, and UI/UX design by shipping real software.">
+        <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s7arlen.github.io/AppVertex/upskill.html">
+    <meta property="og:title" content="Upskill Academy | AppVertex Digital Studio">
+    <meta property="og:description" content="AppVertex Upskill — Master modern production engineering, fullstack web architectures, and UI/UX design by shipping real software.">
+    <meta property="og:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s7arlen.github.io/AppVertex/upskill.html">
+    <meta property="twitter:title" content="Upskill Academy | AppVertex Digital Studio">
+    <meta property="twitter:description" content="AppVertex Upskill — Master modern production engineering, fullstack web architectures, and UI/UX design by shipping real software.">
+    <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/upskill.html">
     <link rel="icon" href="logo.png" type="image/png">
     
@@ -26,7 +39,7 @@
         }
 
         .upskill-track-card {
-            background: #FFFFFF;
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 2.5rem 2rem;
@@ -49,10 +62,10 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--burgundy);
             background: var(--blush);
@@ -173,6 +186,13 @@
             }
         }
     </style>
+    <!-- Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('appvertex-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
 
@@ -279,27 +299,28 @@
             <div class="nav-inner">
                 <!-- Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <span class="logo-monogram" aria-hidden="true">
-                        <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.5 2.5L1 21.5H5.8L7.6 16.5H13.8L12.5 12.8H8.9L10.8 7.5L14.2 16.5L16.8 10L14.5 2.5H7.5Z" fill="#155E75"/>
-                            <path d="M15.5 2.5L19.2 12.5L22.9 2.5H27.5L21.2 21.5H17.2L12.5 9.2L14.5 2.5H15.5Z" fill="#0E7490"/>
-                        </svg>
-                    </span>
+                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
                 <!-- Desktop Navigation Menu -->
                 <nav class="nav-menu" aria-label="Main Navigation">
-                    <a href="index.html" class="nav-link ">HOME</a>
-                    <a href="services.html" class="nav-link ">SERVICES</a>
-                    <a href="about.html" class="nav-link ">ABOUT</a>
-                    <a href="work.html" class="nav-link ">WORK</a>
-                    <a href="process.html" class="nav-link ">PROCESS</a>
+                    <a href="index.html" class="nav-link">HOME</a>
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="work.html" class="nav-link">WORK</a>
+                    <a href="process.html" class="nav-link">PROCESS</a>
+                    <a href="about.html" class="nav-link">ABOUT</a>
                     <a href="upskill.html" class="nav-link active">UPSKILL</a>
+                    <a href="contact.html" class="nav-link">CONTACT</a>
                 </nav>
 
                 <!-- Desktop CTA -->
-                <a href="contact.html" class="nav-cta-btn ">GET IN TOUCH</a>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <a href="contact.html" class="nav-cta-btn">Book a Call</a>
+                </div>
 
                 <!-- Mobile Hamburger Button -->
                 <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -552,13 +573,17 @@
                 <i class="fas fa-home"></i>
                 <span>HOME</span>
             </a>
+            <a href="services.html" class="dock-item" aria-label="Services">
+                <i class="fas fa-th-large"></i>
+                <span>SERVICES</span>
+            </a>
             <a href="work.html" class="dock-item" aria-label="Work">
                 <i class="fas fa-briefcase"></i>
                 <span>WORK</span>
             </a>
-            <a href="services.html" class="dock-item" aria-label="Services">
-                <i class="fas fa-th-large"></i>
-                <span>SERVICES</span>
+            <a href="upskill.html" class="dock-item active" aria-label="Upskill">
+                <i class="fas fa-graduation-cap"></i>
+                <span>UPSKILL</span>
             </a>
             <a href="contact.html" class="dock-item" aria-label="Contact">
                 <i class="fas fa-envelope"></i>
@@ -877,6 +902,12 @@
                     const existing = JSON.parse(localStorage.getItem('appvertex_applications') || '[]');
                     existing.unshift(application);
                     localStorage.setItem('appvertex_applications', JSON.stringify(existing));
+                    if ('BroadcastChannel' in window) {
+                        try {
+                            const syncChannel = new BroadcastChannel('appvertex_sync');
+                            syncChannel.postMessage({ type: 'NEW_APPLICATION', data: application });
+                        } catch(e){}
+                    }
                     window.dispatchEvent(new StorageEvent('storage', {
                         key: 'appvertex_applications',
                         newValue: JSON.stringify(existing)
@@ -955,6 +986,32 @@
             }
         })();
 
+    </script>
+    <!-- Theme Management (Light & Dark Mode) -->
+    <script>
+        (function() {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('appvertex-theme', theme);
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            }
+
+            const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(initialTheme);
+
+            function toggleTheme() {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+            }
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        })();
     </script>
 </body>
 </html>

@@ -27,3 +27,4 @@ scratch/
 *.backup.*
 *.pre-redesign.*
 *.bak*
+.archive/

@@ -41,8 +41,8 @@
             --info-soft: rgba(59, 130, 246, 0.1);
 
             --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-secondary: 'Barlow Semi Condensed', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font-secondary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
             
             --radius-sm: 8px;
             --radius-md: 12px;
@@ -530,7 +530,7 @@
         .nav-section { margin-bottom: 1.75rem; }
         
         .nav-title {
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.16em;
@@ -570,7 +570,7 @@
         .nav-badge {
             background: var(--primary-soft);
             color: var(--primary);
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             font-weight: 700;
             padding: 0.15rem 0.5rem;
@@ -981,7 +981,7 @@
         }
 
         .stat-value {
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 2rem;
             font-weight: 700;
             color: var(--text-main);
@@ -990,7 +990,7 @@
         }
 
         .stat-label {
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -1113,7 +1113,7 @@
             color: var(--text-muted);
             padding: 0.45rem 0.95rem;
             border-radius: var(--radius-full);
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.06em;
@@ -1193,7 +1193,7 @@
         .category-tag-pill {
             background: var(--primary-soft);
             color: var(--primary);
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.08em;
@@ -1206,7 +1206,7 @@
             background: var(--bg-canvas);
             border: 1px solid var(--border);
             color: var(--text-muted);
-            font-family: var(--font-secondary);
+            font-family: var(--font-primary);
             font-size: 0.72rem;
             font-weight: 700;
             padding: 0.15rem 0.5rem;
@@ -1228,7 +1228,7 @@
 
         .tech-pill {
             font-size: 0.72rem;
-            font-family: var(--font-mono);
+            font-family: var(--font-primary);
             background: var(--bg-canvas);
             border: 1px solid var(--border);
             color: var(--text-main);
@@ -1575,7 +1575,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
             padding: 1.25rem;
-            font-family: var(--font-mono);
+            font-family: var(--font-primary);
             font-size: 0.825rem;
             max-height: 400px;
             overflow-y: auto;
@@ -1684,18 +1684,9 @@
                 </button>
             </form>
 
-            <div class="auth-divider">
-                <span>or</span>
-            </div>
-
-            <button type="button" class="quick-dev-btn" onclick="handleLocalMode()">
-                <i class="fas fa-bolt"></i>
-                <span>Quick Local Access (Dev Mode)</span>
-            </button>
-
-            <div class="auth-switch">
-                <span id="authSwitchText">Need an admin account?</span>
-                <button type="button" class="auth-switch-btn" id="authSwitchBtn" onclick="toggleAuthMode()">Create one</button>
+            <!-- Public registration removed for administrative security -->
+            <div style="margin-top:1.25rem; font-size:0.78rem; color:var(--text-muted); text-align:center;">
+                Protected Studio Administrative Console
             </div>
 
             <div class="login-footer">
@@ -1776,7 +1767,7 @@
 
                 <div class="nav-section">
                     <div class="nav-title">LIVE WEBSITE</div>
-                    <a href="index.html" target="_blank" class="nav-item">
+                    <a href="index.html" target="_blank" rel="noopener noreferrer" class="nav-item">
                         <div class="nav-item-left"><i class="fas fa-external-link-alt"></i> Open Public Site</div>
                         <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
                     </a>
@@ -1798,14 +1789,16 @@
                 <!-- SYSTEM MODE BANNER -->
                 <div class="system-mode-banner">
                     <div class="banner-left">
+                        <span id="modeStatusText" class="nav-badge" style="background:rgba(128,15,53,0.18); color:var(--primary); font-size:0.75rem; padding:0.25rem 0.65rem; border-radius:9999px; margin-right:0.75rem; font-weight:600;">Cloud Synchronized</span>
                         <div class="quick-page-links">
                             <span class="preview-label">Preview</span>
-                            <a href="index.html" class="page-link-pill" target="_blank">Home</a>
-                            <a href="work.html" class="page-link-pill" target="_blank">Work</a>
-                            <a href="services.html" class="page-link-pill" target="_blank">Services</a>
-                            <a href="process.html" class="page-link-pill" target="_blank">Process</a>
-                            <a href="about.html" class="page-link-pill" target="_blank">About</a>
-                            <a href="contact.html" class="page-link-pill" target="_blank">Contact</a>
+                            <a href="index.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">Home</a>
+                            <a href="work.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">Work</a>
+                            <a href="services.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">Services</a>
+                            <a href="process.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">Process</a>
+                            <a href="about.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">About</a>
+                            <a href="upskill.html" class="page-link-pill" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">Upskill</a>
+                            <a href="contact.html" class="page-link-pill" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">Contact</a>
                         </div>
                     </div>
                     <div class="banner-right">
@@ -1950,7 +1943,7 @@
                     <div class="filter-controls-bar">
                         <div class="search-box-wrap">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="inquirySearchInput" placeholder="Search inquiries by name, company, email, or message..." oninput="renderInquiries()">
+                            <input type="text" id="inquirySearchInput" aria-label="Search client inquiries" placeholder="Search inquiries by name, company, email, or message..." oninput="renderInquiries()">
                         </div>
                         <div class="filter-pills-row" id="inquiryFilterRow">
                             <button class="filter-pill-btn active" onclick="setInquiryFilter('all', this)">All</button>
@@ -1984,7 +1977,7 @@
                     <div class="filter-controls-bar">
                         <div class="search-box-wrap">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="applicationSearchInput" placeholder="Search applicants by candidate name, track, or goals..." oninput="renderApplications()">
+                            <input type="text" id="applicationSearchInput" aria-label="Search mentorship applications" placeholder="Search applicants by candidate name, track, or goals..." oninput="renderApplications()">
                         </div>
                         <div class="filter-pills-row" id="applicationFilterRow">
                             <button class="filter-pill-btn active" onclick="setApplicationFilter('all', this)">All</button>
@@ -2015,7 +2008,7 @@
                     <div class="filter-controls-bar">
                         <div class="search-box-wrap">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="projectSearchInput" placeholder="Search projects by title, tech, or description..." oninput="renderProjects()">
+                            <input type="text" id="projectSearchInput" aria-label="Search studio projects" placeholder="Search projects by title, tech, or description..." oninput="renderProjects()">
                         </div>
                         <div class="filter-pills-row" id="projectCategoryFilterRow">
                             <button class="filter-pill-btn active" onclick="setProjectCategoryFilter('all', this)">All Categories</button>
@@ -2046,7 +2039,7 @@
                     <div class="filter-controls-bar">
                         <div class="search-box-wrap">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="testimonialSearchInput" placeholder="Search testimonials by name or company..." oninput="renderTestimonials()">
+                            <input type="text" id="testimonialSearchInput" aria-label="Search client reviews" placeholder="Search testimonials by name or company..." oninput="renderTestimonials()">
                         </div>
                     </div>
 
@@ -2069,22 +2062,22 @@
                         <div class="form-row" style="margin-top:1.25rem;">
                             <div class="form-group">
                                 <label class="form-label">Copyright Year</label>
-                                <input type="number" class="form-input" id="footerYear" value="2026">
+                                <input type="number" class="form-input" id="footerYear" aria-label="Copyright year" value="2026">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Studio Availability Status</label>
-                                <input type="text" class="form-input" id="studioStatus" value="Open for Select Q4 / 2026 Engagements">
+                                <input type="text" class="form-input" id="studioStatus" aria-label="Studio availability status" value="Open for Select Q4 / 2026 Engagements">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Direct Studio Email</label>
-                                <input type="email" class="form-input" id="studioEmail" value="leston@appvertex.in">
+                                <input type="email" class="form-input" id="studioEmail" aria-label="Studio contact email" value="leston@appvertex.in">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">WhatsApp Contact Number</label>
-                                <input type="text" class="form-input" id="studioWhatsApp" value="+91 93229 71253">
+                                <input type="text" class="form-input" id="studioWhatsApp" aria-label="Studio WhatsApp number" value="+91 93229 71253">
                             </div>
                         </div>
 
@@ -2119,7 +2112,7 @@
                             <button class="btn btn-primary" onclick="downloadJSONBackup()"><i class="fas fa-download"></i> Export JSON Backup</button>
                             <label class="btn btn-secondary" style="margin-bottom:0;">
                                 <i class="fas fa-upload"></i> Restore from JSON
-                                <input type="file" id="importJsonFileInput" accept=".json" style="display:none;" onchange="importJSONBackup(this)">
+                                <input type="file" id="importJsonFileInput" aria-label="Import JSON backup file" accept=".json" style="display:none;" onchange="importJSONBackup(this)">
                             </label>
                         </div>
                     </div>
@@ -2155,7 +2148,7 @@
                 
                 <div class="form-group">
                     <label class="form-label">Project Name / Domain *</label>
-                    <input type="text" class="form-input" id="projectName" placeholder="e.g. lorettocentralschool.edu.in" required>
+                    <input type="text" class="form-input" id="projectName" aria-label="Project name" placeholder="e.g. lorettocentralschool.edu.in" required>
                 </div>
 
                 <div class="form-row">
@@ -2170,7 +2163,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Year</label>
-                        <input type="number" class="form-input" id="projectYear" value="2026">
+                        <input type="number" class="form-input" id="projectYear" aria-label="Project release year" value="2026">
                     </div>
                 </div>
 
@@ -2181,18 +2174,18 @@
 
                 <div class="form-group">
                     <label class="form-label">Tech Stack (comma separated, max 3)</label>
-                    <input type="text" class="form-input" id="projectTech" placeholder="React.js, Node.js, MySQL">
+                    <input type="text" class="form-input" id="projectTech" aria-label="Project technology stack" placeholder="React.js, Node.js, MySQL">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Live Link (Optional)</label>
-                    <input type="text" class="form-input" id="projectLink" placeholder="https://example.com or #contact">
+                    <input type="text" class="form-input" id="projectLink" aria-label="Project live URL" placeholder="https://example.com or #contact">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Project Cover / Screenshot</label>
                     <div class="image-upload" id="projectImageUpload">
-                        <input type="file" id="projectImage" accept="image/*" onchange="handleImageUpload(this, 'project')">
+                        <input type="file" id="projectImage" aria-label="Upload project preview image" accept="image/*" onchange="handleImageUpload(this, 'project')">
                         <div id="projectPlaceholder">
                             <i class="fas fa-image" style="font-size:1.8rem; color:var(--text-subtle); margin-bottom:0.5rem;"></i>
                             <p style="font-weight:600; font-size:0.88rem;">Click to upload screenshot</p>
@@ -2227,11 +2220,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">Client Name *</label>
-                        <input type="text" class="form-input" id="testimonialName" placeholder="e.g. Loretto Administration" required>
+                        <input type="text" class="form-input" id="testimonialName" aria-label="Testimonial author name" placeholder="e.g. Loretto Administration" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Role &amp; Organization</label>
-                        <input type="text" class="form-input" id="testimonialRole" placeholder="e.g. Institutional Client">
+                        <input type="text" class="form-input" id="testimonialRole" aria-label="Testimonial author role" placeholder="e.g. Institutional Client">
                     </div>
                 </div>
 
@@ -2252,7 +2245,7 @@
                 <div class="form-group">
                     <label class="form-label">Client Photo / Avatar (Optional)</label>
                     <div class="image-upload" id="testimonialImageUpload">
-                        <input type="file" id="testimonialImage" accept="image/*" onchange="handleImageUpload(this, 'testimonial')">
+                        <input type="file" id="testimonialImage" aria-label="Upload author avatar" accept="image/*" onchange="handleImageUpload(this, 'testimonial')">
                         <div id="testimonialPlaceholder">
                             <i class="fas fa-user-circle" style="font-size:1.8rem; color:var(--text-subtle); margin-bottom:0.5rem;"></i>
                             <p style="font-weight:600; font-size:0.88rem;">Click to upload avatar</p>
@@ -2298,6 +2291,17 @@
 
         // State Store
         let isLocalMode = false;
+
+        function escapeJsStr(val) {
+            return String(val ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/</g, '\\x3c').replace(/>/g, '\\x3e');
+        }
+
+        function sanitizeCsv(val) {
+            let s = String(val ?? '');
+            if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+            return `"${s.replace(/"/g, '""')}"`;
+        }
+
         let testimonials = [];
         let projects = [];
         let inquiries = [];
@@ -2493,6 +2497,13 @@
         if (auth) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
+                    const email = user.email || '';
+                    const isAuthorized = email.endsWith('@appvertex.in') || email === 'appvertex.in@gmail.com' || email.includes('admin');
+                    if (!isAuthorized) {
+                        showToast("Access restricted: Administrator email required.", "error");
+                        signOut(auth);
+                        return;
+                    }
                     isLocalMode = false;
                     document.getElementById('loginScreen').style.display = 'none';
                     document.getElementById('adminPanel').classList.add('visible');
@@ -2512,40 +2523,12 @@
         let isRegisterMode = false;
 
         function toggleAuthMode() {
-            isRegisterMode = !isRegisterMode;
-            const title = document.getElementById('authTitle');
-            const subtitle = document.getElementById('authSubtitle');
-            const btnText = document.getElementById('loginBtnText');
-            const switchText = document.getElementById('authSwitchText');
-            const switchBtn = document.getElementById('authSwitchBtn');
-            const forgotBtn = document.getElementById('forgotPassLink');
-            const err = document.getElementById('loginError');
-            if (err) err.classList.remove('show');
-
-            if (isRegisterMode) {
-                if (title) title.textContent = "Create Account";
-                if (subtitle) subtitle.textContent = "Register a new administrator for AppVertex Studio";
-                if (btnText) btnText.textContent = "Create Account";
-                if (switchText) switchText.textContent = "Already have an account?";
-                if (switchBtn) switchBtn.textContent = "Sign In";
-                if (forgotBtn) forgotBtn.style.display = "none";
-            } else {
-                if (title) title.textContent = "Sign In";
-                if (subtitle) subtitle.textContent = "Enter your credentials to access the admin console";
-                if (btnText) btnText.textContent = "Sign In";
-                if (switchText) switchText.textContent = "Need an admin account?";
-                if (switchBtn) switchBtn.textContent = "Create one";
-                if (forgotBtn) forgotBtn.style.display = "block";
-            }
+            // Registration disabled for public security
         }
 
         async function handleAuthSubmit(e) {
             if (e) e.preventDefault();
-            if (isRegisterMode) {
-                await handleRegister();
-            } else {
-                await handleLogin();
-            }
+            await handleLogin();
         }
 
         async function handleForgotPassword() {
@@ -2986,7 +2969,7 @@
                         </div>
                         <div style="display:flex; gap:0.4rem;">
                             <a href="${mailUrl}" class="btn-icon" title="Email Lead"><i class="fas fa-envelope"></i></a>
-                            ${inq.phone ? `<a href="${waUrl}" target="_blank" class="btn-icon" style="color:#10B981;" title="WhatsApp Lead"><i class="fab fa-whatsapp"></i></a>` : ''}
+                            ${inq.phone ? `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-icon" style="color:#10B981;" title="WhatsApp Lead"><i class="fab fa-whatsapp"></i></a>` : ''}
                             <button class="btn-icon" onclick="showSection('inquiries')" title="View in Inbox"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -3020,7 +3003,7 @@
                         </div>
                         <div style="display:flex; gap:0.4rem;">
                             <a href="${mailUrl}" class="btn-icon" title="Email Candidate"><i class="fas fa-envelope"></i></a>
-                            ${app.phone ? `<a href="${waUrl}" target="_blank" class="btn-icon" style="color:#10B981;" title="WhatsApp Candidate"><i class="fab fa-whatsapp"></i></a>` : ''}
+                            ${app.phone ? `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-icon" style="color:#10B981;" title="WhatsApp Candidate"><i class="fab fa-whatsapp"></i></a>` : ''}
                             <button class="btn-icon" onclick="showSection('applications')" title="View in Intake"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -3032,16 +3015,16 @@
             if (inquiries.length === 0) return showToast("No inquiries available to export", "info");
             const headers = ["ID", "Name", "Email", "Phone", "Company", "Service", "Budget", "Status", "Date", "Message"];
             const rows = inquiries.map(i => [
-                i.id,
-                `"${(i.name || '').replace(/"/g, '""')}"`,
-                `"${(i.email || '').replace(/"/g, '""')}"`,
-                `"${(i.phone || '').replace(/"/g, '""')}"`,
-                `"${(i.company || '').replace(/"/g, '""')}"`,
-                `"${(i.service || '').replace(/"/g, '""')}"`,
-                `"${(i.budget || '').replace(/"/g, '""')}"`,
-                i.status,
-                `"${(i.date || '').replace(/"/g, '""')}"`,
-                `"${(i.message || '').replace(/"/g, '""')}"`
+                sanitizeCsv(i.id),
+                sanitizeCsv(i.name),
+                sanitizeCsv(i.email),
+                sanitizeCsv(i.phone),
+                sanitizeCsv(i.company),
+                sanitizeCsv(i.service),
+                sanitizeCsv(i.budget),
+                sanitizeCsv(i.status),
+                sanitizeCsv(i.date),
+                sanitizeCsv(i.message)
             ]);
             const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -3058,14 +3041,14 @@
             if (applications.length === 0) return showToast("No applications available to export", "info");
             const headers = ["ID", "Name", "Email", "Phone", "Track", "Status", "Applied Date", "Background"];
             const rows = applications.map(a => [
-                a.id,
-                `"${(a.name || '').replace(/"/g, '""')}"`,
-                `"${(a.email || '').replace(/"/g, '""')}"`,
-                `"${(a.phone || '').replace(/"/g, '""')}"`,
-                `"${(a.track || '').replace(/"/g, '""')}"`,
-                a.status,
-                `"${(a.date || a.createdAt || '').replace(/"/g, '""')}"`,
-                `"${(a.background || '').replace(/"/g, '""')}"`
+                sanitizeCsv(a.id),
+                sanitizeCsv(a.name),
+                sanitizeCsv(a.email),
+                sanitizeCsv(a.phone),
+                sanitizeCsv(a.track),
+                sanitizeCsv(a.status),
+                sanitizeCsv(a.date || a.createdAt),
+                sanitizeCsv(a.background)
             ]);
             const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -3228,8 +3211,8 @@
                         </div>
                         <div class="item-actions">
                             ${p.link && p.link !== '#contact' ? `<a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="btn-icon" title="Open Live Site"><i class="fas fa-external-link-alt"></i></a>` : ''}
-                            <button class="btn-icon" onclick="editProjectById('${p.id}')" title="Edit"><i class="fas fa-edit"></i></button>
-                            <button class="btn-icon btn-danger" onclick="deleteProject('${p.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+                            <button class="btn-icon" aria-label="Edit project" onclick="editProjectById('${escapeJsStr(p.id)}')" title="Edit" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-icon btn-danger" onclick="deleteProject('${escapeJsStr(p.id)}')" title="Delete"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;
@@ -3253,7 +3236,7 @@
                             <div style="font-size:0.75rem; color:var(--text-muted);">${escapeHTML(p.categoryLabel || normCat(p.category).toUpperCase())} · ${escapeHTML(p.year || 2026)}</div>
                         </div>
                     </div>
-                    <button class="btn-icon" onclick="editProjectById('${p.id}')"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon" aria-label="Edit project" onclick="editProjectById('${escapeJsStr(p.id)}')" title="Edit"><i class="fas fa-edit"></i></button>
                 </div>
             `).join('');
         }
@@ -3295,8 +3278,8 @@
                             <p class="item-desc" style="font-style:italic;">"${escapeHTML(t.text || '')}"</p>
                         </div>
                         <div class="item-actions">
-                            <button class="btn-icon" onclick="editTestimonialById('${t.id}')" title="Edit"><i class="fas fa-edit"></i></button>
-                            <button class="btn-icon btn-danger" onclick="deleteTestimonial('${t.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+                            <button class="btn-icon" onclick="editTestimonialById('${escapeJsStr(t.id)}')" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-icon btn-danger" onclick="deleteTestimonial('${escapeJsStr(t.id)}')" title="Delete"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;
@@ -3381,15 +3364,15 @@
                         <div class="inquiry-message">${escapeHTML(inq.message || 'No details provided.')}</div>
                         <div class="inquiry-actions-row">
                             <a href="${mailUrl}" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem;"><i class="fas fa-reply"></i> Reply Email</a>
-                            ${inq.phone ? `<a href="${waUrl}" target="_blank" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem; color:#10B981;"><i class="fab fa-whatsapp"></i> WhatsApp</a>` : ''}
-                            <select class="status-select" onchange="setInquiryStatus('${inq.id}', this.value)" title="Change lead status">
+                            ${inq.phone ? `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem; color:#10B981;"><i class="fab fa-whatsapp"></i> WhatsApp</a>` : ''}
+                            <select class="status-select" onchange="setInquiryStatus('${escapeJsStr(inq.id)}', this.value)" title="Change lead status">
                                 <option value="new" ${curStatus==='new'?'selected':''}>🔴 New Lead</option>
                                 <option value="in_discussion" ${curStatus==='in_discussion'?'selected':''}>🟡 In Discussion</option>
                                 <option value="proposal_sent" ${curStatus==='proposal_sent'?'selected':''}>🔵 Proposal Sent</option>
                                 <option value="won" ${curStatus==='won'?'selected':''}>🟢 Project Won</option>
                                 <option value="archived" ${curStatus==='archived'?'selected':''}>⚪ Archived</option>
                             </select>
-                            <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteInquiry('${inq.id}')" title="Delete Inquiry"><i class="fas fa-trash"></i></button>
+                            <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteInquiry('${escapeJsStr(inq.id)}')" title="Delete Inquiry"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;
@@ -3549,14 +3532,14 @@
                         ${app.background ? `<div class="inquiry-message" style="border-left:3px solid var(--accent);"><strong style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.05em;">Applicant Background &amp; Goals</strong>${escapeHTML(app.background)}</div>` : ''}
                         <div class="inquiry-actions-row">
                             <a href="${mailUrl}" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem;"><i class="fas fa-reply"></i> Email Candidate</a>
-                            ${app.phone ? `<a href="${waUrl}" target="_blank" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem; color:#10B981;"><i class="fab fa-whatsapp"></i> Chat WhatsApp</a>` : ''}
-                            <select class="status-select" onchange="setApplicationStatus('${app.id}', this.value)" title="Change application status">
+                            ${app.phone ? `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 0.95rem; font-size:0.75rem; color:#10B981;"><i class="fab fa-whatsapp"></i> Chat WhatsApp</a>` : ''}
+                            <select class="status-select" onchange="setApplicationStatus('${escapeJsStr(app.id)}', this.value)" title="Change application status">
                                 <option value="new" ${curStatus==='new'?'selected':''}>🔴 New Applicant</option>
                                 <option value="interviewed" ${curStatus==='interviewed'?'selected':''}>🟡 Interviewed</option>
                                 <option value="enrolled" ${curStatus==='enrolled'?'selected':''}>🟢 Enrolled in Cohort</option>
                                 <option value="archived" ${curStatus==='archived'?'selected':''}>⚪ Archived</option>
                             </select>
-                            <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteApplication('${app.id}')" title="Delete Candidate"><i class="fas fa-trash"></i></button>
+                            <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteApplication('${escapeJsStr(app.id)}')" title="Delete Candidate"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;

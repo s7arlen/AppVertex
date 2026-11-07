@@ -12,6 +12,7 @@
   --background: #FCFAFA;
   --surface: #FFFFFF;
   --surface-raised: #FDF8F9;
+  --surface-alt: #F7EFF2;
   --burgundy: #800F35;
   --burgundy-deep: #5B1029;
   --burgundy-accent: #A61E4D;
@@ -34,8 +35,8 @@
 
   /* Typography */
   --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-secondary: 'Barlow Semi Condensed', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, 'Courier New', monospace;
+  --font-secondary: 'Barlow Semi Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Layout & Sizing */
   --container-max: 1240px;
@@ -59,6 +60,7 @@
   --background: #120810;
   --surface: #1C0F14;
   --surface-raised: #241219;
+  --surface-alt: #221219;
   --burgundy: #C8395E;
   --burgundy-deep: #A61E4D;
   --burgundy-accent: #E05070;
@@ -255,7 +257,7 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -297,7 +299,7 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -329,7 +331,7 @@ ul, ol {
   gap: 10px;
   padding: 14px 28px;
   border-radius: var(--radius-full);
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1086,7 +1088,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .item-number {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.8rem;
   color: var(--burgundy);
   font-weight: 600;
@@ -1108,7 +1110,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .item-badge {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1179,7 +1181,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .stage-meta-num {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--burgundy);
@@ -1187,7 +1189,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .stage-meta-badge {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1202,7 +1204,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1255,7 +1257,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .metric-cell-label {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1278,7 +1280,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 
 .stage-section-label {
   display: block;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1322,7 +1324,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   border-radius: var(--radius-full);
   background: var(--surface-raised);
   border: 1px solid var(--border);
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.75rem;
   color: var(--text-secondary);
 }
@@ -1344,7 +1346,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   background: var(--burgundy);
   color: #FFFFFF !important;
   border-radius: var(--radius-full);
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1358,7 +1360,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .stage-secondary-link {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1476,7 +1478,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .service-stack-badge {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1498,7 +1500,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
@@ -1592,7 +1594,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .metric-chip .metric-label {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1693,7 +1695,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 1rem;
   font-weight: 700;
   padding: 8px 18px;
@@ -1705,7 +1707,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .projects-counter-badge .counter-prefix {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--text-muted);
@@ -1792,7 +1794,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 3px 12px;
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   color: var(--text-secondary);
   display: flex;
@@ -1803,7 +1805,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .card-year-badge {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   color: var(--text-muted);
 }
@@ -1832,7 +1834,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .fan-card-cat {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1864,7 +1866,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .project-info-category {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1879,7 +1881,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .fan-tech-pill {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   padding: 3px 10px;
   border-radius: var(--radius-full);
@@ -1916,7 +1918,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   gap: 8px;
   padding: 12px 24px;
   border-radius: var(--radius-full);
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2056,6 +2058,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   box-shadow: 0 10px 30px var(--shadow-soft);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   overflow: hidden;
+  font-family: var(--font-primary);
 }
 
 [data-theme="dark"] .founder-card {
@@ -2075,10 +2078,10 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .founder-role {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--burgundy-accent);
   margin-bottom: 0.85rem;
@@ -2100,9 +2103,9 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .founder-bio {
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  line-height: 1.7;
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--text-secondary);
   margin: 0 0 1.25rem 0;
   max-width: 520px;
@@ -2113,12 +2116,12 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .founder-email {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--burgundy-accent);
   text-decoration: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   transition: opacity var(--transition-fast), color var(--transition-fast);
   display: inline-flex;
   align-items: center;
@@ -2150,7 +2153,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .tile-tag {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2215,7 +2218,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .process-step-badge {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--burgundy);
@@ -2292,7 +2295,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .method-num {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--burgundy);
@@ -2380,7 +2383,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-weight: 700;
   font-size: 0.95rem;
   flex-shrink: 0;
@@ -2453,7 +2456,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .contact-direct-label {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2483,7 +2486,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 
 .form-label {
   display: block;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2522,7 +2525,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   color: #FFFFFF !important;
   border: 1px solid var(--burgundy);
   border-radius: var(--radius-full);
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2642,7 +2645,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 .footer-col-title {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2779,40 +2782,55 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 .mobile-bottom-dock {
   display: none;
   position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 32px var(--shadow-medium);
-  padding: 6px 10px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  transform: none;
 }
 
 [data-theme="dark"] .mobile-bottom-dock {
-  background: rgba(28, 15, 20, 0.92);
+  background: rgba(18, 8, 16, 0.94);
+  border-top: 1px solid rgba(224, 80, 112, 0.2);
+  box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.55), 0 -1px 0 0 rgba(224, 80, 112, 0.2);
 }
 
 .dock-items-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 8px;
+  gap: 0;
 }
 
 .dock-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  padding: 8px 14px;
-  border-radius: var(--radius-full);
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border-radius: 8px;
   color: var(--text-secondary);
   text-decoration: none;
   font-family: var(--font-primary);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   transition: var(--transition-fast);
@@ -2820,15 +2838,35 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 
 .dock-item span {
   font-family: var(--font-primary);
+  font-size: 0.65rem;
+  line-height: 1;
 }
 
 .dock-item i {
-  font-size: 1rem;
+  font-size: 1.15rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.dock-item:hover {
+  color: var(--burgundy);
+}
+
+[data-theme="dark"] .dock-item:hover {
+  color: #FF5A78;
 }
 
 .dock-item.active {
-  background: var(--burgundy);
-  color: #FFFFFF !important;
+  background: rgba(128, 15, 53, 0.08);
+  color: var(--burgundy) !important;
+}
+
+.dock-item.active i {
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] .dock-item.active {
+  background: rgba(224, 80, 112, 0.14);
+  color: #FF5A78 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -2923,6 +2961,9 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   }
   .mobile-bottom-dock {
     display: block;
+  }
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   }
   #hero {
     padding: 100px 0 50px;
@@ -3077,14 +3118,14 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
     text-align: center;
   }
   .floating-whatsapp-btn {
-    bottom: 80px;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
     right: 16px;
     width: 48px;
     height: 48px;
     font-size: 1.4rem;
   }
   .scroll-to-top-btn {
-    bottom: 140px;
+    bottom: calc(134px + env(safe-area-inset-bottom, 0px));
     right: 16px;
   }
 }
@@ -3183,7 +3224,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   box-shadow: 0 4px 16px rgba(128, 15, 53, 0.06);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  font-family: var(--font-secondary, var(--font-primary));
+  font-family: var(--font-primary);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.14em;
