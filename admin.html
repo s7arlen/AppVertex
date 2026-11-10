@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>AppVertex Studio | Admin Management Console</title>
-    <link rel="icon" href="logo.png" type="image/png">
-    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="shortcut icon" href="/logo.png" type="image/png">
     <!-- Google Fonts: Manrope, Barlow Semi Condensed & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,48 +14,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            color-scheme: light;
+            accent-color: #EF870D;
             /* ═══════════════════════════════════════════════════
-               APPVERTEX SIGNATURE BURGUNDY & ROSEWOOD TOKENS
+               AN IDEA TECH EXACT DESIGN SYSTEM (LIGHT MODE)
                ═══════════════════════════════════════════════════ */
-            --primary: #EF870D;                  /* Signature AppVertex Burgundy */
-            --primary-dark: #5B1029;             /* Deep Burgundy */
-            --primary-darker: #400A1B;           /* Dark Wine Charcoal */
-            --primary-accent: #A61E4D;           /* Rich Berry Accent */
-            --primary-soft: rgba(128, 15, 53, 0.08);
-            --primary-glow: rgba(128, 15, 53, 0.22);
-            --bg-canvas: #FCFAFA;                /* Warm Studio Off-White */
+            --primary: #EF870D;                  /* Signature Brand Amber */
+            --primary-dark: #FF5722;             /* Vibrant Coral */
+            --primary-darker: #1A1514;           /* Deep Charcoal */
+            --primary-accent: #F76020;           /* Radiant Accent */
+            --primary-soft: rgba(239, 135, 13, 0.08);
+            --primary-glow: rgba(239, 135, 13, 0.22);
+            --bg-canvas: #FAF8F5;                /* An Idea Tech Warm Studio Canvas */
             --surface-white: #FFFFFF;            /* White Card Surface */
-            --surface-subtle: #FDF8F9;           /* Soft Blush Raised Surface */
-            --border: #E9DDE1;                   /* Rosewood Subtle Border */
-            --border-hover: #D8C7CD;             /* Interactive Border */
-            --text-main: #171316;                /* Plum Charcoal Primary */
-            --text-muted: #71666B;               /* Mauve Slate Secondary */
-            --text-subtle: #9B8E92;              /* Light Muted */
+            --surface-subtle: #FDFBF9;           /* Raised Surface */
+            --surface-alt: #F5F0EA;              /* Alt Surface */
+            --border: rgba(26, 21, 20, 0.12);    /* An Idea Tech Border */
+            --border-hover: rgba(26, 21, 20, 0.25);
+            --border-light: rgba(26, 21, 20, 0.06);
+            --text-main: #000000;                /* Pure Crisp Charcoal Black */
+            --text-muted: #716A65;               /* Editorial Secondary */
+            --text-subtle: #A8A29E;              /* Light Muted */
             --success: #10B981;
             --success-soft: rgba(16, 185, 129, 0.1);
             --warning: #F59E0B;
             --warning-soft: rgba(245, 158, 11, 0.1);
             --danger: #EF4444;
             --danger-soft: rgba(239, 68, 68, 0.1);
-            --info: #3B82F6;
-            --info-soft: rgba(59, 130, 246, 0.1);
+            --info: #06B6D4;
+            --info-soft: rgba(6, 182, 212, 0.1);
 
-            --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-secondary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-secondary: 'Barlow Semi Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
             
             --radius-sm: 8px;
             --radius-md: 12px;
-            --radius-lg: 16px;
+            --radius-lg: 18px;
             --radius-full: 9999px;
 
-            --shadow-subtle: 0 4px 20px rgba(128, 15, 53, 0.04);
-            --shadow-card: 0 6px 24px rgba(128, 15, 53, 0.07);
-            --shadow-elevated: 0 16px 40px rgba(128, 15, 53, 0.12);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.1);
             
             --gradient-btn: linear-gradient(135deg, #EF870D 0%, #FF5722 100%);
             --gradient-accent: linear-gradient(90deg, #EF870D 0%, #EF870D 28%, #F76020 50%, #EA321D 76%, #FF4D36 100%);
-            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #FDF8F9 60%, #FBF0F3 100%);
+            --gradient-surface: linear-gradient(135deg, #FFFFFF 0%, #FDFBF9 100%);
 
             --transition-fast: 0.18s ease;
             --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -94,8 +98,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(128, 15, 53, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(128, 15, 53, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(239, 135, 13, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(239, 135, 13, 0.05) 1px, transparent 1px);
             background-size: 32px 32px;
             pointer-events: none;
         }
@@ -105,7 +109,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(128, 15, 53, 0.09) 0%, rgba(251, 240, 243, 0.6) 45%, transparent 70%);
+            background: radial-gradient(circle, rgba(239, 135, 13, 0.12) 0%, rgba(250, 248, 245, 0.6) 45%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -121,7 +125,7 @@
             max-width: 420px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 16px 40px -10px rgba(23, 19, 22, 0.08), 0 2px 8px rgba(128, 15, 53, 0.04);
+            box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(239, 135, 13, 0.06);
             animation: loginCardIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
@@ -152,7 +156,7 @@
             height: 36px;
             border-radius: 9px;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(128, 15, 53, 0.15);
+            box-shadow: 0 4px 10px rgba(239, 135, 13, 0.2);
         }
 
         .login-logo strong {
@@ -265,12 +269,12 @@
             gap: 0.55rem;
             transition: all var(--transition-smooth);
             margin-top: 0.75rem;
-            box-shadow: 0 4px 14px rgba(128, 15, 53, 0.22);
+            box-shadow: 0 4px 14px rgba(239, 135, 13, 0.25);
         }
 
         .login-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(128, 15, 53, 0.3);
+            box-shadow: 0 6px 18px rgba(239, 135, 13, 0.35);
         }
 
         .login-btn:active {
@@ -303,8 +307,8 @@
         .quick-dev-btn {
             width: 100%;
             padding: 0.75rem 1rem;
-            background: rgba(128, 15, 53, 0.04);
-            border: 1px solid rgba(128, 15, 53, 0.18);
+            background: rgba(239, 135, 13, 0.06);
+            border: 1px solid rgba(239, 135, 13, 0.22);
             border-radius: 10px;
             color: var(--primary);
             font-family: var(--font-primary);
@@ -319,7 +323,7 @@
         }
 
         .quick-dev-btn:hover {
-            background: rgba(128, 15, 53, 0.09);
+            background: rgba(239, 135, 13, 0.12);
             border-color: var(--primary);
             transform: translateY(-1px);
         }
@@ -356,7 +360,7 @@
             text-align: center;
             margin-top: 1.35rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(128, 15, 53, 0.08);
+            border-top: 1px solid rgba(26, 21, 20, 0.08);
         }
 
         .login-footer .back-link {
@@ -416,7 +420,7 @@
             position: sticky;
             top: 0;
             z-index: 95;
-            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.04);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
         }
 
         .mobile-brand {
@@ -512,7 +516,7 @@
             height: 32px;
             border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 3px 8px rgba(128, 15, 53, 0.15);
+            box-shadow: 0 3px 8px rgba(239, 135, 13, 0.2);
         }
 
         .logo span { color: var(--primary); }
@@ -587,7 +591,7 @@
             color: var(--primary);
             font-weight: 700;
             border-left: 3px solid var(--primary);
-            box-shadow: inset 0 0 0 1px rgba(128, 15, 53, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(239, 135, 13, 0.16);
         }
 
         .sidebar-footer {
@@ -614,7 +618,7 @@
             font-size: 0.9rem;
             font-weight: 700;
             color: white;
-            box-shadow: 0 3px 8px rgba(128, 15, 53, 0.2);
+            box-shadow: 0 3px 8px rgba(239, 135, 13, 0.25);
         }
 
         .admin-user-email {
@@ -714,12 +718,12 @@
             background: var(--gradient-btn);
             color: #FFFFFF;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(128, 15, 53, 0.18);
+            box-shadow: 0 4px 12px rgba(239, 135, 13, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(128, 15, 53, 0.28);
+            box-shadow: 0 6px 16px rgba(239, 135, 13, 0.35);
         }
 
         .btn-secondary {
@@ -760,7 +764,7 @@
             border-radius: var(--radius-md);
             padding: 0.75rem 1.25rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 1rem;
             z-index: 50;
@@ -879,29 +883,29 @@
             font-weight: 700;
             letter-spacing: 0.02em;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(128, 15, 53, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(239, 135, 13, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
         }
 
         .btn-save-master:hover {
-            background: linear-gradient(135deg, #96123E 0%, #B82356 100%);
-            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            background: linear-gradient(135deg, #E07600 0%, #F4511E 100%);
+            box-shadow: 0 4px 16px rgba(239, 135, 13, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
             transform: translateY(-1px);
         }
 
         .btn-save-master:active {
             transform: translateY(0);
-            box-shadow: 0 2px 6px rgba(128, 15, 53, 0.25);
+            box-shadow: 0 2px 6px rgba(239, 135, 13, 0.25);
         }
 
         .btn-save-master.is-saving,
         .btn.is-saving {
-            background: linear-gradient(135deg, #A61E4D 0%, #C8395E 100%) !important;
+            background: linear-gradient(135deg, #D96B00 0%, #E64A19 100%) !important;
             opacity: 0.95;
             cursor: wait;
             pointer-events: none;
-            box-shadow: 0 0 0 3px rgba(166, 30, 77, 0.3) !important;
+            box-shadow: 0 0 0 3px rgba(239, 135, 13, 0.3) !important;
         }
 
         .btn-save-master.is-saved,
@@ -919,8 +923,8 @@
         ─────────────────────────────────────────── */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0.85rem;
             margin-bottom: 2.25rem;
         }
 
@@ -928,7 +932,7 @@
             background: var(--surface-white);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 1.25rem 1.15rem;
+            padding: 1.15rem 1rem;
             box-shadow: var(--shadow-subtle);
             transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-fast);
             position: relative;
@@ -954,7 +958,7 @@
         .stat-card:hover {
             transform: translateY(-2px);
             border-color: var(--border-hover);
-            box-shadow: 0 4px 14px rgba(128, 15, 53, 0.08);
+            box-shadow: 0 4px 14px rgba(239, 135, 13, 0.12);
         }
 
         .stat-card:hover::after { opacity: 1; }
@@ -963,26 +967,26 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.5rem;
+            gap: 0.4rem;
             margin-bottom: 0.65rem;
         }
 
         .stat-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: var(--radius-sm);
             background: var(--primary-soft);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             flex-shrink: 0;
         }
 
         .stat-value {
             font-family: var(--font-primary);
-            font-size: 2rem;
+            font-size: 1.85rem;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1;
@@ -991,12 +995,21 @@
 
         .stat-label {
             font-family: var(--font-primary);
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             color: var(--text-muted);
             font-weight: 700;
             line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .stat-desc {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            line-height: 1.35;
         }
 
         /* ───────────────────────────────────────────
@@ -1039,6 +1052,31 @@
             font-family: var(--font-primary);
             font-size: 0.925rem;
             transition: all var(--transition-fast);
+        }
+
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            padding-right: 2.5rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ef870d' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+
+        .form-select option,
+        .status-select option {
+            background-color: var(--surface-white);
+            color: var(--text-main);
+            font-family: var(--font-primary);
+            padding: 8px 12px;
+        }
+
+        [data-theme="dark"] .form-select option,
+        [data-theme="dark"] .status-select option {
+            background-color: #121622;
+            color: #FFFFFF;
         }
 
         .form-input:focus, .form-textarea:focus, .form-select:focus {
@@ -1349,12 +1387,18 @@
            STATUS SELECT & APPLICANT CARDS
         ─────────────────────────────────────────── */
         .status-select {
-            padding: 0.4rem 0.75rem;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding: 0.42rem 2.2rem 0.42rem 0.75rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ef870d' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
             font-size: 0.8rem;
             font-weight: 600;
             border-radius: var(--radius-sm);
             border: 1px solid var(--border);
-            background: var(--surface-white);
+            background-color: var(--surface-white);
             color: var(--text-main);
             cursor: pointer;
             outline: none;
@@ -1385,9 +1429,9 @@
             align-items: center;
             gap: 0.35rem;
             padding: 0.25rem 0.7rem;
-            background: rgba(128, 15, 53, 0.08);
+            background: rgba(239, 135, 13, 0.08);
             color: var(--primary);
-            border: 1px solid rgba(128, 15, 53, 0.2);
+            border: 1px solid rgba(239, 135, 13, 0.22);
             border-radius: 999px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -1636,7 +1680,349 @@
             .list-item { flex-direction: column; align-items: flex-start; }
             .item-actions { width: 100%; justify-content: flex-end; margin-top: 0.5rem; }
         }
+
+        /* ═══════════════════════════════════════════════════
+           DARK THEME TOKENS & OVERRIDES FOR ADMIN PANEL
+           ═══════════════════════════════════════════════════ */
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --primary: #EF870D;
+            --primary-dark: #FF5722;
+            --primary-darker: #C2410C;
+            --primary-accent: #FF5722;
+            --primary-soft: rgba(239, 135, 13, 0.16);
+            --primary-glow: rgba(239, 135, 13, 0.35);
+            --bg-canvas: #0E1015;
+            --surface-white: #121622;
+            --surface-subtle: #161C2B;
+            --surface-alt: #1A2235;
+            --border: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(255, 255, 255, 0.25);
+            --border-light: rgba(255, 255, 255, 0.06);
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --text-subtle: #64748B;
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.65);
+            --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.85);
+            --gradient-surface: linear-gradient(135deg, #161C2B 0%, #121622 100%);
+        }
+
+        [data-theme="dark"] .sidebar {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        [data-theme="dark"] .mobile-top-bar,
+        [data-theme="dark"] .system-mode-banner {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        [data-theme="dark"] .nav-item {
+            color: #94A3B8;
+        }
+
+        [data-theme="dark"] .nav-item:hover {
+            background: rgba(239, 135, 13, 0.1);
+            color: #FFFFFF;
+        }
+
+        [data-theme="dark"] .nav-item.active {
+            background: rgba(239, 135, 13, 0.18) !important;
+            color: #EF870D !important;
+        }
+
+        [data-theme="dark"] .form-input,
+        [data-theme="dark"] .form-textarea,
+        [data-theme="dark"] .form-select,
+        [data-theme="dark"] .status-select,
+        [data-theme="dark"] .search-box-wrap input {
+            background: #161C2B !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            color: #FFFFFF !important;
+        }
+
+        [data-theme="dark"] .form-input:focus,
+        [data-theme="dark"] .form-textarea:focus,
+        [data-theme="dark"] .form-select:focus,
+        [data-theme="dark"] .status-select:focus,
+        [data-theme="dark"] .search-box-wrap input:focus {
+            background: #1A2235 !important;
+            border-color: #EF870D !important;
+            box-shadow: 0 0 0 3px rgba(239, 135, 13, 0.22) !important;
+        }
+
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .card,
+        [data-theme="dark"] .inquiry-card,
+        [data-theme="dark"] .application-card,
+        [data-theme="dark"] .project-card-admin,
+        [data-theme="dark"] .testimonial-card-admin,
+        [data-theme="dark"] .appointment-card,
+        [data-theme="dark"] .applicant-card {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        [data-theme="dark"] .inquiry-card.unread {
+            background: #161C2B !important;
+            border-color: rgba(239, 135, 13, 0.45) !important;
+        }
+
+        [data-theme="dark"] .page-link-pill,
+        [data-theme="dark"] .filter-pill-btn,
+        [data-theme="dark"] .btn-secondary {
+            background: #161C2B !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            color: #FFFFFF !important;
+        }
+
+        [data-theme="dark"] .page-link-pill:hover,
+        [data-theme="dark"] .filter-pill-btn:hover,
+        [data-theme="dark"] .btn-secondary:hover {
+            border-color: #EF870D !important;
+            color: #EF870D !important;
+            background: rgba(239, 135, 13, 0.1) !important;
+        }
+
+        [data-theme="dark"] .filter-pill-btn.active {
+            background: #EF870D !important;
+            color: #0E1015 !important;
+            border-color: #EF870D !important;
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .category-tag-pill,
+        [data-theme="dark"] .year-tag-pill {
+            background: #1A2235 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .modal {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+        }
+
+        [data-theme="dark"] .modal-header,
+        [data-theme="dark"] .modal-footer {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        [data-theme="dark"] .image-upload {
+            background: #161C2B !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+        }
+
+        [data-theme="dark"] #loginScreen {
+            background: #0E1015 !important;
+        }
+
+        [data-theme="dark"] .login-card {
+            background: #121622 !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+        }
+
+        /* ─── THEME TOGGLE BUTTON ─── */
+        .theme-toggle-btn {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all var(--transition-fast);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* ─── DISCOVERY CALLS & APPOINTMENT CARDS ─── */
+        .appointment-card {
+            background: var(--surface-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.15rem;
+            box-shadow: var(--shadow-card);
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .appointment-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .appointment-card.upcoming {
+            border-left: 4px solid var(--primary);
+        }
+
+        .appointment-card.completed {
+            border-left: 4px solid var(--success);
+            opacity: 0.85;
+        }
+
+        .appointment-card.rescheduled {
+            border-left: 4px solid var(--warning);
+        }
+
+        .appointment-card.cancelled {
+            border-left: 4px solid var(--text-subtle);
+            opacity: 0.65;
+        }
+
+        .appointment-header-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .appointment-datetime-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: 100px;
+            background: rgba(239, 135, 13, 0.1);
+            border: 1px solid rgba(239, 135, 13, 0.25);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.86rem;
+            letter-spacing: -0.01em;
+        }
+
+        .appointment-attendee-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .appointment-attendee-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .appointment-attendee-company {
+            font-weight: 500;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .appointment-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .appointment-meta-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .appointment-topic-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .appointment-notes-quote {
+            background: var(--surface-subtle);
+            border-left: 3px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            padding: 0.85rem 1.15rem;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            font-style: italic;
+        }
+
+        .appointment-actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .appointment-actions-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-meet-launcher {
+            background: linear-gradient(135deg, #EF870D 0%, #EA321D 100%) !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            box-shadow: 0 4px 14px rgba(239, 135, 13, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1.15rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-meet-launcher:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(239, 135, 13, 0.45);
+        }
+
+        .inquiry-call-banner {
+            background: rgba(239, 135, 13, 0.08);
+            border: 1px dashed rgba(239, 135, 13, 0.35);
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            font-size: 0.84rem;
+            color: var(--text-main);
+        }
     </style>
+    <!-- Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('appvertex-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
 
@@ -1645,7 +2031,7 @@
         <div class="login-card">
             <div class="login-header">
                 <div class="login-logo">
-                    <img src="logo.png" alt="AppVertex Logo">
+                    <img src="/logo.png" alt="AppVertex Logo">
                     <span>AppVertex <strong>Studio</strong></span>
                 </div>
                 <h1 class="login-title" id="authTitle">Sign In</h1>
@@ -1700,10 +2086,13 @@
     <!-- RESPONSIVE MOBILE TOP BAR -->
     <div class="mobile-top-bar" id="mobileTopBar">
         <div class="mobile-brand">
-            <img src="logo.png" alt="AppVertex">
+            <img src="/logo.png" alt="AppVertex">
             <span>AppVertex <strong>Studio</strong></span>
         </div>
         <div style="display:flex; align-items:center; gap:0.5rem;">
+            <button class="theme-toggle-btn" id="mobileThemeToggle" onclick="toggleAdminTheme()" aria-label="Toggle Theme" title="Toggle Theme" style="width:32px; height:32px;">
+                <i class="fas fa-moon" id="mobileThemeIcon"></i>
+            </button>
             <button class="btn btn-primary" id="mobileSaveBtn" onclick="saveAllChanges()" style="padding:0.35rem 0.75rem; font-size:0.75rem; font-weight:700;">
                 <i class="fas fa-save"></i> Save All
             </button>
@@ -1722,7 +2111,7 @@
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <div class="logo">
-                        <img src="logo.png" alt="AppVertex Logo">
+                        <img src="/logo.png" alt="AppVertex Logo">
                         AppVertex <span>Studio</span>
                     </div>
                     <button class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
@@ -1732,6 +2121,10 @@
                     <div class="nav-title">WORKSPACE &amp; INTAKE</div>
                     <a class="nav-item active" onclick="showSection('dashboard')">
                         <div class="nav-item-left"><i class="fas fa-home"></i> Home</div>
+                    </a>
+                    <a class="nav-item" onclick="showSection('appointments')">
+                        <div class="nav-item-left"><i class="fas fa-calendar-check"></i> Discovery Calls</div>
+                        <span class="nav-badge" id="badgeAppointmentsCount">0</span>
                     </a>
                     <a class="nav-item" onclick="showSection('inquiries')">
                         <div class="nav-item-left"><i class="fas fa-inbox"></i> Inquiries</div>
@@ -1781,7 +2174,12 @@
                             <div class="admin-user-email" id="adminEmail">loading...</div>
                         </div>
                     </div>
-                    <button class="logout-btn" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+                    <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+                        <button class="theme-toggle-btn" id="sidebarThemeToggle" onclick="toggleAdminTheme()" aria-label="Toggle Theme" title="Toggle Theme" style="flex:1; width:auto; height:34px; font-size:0.8rem; font-weight:700; gap:0.4rem;">
+                            <i class="fas fa-moon" id="sidebarThemeIcon"></i> <span id="sidebarThemeText">Dark Mode</span>
+                        </button>
+                        <button class="logout-btn" onclick="handleLogout()" style="margin:0;"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+                    </div>
                 </div>
             </aside>
 
@@ -1789,7 +2187,7 @@
                 <!-- SYSTEM MODE BANNER -->
                 <div class="system-mode-banner">
                     <div class="banner-left">
-                        <span id="modeStatusText" class="nav-badge" style="background:rgba(128,15,53,0.18); color:var(--primary); font-size:0.75rem; padding:0.25rem 0.65rem; border-radius:9999px; margin-right:0.75rem; font-weight:600;">Cloud Synchronized</span>
+                        <span id="modeStatusText" class="nav-badge" style="background:rgba(239,135,13,0.15); border:1px solid rgba(239,135,13,0.25); color:var(--primary); font-size:0.75rem; padding:0.25rem 0.65rem; border-radius:9999px; margin-right:0.75rem; font-weight:600;">Cloud Synchronized</span>
                         <div class="quick-page-links">
                             <span class="preview-label">Preview</span>
                             <a href="index.html" class="page-link-pill" target="_blank" rel="noopener noreferrer">Home</a>
@@ -1801,7 +2199,10 @@
                             <a href="contact.html" class="page-link-pill" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">Contact</a>
                         </div>
                     </div>
-                    <div class="banner-right">
+                    <div class="banner-right" style="display:flex; align-items:center; gap:0.65rem;">
+                        <button class="theme-toggle-btn" id="desktopThemeToggle" onclick="toggleAdminTheme()" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                            <i class="fas fa-moon" id="desktopThemeIcon"></i>
+                        </button>
                         <button class="btn-save-master" id="btnSaveAll" onclick="saveAllChanges()" title="Save all changes (Ctrl+S)">
                             <i class="fas fa-save"></i>
                             <span id="saveAllBtnText">Save All</span>
@@ -1832,7 +2233,7 @@
                                 <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
                             </div>
                             <div class="stat-value" id="statProjects">0</div>
-                            <div style="font-size:0.78rem; color:var(--text-muted);">Case studies &amp; client launches</div>
+                            <div class="stat-desc">Case studies &amp; launches</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-top">
@@ -1840,7 +2241,7 @@
                                 <div class="stat-icon"><i class="fas fa-quote-left"></i></div>
                             </div>
                             <div class="stat-value" id="statTestimonials">0</div>
-                            <div style="font-size:0.78rem; color:var(--text-muted);">Verified client reviews &amp; ratings</div>
+                            <div class="stat-desc">Client reviews &amp; ratings</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-top">
@@ -1848,7 +2249,15 @@
                                 <div class="stat-icon"><i class="fas fa-inbox"></i></div>
                             </div>
                             <div class="stat-value" id="statInquiries">0</div>
-                            <div style="font-size:0.78rem; color:var(--text-muted);">Incoming client proposals</div>
+                            <div class="stat-desc">Incoming client proposals</div>
+                        </div>
+                        <div class="stat-card" onclick="showSection('appointments')" style="cursor:pointer;">
+                            <div class="stat-card-top">
+                                <span class="stat-label">DISCOVERY CALLS</span>
+                                <div class="stat-icon" style="color:var(--primary);"><i class="fas fa-calendar-check"></i></div>
+                            </div>
+                            <div class="stat-value" id="statAppointments">0</div>
+                            <div class="stat-desc">30-min strategy sessions</div>
                         </div>
                         <div class="stat-card" onclick="showSection('applications')" style="cursor:pointer;">
                             <div class="stat-card-top">
@@ -1856,7 +2265,7 @@
                                 <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
                             </div>
                             <div class="stat-value" id="statApplications">0</div>
-                            <div style="font-size:0.78rem; color:var(--text-muted);">Mentorship cohort candidates</div>
+                            <div class="stat-desc">Mentorship candidates</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-top">
@@ -1864,8 +2273,26 @@
                                 <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
                             </div>
                             <div class="stat-value" id="statYear">2026</div>
-                            <div style="font-size:0.78rem; color:var(--text-muted);">Active copyright year</div>
+                            <div class="stat-desc">Active copyright year</div>
                         </div>
+                    </div>
+
+                    <!-- UPCOMING DISCOVERY SESSIONS AGENDA CARD -->
+                    <div class="card" style="margin-bottom:1.5rem; border-left: 4px solid var(--primary);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                            <div>
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981;"></span>
+                                    <h3 style="margin:0;">Upcoming Discovery Sessions</h3>
+                                </div>
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Direct Google Meet calls booked via online Discovery Scheduler</div>
+                            </div>
+                            <div style="display:flex; gap:0.5rem;">
+                                <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.85rem;" onclick="openAppointmentModal()"><i class="fas fa-plus"></i> Schedule Call</button>
+                                <button class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.85rem;" onclick="showSection('appointments')">View All Agenda →</button>
+                            </div>
+                        </div>
+                        <div id="dashboardRecentAppointments" class="item-list"></div>
                     </div>
 
                     <!-- RECENT INQUIRIES PREVIEW CARD -->
@@ -1994,6 +2421,39 @@
                 <!-- ═══════════════════════════════════════════
                      3. PROJECTS SECTION
                      ═══════════════════════════════════════════ -->
+                
+                <!-- ═══════════════════════════════════════════
+                     2.2 DISCOVERY CALLS & AGENDA SECTION
+                     ═══════════════════════════════════════════ -->
+                <div id="appointments" class="section-content">
+                    <div class="header">
+                        <div class="header-title-wrap">
+                            <h1>Discovery Calls &amp; Architecture Sessions</h1>
+                            <p class="header-subtitle">Manage upcoming Google Meet client sessions, attendee roadmaps, and calendar agenda</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn btn-secondary" onclick="exportAppointmentsCSV()"><i class="fas fa-file-csv"></i> Export Schedule</button>
+                            <button class="btn btn-primary" onclick="openAppointmentModal()"><i class="fas fa-plus"></i> Schedule Call</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-controls-bar">
+                        <div class="search-box-wrap">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="appointmentSearchInput" aria-label="Search discovery calls" placeholder="Search sessions by name, email, topic, or date..." oninput="renderAppointments()">
+                        </div>
+                        <div class="filter-pills-row" id="appointmentFilterRow">
+                            <button class="filter-pill-btn active" onclick="setAppointmentFilter('all', this)">All Sessions</button>
+                            <button class="filter-pill-btn" onclick="setAppointmentFilter('upcoming', this)">Upcoming</button>
+                            <button class="filter-pill-btn" onclick="setAppointmentFilter('completed', this)">Completed</button>
+                            <button class="filter-pill-btn" onclick="setAppointmentFilter('rescheduled', this)">Rescheduled</button>
+                            <button class="filter-pill-btn" onclick="setAppointmentFilter('cancelled', this)">Cancelled</button>
+                        </div>
+                    </div>
+
+                    <div id="appointmentsList"></div>
+                </div>
+
                 <div id="projects" class="section-content">
                     <div class="header">
                         <div class="header-title-wrap">
@@ -2265,6 +2725,103 @@
         </div>
     </div>
 
+    
+    <!-- ═══════════════════════════════════════════
+         APPOINTMENT / DISCOVERY CALL MODAL
+         ═══════════════════════════════════════════ -->
+    <div class="modal-overlay" id="appointmentModal" onclick="if(event.target===this)closeModal('appointmentModal')">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="appointmentModalTitle">Schedule Discovery Session</h3>
+                <button class="modal-close-btn" onclick="closeModal('appointmentModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="appointmentId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Client Name *</label>
+                        <input type="text" class="form-input" id="apptClientName" placeholder="e.g. Alex Morgan" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Work Email *</label>
+                        <input type="email" class="form-input" id="apptClientEmail" placeholder="alex@company.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Phone / WhatsApp</label>
+                        <input type="tel" class="form-input" id="apptClientPhone" placeholder="+91 93229 71253">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company / Organization</label>
+                        <input type="text" class="form-input" id="apptClientCompany" placeholder="e.g. Acme SaaS">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Session Date *</label>
+                        <input type="date" class="form-input" id="apptDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time Slot (IST) *</label>
+                        <select class="form-select" id="apptTimeSlot">
+                            <option value="10:00 AM">10:00 AM IST</option>
+                            <option value="10:45 AM">10:45 AM IST</option>
+                            <option value="11:30 AM">11:30 AM IST</option>
+                            <option value="02:00 PM">02:00 PM IST</option>
+                            <option value="02:45 PM">02:45 PM IST</option>
+                            <option value="03:30 PM">03:30 PM IST</option>
+                            <option value="04:15 PM">04:15 PM IST</option>
+                            <option value="05:30 PM">05:30 PM IST</option>
+                            <option value="06:15 PM">06:15 PM IST</option>
+                            <option value="07:00 PM">07:00 PM IST</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Discussion Topic</label>
+                    <select class="form-select" id="apptTopic">
+                        <option value="New Web / SaaS Platform">New Web Application / Custom SaaS Platform</option>
+                        <option value="Architecture Review & Performance Audit">Architecture Review &amp; Performance Audit</option>
+                        <option value="Institutional / Corporate Portal">Institutional / Corporate Portal</option>
+                        <option value="Modernization / Codebase Migration">Modernization / Codebase Migration</option>
+                        <option value="Engineering Upskilling / Team Training">Engineering Upskilling / Team Training</option>
+                        <option value="General Technical Consultation">General Technical Consultation</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Google Meet Link</label>
+                    <input type="text" class="form-input" id="apptMeetUrl" placeholder="https://meet.google.com/apv-xxxx-xxx">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Discussion Notes &amp; Objectives</label>
+                    <textarea class="form-textarea" id="apptNotes" rows="3" placeholder="Context on client requirements, pain points, or previous communication..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" id="apptStatus">
+                        <option value="upcoming">🟢 Upcoming</option>
+                        <option value="completed">✅ Completed</option>
+                        <option value="rescheduled">🟡 Rescheduled</option>
+                        <option value="cancelled">⚪ Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('appointmentModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveAppointment()"><i class="fas fa-check"></i> Save Session</button>
+            </div>
+        </div>
+    </div>
+
+
     <!-- TOAST NOTIFICATION CONTAINER -->
     <div class="toast-container" id="toastContainer"></div>
 
@@ -2276,7 +2833,7 @@
         import { getFirestore, doc, setDoc, getDocs, getDoc, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-        import firebaseConfig from "./firebase-config.js";
+        import firebaseConfig from "/src/config/firebase-config.js";
 
         // Init Firebase Safe Wrap
         let app = null, db = null, auth = null, storage = null;
@@ -2678,6 +3235,40 @@
 
         // ─── STORAGE SYNC HELPERS & CROSS-TAB BROADCAST ───
         const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('appvertex_sync') : null;
+        if (syncChannel) {
+            syncChannel.onmessage = (event) => {
+                const msg = event.data;
+                if (!msg) return;
+                if (msg.type === 'NEW_INQUIRY' && msg.data) {
+                    const exists = inquiries.some(i => i.id === msg.data.id);
+                    if (!exists) {
+                        inquiries.unshift(msg.data);
+                        playChime();
+                        const isCall = msg.data.type === 'SCHEDULED_DISCOVERY_CALL' || (msg.data.service && msg.data.service.includes('Discovery'));
+                        if (isCall) {
+                            showToast(`🗓️ New Discovery Call booked by ${msg.data.name}!`, "success");
+                        } else {
+                            showToast(`📩 New Proposal received from ${msg.data.name}!`, "info");
+                        }
+                        updateStats();
+                        renderInquiries();
+                        renderRecentInquiries();
+                        renderAppointments();
+                        renderRecentAppointments();
+                    }
+                } else if (msg.type === 'NEW_APPLICATION' && msg.data) {
+                    const exists = applications.some(a => a.id === msg.data.id);
+                    if (!exists) {
+                        applications.unshift(msg.data);
+                        playChime();
+                        showToast(`🎓 New Upskill Application from ${msg.data.name}!`, "info");
+                        updateStats();
+                        renderApplications();
+                        renderRecentApplications();
+                    }
+                }
+            };
+        }
 
         function mergeProjects(localList, cloudList, deletedIds = []) {
             const delSet = new Set(deletedIds || []);
@@ -2994,7 +3585,7 @@
                         <div>
                             <div style="display:flex; align-items:center; gap:0.5rem;">
                                 <strong>${escapeHTML(app.name)}</strong>
-                                ${isNew ? '<span class="nav-badge" style="background:#EF4444; color:#fff; font-size:0.65rem; padding:0.15rem 0.45rem;">NEW APPLICANT</span>' : `<span class="nav-badge" style="background:rgba(128,15,53,0.1); color:var(--primary); font-size:0.65rem; padding:0.15rem 0.45rem;">${escapeHTML(app.status.toUpperCase())}</span>`}
+                                ${isNew ? '<span class="nav-badge" style="background:#EF4444; color:#fff; font-size:0.65rem; padding:0.15rem 0.45rem;">NEW APPLICANT</span>' : `<span class="nav-badge" style="background:rgba(239,135,13,0.12); color:var(--primary); font-size:0.65rem; padding:0.15rem 0.45rem;">${escapeHTML(app.status.toUpperCase())}</span>`}
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${escapeHTML(app.date || 'Recent')}</span>
                             </div>
                             <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">
@@ -3067,6 +3658,23 @@
             document.getElementById('statInquiries').textContent = inquiries.length;
             const statApp = document.getElementById('statApplications');
             if (statApp) statApp.textContent = applications.length;
+            
+            const calls = getAppointments();
+            const statAppt = document.getElementById('statAppointments');
+            if (statAppt) statAppt.textContent = calls.length;
+            const badgeAppt = document.getElementById('badgeAppointmentsCount');
+            if (badgeAppt) {
+                const upcomingCalls = calls.filter(c => (c.status || 'upcoming').toLowerCase() === 'upcoming').length;
+                badgeAppt.textContent = upcomingCalls;
+                if (upcomingCalls > 0) {
+                    badgeAppt.style.background = 'var(--primary)';
+                    badgeAppt.style.color = '#fff';
+                } else {
+                    badgeAppt.style.background = 'var(--primary-soft)';
+                    badgeAppt.style.color = 'var(--primary)';
+                }
+            }
+            
             document.getElementById('statYear').textContent = studioSettings.footerYear;
             
             document.getElementById('badgeProjectsCount').textContent = projects.length;
@@ -3117,10 +3725,12 @@
             if (id === 'projects') renderProjects();
             else if (id === 'testimonials') renderTestimonials();
             else if (id === 'inquiries') renderInquiries();
+            else if (id === 'appointments') renderAppointments();
             else if (id === 'applications') renderApplications();
             else if (id === 'dashboard') {
                 updateStats();
                 renderRecentProjects();
+                renderRecentAppointments();
                 renderRecentInquiries();
                 renderRecentApplications();
             }
@@ -3311,6 +3921,392 @@
                 default:
                     return `<span class="nav-badge">${escapeHTML((status||'new').toUpperCase())}</span>`;
             }
+        }
+
+        
+        // ═══════════════════════════════════════════════════
+        // DISCOVERY CALLS & APPOINTMENT CONTROLLER
+        // ═══════════════════════════════════════════════════
+        let activeAppointmentFilter = 'all';
+
+        function getAppointments() {
+            return (Array.isArray(inquiries) ? inquiries : []).filter(i => {
+                if (!i) return false;
+                return i.type === 'SCHEDULED_DISCOVERY_CALL' || 
+                       (i.service && i.service.includes('Discovery Session')) ||
+                       Boolean(i.scheduledDate);
+            });
+        }
+
+        function renderAppointments() {
+            const list = document.getElementById('appointmentsList');
+            if (!list) return;
+
+            const q = (document.getElementById('appointmentSearchInput')?.value || '').toLowerCase().trim();
+            const allCalls = getAppointments();
+
+            let filtered = allCalls.filter(call => {
+                let status = (call.status || 'upcoming').toLowerCase();
+                if (status === 'new' || status === 'unread') status = 'upcoming';
+
+                const matchStatus = (activeAppointmentFilter === 'all') || (status === activeAppointmentFilter);
+                const matchQuery = !q ||
+                    String(call.name || '').toLowerCase().includes(q) ||
+                    String(call.email || '').toLowerCase().includes(q) ||
+                    String(call.company || '').toLowerCase().includes(q) ||
+                    String(call.topic || call.service || '').toLowerCase().includes(q) ||
+                    String(call.scheduledDate || '').toLowerCase().includes(q);
+
+                return matchStatus && matchQuery;
+            });
+
+            if (filtered.length === 0) {
+                list.innerHTML = `
+                    <div class="card" style="text-align:center; padding:3.5rem 2rem; color:var(--text-muted);">
+                        <i class="fas fa-calendar-check" style="font-size:2.4rem; color:var(--primary); margin-bottom:1rem; opacity:0.6;"></i>
+                        <h4 style="color:var(--text-main); margin-bottom:0.35rem;">No Discovery Sessions Found</h4>
+                        <p style="font-size:0.9rem; max-width:440px; margin:0 auto 1.25rem auto;">No client sessions match your filter. Bookings from the website contact page will appear here automatically in real time.</p>
+                        <button class="btn btn-primary" onclick="openAppointmentModal()"><i class="fas fa-plus"></i> Schedule Manual Session</button>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = filtered.map(call => {
+                let status = (call.status || 'upcoming').toLowerCase();
+                if (status === 'new' || status === 'unread') status = 'upcoming';
+
+                const meetUrl = call.meetUrl || 'https://meet.google.com';
+                const cleanPhone = (call.phone || '').replace(/[^0-9]/g, '');
+                const waReminderMsg = encodeURIComponent(
+                    `Hi ${call.name}! This is AppVertex confirming our upcoming 30-min discovery session on ${call.scheduledDate} at ${call.scheduledTime} (IST).\n\nGoogle Meet link: ${meetUrl}`
+                );
+                const waUrl = cleanPhone ? `https://wa.me/${cleanPhone}?text=${waReminderMsg}` : '#';
+                const mailUrl = `mailto:${encodeURIComponent(call.email)}?subject=${encodeURIComponent('AppVertex Discovery Session Confirmation')}&body=${encodeURIComponent(`Hi ${call.name},\n\nLooking forward to our discovery call on ${call.scheduledDate} at ${call.scheduledTime} IST.\n\nGoogle Meet Room: ${meetUrl}\n\nBest regards,\nLeston & Lenstar\nAppVertex Studio`)}`;
+
+                const statusBadges = {
+                    upcoming: '<span class="nav-badge" style="background:#10B981; color:#fff; font-weight:700;"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:0.35rem;"></i> Upcoming</span>',
+                    completed: '<span class="nav-badge" style="background:rgba(16,185,129,0.15); color:#10B981; font-weight:700;"><i class="fas fa-check" style="font-size:0.65rem; margin-right:0.35rem;"></i> Completed</span>',
+                    rescheduled: '<span class="nav-badge" style="background:rgba(245,158,11,0.18); color:#F59E0B; font-weight:700;"><i class="fas fa-clock" style="font-size:0.65rem; margin-right:0.35rem;"></i> Rescheduled</span>',
+                    cancelled: '<span class="nav-badge" style="background:rgba(239,68,68,0.15); color:#EF4444; font-weight:700;"><i class="fas fa-times" style="font-size:0.65rem; margin-right:0.35rem;"></i> Cancelled</span>'
+                };
+
+                return `
+                    <div class="appointment-card ${status}">
+                        <div class="appointment-header-row">
+                            <div class="appointment-attendee-info">
+                                <div class="appointment-attendee-name">
+                                    ${escapeHTML(call.name)} 
+                                    ${call.company ? `<span class="appointment-attendee-company">(${escapeHTML(call.company)})</span>` : ''}
+                                </div>
+                                <div class="appointment-meta-row" style="margin-top:0.35rem;">
+                                    <span><i class="fas fa-envelope"></i> ${escapeHTML(call.email)}</span>
+                                    ${call.phone ? `<span><i class="fas fa-phone"></i> ${escapeHTML(call.phone)}</span>` : ''}
+                                    <span><i class="fas fa-user-shield"></i> Hosts: Leston &amp; Lenstar</span>
+                                </div>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;">
+                                <div class="appointment-datetime-pill">
+                                    <i class="fas fa-calendar-day"></i>
+                                    <span>${escapeHTML(call.scheduledDate || 'Date TBD')} @ ${escapeHTML(call.scheduledTime || 'Time TBD')}</span>
+                                </div>
+                                ${statusBadges[status] || statusBadges.upcoming}
+                            </div>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;">
+                            <span class="appointment-topic-tag"><i class="fas fa-tag" style="color:var(--primary);"></i> ${escapeHTML(call.topic || call.service || 'Architecture Review')}</span>
+                            ${call.budget ? `<span class="year-tag-pill">${escapeHTML(call.budget)}</span>` : ''}
+                        </div>
+
+                        ${call.message ? `
+                            <div class="appointment-notes-quote">
+                                "${escapeHTML(call.message)}"
+                            </div>
+                        ` : ''}
+
+                        <div class="appointment-actions-bar">
+                            <div class="appointment-actions-left">
+                                <a href="${escapeHTML(meetUrl)}" target="_blank" rel="noopener noreferrer" class="btn-meet-launcher" title="Launch Video Session">
+                                    <i class="fas fa-video"></i>
+                                    <span>Join Google Meet</span>
+                                </a>
+                                ${call.phone ? `
+                                    <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="color:#10B981; padding:0.45rem 0.85rem; font-size:0.78rem;">
+                                        <i class="fab fa-whatsapp"></i> WhatsApp Reminder
+                                    </a>
+                                ` : ''}
+                                <a href="${mailUrl}" class="btn btn-secondary" style="padding:0.45rem 0.85rem; font-size:0.78rem;">
+                                    <i class="fas fa-envelope"></i> Email Attendee
+                                </a>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:0.5rem;">
+                                <select class="status-select" onchange="setAppointmentStatus('${escapeJsStr(call.id)}', this.value)" title="Change Session Status">
+                                    <option value="upcoming" ${status==='upcoming'?'selected':''}>🟢 Upcoming</option>
+                                    <option value="completed" ${status==='completed'?'selected':''}>✅ Completed</option>
+                                    <option value="rescheduled" ${status==='rescheduled'?'selected':''}>🟡 Rescheduled</option>
+                                    <option value="cancelled" ${status==='cancelled'?'selected':''}>⚪ Cancelled</option>
+                                </select>
+                                <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteAppointment('${escapeJsStr(call.id)}')" title="Delete Appointment">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderRecentAppointments() {
+            const container = document.getElementById('dashboardRecentAppointments');
+            if (!container) return;
+
+            const allCalls = getAppointments();
+            const upcoming = allCalls.filter(c => {
+                const s = (c.status || 'upcoming').toLowerCase();
+                return s === 'upcoming' || s === 'new' || s === 'unread';
+            }).slice(0, 3);
+
+            if (upcoming.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:1.75rem 1rem; color:var(--text-muted); font-size:0.88rem;">
+                        <i class="fas fa-calendar-check" style="font-size:1.6rem; color:var(--primary); margin-bottom:0.5rem; display:block; opacity:0.5;"></i>
+                        No discovery sessions pending this week. New bookings from the public site will appear here automatically.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = upcoming.map(c => `
+                <div class="list-item" style="padding:0.95rem 1.15rem; margin-bottom:0.65rem; border-radius:10px; border:1px solid var(--border); background:var(--surface-subtle); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+                    <div>
+                        <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">
+                            ${escapeHTML(c.name)} ${c.company ? `<span style="font-weight:400; color:var(--text-muted);">(${escapeHTML(c.company)})</span>` : ''}
+                        </div>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem; display:flex; gap:0.75rem; align-items:center;">
+                            <span style="color:var(--primary); font-weight:700;"><i class="fas fa-calendar-alt"></i> ${escapeHTML(c.scheduledDate || 'Date TBD')} @ ${escapeHTML(c.scheduledTime || 'Time TBD')}</span>
+                            <span><i class="fas fa-tag"></i> ${escapeHTML(c.topic || 'Strategy Session')}</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <a href="${escapeHTML(c.meetUrl || 'https://meet.google.com')}" target="_blank" rel="noopener noreferrer" class="btn-meet-launcher" style="padding:0.4rem 0.85rem; font-size:0.76rem;">
+                            <i class="fas fa-video"></i> Join Meet
+                        </a>
+                        <button class="btn btn-secondary" style="padding:0.4rem 0.75rem; font-size:0.76rem;" onclick="showSection('appointments')">Details →</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setAppointmentFilter(filter, btn) {
+            activeAppointmentFilter = filter;
+            document.querySelectorAll('#appointmentFilterRow .filter-pill-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderAppointments();
+        }
+
+        async function setAppointmentStatus(id, newStatus) {
+            const inq = inquiries.find(i => i.id === id);
+            if (inq) {
+                inq.status = newStatus;
+                saveToLocalStorage();
+                if (auth?.currentUser && db && !isLocalMode) {
+                    try {
+                        await setDoc(doc(db, "inquiries", id), inq, { merge: true });
+                    } catch(e){ console.warn("Firestore call update notice:", e); }
+                }
+                renderAppointments();
+                renderRecentAppointments();
+                renderInquiries();
+                renderRecentInquiries();
+                updateStats();
+                showToast(`Session status marked as ${newStatus.toUpperCase()}`);
+            }
+        }
+
+        async function deleteAppointment(id) {
+            if (confirm("Delete this discovery session from your schedule?")) {
+                inquiries = inquiries.filter(i => i.id !== id);
+                saveToLocalStorage();
+                if (auth?.currentUser && db && !isLocalMode) {
+                    try {
+                        await deleteDoc(doc(db, "inquiries", id));
+                    } catch(e){ console.warn("Firestore delete notice:", e); }
+                }
+                renderAppointments();
+                renderRecentAppointments();
+                renderInquiries();
+                renderRecentInquiries();
+                updateStats();
+                showToast("Discovery session removed", "info");
+            }
+        }
+
+        function openAppointmentModal() {
+            document.getElementById('appointmentId').value = '';
+            document.getElementById('apptClientName').value = '';
+            document.getElementById('apptClientEmail').value = '';
+            document.getElementById('apptClientPhone').value = '';
+            document.getElementById('apptClientCompany').value = '';
+            document.getElementById('apptNotes').value = '';
+            
+            // Default date: tomorrow
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
+            document.getElementById('apptDate').value = d.toISOString().split('T')[0];
+            
+            const roomCode = 'apv-' + Math.random().toString(36).substring(2, 6) + '-' + Math.random().toString(36).substring(2, 5);
+            document.getElementById('apptMeetUrl').value = `https://meet.google.com/${roomCode}`;
+            
+            openModal('appointmentModal');
+        }
+
+        async function saveAppointment() {
+            const name = document.getElementById('apptClientName').value.trim();
+            const email = document.getElementById('apptClientEmail').value.trim();
+            const phone = document.getElementById('apptClientPhone').value.trim();
+            const company = document.getElementById('apptClientCompany').value.trim();
+            const dateVal = document.getElementById('apptDate').value;
+            const timeSlot = document.getElementById('apptTimeSlot').value;
+            const topic = document.getElementById('apptTopic').value;
+            const meetUrl = document.getElementById('apptMeetUrl').value.trim() || 'https://meet.google.com';
+            const notes = document.getElementById('apptNotes').value.trim();
+            const status = document.getElementById('apptStatus').value;
+
+            if (!name || !email || !dateVal) {
+                showToast("Please fill in Name, Email and Session Date", "error");
+                return;
+            }
+
+            const dateObj = new Date(dateVal);
+            const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const formattedDate = `${dayNames[dateObj.getDay()]}, ${monthNames[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+
+            const newAppt = {
+                id: 'call-' + Date.now(),
+                type: 'SCHEDULED_DISCOVERY_CALL',
+                name: name,
+                email: email,
+                phone: phone,
+                company: company,
+                service: `30-Min Discovery Session (${topic})`,
+                topic: topic,
+                budget: 'Discovery Session (Free)',
+                scheduledDate: formattedDate,
+                scheduledTime: timeSlot,
+                meetUrl: meetUrl,
+                message: notes,
+                date: `Call: ${formattedDate} @ ${timeSlot}`,
+                status: status
+            };
+
+            inquiries.unshift(newAppt);
+            saveToLocalStorage();
+
+            if (auth?.currentUser && db && !isLocalMode) {
+                try {
+                    await setDoc(doc(db, "inquiries", newAppt.id), newAppt);
+                } catch(e){ console.warn("Firestore save call notice:", e); }
+            }
+
+            closeModal('appointmentModal');
+            renderAppointments();
+            renderRecentAppointments();
+            renderInquiries();
+            renderRecentInquiries();
+            updateStats();
+            showToast("Discovery call scheduled successfully!", "success");
+        }
+
+        function exportAppointmentsCSV() {
+            const calls = getAppointments();
+            if (calls.length === 0) {
+                showToast("No scheduled calls to export.", "info");
+                return;
+            }
+            const headers = ["ID", "Scheduled Date", "Scheduled Time", "Client Name", "Email", "Phone", "Company", "Topic", "Status", "Meet URL", "Notes"];
+            const rows = calls.map(c => [
+                c.id || '',
+                `"${(c.scheduledDate || '').replace(/"/g, '""')}"`,
+                `"${(c.scheduledTime || '').replace(/"/g, '""')}"`,
+                `"${(c.name || '').replace(/"/g, '""')}"`,
+                `"${(c.email || '').replace(/"/g, '""')}"`,
+                `"${(c.phone || '').replace(/"/g, '""')}"`,
+                `"${(c.company || '').replace(/"/g, '""')}"`,
+                `"${(c.topic || c.service || '').replace(/"/g, '""')}"`,
+                `"${(c.status || 'upcoming').replace(/"/g, '""')}"`,
+                `"${(c.meetUrl || '').replace(/"/g, '""')}"`,
+                `"${(c.message || '').replace(/"/g, '""')}"`
+            ]);
+
+            const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `appvertex_discovery_calls_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Discovery sessions schedule exported as CSV");
+        }
+
+        // ═══════════════════════════════════════════════════
+        // THEME MANAGEMENT FOR ADMIN CONSOLE
+        // ═══════════════════════════════════════════════════
+        function toggleAdminTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = (current === 'dark') ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+                localStorage.setItem('appvertex-theme', next);
+            } catch(e){}
+            updateAdminThemeUI(next);
+            showToast(`Theme switched to ${next.toUpperCase()} mode`);
+        }
+
+        function updateAdminThemeUI(theme) {
+            const isDark = (theme === 'dark');
+            const iconClass = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            
+            const deskIcon = document.getElementById('desktopThemeIcon');
+            if (deskIcon) deskIcon.className = iconClass;
+
+            const mobIcon = document.getElementById('mobileThemeIcon');
+            if (mobIcon) mobIcon.className = iconClass;
+
+            const sideIcon = document.getElementById('sidebarThemeIcon');
+            if (sideIcon) sideIcon.className = iconClass;
+
+            const sideText = document.getElementById('sidebarThemeText');
+            if (sideText) sideText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+
+        // ═══════════════════════════════════════════════════
+        // SYNTHETIC AUDIO CHIME (WEB AUDIO API)
+        // ═══════════════════════════════════════════════════
+        function playChime() {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+                osc.frequency.exponentialRampToValueAtTime(880.00, ctx.currentTime + 0.12); // A5
+
+                gain.gain.setValueAtTime(0.18, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 0.36);
+            } catch(e){}
         }
 
         function renderInquiries() {
@@ -3825,6 +4821,25 @@
             const fallbackPool = ['hero-rosewood-showcase.png', 'hero-floating-phones-transparent.png', 'hero-devices.png', 'hero-rosewood-stage.png'];
             const finalImg = currentProjectImage || fallbackPool[Math.floor(Math.random() * fallbackPool.length)];
 
+            // Robust tech parsing: supports comma-separated or space/tab-separated
+            const techInput = document.getElementById('projectTech').value.trim();
+            let parsedTech = [];
+            if (techInput.includes(',')) {
+                parsedTech = techInput.split(',').map(t => t.trim()).filter(Boolean);
+            } else if (/\s{2,}|\t/.test(techInput)) {
+                parsedTech = techInput.split(/\s{2,}|\t/).map(t => t.trim()).filter(Boolean);
+            } else if (techInput) {
+                parsedTech = [techInput];
+            }
+            if (parsedTech.length === 0) {
+                parsedTech = cat === 'school' ? ['React.js', 'Node.js', 'MySQL'] : ['TypeScript', 'Node.js', 'PostgreSQL'];
+            }
+
+            const descInput = document.getElementById('projectDesc').value.trim();
+            const finalDesc = descInput || (cat === 'school' 
+                ? 'Comprehensive institutional multi-hub web infrastructure featuring administrative noticeboards, event archives, responsive student hubs, and synchronized parent portals.'
+                : 'High-conversion digital platform engineered for seamless user experience, sub-second latency, and verified production performance.');
+
             const data = {
                 id,
                 name,
@@ -3834,8 +4849,8 @@
                 emoji,
                 color,
                 year: parseInt(document.getElementById('projectYear').value) || 2026,
-                description: document.getElementById('projectDesc').value.trim(),
-                technologies: document.getElementById('projectTech').value.split(',').map(t=>t.trim()).filter(t=>t).slice(0, 3),
+                description: finalDesc,
+                technologies: parsedTech.slice(0, 4),
                 link: linkVal,
                 liveUrl: linkVal,
                 urlDisplay: displayUrl,

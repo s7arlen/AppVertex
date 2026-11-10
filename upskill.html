@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="AppVertex Upskill — Master modern production engineering, fullstack web architectures, and UI/UX design by shipping real software.">
     <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/upskill.html">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,14 +28,260 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/style.css">
 
     <style>
+        /* ═══════════════════════════════════════════════════════════════
+           UPSKILL ACADEMY COMPREHENSIVE STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode
+           ═══════════════════════════════════════════════════════════════ */
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 740px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Telemetry / Cohort Status Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Diagnostic Comparison (Where Bootcamps Fail) ─── */
+        .diagnostic-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .comparison-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-col.bad {
+            border-color: rgba(239, 68, 68, 0.25);
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, var(--surface) 100%);
+        }
+
+        .comparison-col.good {
+            border-color: rgba(16, 185, 129, 0.35);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, var(--surface) 100%);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-col.bad .comparison-header {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-header {
+            color: #10b981;
+        }
+
+        .comparison-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .comparison-item i {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .comparison-col.bad .comparison-item i {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-item i {
+            color: #10b981;
+        }
+
+        /* ─── Tracks Grid ─── */
         .upskill-tracks-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin: 4rem 0;
+            margin: 3.5rem 0 5rem;
         }
 
         .upskill-track-card {
@@ -46,7 +292,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 6px 24px rgba(14, 116, 144, 0.04);
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
             position: relative;
             overflow: hidden;
             transition: transform var(--transition-fast), border-color var(--transition-fast);
@@ -54,22 +300,22 @@
 
         .upskill-track-card:hover {
             transform: translateY(-4px);
-            border-color: var(--rose-light);
-            box-shadow: 0 16px 36px rgba(14, 116, 144, 0.08);
+            border-color: #ef870d;
+            box-shadow: 0 16px 36px rgba(239, 135, 13, 0.1);
         }
 
         .track-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            font-family: var(--font-primary);
-            font-size: 0.72rem;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--burgundy);
-            background: var(--blush);
-            padding: 0.3rem 0.8rem;
+            background: rgba(128, 15, 53, 0.08);
+            padding: 0.35rem 0.85rem;
             border-radius: var(--radius-full);
             margin-bottom: 1.25rem;
             width: fit-content;
@@ -77,7 +323,7 @@
 
         .track-title {
             font-family: var(--font-primary);
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-primary);
             margin: 0 0 0.85rem 0;
@@ -85,7 +331,7 @@
         }
 
         .track-desc {
-            font-size: 0.94rem;
+            font-size: 0.92rem;
             line-height: 1.65;
             color: var(--text-secondary);
             margin: 0 0 1.5rem 0;
@@ -95,11 +341,11 @@
             list-style: none;
             padding: 0;
             margin: 0 0 2rem 0;
-            border-top: 1px dashed var(--border-light);
+            border-top: 1px dashed var(--border);
             padding-top: 1.25rem;
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
+            gap: 0.75rem;
         }
 
         .track-modules-list li {
@@ -112,77 +358,163 @@
         }
 
         .track-modules-list li i {
-            color: var(--burgundy);
-            font-size: 0.75rem;
+            color: #ef870d;
+            font-size: 0.8rem;
         }
 
-        .track-footer-price {
+        /* ─── Mentorship Workflow Steps ─── */
+        .workflow-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .workflow-step-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.75rem;
+            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .workflow-step-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .workflow-step-title {
             font-family: var(--font-primary);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            color: var(--burgundy);
+            color: var(--text-primary);
         }
 
+        .workflow-step-desc {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Cohort Application Form ─── */
         .upskill-app-wrap {
-            background: linear-gradient(135deg, #FCFBF8 0%, #FAF0F1 100%);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 3.5rem 3rem;
             margin: 4rem auto;
-            max-width: 820px;
-            box-shadow: 0 10px 32px rgba(14, 116, 144, 0.05);
+            max-width: 840px;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.06);
+            position: relative;
+            overflow: hidden;
         }
 
-        .upskill-benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 4rem 0;
+        .upskill-app-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
         }
 
-        .benefit-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 1.75rem 1.25rem;
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
             text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .benefit-icon {
-            font-size: 1.75rem;
-            color: var(--burgundy);
-            margin-bottom: 0.75rem;
-        }
-
-        .benefit-title {
+        .closing-banner-title {
             font-family: var(--font-primary);
-            font-size: 1.05rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 0.35rem;
+            margin-bottom: 1.25rem;
         }
 
-        .benefit-desc {
-            font-size: 0.84rem;
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: var(--text-secondary);
-            line-height: 1.5;
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── Dark Mode Overrides ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card,
+        [data-theme="dark"] .upskill-app-wrap {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .comparison-col,
+        [data-theme="dark"] .upskill-track-card,
+        [data-theme="dark"] .workflow-step-card {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .track-badge {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
         }
 
         @media (max-width: 900px) {
-            .upskill-tracks-grid {
-                grid-template-columns: 1fr !important;
+            .telemetry-grid,
+            .workflow-steps-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .upskill-benefits-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+            .diagnostic-comparison-grid,
+            .upskill-tracks-grid {
+                grid-template-columns: 1fr;
             }
             .upskill-app-wrap {
-                padding: 2.25rem 1.5rem !important;
+                padding: 2.25rem 1.5rem;
             }
         }
 
         @media (max-width: 600px) {
-            .upskill-benefits-grid {
-                grid-template-columns: 1fr !important;
+            .telemetry-grid,
+            .workflow-steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
             }
         }
     </style>
@@ -313,7 +645,7 @@
             <div class="nav-inner">
                 <!-- Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
@@ -359,117 +691,229 @@
     </div>
 
 <main id="mainContent">
-    <!-- Subpage Hero Banner -->
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION: AN IDEATECH ALIGNED & APPVERTEX THEMED
+         ═══════════════════════════════════════════════════ -->
     <section class="subpage-hero" aria-label="Upskill Overview">
         <div class="container subpage-hero-content">
             <h1 class="subpage-title">
-                Master modern engineering.<br>
-                <span class="accent">Learn by shipping real software.</span>
+                Learn by shipping real software.<br>
+                <span class="gradient-text">Not toy tutorials.</span>
             </h1>
             <p class="subpage-desc">
-                An intensive engineering mentorship led by active production builders. Go beyond passive video tutorials and master the exact architectural workflows used in high-growth digital studios.
+                An intensive software engineering mentorship led directly by active studio builders. Master real architectural workflows, clean code standards, and production deployments by shipping actual client-grade software.
             </p>
             <div class="subpage-actions">
                 <a href="#applyForm" class="btn btn-primary">APPLY FOR NEXT COHORT <span class="arr">→</span></a>
-                <a href="work.html" class="btn btn-secondary">SEE WHAT STUDENTS SHIP</a>
+                <a href="#upskill-tracks" class="btn btn-secondary">EXPLORE TRACKS</a>
+            </div>
+
+            <!-- Apprenticeship Telemetry Card -->
+            <div class="telemetry-card">
+                <div class="telemetry-header">
+                    <div class="telemetry-tag">Selective Cohorts / Active Studio Mentorship</div>
+                    <div class="telemetry-status"><i class="fa-solid fa-users"></i> Maximum 12 Engineers Per Track &bull; 1-on-1 Guidance</div>
+                </div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">01 //</span>
+                        <div class="pillar-title">1-on-1 Code Reviews</div>
+                        <div class="pillar-desc">Senior engineers review your pull requests line-by-line, teaching idiomatic practices.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">02 //</span>
+                        <div class="pillar-title">Real Production Code</div>
+                        <div class="pillar-desc">No generic todo apps. You architect authentic client portals and stateful web applications.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">03 //</span>
+                        <div class="pillar-title">Verifiable GitHub Portfolio</div>
+                        <div class="pillar-desc">Ship live, battle-tested software with clean commit histories and CI/CD automation.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">04 //</span>
+                        <div class="pillar-title">Studio Network Referral</div>
+                        <div class="pillar-desc">Top graduates receive direct referrals to partner studios, agencies, and hiring startups.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Upskill Tracks Grid -->
-    <section class="container" style="padding: 4rem 1.5rem;">
-        <div class="text-center" style="max-width: 640px; margin: 0 auto 3rem;">
-            <p class="section-eyebrow">PRACTICAL SPECIALIZATIONS</p>
-            <h2 class="section-title">Three Production-Driven Tracks</h2>
-            <p class="section-lead">Choose your focus area and build real-world portfolio capstones reviewed directly by studio engineers.</p>
+    <!-- ═══════════════════════════════════════════════════
+         DIAGNOSTIC COMPARISON: WHERE BOOTCAMPS FAIL
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" style="padding: 2rem 1.5rem 4rem;">
+        <div style="text-align: center; max-width: 740px; margin: 0 auto 3rem;">
+            <p class="section-eyebrow">THE REALITY GAP</p>
+            <h2 class="section-title">Where Traditional Coding Bootcamps Fail</h2>
+            <p class="section-lead">Most online courses and bootcamps churn out surface-level tutorials with zero real-world deployment experience. Here is why the studio apprenticeship model is completely different.</p>
         </div>
 
-        <div class="upskill-tracks-grid">
-            <!-- Track 01: Modern Frontend -->
-            <div class="upskill-track-card">
-                <div>
-                    <div class="track-badge">TRACK 01 • 8 WEEKS</div>
-                    <h3 class="track-title">Modern Frontend &amp; Web Architectures</h3>
-                    <p class="track-desc">Master TypeScript, React component internals, CSS variable design systems, micro-interactions, and 100/100 Core Web Vitals optimization.</p>
-                    <ul class="track-modules-list">
-                        <li><i class="fa-solid fa-check"></i> Advanced TypeScript &amp; State Management</li>
-                        <li><i class="fa-solid fa-check"></i> CSS Design Tokens &amp; Motion Architectures</li>
-                        <li><i class="fa-solid fa-check"></i> Performance Budgets &amp; CWV Tuning</li>
-                        <li><i class="fa-solid fa-check"></i> Production Capstone: Interactive SaaS App</li>
-                    </ul>
+        <div class="diagnostic-comparison-grid">
+            <!-- Bad Column -->
+            <div class="comparison-col bad">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Traditional Coding Bootcamps
                 </div>
-                <div>
-                    <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span>→</span></a>
-                </div>
+                <h3 class="comparison-title">Passive Tutorials &amp; Cookie-Cutter Clones</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Passive Video Consumption:</strong> Students follow along with scripted tutorials without ever designing data schemas or debugging real production failures.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Generic Toy Projects:</strong> Cloned Netflix or Todo apps that technical hiring managers instantly recognize and ignore.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Zero Engineering Workflow:</strong> No PR reviews, no merge conflict resolution, no performance budgets, and no architectural design documents.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Shallow Framework Hype:</strong> Skips fundamentals like DOM rendering, network waterfalls, and database indexation in favor of superficial syntax.</div>
+                    </li>
+                </ul>
             </div>
 
-            <!-- Track 02: Fullstack & Cloud -->
-            <div class="upskill-track-card">
-                <div>
-                    <div class="track-badge">TRACK 02 • 10 WEEKS</div>
-                    <h3 class="track-title">Fullstack Systems &amp; Cloud Databases</h3>
-                    <p class="track-desc">Engineer secure REST and GraphQL APIs, integrate Firebase Firestore &amp; PostgreSQL, implement multi-tenant auth, and automate cloud deployments.</p>
-                    <ul class="track-modules-list">
-                        <li><i class="fa-solid fa-check"></i> Node.js &amp; Express API Pipelines</li>
-                        <li><i class="fa-solid fa-check"></i> Relational &amp; NoSQL Cloud Databases</li>
-                        <li><i class="fa-solid fa-check"></i> JWT, OAuth &amp; Security Best Practices</li>
-                        <li><i class="fa-solid fa-check"></i> Production Capstone: Portal with Admin CMS</li>
-                    </ul>
+            <!-- Good Column -->
+            <div class="comparison-col good">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-circle-check"></i> The AppVertex Apprenticeship
                 </div>
-                <div>
-                    <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span>→</span></a>
-                </div>
-            </div>
-
-            <!-- Track 03: UI/UX & Design Systems -->
-            <div class="upskill-track-card">
-                <div>
-                    <div class="track-badge">TRACK 03 • 6 WEEKS</div>
-                    <h3 class="track-title">UI / UX &amp; Design Systems Engineering</h3>
-                    <p class="track-desc">Bridge the gap between design and code. Learn professional Figma workflows, responsive design token systems, user testing, and clickable prototypes.</p>
-                    <ul class="track-modules-list">
-                        <li><i class="fa-solid fa-check"></i> Figma Auto-Layout &amp; Token Architecture</li>
-                        <li><i class="fa-solid fa-check"></i> Micro-interactions &amp; Component Hierarchies</li>
-                        <li><i class="fa-solid fa-check"></i> WCAG 2.1 Accessibility &amp; Heuristics</li>
-                        <li><i class="fa-solid fa-check"></i> Production Capstone: Full Design System</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4 Academy Highlights -->
-        <div class="upskill-benefits-grid">
-            <div class="benefit-box">
-                <i class="fa-solid fa-code-pull-request benefit-icon"></i>
-                <div class="benefit-title">1-on-1 Code Reviews</div>
-                <div class="benefit-desc">Line-by-line feedback from active engineers shipping commercial apps.</div>
-            </div>
-            <div class="benefit-box">
-                <i class="fa-solid fa-briefcase benefit-icon"></i>
-                <div class="benefit-title">Real Production Code</div>
-                <div class="benefit-desc">No generic todo apps. Build real client portals and verifiable case studies.</div>
-            </div>
-            <div class="benefit-box">
-                <i class="fa-solid fa-user-tie benefit-icon"></i>
-                <div class="benefit-title">Portfolio &amp; Career Prep</div>
-                <div class="benefit-desc">Technical resume audits, GitHub polish, and direct studio referral network.</div>
-            </div>
-            <div class="benefit-box">
-                <i class="fa-solid fa-certificate benefit-icon"></i>
-                <div class="benefit-title">Verified Credential</div>
-                <div class="benefit-desc">Verifiable certificate of engineering completion issued by AppVertex Studio.</div>
+                <h3 class="comparison-title">Bespoke Mentorship &amp; Production Craftsmanship</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Senior PR Reviews:</strong> Line-by-line critiques on your pull requests covering clean abstractions, edge cases, and algorithmic complexity.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Authentic Production Systems:</strong> Build high-converting corporate sites, authenticated portals, and real-time dashboard analytics.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Studio-Grade Workflows:</strong> Learn how real dev shops ship: feature branching, PR templates, automated testing, and zero-downtime deployment.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Deep Architectural Mastery:</strong> Master sub-second Core Web Vitals, relational &amp; NoSQL schemas, caching strategies, and robust security.</div>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <!-- Cohort Application Form -->
+        <!-- ═══════════════════════════════════════════════════
+             PRACTICAL TRACKS
+             ═══════════════════════════════════════════════════ -->
+        <div id="upskill-tracks" style="margin-top: 5rem;">
+            <div style="text-align: center; max-width: 680px; margin: 0 auto 3rem;">
+                <p class="section-eyebrow">PRACTICAL SPECIALIZATIONS</p>
+                <h2 class="section-title">Three Production-Driven Tracks</h2>
+                <p class="section-lead">Choose your focus area and build real-world portfolio capstones reviewed directly by studio engineers.</p>
+            </div>
+
+            <div class="upskill-tracks-grid">
+                <!-- Track 01: Modern Frontend -->
+                <div class="upskill-track-card">
+                    <div>
+                        <div class="track-badge">TRACK 01 &bull; 8 WEEKS</div>
+                        <h3 class="track-title">Modern Frontend &amp; Web Architectures</h3>
+                        <p class="track-desc">Master TypeScript, React component internals, CSS variable design systems, micro-interactions, and 100/100 Core Web Vitals optimization.</p>
+                        <ul class="track-modules-list">
+                            <li><i class="fa-solid fa-check"></i> Advanced TypeScript &amp; State Management</li>
+                            <li><i class="fa-solid fa-check"></i> CSS Design Tokens &amp; Motion Architectures</li>
+                            <li><i class="fa-solid fa-check"></i> Performance Budgets &amp; CWV Tuning</li>
+                            <li><i class="fa-solid fa-check"></i> Production Capstone: High-Conversion Web App</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span class="arr">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Track 02: Fullstack & Cloud -->
+                <div class="upskill-track-card">
+                    <div>
+                        <div class="track-badge">TRACK 02 &bull; 10 WEEKS</div>
+                        <h3 class="track-title">Fullstack Systems &amp; Cloud Databases</h3>
+                        <p class="track-desc">Engineer secure REST and GraphQL APIs, integrate Firebase Firestore &amp; PostgreSQL, implement multi-tenant auth, and automate cloud deployments.</p>
+                        <ul class="track-modules-list">
+                            <li><i class="fa-solid fa-check"></i> Node.js &amp; Express API Pipelines</li>
+                            <li><i class="fa-solid fa-check"></i> Relational &amp; NoSQL Cloud Databases</li>
+                            <li><i class="fa-solid fa-check"></i> JWT, OAuth &amp; Security Best Practices</li>
+                            <li><i class="fa-solid fa-check"></i> Production Capstone: Portal with Admin CMS</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span class="arr">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Track 03: UI/UX & Design Systems -->
+                <div class="upskill-track-card">
+                    <div>
+                        <div class="track-badge">TRACK 03 &bull; 6 WEEKS</div>
+                        <h3 class="track-title">UI / UX &amp; Design Systems Engineering</h3>
+                        <p class="track-desc">Bridge the gap between design and code. Learn professional Figma workflows, responsive design token systems, user testing, and clickable prototypes.</p>
+                        <ul class="track-modules-list">
+                            <li><i class="fa-solid fa-check"></i> Figma Auto-Layout &amp; Token Architecture</li>
+                            <li><i class="fa-solid fa-check"></i> Micro-interactions &amp; Component Hierarchies</li>
+                            <li><i class="fa-solid fa-check"></i> WCAG 2.1 Accessibility &amp; Heuristics</li>
+                            <li><i class="fa-solid fa-check"></i> Production Capstone: Full Design System</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#applyForm" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply for Track <span class="arr">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             MENTORSHIP WORKFLOW (HOW YOU'LL LEARN)
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 5rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">HOW YOU WILL LEARN</p>
+            <h2 class="section-title">The 4-Stage Apprenticeship Workflow</h2>
+            <p class="section-lead" style="max-width: 680px; margin: 0 auto;">Experience the exact development lifecycle used by senior engineers at top software studios.</p>
+        </div>
+
+        <div class="workflow-steps-grid">
+            <div class="workflow-step-card">
+                <span class="workflow-step-num">// STEP 01</span>
+                <h3 class="workflow-step-title">Technical Specification</h3>
+                <p class="workflow-step-desc">Before writing code, you write an architectural specification (PRD), mapping data schemas, API routes, and user journeys.</p>
+            </div>
+
+            <div class="workflow-step-card">
+                <span class="workflow-step-num">// STEP 02</span>
+                <h3 class="workflow-step-title">Feature Development</h3>
+                <p class="workflow-step-desc">Build modular components in clean Git branches, adhering to semantic standards, strict linting, and performance budgets.</p>
+            </div>
+
+            <div class="workflow-step-card">
+                <span class="workflow-step-num">// STEP 03</span>
+                <h3 class="workflow-step-title">Senior PR Review</h3>
+                <p class="workflow-step-desc">Submit your pull requests for detailed line-by-line review. Iterate based on real architectural critiques and refactoring tips.</p>
+            </div>
+
+            <div class="workflow-step-card">
+                <span class="workflow-step-num">// STEP 04</span>
+                <h3 class="workflow-step-title">Production Deployment</h3>
+                <p class="workflow-step-desc">Deploy your capstone to edge servers, configure SSL and custom domains, and run audit tools to guarantee 100/100 Core Web Vitals.</p>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             COHORT APPLICATION FORM
+             ═══════════════════════════════════════════════════ -->
         <div class="upskill-app-wrap" id="applyForm">
             <div class="text-center" style="max-width: 580px; margin: 0 auto 2.5rem;">
                 <p class="section-eyebrow">JOIN THE NEXT COHORT</p>
                 <h3 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Apply for Mentorship</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary);">Cohorts are capped at 12 students per track to ensure dedicated 1-on-1 attention.</p>
+                <p style="font-size: 0.95rem; color: var(--text-secondary);">Cohorts are strictly capped at 12 students per track to ensure dedicated 1-on-1 attention from founders.</p>
             </div>
 
             <form id="upskillApplicationForm">
@@ -509,6 +953,24 @@
                     SUBMIT APPLICATION <span class="arr">→</span>
                 </button>
             </form>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             CLOSING DIAGNOSTIC BANNER
+             ═══════════════════════════════════════════════════ -->
+        <div class="closing-banner">
+            <h2 class="closing-banner-title">Ready to build software that actually matters?</h2>
+            <p class="closing-banner-desc">
+                Stop watching endless tutorials and start building software with senior engineers who ship production code every day.
+            </p>
+            <div class="closing-banner-actions">
+                <a href="#applyForm" class="btn btn-primary" style="padding: 15px 34px; font-size: 1rem;">
+                    APPLY FOR MENTORSHIP <span class="arr">→</span>
+                </a>
+                <a href="contact.html#booking-calendar" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1rem;">
+                    SCHEDULE A CALL
+                </a>
+            </div>
         </div>
     </section>
 </main>
@@ -567,7 +1029,7 @@
          STRUCTURED STUDIO FOOTER
          ═══════════════════════════════════════════════════ -->
     <footer id="siteFooter"></footer>
-    <script type="module" src="footer.js"></script>
+    <script type="module" src="/src/components/footer.js"></script>
 
     <script>
         // ─── Mobile Drawer Toggle ───
@@ -735,7 +1197,7 @@
 
                 // Dual-Storage: 2. Cloud Firestore push
                 try {
-                    const { default: firebaseConfig } = await import("./firebase-config.js");
+                    const { default: firebaseConfig } = await import("/src/config/firebase-config.js");
                     const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
                     const { getFirestore, doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
                     const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);

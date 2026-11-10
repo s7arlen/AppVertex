@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="Get in touch with AppVertex Studio. Inquire about custom web applications, digital systems, school portals, and high-conversion websites.">
     <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/contact.html">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,127 +28,1146 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/style.css">
 
     <style>
-        .contact-page-grid {
+        /* ═══════════════════════════════════════════════════
+           AN IDEA TECH INSPIRED CONTACT PAGE ARCHITECTURE
+           Preserving AppVertex's Brand Theme & Light/Dark System
+           ═══════════════════════════════════════════════════ */
+
+        /* General Section Containers */
+        .contact-section {
+            padding: 4.5rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-section-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .contact-section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .contact-eyebrow {
+            font-family: var(--font-primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--burgundy-accent, #EF870D);
+            display: inline-block;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-title {
+            font-family: var(--font-display, var(--font-primary));
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .contact-subtitle {
+            font-family: var(--font-primary);
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin: 0 auto;
+            max-width: 620px;
+        }
+
+        /* ─── SECTION 0: HERO (Start With The Problem) ─── */
+        .hero-contact-grid {
             display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: 4rem;
-            margin: 4rem 0;
-            align-items: start;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: stretch;
+            padding-top: 1.5rem;
+            padding-bottom: 2rem;
         }
 
-        .contact-channel-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem 1.75rem;
+        .hero-contact-left {
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-contact-h1 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-transform: uppercase;
+            margin: 0.5rem 0 1.25rem 0;
+            line-height: 1.06;
+        }
+
+        .hero-h1-line1 {
+            font-family: var(--font-display, var(--font-primary));
+            font-size: clamp(2rem, 3.8vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .hero-h1-gradient {
+            font-family: var(--font-display, var(--font-primary));
+            font-size: clamp(2.3rem, 4.4vw, 3.7rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, #EF870D 0%, #F76020 40%, #EA321D 75%, #FF4D36 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            margin: 0.2rem 0;
+            padding-bottom: 0.15em;
+        }
+
+        .hero-h1-line3 {
+            font-family: var(--font-display, var(--font-primary));
+            font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .hero-contact-lead {
+            font-size: clamp(1rem, 1.25vw, 1.15rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 540px;
+        }
+
+        .hero-actions-row {
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+
+
+        /* Studio Commitments Card (High-Contrast Black Card) */
+        .commitments-card {
+            background: #140A0F;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg, 24px);
+            padding: 2.25rem 2rem;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+            color: #FAF8F5;
+        }
+
+        .commitments-watermark {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 220px;
+            height: 220px;
+            opacity: 0.05;
+            pointer-events: none;
+            color: #FAF8F5;
+        }
+
+        .commitments-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 1.25rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .commitments-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(250, 248, 245, 0.75);
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .commitments-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .commitments-list {
+            display: flex;
+            flex-direction: column;
             gap: 1.25rem;
-            margin-bottom: 1.25rem;
-            text-decoration: none;
-            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.03);
-            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+            margin: 1.5rem 0 0 0;
+            position: relative;
+            z-index: 2;
         }
 
-        .contact-channel-card:hover {
-            transform: translateX(4px);
-            border-color: var(--rose-light);
-            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.08);
-        }
-
-        .contact-channel-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--blush);
-            color: var(--burgundy);
+        .commitment-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            border: 1px solid var(--border);
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .commitment-num {
+            font-family: var(--font-primary);
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #EF870D;
+            margin-top: 0.15rem;
             flex-shrink: 0;
         }
 
-        .contact-channel-title {
-            font-family: var(--font-primary);
-            font-size: 0.74rem;
+        .commitment-item h4 {
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.2rem;
+            color: #FFFFFF;
+            margin: 0 0 0.2rem 0;
         }
 
-        .contact-channel-value {
+        .commitment-item p {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: rgba(250, 248, 245, 0.75);
+            margin: 0;
+        }
+
+        .commitments-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 1.15rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.74rem;
+            color: rgba(250, 248, 245, 0.85);
+            position: relative;
+            z-index: 2;
+        }
+
+        .pulse-live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+            display: inline-block;
+            margin-right: 0.35rem;
+        }
+
+        /* ─── SECTION 1: BOOKING & INTAKE (Schedule Your Discovery Call) ─── */
+        #booking-calendar {
+            position: relative;
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(239, 135, 13, 0.08) 0%, transparent 100%);
+            border-top: 1px solid var(--border-light, rgba(239, 135, 13, 0.12));
+            border-bottom: 1px solid var(--border-light, rgba(239, 135, 13, 0.12));
+        }
+
+        [data-theme="dark"] #booking-calendar {
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(239, 135, 13, 0.14) 0%, transparent 100%);
+            border-top-color: rgba(255, 255, 255, 0.08);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .intake-tabs-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .intake-tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            padding: 0.65rem 1.4rem;
+            font-family: var(--font-primary);
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intake-tab-btn:hover {
+            border-color: var(--burgundy-accent, #EF870D);
+            color: var(--text-primary);
+        }
+
+        .intake-tab-btn.active {
+            background: #140A0F;
+            border-color: #140A0F;
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .intake-tab-btn.active {
+            background: #EF870D;
+            border-color: #EF870D;
+            color: #000000;
+            box-shadow: 0 4px 16px rgba(239, 135, 13, 0.3);
+        }
+
+        .intake-panel {
+            display: none;
+        }
+
+        .intake-panel.active {
+            display: block;
+        }
+
+        /* ─── OPTION 4: FOUNDER DIAGNOSTIC CARD (HUMAN STUDIO CRAFTED) ─── */
+        .founder-diag-card {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 3.25rem 3.5rem;
+            box-shadow: 0 16px 44px -12px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-fast);
+        }
+
+        [data-theme="dark"] .founder-diag-card {
+            background: #140A0F;
+            border-color: #2E1520;
+            box-shadow: 0 18px 48px -10px rgba(0, 0, 0, 0.55);
+        }
+
+        /* Top Founder Identity */
+        .founder-diag-header {
+            display: flex;
+            align-items: center;
+            gap: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .founder-avatar-stack {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .founder-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            border: 3px solid var(--surface);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            user-select: none;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] .founder-avatar {
+            border-color: #140A0F;
+        }
+
+        .founder-avatar.av-1 {
+            background: #18181B;
+            z-index: 2;
+        }
+
+        .founder-avatar.av-2 {
+            background: linear-gradient(135deg, #EF870D 0%, #F59E0B 100%);
+            margin-left: -14px;
+            z-index: 1;
+        }
+
+        .founder-avatar-stack:hover .founder-avatar.av-1 {
+            transform: translateX(-4px);
+        }
+
+        .founder-avatar-stack:hover .founder-avatar.av-2 {
+            transform: translateX(4px);
+        }
+
+        .founder-diag-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .founder-diag-names {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .founder-diag-role {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Body & Quote */
+        .founder-diag-body {
+            margin-bottom: 2.25rem;
+        }
+
+        .founder-diag-title {
+            font-family: var(--font-primary);
+            font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .founder-diag-quote {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0 0 0 1.25rem;
+            border-left: 2.5px solid #EF870D;
+            font-style: normal;
+        }
+
+        [data-theme="dark"] .founder-diag-quote {
+            color: #E2DFE8;
+        }
+
+        /* Footer Action Deck */
+        .founder-diag-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light, #EAE6E8);
+            flex-wrap: wrap;
+        }
+
+        [data-theme="dark"] .founder-diag-footer {
+            border-top-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .founder-diag-specs {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .founder-diag-specs span i {
+            color: #EF870D;
+            margin-right: 0.35rem;
+            font-size: 0.88rem;
+        }
+
+        .diag-dot {
+            color: var(--border, #D1D5DB);
+            font-size: 0.75rem;
+            user-select: none;
+        }
+
+        .founder-diag-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.85rem;
+            border-radius: var(--radius-sm, 10px);
+            background: #2563EB;
+            color: #FFFFFF;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
+        }
+
+        .founder-diag-cta:hover {
+            background: #1D4ED8;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+        }
+
+        .diag-quote-mobile,
+        .diag-title-mobile {
+            display: none;
+        }
+
+        /* Responsive Breakpoints (< 768px) */
+        @media (max-width: 768px) {
+            .diag-quote-desktop,
+            .diag-title-desktop {
+                display: none;
+            }
+
+            .diag-quote-mobile,
+            .diag-title-mobile {
+                display: inline;
+            }
+
+            .intake-tabs-bar {
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+                width: 100%;
+            }
+
+            .intake-tab-btn {
+                padding: 0.58rem 1rem;
+                font-size: 0.8rem;
+                flex: 1;
+                justify-content: center;
+            }
+
+            .founder-diag-card {
+                padding: 1.65rem 1.35rem;
+                border-radius: 20px;
+            }
+
+            .founder-diag-header {
+                gap: 0.85rem;
+                margin-bottom: 1.35rem;
+            }
+
+            .founder-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 0.78rem;
+            }
+
+            .founder-avatar.av-2 {
+                margin-left: -11px;
+            }
+
+            .founder-diag-names {
+                font-size: 1.08rem;
+            }
+
+            .founder-diag-role {
+                font-size: 0.78rem;
+            }
+
+            .founder-diag-body {
+                margin-bottom: 1.5rem;
+            }
+
+            .founder-diag-title {
+                font-size: 1.25rem;
+                line-height: 1.3;
+                margin-bottom: 0.85rem;
+                letter-spacing: -0.02em;
+            }
+
+            .founder-diag-quote {
+                font-size: 0.92rem;
+                line-height: 1.65;
+                padding-left: 0;
+                border-left: none;
+                color: var(--text-secondary);
+            }
+
+            .founder-diag-footer {
+                flex-direction: column;
+                align-items: stretch;
+                padding-top: 1.35rem;
+                gap: 1.15rem;
+            }
+
+            .founder-diag-specs {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.4rem;
+                font-size: 0.82rem;
+            }
+
+            .founder-diag-specs span {
+                display: inline-flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+
+            .founder-diag-specs span i {
+                margin-right: 0.35rem;
+                font-size: 0.82rem;
+            }
+
+            .founder-diag-cta {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.35rem;
+                font-size: 0.92rem;
+            }
+        }
+
+        /* ─── SECTION 3: THE CONVERSATION (ANIDEATECH ARCHITECTURAL BLUEPRINT) ─── */
+        .anidea-conversation-section {
+            position: relative;
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        .anidea-section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .anidea-eyebrow {
+            display: inline-block;
+            font-family: var(--font-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #EF870D;
+            margin-bottom: 0.75rem;
+        }
+
+        .anidea-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            margin: 0 0 1rem 0;
+        }
+
+        .anidea-subtitle {
+            font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ─── Clean Editorial Architectural Frame (Human-Crafted Studio) ─── */
+        .anidea-blueprint-frame {
+            position: relative;
+            background: var(--surface, #FFFFFF);
+            border: 1px solid var(--border, #E8E4E7);
+            border-radius: 24px;
+            padding: 2.75rem 2rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* 3-Column Architectural Row */
+        .anidea-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            position: relative;
+            z-index: 2;
+        }
+
+        .anidea-col {
+            padding: 2rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-right: 1px solid var(--border-light, #EAE6E8);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .anidea-col:last-child {
+            border-right: none;
+        }
+
+        .anidea-col:hover {
+            background: rgba(239, 135, 13, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* Col Top Header: Number + Tag */
+        .anidea-step-lead {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .anidea-step-num {
+            font-family: var(--font-primary);
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #EF870D;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            display: inline-block;
+        }
+
+        .anidea-step-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted, #7A7585);
+            transition: color 0.3s ease;
+        }
+
+        .anidea-col:hover .anidea-step-tag {
+            color: #EF870D;
+        }
+
+        .anidea-col-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary, #1A181C);
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.015em;
+            line-height: 1.35;
+        }
+
+        .anidea-col-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary, #635F69);
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* ─── Dark Mode Specific Overrides ─── */
+        [data-theme="dark"] .anidea-title {
+            color: #FAF8F5;
+        }
+
+        [data-theme="dark"] .anidea-subtitle {
+            color: rgba(250, 248, 245, 0.65);
+        }
+
+        [data-theme="dark"] .anidea-blueprint-frame {
+            background: rgba(20, 10, 15, 0.95);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+        }
+
+        [data-theme="dark"] .anidea-col {
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-theme="dark"] .anidea-col:hover {
+            background: rgba(239, 135, 13, 0.06);
+        }
+
+        [data-theme="dark"] .anidea-step-tag {
+            color: #BDB8C7;
+        }
+
+        [data-theme="dark"] .anidea-col:hover .anidea-step-tag {
+            color: #EF870D;
+        }
+
+        [data-theme="dark"] .anidea-col-title {
+            color: #FFFFFF;
+        }
+
+        [data-theme="dark"] .anidea-col-desc {
+            color: #E2DFE8;
+        }
+
+                /* ─── Responsive Breakpoints ─── */
+        @media (max-width: 960px) {
+            .anidea-title {
+                font-size: 2.25rem;
+            }
+            .anidea-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .anidea-col {
+                border-right: none;
+                border-bottom: 1px solid var(--border-light, #E8E4E7);
+                padding: 1.5rem 0.75rem;
+            }
+            [data-theme="dark"] .anidea-col {
+                border-bottom-color: rgba(255, 255, 255, 0.08);
+            }
+            .anidea-col:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* ─── SECTION 5: FAQ ACCORDION ─── */
+        .faq-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(239, 135, 13, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .faq-item.active {
+            border-color: var(--burgundy-accent, #EF870D);
+            box-shadow: 0 12px 32px -10px rgba(239, 135, 13, 0.18);
+        }
+
+        .faq-btn {
+            width: 100%;
+            padding: 1.35rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
             font-family: var(--font-primary);
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-primary);
+            user-select: none;
+            outline: none;
         }
 
-        .contact-form-card {
-            background: var(--surface);
+        .faq-btn:focus-visible {
+            outline: 2px solid var(--burgundy-accent, #EF870D);
+            outline-offset: -2px;
+            border-radius: 14px;
+        }
+
+        .faq-icon-bubble {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 3rem 2.5rem;
-            box-shadow: 0 10px 32px rgba(128, 15, 53, 0.05);
-        }
-
-        .what-happens-box {
-            background: var(--porcelain);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            padding: 2rem 1.75rem;
-            margin-top: 2rem;
-        }
-
-        .what-happens-title {
-            font-family: var(--font-primary);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--burgundy);
-            margin-bottom: 1rem;
-        }
-
-        .step-item-mini {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.85rem;
-            margin-bottom: 0.85rem;
-            font-size: 0.88rem;
+            background: var(--surface-raised, #FAF8F5);
             color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        .step-dot-mini {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--blush);
-            color: var(--burgundy);
-            font-family: var(--font-primary);
-            font-size: 0.65rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.82rem;
             flex-shrink: 0;
-            margin-top: 0.1rem;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.3s ease,
+                        color 0.3s ease,
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon-bubble {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #2563EB;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        [data-theme="dark"] .faq-item.active .faq-icon-bubble {
+            background: #EF870D;
+            color: #000000;
+            border-color: #EF870D;
+            transform: rotate(45deg);
+            box-shadow: 0 0 14px rgba(239, 135, 13, 0.45);
+        }
+
+        .faq-answer-body {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.35s ease,
+                        padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 1.75rem;
+        }
+
+        .faq-item.active .faq-answer-body {
+            max-height: 280px;
+            opacity: 1;
+            padding: 0 1.75rem 1.5rem 1.75rem;
+            border-top: 1px solid var(--border-light, #E8E4E7);
+        }
+
+        .faq-answer-text {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            padding-top: 1rem;
+            margin: 0;
+        }
+
+        /* ─── SECTION 6: MINIMALIST DIRECT STUDIO CONTACT CHANNELS ─── */
+        .studio-direct-deck {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .studio-direct-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .studio-direct-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(239, 135, 13, 0.4);
+            box-shadow: 0 12px 32px rgba(239, 135, 13, 0.08);
+        }
+
+        [data-theme="dark"] .studio-direct-card {
+            background: #140A0F;
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .studio-direct-card:hover {
+            border-color: rgba(239, 135, 13, 0.45);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+        }
+
+        .direct-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .direct-card-label {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #EF870D;
+        }
+
+        .direct-card-icon {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+        }
+
+        .studio-direct-card:hover .direct-card-icon {
+            color: #EF870D;
+        }
+
+        .direct-card-main-link {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.015em;
+            margin-bottom: 0.75rem;
+            line-height: 1.25;
+            transition: color var(--transition-fast);
+            word-break: break-word;
+        }
+
+        .direct-card-main-link:hover {
+            color: #EF870D;
+        }
+
+        .direct-card-main-text {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.015em;
+            margin-bottom: 0.75rem;
+            line-height: 1.25;
+        }
+
+        .direct-card-note {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
         @media (max-width: 900px) {
-            .contact-page-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2.5rem !important;
+            .studio-direct-deck {
+                grid-template-columns: 1fr;
+                gap: 1.15rem;
             }
-            .contact-form-card {
-                padding: 2rem 1.25rem !important;
+            .studio-direct-card {
+                padding: 1.75rem 1.5rem;
+            }
+        }
+
+                /* ─── DARK THEME OVERRIDES FOR CONTACT PAGE ─── */
+        [data-theme="dark"] .intake-form-wrapper,
+        [data-theme="dark"] .calendar-workspace-card,
+        [data-theme="dark"] .native-booking-card,
+        [data-theme="dark"] .faq-item,
+        [data-theme="dark"] .bento-tile {
+            background: #140A0F;
+            border-color: #2E1520;
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .faq-item:hover,
+        [data-theme="dark"] .inbox-card:hover {
+            border-color: #EF870D;
+        }
+
+        [data-theme="dark"] .inbox-card-header,
+        [data-theme="dark"] .conversation-frame,
+        [data-theme="dark"] .conversation-col,
+        [data-theme="dark"] .faq-item.active .faq-answer-body,
+        [data-theme="dark"] .booking-card-header,
+        [data-theme="dark"] .calendar-picker-col,
+        [data-theme="dark"] .timeslots-header,
+        [data-theme="dark"] .slots-action-bar,
+        [data-theme="dark"] .cal-legend,
+        [data-theme="dark"] .booking-form-footer,
+        [data-theme="dark"] .succ-card-row,
+        [data-theme="dark"] .booking-fallback-drawer {
+            border-color: #2E1520;
+        }
+
+        [data-theme="dark"] .booking-meta-chip,
+        [data-theme="dark"] .cal-nav-btn,
+        [data-theme="dark"] .slots-count-badge,
+        [data-theme="dark"] .booking-selection-recap,
+        [data-theme="dark"] .success-appointment-card,
+        [data-theme="dark"] .booking-fallback-drawer {
+            background: #1A0E15;
+            border-color: #2E1520;
+        }
+
+        [data-theme="dark"] .timeslots-picker-col {
+            background: #140A0F;
+        }
+
+        [data-theme="dark"] .time-slot-btn {
+            background: #180D14;
+            border-color: #2E1520;
+            color: #FAF8F5;
+        }
+
+        [data-theme="dark"] .time-slot-btn:hover {
+            background: rgba(239, 135, 13, 0.12);
+            border-color: #EF870D;
+            color: #EF870D;
+        }
+
+        [data-theme="dark"] .succ-meet-row {
+            background: #140A0F;
+            border-color: #2E1520;
+        }
+
+        [data-theme="dark"] .copy-meet-btn {
+            background: #1A0E15;
+            border-color: #2E1520;
+            color: #FAF8F5;
+        }
+
+        [data-theme="dark"] .faq-icon-bubble {
+            background: #1C0F14;
+            border-color: #2E1520;
+            color: var(--text-secondary);
+        }
+
+        /* ─── RESPONSIVE BREAKPOINTS ─── */
+        @media (max-width: 980px) {
+            .hero-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .inbox-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            .conversation-col {
+                border-right: none !important;
+                border-bottom: 1px solid var(--border);
+                padding: 1.25rem 0.5rem;
+            }
+            .conversation-col:last-child {
+                border-bottom: none;
+            }
+            .intake-form-wrapper {
+                padding: 2rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .booking-split-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .calendar-picker-col {
+                border-right: none !important;
+                border-bottom: 1px solid var(--border-light, #E8E4E7) !important;
+                padding: 1.75rem 1.25rem !important;
+            }
+            [data-theme="dark"] .calendar-picker-col {
+                border-bottom-color: #2E1520 !important;
+            }
+            .timeslots-picker-col {
+                padding: 1.75rem 1.25rem !important;
+            }
+            .booking-card-header,
+            .booking-form-wrap,
+            .booking-success-box {
+                padding: 1.75rem 1.25rem !important;
+            }
+            .form-row-2 {
+                grid-template-columns: 1fr !important;
+            }
+            .succ-card-row {
+                grid-template-columns: 1fr !important;
+            }
+            .booking-host-profile {
+                flex-direction: column !important;
             }
         }
     </style>
@@ -203,7 +1222,7 @@
         <div class="fixed-bg-ambient-top"></div>
         <div class="fixed-bg-ambient-bottom"></div>
 
-                <!-- Stationary Organic Curved Ribbon Layer (Fixed Brand Signature) -->
+        <!-- Stationary Organic Curved Ribbon Layer (Burgundy / Rose Gradients) -->
         <div class="fixed-bg-ribbon-curves" aria-hidden="true">
             <svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -279,7 +1298,7 @@
             <div class="nav-inner">
                 <!-- Brand Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
@@ -330,124 +1349,382 @@
         </div>
     </div>
 <main id="mainContent">
-    <!-- Subpage Hero Banner -->
-    <section class="subpage-hero" aria-label="Contact Overview">
-        <div class="container subpage-hero-content">
-            <h1 class="subpage-title">
-                Make your next<br>
-                <span class="accent">move digital.</span>
-            </h1>
-            <p class="subpage-desc">
-                Tell us about your project, timeline, and technical objectives. We review inquiries within 24 hours and provide transparent estimates with zero obligation.
-            </p>
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 0: HERO (START WITH THE PROBLEM)
+         ═══════════════════════════════════════════════════ -->
+    <section class="contact-section" style="padding-top: calc(72px + 2rem); padding-bottom: 3.5rem;">
+        <div class="contact-section-inner">
+            <div class="hero-contact-grid">
+                <!-- Left Column: Display Copy & CTAs -->
+                <div class="hero-contact-left">
+                    <div>
+                        <h1 class="hero-contact-h1">
+                            <span class="hero-h1-line1">Talk through</span>
+                            <span class="hero-h1-gradient">what isn't working</span>
+                            <span class="hero-h1-line3">before deciding what to build.</span>
+                        </h1>
+                        <p class="hero-contact-lead">
+                            Tell us what is not working, and we'll work out what would help.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="hero-actions-row">
+                            <a href="#booking-calendar" class="btn btn-primary" style="padding: 12px 28px; font-size: 0.95rem;">
+                                Book a Call <span class="arr">→</span>
+                            </a>
+                            <a href="mailto:leston@appvertex.in" class="btn btn-secondary" style="padding: 12px 26px; font-size: 0.95rem;">
+                                Email Us Directly
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Studio Commitments Card -->
+                <div>
+                    <div class="commitments-card">
+                        <!-- Technical Watermark Background -->
+                        <svg class="commitments-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="50 3, 90 25, 90 75, 50 97, 10 75, 10 25"/>
+                            <line x1="50" y1="3" x2="50" y2="97"/>
+                            <line x1="10" y1="25" x2="90" y2="75"/>
+                            <line x1="90" y1="25" x2="10" y2="75"/>
+                        </svg>
+
+                        <div class="commitments-header">
+                            <span class="commitments-eyebrow">STUDIO COMMITMENTS</span>
+                            <h3 class="commitments-title">What you can expect:</h3>
+                        </div>
+
+                        <div class="commitments-list">
+                            <div class="commitment-item">
+                                <span class="commitment-num">01</span>
+                                <div>
+                                    <h4>Honest Recommendations</h4>
+                                    <p>If your existing tools already do the job, we tell you directly instead of proposing custom software.</p>
+                                </div>
+                            </div>
+                            <div class="commitment-item">
+                                <span class="commitment-num">02</span>
+                                <div>
+                                    <h4>Practical assessment</h4>
+                                    <p>We identify where customer enquiries stall, where delivery slows down, and where workarounds occur.</p>
+                                </div>
+                            </div>
+                            <div class="commitment-item">
+                                <span class="commitment-num">03</span>
+                                <div>
+                                    <h4>A Practical Next Step</h4>
+                                    <p>You leave the call with a practical next step: whether to update your website, adjust an internal routine, or build software.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Main Contact & Intake Grid -->
-    <section class="container" style="padding: 3rem 1.5rem;">
-        <div class="contact-page-grid">
-            <!-- Left Column: Direct Channels -->
-            <div>
-                <p class="section-eyebrow">DIRECT CONTACT CHANNELS</p>
-                <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.25rem;">We're Ready When You Are</h2>
-                <p style="font-size: 0.96rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
-                    Prefer a direct conversation? Reach our engineering team directly via email, WhatsApp, or phone.
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 1: BOOKING & INTAKE (SCHEDULE YOUR DISCOVERY CALL)
+         ═══════════════════════════════════════════════════ -->
+    <section id="booking-calendar" class="contact-section">
+        <div class="contact-section-inner" style="max-width: 1040px;">
+            <div class="contact-section-header">
+                <span class="contact-eyebrow">Choose a Time</span>
+                <h2 class="contact-title">Schedule Your Discovery Call.</h2>
+                <p class="contact-subtitle">
+                    Talk through what is not working before deciding what to build. A short outline of what is happening in the business is enough.
                 </p>
+            </div>
 
-                <a href="mailto:leston@appvertex.in" class="contact-channel-card">
-                    <div class="contact-channel-icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <div class="contact-channel-title">Direct Email</div>
-                        <div class="contact-channel-value">leston@appvertex.in</div>
-                    </div>
-                </a>
+            <!-- Intake Option Switcher Tabs -->
+            <div class="intake-tabs-bar">
+                <button type="button" class="intake-tab-btn active" id="tabCalendarBtn">
+                    <i class="fa-solid fa-calendar-check"></i> 30-Min Discovery Call
+                </button>
+                <button type="button" class="intake-tab-btn" id="tabProposalBtn">
+                    <i class="fa-solid fa-paper-plane"></i> Direct Project Proposal
+                </button>
+            </div>
 
-                <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                    <div class="contact-channel-icon"><i class="fab fa-whatsapp"></i></div>
-                    <div>
-                        <div class="contact-channel-title">Instant WhatsApp</div>
-                        <div class="contact-channel-value">+91 93229 71253</div>
+            <!-- Panel A: Founder Diagnostic Session (Option 4 - Human Studio Style) -->
+            <div class="intake-panel active" id="calendarPanel">
+                <div class="founder-diag-card">
+                    <!-- Top Founder Header -->
+                    <div class="founder-diag-header">
+                        <div class="founder-avatar-stack" aria-hidden="true">
+                            <span class="founder-avatar av-1" title="Leston Coelho">LC</span>
+                            <span class="founder-avatar av-2" title="Lenstar Monteiro">LM</span>
+                        </div>
+                        <div class="founder-diag-meta">
+                            <h3 class="founder-diag-names">Leston Coelho &amp; Lenstar Monteiro</h3>
+                            <span class="founder-diag-role">Founders &amp; Technical Directors • AppVertex</span>
+                        </div>
                     </div>
-                </a>
 
-                <div class="what-happens-box">
-                    <div class="what-happens-title">What happens after you reach out?</div>
-                    <div class="step-item-mini">
-                        <span class="step-dot-mini">1</span>
-                        <span><strong>24-Hour Review:</strong> We analyze your requirements and verify technical feasibility.</span>
+                    <!-- Core Call Title & Honest Studio Statement -->
+                    <div class="founder-diag-body">
+                        <h4 class="founder-diag-title">
+                            <span class="diag-title-desktop">30-Minute Architecture &amp; Diagnostics Session</span>
+                            <span class="diag-title-mobile">Architecture Diagnostic Session</span>
+                        </h4>
+                        <div class="founder-diag-quote">
+                            <span class="diag-quote-desktop">&ldquo;Before writing any code or proposing a budget, we sit down with you to understand where the system or workflow is actually breaking down. If custom software isn&rsquo;t the most profitable fix for your business, we will tell you upfront.&rdquo;</span>
+                            <span class="diag-quote-mobile">A direct 1-on-1 working session with Leston &amp; Lenstar to review your current system, diagnose bottlenecks, and map out a concrete build roadmap &mdash; zero sales pitch.</span>
+                        </div>
                     </div>
-                    <div class="step-item-mini">
-                        <span class="step-dot-mini">2</span>
-                        <span><strong>Discovery Call:</strong> A 30-minute conversation with our Lead Engineer.</span>
-                    </div>
-                    <div class="step-item-mini">
-                        <span class="step-dot-mini">3</span>
-                        <span><strong>Sprint Roadmap:</strong> A transparent fixed-price proposal and sprint breakdown.</span>
+
+                    <!-- Bottom Action Bar -->
+                    <div class="founder-diag-footer">
+                        <div class="founder-diag-specs">
+                            <span><i class="fa-regular fa-clock"></i> 30 mins</span>
+                            <span class="diag-dot">&bull;</span>
+                            <span><i class="fa-solid fa-video"></i> Google Meet</span>
+                            <span class="diag-dot">&bull;</span>
+                            <span><i class="fa-solid fa-shield-halved"></i> 0% Sales Pressure</span>
+                        </div>
+
+                        <a href="https://calendar.app.google/91mkbLLM83uv7oC47" 
+                           target="_blank" rel="noopener noreferrer" class="founder-diag-cta">
+                            <span>Select a Time on Google Calendar</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Interactive Proposal Form -->
-            <div class="contact-form-card">
-                <p class="section-eyebrow" style="margin-bottom: 0.5rem;">PROJECT ESTIMATOR</p>
-                <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem;">Tell Us About Your Project</h3>
-
-                <form id="contactPageForm">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-                        <div class="form-group">
-                            <label class="form-label" for="contactName">Your Name</label>
-                            <input type="text" id="contactName" name="name" class="form-control" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="contactEmail">Work Email</label>
-                            <input type="email" id="contactEmail" name="email" class="form-control" placeholder="john@company.com" required>
-                        </div>
+            <!-- Panel B: Interactive Project Estimator & Proposal Form (Cloud Synced) -->
+            <div class="intake-panel" id="proposalPanel">
+                <div class="intake-form-wrapper">
+                    <div style="margin-bottom: 1.75rem;">
+                        <span class="contact-eyebrow">PROJECT ESTIMATOR &amp; INTAKE</span>
+                        <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.5rem 0;">Tell Us About Your Project</h3>
+                        <p style="font-size: 0.92rem; color: var(--text-secondary); margin: 0;">We review every project proposal within 24 hours and reply with transparent scope breakdown and feasibility notes.</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-                        <div class="form-group">
-                            <label class="form-label" for="contactPhone">Phone / WhatsApp</label>
-                            <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 00000 00000">
+                    <form id="contactPageForm">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="contactName">Your Name</label>
+                                <input type="text" id="contactName" name="name" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contactEmail">Work Email</label>
+                                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="john@company.com" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="contactCompany">Company / Organization</label>
-                            <input type="text" id="contactCompany" name="company" class="form-control" placeholder="Acme Studio">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="contactPhone">Phone / WhatsApp</label>
+                                <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 93229 71253">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contactCompany">Company / Organization</label>
+                                <input type="text" id="contactCompany" name="company" class="form-control" placeholder="Acme Studio">
+                            </div>
                         </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="contactService">Primary Requirement</label>
+                                <select id="contactService" name="service" class="form-control" required>
+                                    <option value="">Select service...</option>
+                                    <option value="web-dev">Fullstack Web Application</option>
+                                    <option value="web-design">Web Design &amp; Design System</option>
+                                    <option value="portal">Institutional / School Portal</option>
+                                    <option value="saas">SaaS Product Engineering</option>
+                                    <option value="ecommerce">Luxury E-Commerce</option>
+                                    <option value="maintenance">Cloud Maintenance &amp; SLA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contactBudget">Estimated Budget Range</label>
+                                <select id="contactBudget" name="budget" class="form-control">
+                                    <option value="flexible">Flexible / Exploring</option>
+                                    <option value="25k-50k">₹25,000 – ₹50,000</option>
+                                    <option value="50k-100k">₹50,000 – ₹1,00,000</option>
+                                    <option value="100k+">₹1,00,000+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.75rem;">
+                            <label class="form-label" for="contactDetails">Project Overview &amp; Current Bottlenecks</label>
+                            <textarea id="contactDetails" name="details" class="form-control" rows="4" placeholder="Briefly describe what is not working in your current workflow, your timeline, or key objectives..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px; justify-content: center; font-size: 0.95rem;">
+                            SUBMIT PROPOSAL <span class="arr">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 3: CONVERSATION BLUEPRINT (WHAT WE'LL LOOK AT)
+         ═══════════════════════════════════════════════════ -->
+    <section class="contact-section anidea-conversation-section">
+        <div class="contact-section-inner">
+            <div class="anidea-section-header">
+                <span class="anidea-eyebrow">The Conversation</span>
+                <h2 class="anidea-title">What We'll Look At</h2>
+                <p class="anidea-subtitle">
+                    A structured conversation to understand where routine work has become difficult.
+                </p>
+            </div>
+
+            <div class="anidea-blueprint-frame">
+                <div class="anidea-grid">
+                    <!-- Column 01: Diagnose -->
+                    <div class="anidea-col reveal-on-scroll" style="transition-delay: 0s;">
+                        <div class="anidea-step-lead">
+                            <span class="anidea-step-num">01</span>
+                            <span class="anidea-step-tag">DIAGNOSE</span>
+                        </div>
+                        <h3 class="anidea-col-title">What is getting in the way</h3>
+                        <p class="anidea-col-desc">
+                            We start with the specific friction points you are seeing, which team members or customers are affected, and what an ideal fix looks like.
+                        </p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-                        <div class="form-group">
-                            <label class="form-label" for="contactService">Primary Requirement</label>
-                            <select id="contactService" name="service" class="form-control" required>
-                                <option value="">Select service...</option>
-                                <option value="web-dev">Fullstack Web Application</option>
-                                <option value="web-design">Web Design &amp; Design System</option>
-                                <option value="portal">Institutional / School Portal</option>
-                                <option value="saas">SaaS Product Engineering</option>
-                                <option value="ecommerce">Luxury E-Commerce</option>
-                                <option value="maintenance">Cloud Maintenance &amp; SLA</option>
-                            </select>
+                    <!-- Column 02: Examine -->
+                    <div class="anidea-col reveal-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="anidea-step-lead">
+                            <span class="anidea-step-num">02</span>
+                            <span class="anidea-step-tag">EXAMINE</span>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="contactBudget">Estimated Budget Range</label>
-                            <select id="contactBudget" name="budget" class="form-control">
-                                <option value="flexible">Flexible / Exploring</option>
-                                <option value="25k-50k">₹25,000 – ₹50,000</option>
-                                <option value="50k-100k">₹50,000 – ₹1,00,000</option>
-                                <option value="100k+">₹1,00,000+</option>
-                            </select>
-                        </div>
+                        <h3 class="anidea-col-title">How things work now</h3>
+                        <p class="anidea-col-desc">
+                            Then we look at the questions customers ask, what happens after an enquiry arrives, the day-to-day work, and the tools you already use.
+                        </p>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 1.75rem;">
-                        <label class="form-label" for="contactDetails">Project Overview &amp; Goals</label>
-                        <textarea id="contactDetails" name="details" class="form-control" rows="4" placeholder="Briefly describe what you're looking to build, your current timeline, and any key requirements..." required></textarea>
+                    <!-- Column 03: Next Steps -->
+                    <div class="anidea-col reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="anidea-step-lead">
+                            <span class="anidea-step-num">03</span>
+                            <span class="anidea-step-tag">NEXT STEPS</span>
+                        </div>
+                        <h3 class="anidea-col-title">What becomes clear</h3>
+                        <p class="anidea-col-desc">
+                            By the end of the conversation, you will have a clear idea of what to fix first, with zero obligation to hire us or start a project.
+                        </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px; justify-content: center;">
-                        SUBMIT INQUIRY <span class="arr">→</span>
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 5: INTERACTIVE FAQ
+         ═══════════════════════════════════════════════════ -->
+    <section class="contact-section" style="padding-top: 1rem; padding-bottom: 4rem;">
+        <div class="contact-section-inner">
+            <div class="contact-section-header">
+                <span class="contact-eyebrow">Common Questions</span>
+                <h2 class="contact-title">Questions Founders Ask Before Booking</h2>
+                <p class="contact-subtitle">
+                    Clear answers about our starting conversation and how recommendations are made.
+                </p>
+            </div>
+
+            <div class="faq-wrapper">
+                <!-- FAQ 1 -->
+                <div class="faq-item active">
+                    <button type="button" class="faq-btn" aria-expanded="true">
+                        <span>Do I need to know which service I need before getting in touch?</span>
+                        <div class="faq-icon-bubble">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
                     </button>
-                </form>
+                    <div class="faq-answer-body">
+                        <p class="faq-answer-text">
+                            Tell us what is not working in your business, and we will help you identify the most practical starting point.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span>Can you work with the tools we already use?</span>
+                        <div class="faq-icon-bubble">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer-body">
+                        <p class="faq-answer-text">
+                            Yes. We do not replace tools that already do the job. If your existing spreadsheets or software support the workflow with an integration or smaller adjustment, we keep them in place.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span>What if I'm not sure where the problem starts?</span>
+                        <div class="faq-icon-bubble">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer-body">
+                        <p class="faq-answer-text">
+                            That is completely normal. Share what you have noticed, such as customer confusion, slow handoffs, or dropped follow-ups. We will use the call to understand what needs attention first.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 6: MINIMALIST DIRECT STUDIO CONTACT CHANNELS
+         ═══════════════════════════════════════════════════ -->
+    <section class="contact-section studio-contact-section" style="border-top: 1px solid var(--border-light, #E8E4E7); padding-bottom: 5rem;">
+        <div class="contact-section-inner">
+            <div class="contact-section-header">
+                <span class="contact-eyebrow">Direct Channels</span>
+                <h2 class="contact-title">Reach Out Directly.</h2>
+                <p class="contact-subtitle">
+                    No ticketing queues or junior gatekeepers. Every message goes directly to our lead engineers and founders.
+                </p>
+            </div>
+
+            <div class="studio-direct-deck">
+                <!-- Channel 1: Email -->
+                <div class="studio-direct-card">
+                    <div class="direct-card-head">
+                        <span class="direct-card-label">DIRECT EMAIL</span>
+                        <i class="fa-regular fa-envelope direct-card-icon"></i>
+                    </div>
+                    <a href="mailto:leston@appvertex.in" class="direct-card-main-link">leston@appvertex.in</a>
+                    <p class="direct-card-note">Monitored daily. We reply within 24 hours on business days with engineering scope feedback.</p>
+                </div>
+
+                <!-- Channel 2: WhatsApp & Quick Chat -->
+                <div class="studio-direct-card">
+                    <div class="direct-card-head">
+                        <span class="direct-card-label">WHATSAPP / QUICK CHAT</span>
+                        <i class="fa-brands fa-whatsapp direct-card-icon"></i>
+                    </div>
+                    <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27d%20like%20to%20discuss%20a%20project." 
+                       target="_blank" rel="noopener noreferrer" class="direct-card-main-link">+91 93229 71253</a>
+                    <p class="direct-card-note">Direct line for quick scoping questions, urgent technical reviews, and immediate availability.</p>
+                </div>
+
+                <!-- Channel 3: Studio Location -->
+                <div class="studio-direct-card">
+                    <div class="direct-card-head">
+                        <span class="direct-card-label">STUDIO BASE</span>
+                        <i class="fa-solid fa-location-dot direct-card-icon"></i>
+                    </div>
+                    <div class="direct-card-main-text">Bangalore &amp; Mangaluru</div>
+                    <p class="direct-card-note">Karnataka, India &bull; Operating across Indian Standard Time (IST &bull; UTC+5:30) with global client overlap.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -507,7 +1784,7 @@
          STRUCTURED STUDIO FOOTER
          ═══════════════════════════════════════════════════ -->
     <footer id="siteFooter"></footer>
-    <script type="module" src="footer.js"></script>
+    <script type="module" src="/src/components/footer.js"></script>
 
     <script>
         // ─── Mobile Drawer Toggle ───
@@ -601,118 +1878,145 @@
                 }
             }, { passive: true });
         })();
-                // ─── Contact Form Submission & Intake Sync ───
+
+        // ─── Intake Option Tabs Switcher ───
         (function() {
-            function applyStudioSettings(settings) {
-                if (!settings) return;
-                if (settings.email) {
-                    document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
-                        a.href = `mailto:${settings.email}`;
-                        const span = a.querySelector('span');
-                        if (span) span.textContent = settings.email;
-                        else if (a.textContent.includes('@')) a.textContent = settings.email;
-                    });
-                }
-                if (settings.whatsapp) {
-                    const cleanPhone = settings.whatsapp.replace(/[^0-9]/g, '');
-                    document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
-                        const currentHref = a.getAttribute('href') || '';
-                        const textParam = currentHref.includes('?text=') ? currentHref.substring(currentHref.indexOf('?text=')) : '';
-                        a.href = `https://wa.me/${cleanPhone}${textParam}`;
-                        const span = a.querySelector('span');
-                        if (span && span.textContent.includes('+')) span.textContent = settings.whatsapp;
-                        else if (a.textContent.includes('+')) a.textContent = settings.whatsapp;
-                    });
-                }
-            }
+            const calBtn = document.getElementById('tabCalendarBtn');
+            const propBtn = document.getElementById('tabProposalBtn');
+            const calPanel = document.getElementById('calendarPanel');
+            const propPanel = document.getElementById('proposalPanel');
+            if (!calBtn || !propBtn || !calPanel || !propPanel) return;
 
-            try {
-                const s = localStorage.getItem('appvertex_settings');
-                if (s) applyStudioSettings(JSON.parse(s));
-                const f = localStorage.getItem('appvertex_footer');
-                if (f) {
-                    const yr = JSON.parse(f).year;
-                    if (yr) document.querySelectorAll('.footer-text').forEach(el => el.textContent = el.textContent.replace(/© \d{4}/, `© ${yr}`));
-                }
-            } catch(e) {}
-
-            window.addEventListener('storage', (e) => {
-                if (e.key === 'appvertex_settings' && e.newValue) {
-                    try { applyStudioSettings(JSON.parse(e.newValue)); } catch(err){}
-                }
+            calBtn.addEventListener('click', () => {
+                calBtn.classList.add('active');
+                propBtn.classList.remove('active');
+                calPanel.classList.add('active');
+                propPanel.classList.remove('active');
             });
 
+            propBtn.addEventListener('click', () => {
+                propBtn.classList.add('active');
+                calBtn.classList.remove('active');
+                propPanel.classList.add('active');
+                calPanel.classList.remove('active');
+            });
+        })();
+
+        // ─── Service Context From Services Page ───
+        (function() {
+            const requestedService = new URLSearchParams(window.location.search).get('service');
+            if (!requestedService) return;
+
+            const calBtn = document.getElementById('tabCalendarBtn');
+            const propBtn = document.getElementById('tabProposalBtn');
+            const calPanel = document.getElementById('calendarPanel');
+            const propPanel = document.getElementById('proposalPanel');
+            const serviceSelect = document.getElementById('contactService');
+            const details = document.getElementById('contactDetails');
+            const serviceMap = {
+                'Solutions Consulting': 'web-design',
+                'Website Design & Development': 'web-dev',
+                'MVP Development': 'saas',
+                'Custom Web Applications': 'web-dev',
+                'Ecommerce Solutions': 'ecommerce',
+                'Institutional & School Portals': 'portal',
+                'Custom Software Solutions': 'saas',
+                'Process Building': 'maintenance',
+                'PRD (Product Requirement Document)': 'saas',
+                'High-Conversion Landing Pages': 'web-design',
+                'Growth Consulting': 'web-design',
+                'Brand Identity': 'web-design',
+                'GBP & Local SEO': 'maintenance',
+                'Domain & Hosting Architecture': 'maintenance'
+            };
+
+            calBtn?.classList.remove('active');
+            propBtn?.classList.add('active');
+            calPanel?.classList.remove('active');
+            propPanel?.classList.add('active');
+            if (serviceSelect && serviceMap[requestedService]) serviceSelect.value = serviceMap[requestedService];
+            if (details) details.dataset.requestedService = requestedService;
+        })();
+
+        // ─── Project Proposal Intake ───
+        (function() {
             const form = document.getElementById('contactPageForm');
             if (!form) return;
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btn = form.querySelector('button[type="submit"]');
-                const origHtml = btn.innerHTML;
-                btn.disabled = true;
-                btn.textContent = 'RECEIVING INQUIRY...';
 
-                const newInq = {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+                const name = (document.getElementById('contactName')?.value || '').trim();
+                const email = (document.getElementById('contactEmail')?.value || '').trim();
+                const phone = (document.getElementById('contactPhone')?.value || '').trim();
+                const company = (document.getElementById('contactCompany')?.value || '').trim();
+                const requestedService = document.getElementById('contactDetails')?.dataset.requestedService || '';
+                const service = requestedService || document.getElementById('contactService')?.value || '';
+                const budget = document.getElementById('contactBudget')?.value || '';
+                const details = (document.getElementById('contactDetails')?.value || '').trim();
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'SENDING PROPOSAL...';
+                }
+
+                const inquiry = {
                     id: 'inq-' + Date.now(),
-                    name: (document.getElementById('contactName')?.value || '').trim(),
-                    email: (document.getElementById('contactEmail')?.value || '').trim(),
-                    phone: (document.getElementById('contactPhone')?.value || '').trim(),
-                    company: (document.getElementById('contactCompany')?.value || '').trim(),
-                    service: document.getElementById('contactService')?.options[document.getElementById('contactService')?.selectedIndex]?.text || 'General Service',
-                    budget: document.getElementById('contactBudget')?.value || 'Exploring',
-                    message: (document.getElementById('contactDetails')?.value || '').trim(),
+                    name,
+                    email,
+                    phone,
+                    company,
+                    service,
+                    budget,
+                    message: requestedService ? `Requested service: ${requestedService}\n\n${details}` : details,
                     date: 'Just now',
                     status: 'unread'
                 };
 
                 try {
                     const existing = JSON.parse(localStorage.getItem('appvertex_inquiries') || '[]');
-                    existing.unshift(newInq);
+                    existing.unshift(inquiry);
                     localStorage.setItem('appvertex_inquiries', JSON.stringify(existing));
+
                     if ('BroadcastChannel' in window) {
-                        try {
-                            const syncChannel = new BroadcastChannel('appvertex_sync');
-                            syncChannel.postMessage({ type: 'NEW_INQUIRY', data: newInq });
-                        } catch(e){}
+                        const syncChannel = new BroadcastChannel('appvertex_sync');
+                        syncChannel.postMessage({ type: 'NEW_INQUIRY', data: inquiry });
+                        syncChannel.close();
                     }
-                    window.dispatchEvent(new StorageEvent('storage', {
-                        key: 'appvertex_inquiries',
-                        newValue: JSON.stringify(existing)
-                    }));
-                } catch(err) {
-                    console.warn('Inquiry storage notice:', err);
+
+                    const response = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, message: requestedService ? `Requested service: ${requestedService}\n\n${details}` : details, website: '' })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Contact notification failed with status ${response.status}`);
+                    }
+
+                    form.reset();
+                    if (submitBtn) {
+                        submitBtn.textContent = 'PROPOSAL RECEIVED ✓';
+                        submitBtn.style.backgroundColor = '#10B981';
+                        submitBtn.style.borderColor = '#10B981';
+                    }
+                } catch (err) {
+                    console.warn('Project proposal delivery failed:', err);
+                    if (submitBtn) submitBtn.textContent = 'DELIVERY FAILED — TRY AGAIN';
                 }
 
-                // Dual-Storage: Cloud Firestore push
-                (async () => {
-                    try {
-                        const { default: firebaseConfig } = await import("./firebase-config.js");
-                        const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
-                        const { getFirestore, doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-                        const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
-                        const db = getFirestore(app);
-                        await setDoc(doc(db, "inquiries", newInq.id), newInq);
-                    } catch(cloudErr) {
-                        console.info('Inquiry saved locally; cloud note:', cloudErr);
-                    }
-                })();
-
-                setTimeout(() => {
-                    btn.textContent = 'PROPOSAL RECEIVED ✓';
-                    btn.style.backgroundColor = '#10B981';
-                    btn.style.borderColor = '#10B981';
-                    form.reset();
-                    setTimeout(() => {
-                        btn.innerHTML = origHtml;
-                        btn.style.backgroundColor = '';
-                        btn.style.borderColor = '';
-                        btn.disabled = false;
-                    }, 4000);
-                }, 400);
+                window.setTimeout(() => {
+                    if (!submitBtn) return;
+                    submitBtn.innerHTML = originalHtml;
+                    submitBtn.style.backgroundColor = '';
+                    submitBtn.style.borderColor = '';
+                    submitBtn.disabled = false;
+                }, 4000);
             });
         })();
-    </script>
 
-<script>
         // ═══════════════════════════════════════════════════
         // SUBTLE SCROLL REVEAL OBSERVER (ANIDEATECH INSPIRED)
         // Restrained fade-and-rise animations as sections enter view
@@ -754,6 +2058,87 @@
             }
         })();
 
+        // ═══════════════════════════════════════════════════
+        // INTERACTIVE FAQ ACCORDION CONTROLLER
+        // ═══════════════════════════════════════════════════
+        (function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            if (!faqItems.length) return;
+
+            faqItems.forEach(item => {
+                const btn = item.querySelector('.faq-btn');
+                if (!btn) return;
+
+                btn.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('active');
+
+                    // Close all FAQs smoothly
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        const otherBtn = otherItem.querySelector('.faq-btn');
+                        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                    });
+
+                    // If it was not open, open this one
+                    if (!isOpen) {
+                        item.classList.add('active');
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        })();
+
+        // ═══════════════════════════════════════════════════
+        // THE CONVERSATION PROCESS ANIMATOR
+        // Sequential lighting & kinetic interactive focus
+        // ═══════════════════════════════════════════════════
+        (function() {
+            const cols = document.querySelectorAll('.anidea-col');
+            if (!cols.length) return;
+
+            let currentActive = 0;
+            let autoCycleInterval = null;
+            let isUserHovering = false;
+
+            function setActiveCol(idx) {
+                cols.forEach((col, i) => {
+                    if (i === idx) {
+                        col.classList.add('is-active');
+                    } else {
+                        col.classList.remove('is-active');
+                    }
+                });
+            }
+
+            function startCycle() {
+                if (autoCycleInterval) clearInterval(autoCycleInterval);
+                autoCycleInterval = setInterval(() => {
+                    if (isUserHovering) return;
+                    currentActive = (currentActive + 1) % cols.length;
+                    setActiveCol(currentActive);
+                }, 3200);
+            }
+
+            cols.forEach((col, i) => {
+                col.addEventListener('mouseenter', () => {
+                    isUserHovering = true;
+                    currentActive = i;
+                    setActiveCol(i);
+                });
+                col.addEventListener('mouseleave', () => {
+                    isUserHovering = false;
+                });
+                col.addEventListener('click', () => {
+                    currentActive = i;
+                    setActiveCol(i);
+                });
+            });
+
+            // Initialize
+            setActiveCol(0);
+            startCycle();
+        })();
+
     </script>
 
     <!-- Theme Management (Light & Dark Mode) -->
@@ -788,6 +2173,8 @@
             if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
         })();
     </script>
+
+</script>
 </body>
 </html>
 

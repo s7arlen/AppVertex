@@ -28,18 +28,22 @@ exports.contact = functions.https.onRequest(async (req, res) => {
     "https://appvertex-e09c8.web.app",
     "https://appvertex-e09c8.firebaseapp.com",
     "https://appvertex.in",
+    "https://www.appvertex.in",
     "http://localhost:5000",
-    "http://127.0.0.1:5000"
+    "http://127.0.0.1:5000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174"
   ];
   
   const origin = req.headers.origin;
-  const isAllowed = origin && allowedOrigins.some(o => origin.startsWith(o));
+  const isAllowed = origin && allowedOrigins.includes(origin);
   
   if (isAllowed) {
     res.set("Access-Control-Allow-Origin", origin);
-  } else {
-    res.set("Access-Control-Allow-Origin", "https://s7arlen.github.io");
   }
+  res.set("Vary", "Origin");
   
   res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.set("Access-Control-Allow-Headers", "Content-Type");

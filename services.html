@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="AppVertex crafts high-performance web applications, bespoke school portals, conversion-focused e-commerce, and enterprise design systems.">
     <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/services.html">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,237 +28,509 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/style.css">
 
     <style>
-        /* Services Page Specific Enhancements */
-        .services-pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.75rem;
-            margin: 3.5rem 0;
+        /* ═══════════════════════════════════════════════════
+           AN IDEATECH SERVICES ARCHITECTURE
+           Strictly aligned with https://anideatech.com/services/
+           Preserves AppVertex's Brand Theme & Light/Dark Tokens
+           ═══════════════════════════════════════════════════ */
+
+        .subpage-hero {
+            min-height: auto !important;
+            padding: calc(72px + 4.5rem) 1.5rem 2rem !important;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .pillar-card {
+        .services-hero-header {
+            max-width: 880px;
+            margin: 0 auto;
+            gap: 0 !important;
+        }
+
+        .subpage-eyebrow {
+            display: inline-block;
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--burgundy, #EF870D);
+            background: rgba(239, 135, 13, 0.08);
+            border: 1px solid rgba(239, 135, 13, 0.2);
+            padding: 5px 14px;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .services-h1-gradient {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .subpage-desc {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0 auto 1.75rem auto;
+            max-width: 720px;
+        }
+
+        #servicesTiers {
+            scroll-margin-top: 84px;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+
+        .services-tiers-heading {
+            max-width: 760px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            color: var(--text-primary);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.85rem;
+        }
+
+        .section-lead {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: #F8FAFC !important;
+        }
+
+        [data-theme="dark"] .section-lead {
+            color: #94A3B8 !important;
+        }
+
+        /* Mobile Spacing Optimizations (Centers content in middle of mobile screen) */
+        @media (max-width: 768px) {
+            .subpage-hero {
+                min-height: 100vh !important;
+                min-height: 100dvh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding-top: calc(64px + 1rem) !important;
+                padding-bottom: calc(70px + 1rem) !important;
+                padding-left: 1.25rem !important;
+                padding-right: 1.25rem !important;
+                box-sizing: border-box !important;
+            }
+
+            .subpage-eyebrow {
+                margin-bottom: 0.65rem;
+            }
+
+            .subpage-hero .subpage-title {
+                font-size: clamp(1.85rem, 5.8vw, 2.35rem) !important;
+                margin-bottom: 0.75rem !important;
+                line-height: 1.22;
+            }
+
+            .subpage-desc {
+                font-size: 0.98rem;
+                line-height: 1.55;
+                margin: 0 auto 1rem auto;
+            }
+
+            .subpage-actions {
+                gap: 0.65rem !important;
+                margin-top: 0.25rem !important;
+            }
+
+            .subpage-actions .btn {
+                padding: 10px 20px !important;
+                font-size: 0.88rem !important;
+            }
+
+            #servicesTiers {
+                padding: 0.25rem 1rem 1.75rem !important;
+            }
+
+            .services-tiers-heading {
+                margin: 0 auto 1.15rem !important;
+            }
+
+            #servicesTiers .section-eyebrow {
+                margin-bottom: 0.35rem !important;
+            }
+
+            #servicesTiers .section-title {
+                font-size: clamp(1.6rem, 5vw, 2rem) !important;
+                margin-bottom: 0.45rem !important;
+            }
+
+            #servicesTiers .section-lead {
+                font-size: 0.95rem !important;
+                line-height: 1.55;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        /* ─── 8 CORE SERVICES: BESPOKE STUDIO ARCHITECTURE ─── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.25rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 960px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .service-card-item {
+            scroll-margin-top: 100px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 2.25rem 2rem;
+            border-radius: 20px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease,
+                        box-shadow 0.4s ease;
             position: relative;
+        }
+
+        .service-card-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--burgundy) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 4;
+        }
+
+        .service-card-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(239, 135, 13, 0.4);
+            box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.08), 0 0 35px -8px rgba(239, 135, 13, 0.12);
+        }
+
+        .service-card-item:hover::before {
+            opacity: 1;
+        }
+
+        /* ─── Premium Human Studio Service Card Media ─── */
+        .service-card-media {
+            position: relative;
+            height: 230px;
+            background: #0B0E14;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(128, 15, 53, 0.04);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(128, 15, 53, 0.08);
-            border-color: var(--rose-light);
-        }
-
-        .pillar-top {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-
-        .pillar-icon-box {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            background: var(--blush);
-            color: var(--burgundy);
-            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            border: 1px solid var(--border);
+            margin: 1.15rem 1.15rem 0;
+            border-radius: 14px;
+            border: 1px solid var(--border-light);
         }
 
-        .pillar-number {
-            font-family: var(--font-primary);
-            font-size: 0.82rem;
+        .service-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+        }
+
+        .service-card-item:hover .service-card-media img {
+            transform: scale(1.04);
+        }
+
+        .service-canvas-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(11, 14, 20, 0.45) 100%);
+            pointer-events: none;
+        }
+
+        .service-category-pill {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.72rem;
             font-weight: 700;
-            color: var(--dusty-rose);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: rgba(18, 12, 16, 0.72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .pillar-title {
-            font-family: var(--font-primary);
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin: 0 0 0.85rem 0;
-            line-height: 1.3;
-        }
-
-        .pillar-desc {
-            font-size: 0.92rem;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin: 0 0 1.5rem 0;
-        }
-
-        .pillar-feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5rem 0;
+        /* Card Body */
+        .service-card-body {
+            padding: 1.5rem 1.65rem 1.65rem;
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
-            border-top: 1px dashed var(--border-light);
-            padding-top: 1.25rem;
+            flex-grow: 1;
+            gap: 1.35rem;
+            background: var(--surface);
         }
 
-        .pillar-feature-list li {
-            font-size: 0.82rem;
-            color: var(--text-primary);
+        .service-card-heading-group {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
+            flex-direction: column;
+            gap: 0.45rem;
         }
 
-        .pillar-feature-list li i {
-            color: var(--burgundy);
-            font-size: 0.75rem;
+        .service-card-title {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: clamp(1.3rem, 1.6vw, 1.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin: 0;
+            letter-spacing: -0.025em;
         }
 
-        .pillar-footer {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-light);
+        .service-card-desc {
+            font-size: 0.92rem;
+            line-height: 1.62;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Clean Unboxed Deliverables (Human Editorial Studio UI) */
+        .service-deliverables {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-top: 0.25rem;
+        }
+
+        .deliverables-heading {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--burgundy, #EF870D);
+        }
+
+        .deliverables-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem 1.15rem;
+        }
+
+        @media (max-width: 580px) {
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }
+        }
+
+        .deliverables-grid li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            font-size: 0.83rem;
+            line-height: 1.45;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .deliverables-grid li i {
+            color: var(--burgundy, #EF870D);
+            font-size: 0.72rem;
+            margin-top: 0.22rem;
+            flex-shrink: 0;
+        }
+
+        /* Card Actions */
+        .service-card-actions {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-top: 1.15rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .pillar-tag {
-            font-family: var(--font-primary);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--rosewood);
-        }
-
-        .pillar-link {
-            color: var(--burgundy);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
+        .service-action-primary {
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            transition: transform var(--transition-fast);
+            gap: 0.55rem;
+            background: var(--gradient-burgundy, linear-gradient(135deg, #EF870D 0%, #FF5722 100%));
+            color: #FFFFFF !important;
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.6rem 1.25rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 14px rgba(239, 135, 13, 0.25);
         }
 
-        .pillar-link:hover {
+        .service-action-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(239, 135, 13, 0.38);
+            color: #FFFFFF !important;
+        }
+
+        .service-action-primary .arr {
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+
+        .service-action-primary:hover .arr {
             transform: translateX(3px);
         }
 
-        /* Tech Stack Section */
-        .tech-stack-wrap {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 3rem 2.5rem;
-            margin: 4rem 0;
-            box-shadow: 0 8px 30px rgba(128, 15, 53, 0.04);
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .tech-cat-title {
-            font-family: var(--font-primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--burgundy);
-            margin-bottom: 1rem;
-            display: flex;
+        .service-action-secondary {
+            display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-        }
-
-        .tech-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-chip {
-            background: var(--porcelain);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-full);
-            padding: 0.35rem 0.85rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* FAQ Accordion */
-        .faq-section {
-            margin: 4rem 0;
-        }
-
-        .faq-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-bottom: 1rem;
-            overflow: hidden;
-            transition: border-color var(--transition-fast);
-        }
-
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            padding: 1.35rem 1.75rem;
-            background: none;
-            border: none;
-            font-family: var(--font-primary);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-
-        .faq-answer {
-            padding: 0 1.75rem 1.35rem;
-            font-size: 0.92rem;
-            line-height: 1.65;
+            gap: 0.45rem;
             color: var(--text-secondary);
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding: 0.4rem 0.2rem;
         }
 
-        @media (max-width: 900px) {
-            .services-pillars-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .tech-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+        .service-action-secondary:hover {
+            color: var(--burgundy, #EF870D);
         }
 
-        @media (max-width: 600px) {
-            .tech-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .tech-stack-wrap {
-                padding: 2rem 1.25rem !important;
-            }
+        .service-action-secondary i {
+            font-size: 0.72rem;
+            transition: transform 0.2s ease;
+        }
+
+        .service-action-secondary:hover i {
+            transform: translate(2px, -2px);
+        }
+
+        /* ─── DIAGNOSTIC BOX (START WITH THE PROBLEM) ─── */
+        .diagnostic-consult-box {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-raised) 100%);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: clamp(2.5rem, 4.5vw, 3.75rem) clamp(1.75rem, 3.5vw, 3rem);
+            text-align: center;
+            box-shadow: 0 10px 36px rgba(0, 0, 0, 0.04);
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagnostic-consult-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, var(--burgundy) 50%, transparent 100%);
+        }
+
+        .diagnostic-consult-box h3 {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .diagnostic-consult-box p {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: clamp(1rem, 1.25vw, 1.1rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 auto 2rem;
+        }
+
+        /* ─── DARK THEME OVERRIDES ─── */
+        [data-theme="dark"] .service-card-item {
+            background: #111520;
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        [data-theme="dark"] .service-card-item:hover {
+            border-color: rgba(239, 135, 13, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(239, 135, 13, 0.14);
+        }
+
+        [data-theme="dark"] .service-card-body {
+            background: #111520;
+        }
+
+        [data-theme="dark"] .service-card-media {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .deliverables-list li {
+            color: #CBD5E1;
+        }
+
+        [data-theme="dark"] .service-card-actions {
+            border-top-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-theme="dark"] .service-action-secondary {
+            color: #94A3B8;
+        }
+
+        [data-theme="dark"] .service-action-secondary:hover {
+            color: var(--burgundy, #EF870D);
+        }
+
+        [data-theme="dark"] .diagnostic-consult-box {
+            background: linear-gradient(135deg, #111726 0%, #161F33 100%);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
     </style>
     <!-- Zero-Flash Theme Initialization -->
@@ -388,7 +660,7 @@
             <div class="nav-inner">
                 <!-- Brand Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
@@ -439,268 +711,278 @@
         </div>
     </div>
 <main id="mainContent">
-    <!-- Subpage Hero Banner -->
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION: STUDIO SERVICES
+         ═══════════════════════════════════════════════════ -->
     <section class="subpage-hero" aria-label="Services Overview">
-        <div class="container subpage-hero-content">
-            <h1 class="subpage-title">
-                Engineered for scale.<br>
-                <span class="accent">Designed for conversion.</span>
+        <div class="container subpage-hero-content services-hero-header">
+            <h1 class="subpage-title" style="font-size: clamp(2.2rem, 4.5vw, 3.6rem); margin-bottom: 1.25rem;">
+                Websites &amp; software built around<br>
+                <span class="services-h1-gradient">how your business runs.</span>
             </h1>
             <p class="subpage-desc">
-                From bespoke corporate architectures to high-growth SaaS web applications, we combine rigorous software engineering with emotive aesthetic design to give your business an unfair digital advantage.
+                We organize our work by the operational challenge you face. From your first customer impression to daily backend workflows, we fix what is broken before recommending what to build.
             </p>
-            <div class="subpage-actions">
-                <a href="contact.html" class="btn btn-primary">START A PROJECT <span class="arr">→</span></a>
-                <a href="work.html" class="btn btn-secondary">EXPLORE CASE STUDIES</a>
+            <div class="subpage-actions" style="justify-content: center; gap: 1rem; display: flex; flex-wrap: wrap;">
+                <a href="contact.html#booking-calendar" class="btn btn-primary">Book Discovery Call <span class="arr">→</span></a>
+                <a href="#servicesTiers" class="btn btn-secondary">Explore All 8 Services</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="container" style="padding: 4rem 1.5rem;">
-        <div class="text-center" style="max-width: 680px; margin: 0 auto 3rem;">
-            <p class="section-eyebrow">WHAT WE DELIVER</p>
-            <h2 class="section-title">Six Pillars of Digital Excellence</h2>
-            <p class="section-lead">Every solution is custom-architected from the ground up — zero bloated templates, zero unnecessary third-party dependencies.</p>
+    <!-- ═══════════════════════════════════════════════════
+         SERVICES GRID: THE 8 PRODUCTION SERVICES
+         Identical to the Home Page Services Section
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" id="servicesTiers">
+        <div class="services-tiers-heading">
+            <p class="section-eyebrow" style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #EF870D; display: inline-block; margin-bottom: 0.65rem;">WHAT WE BUILD &amp; DELIVER</p>
+            <h2 class="section-title" style="font-size: clamp(1.85rem, 3.2vw, 2.6rem); margin-bottom: 0.85rem;">Services that drive real results.</h2>
+            <p class="section-lead" style="max-width: 620px; margin: 0 auto; color: var(--text-secondary); font-size: 1.05rem;">
+                From conversion-focused websites to bespoke software systems, we build digital infrastructure tailored to how your business actually runs.
+            </p>
         </div>
 
-        <div class="services-pillars-grid">
-            <!-- 01: Web Design & Design Systems -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-compass-drafting"></i></div>
-                        <span class="pillar-number">// 01</span>
+        <div class="services-grid">
+            <!-- SERVICE 01: WEBSITE DEVELOPMENT -->
+            <article class="service-card-item" id="service-01">
+                <div class="service-card-media">
+                    <img src="/services/srv-web-design.jpg" alt="Website Development Agency Landing Page" loading="lazy">
+                    <span class="service-category-pill">Web Architecture</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">Website Development</h3>
+                        <p class="service-card-desc">Fast, modern websites designed to turn visitors into clients. Built with seamless mobile responsiveness, SEO best practices, and effortless content management.</p>
                     </div>
-                    <h3 class="pillar-title">Web Design &amp; Systems</h3>
-                    <p class="pillar-desc">Artfully crafted web experiences rooted in visual hierarchy, typography precision, responsive fluid scaling, and modern micro-interactions.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> Bespoke Figma Design Systems</li>
-                        <li><i class="fa-solid fa-check"></i> Fluid Responsive Typography</li>
-                        <li><i class="fa-solid fa-check"></i> Micro-interactions &amp; CSS Motion</li>
-                        <li><i class="fa-solid fa-check"></i> WCAG 2.1 Accessibility Compliance</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Custom responsive UI &amp; high-conversion landing pages</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Sub-second LCP speed &amp; Core Web Vitals 99/100 score</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Dynamic contact routing &amp; automated lead capture</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Clean, zero-bloat React &amp; HTML5 production codebase</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=Website+Development" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">Figma • CSS • Motion</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
-                </div>
-            </div>
+            </article>
 
-            <!-- 02: Fullstack Web Development -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-code"></i></div>
-                        <span class="pillar-number">// 02</span>
+            <!-- SERVICE 02: CUSTOM WEB APPLICATIONS -->
+            <article class="service-card-item" id="service-02">
+                <div class="service-card-media">
+                    <img src="/services/srv-custom-web-apps.jpg" alt="Custom Web Application SaaS Dashboard Interface" loading="lazy">
+                    <span class="service-category-pill">Custom Software</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">Custom Web Applications</h3>
+                        <p class="service-card-desc">Tailored web platforms, client portals, and workflow tools designed around how your business actually runs. Automate repetitive tasks and give your team reliable tools.</p>
                     </div>
-                    <h3 class="pillar-title">Fullstack Engineering</h3>
-                    <p class="pillar-desc">Custom web applications and interactive architectures engineered with modern TypeScript, clean component modularity, and lightning performance.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> React / Next.js / Vanilla Architectures</li>
-                        <li><i class="fa-solid fa-check"></i> High-Speed REST &amp; GraphQL APIs</li>
-                        <li><i class="fa-solid fa-check"></i> 100/100 Core Web Vitals Targets</li>
-                        <li><i class="fa-solid fa-check"></i> Clean, Documented Source Code</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Role-based staff &amp; client management dashboards</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Real-time database sync &amp; automated operational pipelines</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Secure REST &amp; WebSocket API integrations</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>High-concurrency edge cloud deployment architecture</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=Custom+Web+Applications" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">TypeScript • APIs • React</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
-                </div>
-            </div>
+            </article>
 
-            <!-- 03: UI/UX & Product Strategy -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-layer-group"></i></div>
-                        <span class="pillar-number">// 03</span>
+            <!-- SERVICE 03: UI/UX DESIGN -->
+            <article class="service-card-item" id="service-03">
+                <div class="service-card-media">
+                    <img src="/services/srv-ui-ux.jpg" alt="UI/UX Design System Artboard and Tokens" loading="lazy">
+                    <span class="service-category-pill">Product Design</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">UI/UX Design</h3>
+                        <p class="service-card-desc">Intuitive, clean interfaces built to guide users effortlessly from their first click to checkout or inquiry. We turn complicated workflows into simple, elegant digital products.</p>
                     </div>
-                    <h3 class="pillar-title">UI / UX Product Strategy</h3>
-                    <p class="pillar-desc">Data-backed interface architecture designed to minimize friction, clarify user journeys, and maximize engagement and inquiry conversion rates.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> Wireframing &amp; Flow Architecture</li>
-                        <li><i class="fa-solid fa-check"></i> Interactive Clickable Prototypes</li>
-                        <li><i class="fa-solid fa-check"></i> Conversion Rate Optimization (CRO)</li>
-                        <li><i class="fa-solid fa-check"></i> Heuristic Usability Audits</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>End-to-end user flow mapping &amp; structural wireframes</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Comprehensive Figma design system &amp; reusable tokens</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Interactive clickable prototypes for customer validation</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Developer-ready asset handoff with responsive CSS specs</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=UI+UX+Design" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">UX • Prototyping • CRO</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
-                </div>
-            </div>
+            </article>
 
-            <!-- 04: Digital Products & SaaS -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-rocket"></i></div>
-                        <span class="pillar-number">// 04</span>
+            <!-- SERVICE 04: BRANDING & DIGITAL IDENTITY -->
+            <article class="service-card-item" id="service-04">
+                <div class="service-card-media">
+                    <img src="/services/srv-brand-identity.jpg" alt="Brand Identity and Typography Guidelines" loading="lazy">
+                    <span class="service-category-pill">Brand Identity</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">Branding &amp; Digital Identity</h3>
+                        <p class="service-card-desc">Memorable visual identities that help your business stand out and build immediate trust with your audience across web, print, and social media.</p>
                     </div>
-                    <h3 class="pillar-title">Digital Products &amp; SaaS</h3>
-                    <p class="pillar-desc">Scalable cloud-native products for early-stage and venture-backed founders looking to validate ideas quickly without compromising on technical debt.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> Multi-tenant Auth &amp; Role Management</li>
-                        <li><i class="fa-solid fa-check"></i> Stripe / Razorpay Payment Pipelines</li>
-                        <li><i class="fa-solid fa-check"></i> Real-time Analytics &amp; Webhooks</li>
-                        <li><i class="fa-solid fa-check"></i> Automated CI/CD Deployments</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Vector logo suite &amp; adaptive typography lockups</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Harmonious color palette &amp; WCAG accessibility guidelines</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Digital brand asset kit with iconography &amp; social templates</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Complete corporate brand book &amp; usage documentation</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=Brand+Identity" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">SaaS • Cloud • Billing</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
-                </div>
-            </div>
+            </article>
 
-            <!-- 05: Business Software & Portals -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-network-wired"></i></div>
-                        <span class="pillar-number">// 05</span>
+            <!-- SERVICE 05: SCHOOL MANAGEMENT PORTALS -->
+            <article class="service-card-item" id="service-05">
+                <div class="service-card-media">
+                    <img src="/services/srv-school-portal.jpg" alt="Institutional Academic School Management Portal" loading="lazy">
+                    <span class="service-category-pill">Education Portals</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">School Management Portals</h3>
+                        <p class="service-card-desc">Comprehensive institutional portals that bring student admissions, fee payments, attendance tracking, and parent communication into one secure, unified system.</p>
                     </div>
-                    <h3 class="pillar-title">Institutional Portals</h3>
-                    <p class="pillar-desc">Dependable internal dashboards, school portals (e.g., Loretto Central School), and custom back-office operations that replace chaotic spreadsheets.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> Administrative Control Panels</li>
-                        <li><i class="fa-solid fa-check"></i> Real-time Noticeboards &amp; Databases</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-Hub Operation Synchronization</li>
-                        <li><i class="fa-solid fa-check"></i> Secure End-to-End Data Access</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Automated online admissions intake &amp; merit computation</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Instant circulars &amp; parent notification push dispatch</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>High-traffic examination result publication infrastructure</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Role-based faculty, parent, and administrative dashboards</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=School+Management+Portals" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">ERP • CRM • Portals</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
-                </div>
-            </div>
+            </article>
 
-            <!-- 06: Proactive Maintenance & SLAs -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-top">
-                        <div class="pillar-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                        <span class="pillar-number">// 06</span>
+            <!-- SERVICE 06: E-COMMERCE DEVELOPMENT -->
+            <article class="service-card-item" id="service-06">
+                <div class="service-card-media">
+                    <img src="/services/srv-ecommerce.jpg" alt="Headless E-Commerce Digital Storefront" loading="lazy">
+                    <span class="service-category-pill">E-Commerce</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">E-commerce Development</h3>
+                        <p class="service-card-desc">Fast, friction-free online stores designed to boost conversions. From quick product discovery to smooth one-click checkout and automated inventory management.</p>
                     </div>
-                    <h3 class="pillar-title">Cloud SLAs &amp; DevOps</h3>
-                    <p class="pillar-desc">Ongoing cloud infrastructure oversight, automated backups, rapid bug triage, and continuous security audits so your platform never skips a beat.</p>
-                    <ul class="pillar-feature-list">
-                        <li><i class="fa-solid fa-check"></i> 24/7 Proactive Uptime Monitoring</li>
-                        <li><i class="fa-solid fa-check"></i> Daily Automated Cloud Backups</li>
-                        <li><i class="fa-solid fa-check"></i> Rapid Security Patching &amp; SSL</li>
-                        <li><i class="fa-solid fa-check"></i> Monthly Speed &amp; SEO Health Audits</li>
-                    </ul>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Ultra-fast headless catalog with zero layout shift</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>1-click checkout &amp; automated multi-currency payment setup</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Real-time inventory synchronization &amp; order handling</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Abandoned cart automation &amp; conversion optimization</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=Ecommerce+Development" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="pillar-footer">
-                    <span class="pillar-tag">24/7 SLA • Cloud • Security</span>
-                    <a href="contact.html" class="pillar-link">Inquire <span>→</span></a>
+            </article>
+
+            <!-- SERVICE 07: SEO & DIGITAL GROWTH -->
+            <article class="service-card-item" id="service-07">
+                <div class="service-card-media">
+                    <img src="/services/srv-seo.jpg" alt="SEO Performance and Growth Telemetry" loading="lazy">
+                    <span class="service-category-pill">Search Optimization</span>
                 </div>
-            </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">SEO &amp; Digital Growth</h3>
+                        <p class="service-card-desc">Targeted search optimization and technical speed tuning that help your business rank higher on Google and attract high-intent local and global customers.</p>
+                    </div>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Comprehensive technical SEO audits &amp; rich schema markup</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Google Business Profile (GBP) &amp; local search dominance</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Core Web Vitals speed acceleration &amp; indexation fixes</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Keyword rankings tracking &amp; search telemetry reporting</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=SEO+Digital+Growth" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SERVICE 08: WEBSITE MAINTENANCE & SUPPORT -->
+            <article class="service-card-item" id="service-08">
+                <div class="service-card-media">
+                    <img src="/services/srv-maintenance.jpg" alt="24/7 Cloud Server Uptime and Maintenance Telemetry" loading="lazy">
+                    <span class="service-category-pill">Support &amp; Care</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-heading-group">
+                        <h3 class="service-card-title">Website Maintenance</h3>
+                        <p class="service-card-desc">Peace of mind for your online presence. We handle regular security patches, automated cloud backups, uptime monitoring, and fast support when you need updates.</p>
+                    </div>
+                    <div class="service-deliverables">
+                        <span class="deliverables-heading">Key Deliverables</span>
+                        <ul class="deliverables-grid">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>24/7 automated uptime telemetry &amp; immediate incident triage</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Daily encrypted cloud backups &amp; 1-click disaster recovery</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Continuous security patching, dependency audits &amp; SSL care</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Priority content updates &amp; dedicated technical support SLA</span></li>
+                        </ul>
+                    </div>
+                    <div class="service-card-actions">
+                        <a href="contact.html?service=Website+Maintenance" class="service-action-primary"><span>Start a Project</span> <span class="arr">→</span></a>
+                        <a href="contact.html#booking-calendar" class="service-action-secondary"><span>Book Discovery Call</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </article>
         </div>
+    </section>
 
-        <!-- Tech Stack Matrix -->
-        <div class="tech-stack-wrap">
-            <div class="text-center" style="max-width: 600px; margin: 0 auto 1rem;">
-                <p class="section-eyebrow">OUR ARSENAL</p>
-                <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Modern Production Technologies</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary);">We deliberately choose proven, future-proof frameworks that deliver unmatched longevity.</p>
-            </div>
-            <div class="tech-grid">
-                <div>
-                    <div class="tech-cat-title"><i class="fa-solid fa-browser"></i> Frontend Core</div>
-                    <div class="tech-chips">
-                        <span class="tech-chip">TypeScript</span>
-                        <span class="tech-chip">React / Next.js</span>
-                        <span class="tech-chip">Modern HTML5</span>
-                        <span class="tech-chip">Vanilla JS</span>
-                        <span class="tech-chip">CSS Variables</span>
-                        <span class="tech-chip">SVG Animations</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="tech-cat-title"><i class="fa-solid fa-server"></i> Backend &amp; APIs</div>
-                    <div class="tech-chips">
-                        <span class="tech-chip">Node.js</span>
-                        <span class="tech-chip">Express</span>
-                        <span class="tech-chip">RESTful APIs</span>
-                        <span class="tech-chip">GraphQL</span>
-                        <span class="tech-chip">Python</span>
-                        <span class="tech-chip">Cloud Functions</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="tech-cat-title"><i class="fa-solid fa-database"></i> Cloud &amp; Storage</div>
-                    <div class="tech-chips">
-                        <span class="tech-chip">Firebase Firestore</span>
-                        <span class="tech-chip">PostgreSQL</span>
-                        <span class="tech-chip">Cloudflare Edge</span>
-                        <span class="tech-chip">AWS S3</span>
-                        <span class="tech-chip">GitHub Actions</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="tech-cat-title"><i class="fa-solid fa-palette"></i> Design Systems</div>
-                    <div class="tech-chips">
-                        <span class="tech-chip">Figma</span>
-                        <span class="tech-chip">Design Tokens</span>
-                        <span class="tech-chip">WCAG 2.1</span>
-                        <span class="tech-chip">Micro-interactions</span>
-                        <span class="tech-chip">Typography Systems</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="faq-section">
-            <div class="text-center" style="max-width: 620px; margin: 0 auto 2.5rem;">
-                <p class="section-eyebrow">COMMON QUESTIONS</p>
-                <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Frequently Asked Inquiries</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary);">Clear answers about working models, timelines, and technical deliverables.</p>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is your typical project delivery timeline?</span>
-                    <i class="fa-solid fa-chevron-down" style="font-size: 0.85rem; color: var(--rosewood);"></i>
-                </div>
-                <div class="faq-answer">
-                    Standard marketing websites and brand platforms typically ship within 2 to 4 weeks. Custom fullstack portals and multi-tenant SaaS products take 6 to 10 weeks depending on complexity. We structure every engagement into transparent weekly sprint milestones.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Do I own the full intellectual property and code?</span>
-                    <i class="fa-solid fa-chevron-down" style="font-size: 0.85rem; color: var(--rosewood);"></i>
-                </div>
-                <div class="faq-answer">
-                    Yes, 100%. Upon final delivery, all intellectual property, design assets, Figma files, and Git repositories are transferred directly to your organization. Zero proprietary lock-in.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Do you offer post-launch support and ongoing maintenance?</span>
-                    <i class="fa-solid fa-chevron-down" style="font-size: 0.85rem; color: var(--rosewood);"></i>
-                </div>
-                <div class="faq-answer">
-                    Every project includes a complimentary 30-day post-launch warranty covering any bugs or minor adjustments. Afterward, we offer flexible SLA retainers covering 24/7 uptime monitoring, security patching, and feature expansions.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How do we get started?</span>
-                    <i class="fa-solid fa-chevron-down" style="font-size: 0.85rem; color: var(--rosewood);"></i>
-                </div>
-                <div class="faq-answer">
-                    Simply fill out our brief contact form or send a WhatsApp message. We review inquiries within 24 hours and schedule a 30-minute discovery call to discuss scope, timeline, and preliminary architecture.
-                </div>
+    <!-- ═══════════════════════════════════════════════════
+         FINAL CTA: NOT SURE WHICH SERVICE APPLIES?
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" id="diagnosticConsult" style="padding: 1rem 1.5rem 5rem;">
+        <div class="diagnostic-consult-box">
+            <span class="subpage-eyebrow" style="margin-bottom: 0.75rem;">Start With The Problem</span>
+            <h3>Not Sure Which Service Applies?</h3>
+            <p>
+                Our services are structured around the problem you are solving, not sold as rigid packages. If you can describe what is slowing your team down, a Discovery Call will help clarify the right starting point. We only recommend building software if it genuinely solves the problem.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html#booking-calendar" class="btn btn-primary" style="padding: 14px 32px; font-size: 1rem;">
+                    Book a 30-Minute Discovery Call <span class="arr">→</span>
+                </a>
+                <a href="process.html" class="btn btn-secondary" style="padding: 14px 28px; font-size: 1rem;">
+                    Our Process <span class="arr">→</span>
+                </a>
             </div>
         </div>
     </section>
-</main>
+</main></main>
 
     <!-- ═══════════════════════════════════════════════════
          FLOATING WHATSAPP BUTTON
@@ -756,7 +1038,17 @@
          STRUCTURED STUDIO FOOTER
          ═══════════════════════════════════════════════════ -->
     <footer id="siteFooter"></footer>
-    <script type="module" src="footer.js"></script>
+    <script type="module" src="/src/components/footer.js"></script>
+
+    <script>
+        // Preserve the selected service when handing off to the proposal form.
+        document.querySelectorAll('.subservice-card .subservice-action[href="contact.html"]').forEach(link => {
+            const title = link.closest('.subservice-card')?.querySelector('.subservice-title')?.textContent?.trim();
+            if (title) link.href = `contact.html?service=${encodeURIComponent(title)}`;
+        });
+    </script>
+
+    
 
     <script>
         // ─── Mobile Drawer Toggle ───
@@ -789,6 +1081,10 @@
 
             drawer.querySelectorAll('.mobile-link').forEach(link => {
                 link.addEventListener('click', closeDrawer);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
             });
         })();
 
@@ -850,50 +1146,6 @@
                 }
             }, { passive: true });
         })();
-    </script>
-
-<script>
-        // ═══════════════════════════════════════════════════
-        // SUBTLE SCROLL REVEAL OBSERVER (ANIDEATECH INSPIRED)
-        // Restrained fade-and-rise animations as sections enter view
-        // ═══════════════════════════════════════════════════
-        (function() {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
-                return;
-            }
-
-            const candidates = document.querySelectorAll(
-                'section > .container > .section-header, ' +
-                'section > .container > h2, ' +
-                '.service-card, .founder-tile, .project-card, .process-card, .testimonial-card, ' +
-                '.metrics-grid, .about-split-left, .about-split-right, .contact-card'
-            );
-            candidates.forEach(el => {
-                if (!el.classList.contains('reveal-on-scroll')) {
-                    el.classList.add('reveal-on-scroll');
-                }
-            });
-
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('revealed');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    rootMargin: '0px 0px -8% 0px',
-                    threshold: 0.1
-                });
-
-                document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-            } else {
-                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
-            }
-        })();
-
     </script>
 
     <!-- Theme Management (Light & Dark Mode) -->

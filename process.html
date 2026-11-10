@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="Discover the AppVertex 5-phase engineering blueprint — from discovery and design systems to high-performance production code and long-term scaling.">
     <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/process.html">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,197 +28,736 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/style.css">
 
     <style>
-        .process-timeline {
+        /* ═══════════════════════════════════════════════════════════════
+           PROCESS PAGE ARCHITECTURAL STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode System
+           ═══════════════════════════════════════════════════════════════ */
+
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
             position: relative;
-            margin: 4rem auto;
-            max-width: 900px;
+            z-index: 2;
+        }
+
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 740px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Sprint Telemetry Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── The Four Phases Stack ─── */
+        .phases-stack {
             display: flex;
             flex-direction: column;
             gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
         }
 
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 39px;
-            top: 20px;
-            bottom: 20px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--burgundy) 0%, var(--rose-light) 50%, var(--border) 100%);
-        }
-
-        .process-step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 2.25rem;
-            position: relative;
-        }
-
-        .process-step-badge {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        .phase-block {
             background: var(--surface);
-            border: 2px solid var(--border);
-            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.08);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .phase-block:hover {
+            border-color: #ef870d;
+            box-shadow: 0 16px 36px rgba(239, 135, 13, 0.08);
+        }
+
+        .phase-header {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            z-index: 2;
-            transition: transform var(--transition-fast), border-color var(--transition-fast);
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 2rem;
         }
 
-        .process-step-item:hover .process-step-badge {
-            transform: scale(1.06);
-            border-color: var(--burgundy);
+        .phase-num-title {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
         }
 
-        .process-step-num {
-            font-family: var(--font-primary);
-            font-size: 1.4rem;
+        .phase-badge-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
             font-weight: 800;
-            color: var(--burgundy);
+            color: #ef870d;
             line-height: 1;
         }
 
-        .process-step-dur {
+        .phase-title {
             font-family: var(--font-primary);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 0.2rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            letter-spacing: -0.01em;
         }
 
-        .process-step-card {
+        .phase-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .phase-content-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .phase-points-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .phase-point-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .phase-point-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef870d;
+            margin-top: 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .phase-point-item h4 {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+        }
+
+        .phase-point-item p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .phase-deliverables-box {
+            background: var(--surface-raised, #FAF8F5);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 1.5rem;
+        }
+
+        .deliverables-lbl {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .deliverables-chips {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .deliv-chip-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .deliv-chip-item i {
+            color: #ef870d;
+            font-size: 0.85rem;
+        }
+
+        /* ─── Day-to-Day Operations Grid ─── */
+        .daily-ops-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .daily-op-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2.25rem 2rem;
-            box-shadow: 0 4px 18px rgba(128, 15, 53, 0.03);
-            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
             transition: transform var(--transition-fast), border-color var(--transition-fast);
         }
 
-        .process-step-card:hover {
-            transform: translateX(4px);
-            border-color: var(--rose-light);
+        .daily-op-card:hover {
+            transform: translateY(-4px);
+            border-color: #ef870d;
+            box-shadow: 0 12px 28px rgba(239, 135, 13, 0.08);
         }
 
-        .process-step-tag {
-            font-family: var(--font-primary);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--dusty-rose);
-            margin-bottom: 0.5rem;
+        .daily-op-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 1.5rem;
         }
 
-        .process-step-title {
+        .daily-op-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ef870d;
+            line-height: 1;
+        }
+
+        .daily-op-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .daily-op-title {
             font-family: var(--font-primary);
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--text-primary);
             margin: 0 0 0.85rem 0;
+            line-height: 1.3;
         }
 
-        .process-step-desc {
+        .daily-op-desc {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── After Launch Dual Cards (An Idea Tech Exact Structure) ─── */
+        .after-launch-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .after-launch-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .after-launch-card:hover {
+            border-color: #ef870d;
+            transform: translateY(-3px);
+        }
+
+        .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.04) 0%, rgba(239, 135, 13, 0.07) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        .after-launch-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ef870d;
+            margin-bottom: 1rem;
+        }
+
+        .after-launch-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1rem 0;
+            line-height: 1.25;
+        }
+
+        .after-launch-card p {
             font-size: 0.94rem;
             line-height: 1.65;
             color: var(--text-secondary);
-            margin: 0 0 1.25rem 0;
+            margin: 0 0 1.75rem 0;
         }
 
-        .process-deliverables-title {
-            font-family: var(--font-primary);
-            font-size: 0.75rem;
+        .after-launch-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+            margin-top: auto;
+        }
+
+        .after-launch-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        .after-launch-point i {
+            color: #10b981;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .after-launch-point strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ─── Diagnostic Reality Gap Section ─── */
+        .diagnostic-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .comparison-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-col.bad {
+            border-color: rgba(239, 68, 68, 0.25);
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, var(--surface) 100%);
+        }
+
+        .comparison-col.good {
+            border-color: rgba(16, 185, 129, 0.35);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, var(--surface) 100%);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .process-deliverables-list {
+        .comparison-col.bad .comparison-header {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-header {
+            color: #10b981;
+        }
+
+        .comparison-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .comparison-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 1.1rem;
         }
 
-        .process-deliv-chip {
-            background: var(--porcelain);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 0.25rem 0.65rem;
-            font-size: 0.76rem;
-            font-weight: 600;
-            color: var(--burgundy);
-        }
-
-        .guarantees-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-
-        .guarantee-card {
-            background: linear-gradient(135deg, #FFFFFF 0%, #FCFAFA 100%);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 2.25rem 1.75rem;
-            text-align: center;
-        }
-
-        .guarantee-icon {
-            font-size: 2.25rem;
-            color: var(--burgundy);
-            margin-bottom: 1.25rem;
-        }
-
-        .guarantee-title {
-            font-family: var(--font-primary);
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .guarantee-desc {
-            font-size: 0.9rem;
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
             line-height: 1.6;
             color: var(--text-secondary);
         }
 
-        @media (max-width: 768px) {
-            .process-timeline::before {
-                left: 24px !important;
+        .comparison-item i {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .comparison-col.bad .comparison-item i {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-item i {
+            color: #10b981;
+        }
+
+        /* ─── Interactive Process FAQ Accordion ─── */
+        .process-faq-accordion {
+            max-width: 900px;
+            margin: 3.5rem auto 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .faq-item.active {
+            border-color: #ef870d;
+            box-shadow: 0 8px 24px rgba(239, 135, 13, 0.08);
+        }
+
+        .faq-question {
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            cursor: pointer;
+            user-select: none;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: #ef870d;
+        }
+
+        .faq-icon {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #ef870d;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            padding: 0 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-banner-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── DARK THEME OVERRIDES ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .phase-block,
+        [data-theme="dark"] .daily-op-card,
+        [data-theme="dark"] .after-launch-card,
+        [data-theme="dark"] .comparison-col,
+        [data-theme="dark"] .faq-item {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .phase-block:hover,
+        [data-theme="dark"] .daily-op-card:hover,
+        [data-theme="dark"] .after-launch-card:hover {
+            border-color: #ef870d;
+        }
+
+        [data-theme="dark"] .phase-header,
+        [data-theme="dark"] .daily-op-top {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .phase-deliverables-box {
+            background: rgba(18, 18, 18, 0.75);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.18) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .telemetry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
-            .process-step-badge {
-                width: 50px !important;
-                height: 50px !important;
-            }
-            .process-step-num {
-                font-size: 1rem !important;
-            }
-            .process-step-dur {
-                display: none !important;
-            }
-            .process-step-item {
-                gap: 1.25rem !important;
-            }
-            .guarantees-grid {
+            .phase-content-grid,
+            .daily-ops-grid,
+            .after-launch-grid,
+            .diagnostic-comparison-grid {
                 grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            .phase-block,
+            .after-launch-card {
+                padding: 2rem 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
             }
         }
     </style>
@@ -349,7 +888,7 @@
             <div class="nav-inner">
                 <!-- Brand Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
@@ -400,164 +939,517 @@
         </div>
     </div>
 <main id="mainContent">
-    <!-- Subpage Hero Banner -->
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 0: HERO + SPRINT TELEMETRY CARD
+         ═══════════════════════════════════════════════════ -->
     <section class="subpage-hero" aria-label="Process Overview">
         <div class="container subpage-hero-content">
             <h1 class="subpage-title">
-                Predictable timelines.<br>
-                <span class="accent">Transparent sprints.</span>
+                What working together<br>
+                <span class="gradient-text">looks like.</span>
             </h1>
             <p class="subpage-desc">
-                We believe the best client experiences arise from transparent, structured workflows. Here is the exact five-phase blueprint we use to turn complex product visions into dependable, battle-tested software.
+                Every project follows a clear sequence, from understanding the issue to getting the website or application into day-to-day use. Progress and items needing your input stay visible in the client portal.
             </p>
             <div class="subpage-actions">
-                <a href="contact.html" class="btn btn-primary">BOOK DISCOVERY CALL <span class="arr">→</span></a>
-                <a href="work.html" class="btn btn-secondary">VIEW SHIPPED WORK</a>
+                <a href="contact.html#booking-calendar" class="btn btn-primary">Book Discovery Call <span class="arr">→</span></a>
+                <a href="#fourPhases" class="btn btn-secondary">Explore The Method</a>
+            </div>
+
+            <!-- Studio Sprint Telemetry Card -->
+            <div class="telemetry-card">
+                <div class="telemetry-header">
+                    <div class="telemetry-tag">Independent Studio / Fixed-Scope Sprints</div>
+                    <div class="telemetry-status"><i class="fa-solid fa-clock-rotate-left"></i> Typical Sprint: 2–6 Weeks &bull; Zero Scope Creep</div>
+                </div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">01 //</span>
+                        <div class="pillar-title">Predictable Milestones</div>
+                        <div class="pillar-desc">Every deliverable is defined in a written PRD before development kickoff.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">02 //</span>
+                        <div class="pillar-title">Working Builds Over Decks</div>
+                        <div class="pillar-desc">Private staging access from Week 2 onward; verify live software in real browsers.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">03 //</span>
+                        <div class="pillar-title">Direct Founder Comms</div>
+                        <div class="pillar-desc">Direct WhatsApp and Slack channel connecting your team with lead engineers.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">04 //</span>
+                        <div class="pillar-title">30-Day Code Warranty</div>
+                        <div class="pillar-desc">Post-launch bug warranty, telemetry monitoring, and clean repository handover.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Timeline Section -->
-    <section class="container" style="padding: 4rem 1.5rem;">
-        <div class="text-center" style="max-width: 640px; margin: 0 auto 3rem;">
-            <p class="section-eyebrow">THE 5-PHASE SPRINT BLUEPRINT</p>
-            <h2 class="section-title">From Concept to Production Launch</h2>
-            <p class="section-lead">Every phase ends with a concrete, testable milestone so you always know where your project stands.</p>
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 1: THE FOUR PHASES
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" id="fourPhases" style="padding: 1.5rem 1.5rem 5rem;">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem;">
+            <p class="section-eyebrow">THE METHOD</p>
+            <h2 class="section-title">The Four Phases</h2>
+            <p class="section-lead">Each phase has a defined start, clear review points, and concrete deliverables. You always know where the project stands and what comes next.</p>
         </div>
 
-        <div class="process-timeline">
-            <!-- Phase 01: Discovery & Strategy -->
-            <div class="process-step-item">
-                <div class="process-step-badge">
-                    <span class="process-step-num">01</span>
-                    <span class="process-step-dur">WEEK 1</span>
+        <div class="phases-stack">
+            <!-- PHASE 1: DISCOVERY, SCOPE & PRD -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 1</span>
+                        <h3 class="phase-title">Discovery, Scope &amp; PRD</h3>
+                    </div>
+                    <p class="phase-sub">Understanding the situation and aligning on the direction before deciding what to build.</p>
                 </div>
-                <div class="process-step-card">
-                    <div class="process-step-tag">Phase 01 • Architecture Discovery</div>
-                    <h3 class="process-step-title">Discovery &amp; Technical Requirements</h3>
-                    <p class="process-step-desc">
-                        We begin by unpacking your business objectives, target audience journeys, and technical constraints. We define system boundaries, data models, integration APIs, and establish an exact Sprint Roadmap.
-                    </p>
-                    <div class="process-deliverables-title">Phase Deliverables</div>
-                    <div class="process-deliverables-list">
-                        <span class="process-deliv-chip">System Architecture Doc</span>
-                        <span class="process-deliv-chip">Sprint Timeline</span>
-                        <span class="process-deliv-chip">API Contract Spec</span>
-                        <span class="process-deliv-chip">Tech Feasibility Map</span>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Discovery</h4>
+                                <p>We examine what is happening in the business: customer touchpoints, where inquiries stall, and what manual spreadsheets slow your team down.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Alignment &amp; Architectural Boundaries</h4>
+                                <p>We establish technical boundaries, verify data schemas, review third-party integration constraints, and define who does what.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>PRD (Product Requirement Document)</h4>
+                                <p>A formal, unambiguous specification detailing every feature, database entity, and API contract with transparent sprint timelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Approved Technical Scope &amp; PRD</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Entity Relationship Schemas</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Fixed-Price Sprint Timeline</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Integration Feasibility Audit</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Phase 02: Information Architecture & Wireframes -->
-            <div class="process-step-item">
-                <div class="process-step-badge">
-                    <span class="process-step-num">02</span>
-                    <span class="process-step-dur">WEEK 2</span>
+            <!-- PHASE 2: BUILD & BETA -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 2</span>
+                        <h3 class="phase-title">Build &amp; Beta</h3>
+                    </div>
+                    <p class="phase-sub">Turning approved wireframes and database models into living, production-grade software.</p>
                 </div>
-                <div class="process-step-card">
-                    <div class="process-step-tag">Phase 02 • Structural Design</div>
-                    <h3 class="process-step-title">Information Architecture &amp; User Flows</h3>
-                    <p class="process-step-desc">
-                        Before making things visual, we ensure the structural logic is rock-solid. We establish page hierarchies, user journeys, navigation models, and low-fidelity prototypes to eliminate friction before writing code.
-                    </p>
-                    <div class="process-deliverables-title">Phase Deliverables</div>
-                    <div class="process-deliverables-list">
-                        <span class="process-deliv-chip">Low-Fidelity Wireframes</span>
-                        <span class="process-deliv-chip">Clickable Flow Models</span>
-                        <span class="process-deliv-chip">Database Schemas</span>
-                        <span class="process-deliv-chip">Content Strategy Map</span>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Component Architecture</h4>
+                                <p>We engineer modular, type-safe components in TypeScript, linking databases, storage buckets, and payment APIs without legacy baggage.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Interactive Staging Access</h4>
+                                <p>You receive access to a private, password-protected staging URL from Week 2 onward to test real features as they are built.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Weekly Review Rounds</h4>
+                                <p>Structured weekly milestones with screen-recorded walkthroughs and focused feedback loops so adjustments happen immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Live Staging Sandbox URL</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Full Git Repository Access</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Weekly Screen-Recorded Demos</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Working Auth &amp; Database CRUD</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Phase 03: High-Fidelity UI/UX & Design Tokens -->
-            <div class="process-step-item">
-                <div class="process-step-badge">
-                    <span class="process-step-num">03</span>
-                    <span class="process-step-dur">WEEKS 3-4</span>
+            <!-- PHASE 3: REVIEW, REVISE & LAUNCH -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 3</span>
+                        <h3 class="phase-title">Review, Revise &amp; Launch</h3>
+                    </div>
+                    <p class="phase-sub">Rigorous cross-device quality assurance, DNS cutover, and seamless production deployment.</p>
                 </div>
-                <div class="process-step-card">
-                    <div class="process-step-tag">Phase 03 • Visual Craftsmanship</div>
-                    <h3 class="process-step-title">High-Fidelity UI/UX &amp; Design Systems</h3>
-                    <p class="process-step-desc">
-                        We craft custom Rosewood Mist visual interfaces in Figma, specifying bespoke design tokens, fluid typography scales, interactive micro-animations, and responsive layouts across desktop and mobile screens.
-                    </p>
-                    <div class="process-deliverables-title">Phase Deliverables</div>
-                    <div class="process-deliverables-list">
-                        <span class="process-deliv-chip">Interactive Figma Prototypes</span>
-                        <span class="process-deliv-chip">Color &amp; Typography Tokens</span>
-                        <span class="process-deliv-chip">Component Library</span>
-                        <span class="process-deliv-chip">Mobile Responsive Specs</span>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>User Acceptance Testing (UAT)</h4>
+                                <p>We run real user scenario tests across iOS, Android, macOS, and Windows to catch edge-case bugs and usability friction.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Performance &amp; Security Auditing</h4>
+                                <p>We optimize assets for 95+ Core Web Vitals, implement automated Cloudflare SSL, configure CORS rules, and secure environment variables.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Zero-Downtime Cutover</h4>
+                                <p>We manage DNS records, setup live MX/SPF/DKIM email records, and transfer 100% intellectual property directly to your team.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Verified Production DNS Launch</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>100% IP &amp; Code Ownership Transfer</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Comprehensive Admin Handover Guide</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>30-Day Guaranteed Code Warranty</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Phase 04: Production Engineering -->
-            <div class="process-step-item">
-                <div class="process-step-badge">
-                    <span class="process-step-num">04</span>
-                    <span class="process-step-dur">WEEKS 5-7</span>
-                </div>
-                <div class="process-step-card">
-                    <div class="process-step-tag">Phase 04 • Clean Code Execution</div>
-                    <h3 class="process-step-title">Production Engineering &amp; Integrations</h3>
-                    <p class="process-step-desc">
-                        Our engineers write modular, maintainable, and type-safe code. We connect databases, configure real-time webhooks, optimize rendering cycles for 100/100 Core Web Vitals, and run continuous staging builds.
-                    </p>
-                    <div class="process-deliverables-title">Phase Deliverables</div>
-                    <div class="process-deliverables-list">
-                        <span class="process-deliv-chip">Full Git Repository Access</span>
-                        <span class="process-deliv-chip">Live Staging URL</span>
-                        <span class="process-deliv-chip">API Integrations</span>
-                        <span class="process-deliv-chip">Weekly Review Demos</span>
+            <!-- PHASE 4: MAINTAIN & EVOLVE -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 4</span>
+                        <h3 class="phase-title">Maintain &amp; Evolve</h3>
                     </div>
+                    <p class="phase-sub">Dependable ongoing care to keep your systems fast, secure, and continuously adapted to your business growth.</p>
                 </div>
-            </div>
-
-            <!-- Phase 05: QA, Security Audit & Launch -->
-            <div class="process-step-item">
-                <div class="process-step-badge">
-                    <span class="process-step-num">05</span>
-                    <span class="process-step-dur">WEEK 8</span>
-                </div>
-                <div class="process-step-card">
-                    <div class="process-step-tag">Phase 05 • Deployment &amp; Protection</div>
-                    <h3 class="process-step-title">Quality Assurance, Security &amp; Cutover</h3>
-                    <p class="process-step-desc">
-                        Comprehensive cross-device stress testing, security penetration checks, WCAG accessibility validation, DNS migration, and production deployment with a guaranteed 30-day post-launch warranty.
-                    </p>
-                    <div class="process-deliverables-title">Phase Deliverables</div>
-                    <div class="process-deliverables-list">
-                        <span class="process-deliv-chip">Production DNS Launch</span>
-                        <span class="process-deliv-chip">30-Day Code Warranty</span>
-                        <span class="process-deliv-chip">Uptime Monitoring Setup</span>
-                        <span class="process-deliv-chip">Handover Documentation</span>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Proactive Infrastructure Care</h4>
+                                <p>Routine database vacuuming, dependency security patching, uptime monitors, and automated off-site cloud backups.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Emergency Triage SLA</h4>
+                                <p>Under 1-hour response SLA for any critical outages, domain disruptions, or payment gateway failures.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Iterative Sprints</h4>
+                                <p>As your user base expands, we design and deploy new portal features, CRM automations, and reporting modules on dedicated sprints.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Annual Maintenance Contract (AMC)</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Monthly Performance &amp; Uptime Reports</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Priority Engineering Support Line</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Quarterly Evolution Roadmaps</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Studio Guarantees -->
-        <div style="margin: 5rem 0 2rem; text-align: center;">
-            <p class="section-eyebrow">OUR COMMITMENT</p>
-            <h2 class="section-title">The AppVertex Quality Standard</h2>
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 2: HOW WE RUN A PROJECT, DAY TO DAY
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">DAY-TO-DAY OPERATIONS</p>
+            <h2 class="section-title">How We Run a Project, Day to Day</h2>
+            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">Tools and habits that fit into your team's regular routine and make everyday progress clear.</p>
         </div>
 
-        <div class="guarantees-grid">
-            <div class="guarantee-card">
-                <i class="fa-solid fa-code-branch guarantee-icon"></i>
-                <h3 class="guarantee-title">100% Code Ownership</h3>
-                <p class="guarantee-desc">You own every line of code, design file, and asset with zero lock-in or recurring proprietary studio fees.</p>
+        <div class="daily-ops-grid">
+            <!-- 01 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">01</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-table-columns"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Client portal visibility</h3>
+                    <p class="daily-op-desc">Progress and items requiring your input remain visible in the dedicated portal. You can review active tasks, upcoming reviews, and completed items directly in your portal without chasing email updates.</p>
+                </div>
             </div>
-            <div class="guarantee-card">
-                <i class="fa-solid fa-gauge-high guarantee-icon"></i>
-                <h3 class="guarantee-title">Performance Guarantee</h3>
-                <p class="guarantee-desc">We target 95+ Core Web Vitals scores across desktop and mobile, ensuring speed that drives conversions.</p>
+
+            <!-- 02 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">02</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Working versions for review</h3>
+                    <p class="daily-op-desc">We share working versions in stages so you can experience how the website or application behaves in a real browser. Reviewing interactive builds makes feedback straightforward and practical.</p>
+                </div>
             </div>
-            <div class="guarantee-card">
-                <i class="fa-solid fa-shield-check guarantee-icon"></i>
-                <h3 class="guarantee-title">30-Day Post-Launch SLA</h3>
-                <p class="guarantee-desc">Immediate bug triage and adjustments within 30 days of release at absolutely zero extra charge.</p>
+
+            <!-- 03 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">03</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-circle-play"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Structured walkthroughs &amp; documentation</h3>
+                    <p class="daily-op-desc">Before launch, our engineers test in the environments where your team will use the application. At launch, we provide clear documentation and screen walkthroughs so your team feels comfortable operating the system from day one.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 3: AFTER LAUNCH (DUAL POST-LAUNCH CARDS)
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">AFTER LAUNCH</p>
+            <h2 class="section-title">Dependable Care &amp; Sensible Growth</h2>
+            <p class="section-lead" style="max-width: 660px; margin: 0 auto;">Launch day is the start of real-world use. We provide ongoing care to keep your systems stable, alongside a clear, sensible process for building new capabilities as you grow.</p>
+        </div>
+
+        <div class="after-launch-grid">
+            <!-- Card A: Ongoing Care (AMC) -->
+            <div class="after-launch-card featured">
+                <div class="after-launch-header">
+                    <i class="fa-solid fa-shield-halved"></i> ANNUAL MAINTENANCE CONTRACT (AMC)
+                </div>
+                <h3>Dependable ongoing care.</h3>
+                <p>
+                    An Annual Maintenance Contract (AMC) gives you peace of mind after deployment. We handle routine technical upkeep so your software and websites stay fast, secure, and operational every day.
+                </p>
+                <div class="after-launch-points">
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Continuous monitoring &amp; updates</strong>
+                            Regular security patches, dependency upgrades, and routine cloud backups to keep your system stable and protected.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Fast issue resolution</strong>
+                            Prompt fixes and triage handled immediately if unexpected errors or browser incompatibilities surface.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Defined response times</strong>
+                            Technical tickets receive a reply within 24 hours on working days, with urgent care for critical incidents around the clock.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card B: Sensible Growth -->
+            <div class="after-launch-card">
+                <div class="after-launch-header">
+                    <i class="fa-solid fa-chart-line"></i> FEATURE ITERATION
+                </div>
+                <h3>Sensible growth as your needs expand.</h3>
+                <p>
+                    As your business grows, your digital tools need to grow with it. When you need a new internal workflow, an external integration, or a new customer feature, you work with the team that already knows your system.
+                </p>
+                <div class="after-launch-points">
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Familiar architecture</strong>
+                            Because we built your foundation, new features connect cleanly into existing database models without breaking workflows.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Upfront scoping</strong>
+                            Every new requirement is reviewed together, scoped clearly, and quoted transparently before any development starts.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Flexible rollout</strong>
+                            New additions are thoroughly tested in staging sandboxes and deployed smoothly without disrupting daily operations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 4: DIAGNOSTIC REALITY GAP
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">THE REALITY GAP</p>
+            <h2 class="section-title">Why Traditional Agency Projects Drag On</h2>
+            <p class="section-lead" style="max-width: 660px; margin: 0 auto;">Most software projects fail to launch on time because of vague verbal agreements and detached middle managers. Here is why the AppVertex model delivers on schedule.</p>
+        </div>
+
+        <div class="diagnostic-comparison-grid">
+            <!-- Bad Column -->
+            <div class="comparison-col bad">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Traditional Agencies &amp; Contractors
+                </div>
+                <h3 class="comparison-title">Scope Creep, Delays &amp; Black Boxes</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Vague Verbal Promises:</strong> Loose definitions of features that lead to endless disputes, budget ballooning, and delayed launches.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Account Manager Telephone Game:</strong> You communicate through intermediaries who don't write code, distorting requirements.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>The 3-Month Black Box:</strong> You see nothing until a rushed launch day, when dozens of architectural flaws suddenly appear.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Zero Post-Launch Ownership:</strong> Handoffs with zero documentation, leaving you locked into expensive proprietary maintenance contracts.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Good Column -->
+            <div class="comparison-col good">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-circle-check"></i> The AppVertex Sprint Standard
+                </div>
+                <h3 class="comparison-title">Transparent Sprints &amp; Founder Collaboration</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Written PRD Specifications:</strong> Every deliverable, database schema, and API endpoint is formally approved before writing code.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Direct Senior Developer Access:</strong> Direct Slack/WhatsApp channel with lead engineers architecting your platform.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Staging Sandbox from Week 2:</strong> Clickable previews and live testing environments updated with every sprint milestone.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>100% Code Ownership &amp; Warranty:</strong> Complete repository rights, clean documentation, and 30 days of guaranteed bug triage.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 5: INTERACTIVE PROCESS FAQ ACCORDION
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">COMMON QUESTIONS</p>
+            <h2 class="section-title">Frequently Asked Questions About Our Process</h2>
+            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">Everything you need to know about our sprints, communication rhythms, and delivery guarantees.</p>
+        </div>
+
+        <div class="process-faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item active">
+                <div class="faq-question">
+                    <span>How quickly can a project kick off after the Discovery Call?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Following our initial 30-minute discovery call, we prepare your architectural scope and Product Requirement Document (PRD) within 3 to 5 business days. Once the specification and sprint schedule are approved, development officially kicks off within 48 hours.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do weekly sprint reviews and feedback work?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    At the end of each sprint cycle, we publish an interactive staging build and record a concise 5-minute video walkthrough showcasing completed functionality. Your team tests the live staging link and provides consolidated feedback directly in the client portal or via Slack.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What happens if our requirements evolve mid-development?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    We maintain strict timeline protection. If you need new capabilities that fall outside the approved PRD, we discuss them transparently, provide an isolated scope and quote, and schedule them either into a rapid sprint adjustment or an immediate Phase 4 release without delaying the primary launch.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do we own 100% of the code and digital infrastructure?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely. From day one of launch, 100% of the source code, repository rights, database schemas, domain records, and deployment keys are transferred directly to your organization. We believe in complete client independence with zero proprietary lock-in.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is included in the 30-day post-launch warranty?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Every project deployed by AppVertex includes a complimentary 30-day post-launch warranty covering bug fixes, edge-case browser adjustments, Core Web Vitals telemetry monitoring, and server configuration tuning. Following the warranty, you can opt into our Annual Maintenance Contract (AMC).
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 6: CLOSING DIAGNOSTIC BANNER
+             ═══════════════════════════════════════════════════ -->
+        <div class="closing-banner">
+            <h2 class="closing-banner-title">Tell Us About Your Project</h2>
+            <p class="closing-banner-desc">
+                Share what is no longer working as it should. We use the Discovery Call to understand the situation together and identify the right starting point.
+            </p>
+            <div class="closing-banner-actions">
+                <a href="contact.html#booking-calendar" class="btn btn-primary" style="padding: 15px 34px; font-size: 1rem;">
+                    BOOK DISCOVERY CALL <span class="arr">→</span>
+                </a>
+                <a href="services.html" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1rem;">
+                    EXPLORE SERVICES
+                </a>
             </div>
         </div>
     </section>
@@ -617,7 +1509,7 @@
          STRUCTURED STUDIO FOOTER
          ═══════════════════════════════════════════════════ -->
     <footer id="siteFooter"></footer>
-    <script type="module" src="footer.js"></script>
+    <script type="module" src="/src/components/footer.js"></script>
 
     <script>
         // ─── Mobile Drawer Toggle ───
@@ -787,6 +1679,22 @@
 
             if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
             if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
+        })();
+    </script>
+
+    <!-- Interactive Process FAQ Accordion Script -->
+    <script>
+        (function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                if (!question) return;
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
         })();
     </script>
 </body>

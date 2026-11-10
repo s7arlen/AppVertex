@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="Learn about AppVertex Studio — our foundational principles, architectural philosophy, and engineering leadership shipping resilient digital products.">
     <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
     <link rel="canonical" href="https://s7arlen.github.io/AppVertex/about.html">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,177 +28,650 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Master Juniper & Desert Sand Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/style.css">
 
     <style>
-        .about-split-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-            margin: 4rem 0;
-        }
-
-        .about-story-text p {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-stats-panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2.75rem;
-            box-shadow: 0 10px 30px rgba(128, 15, 53, 0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        /* ═══════════════════════════════════════════════════════════════
+           ABOUT PAGE COMPREHENSIVE STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode
+           ═══════════════════════════════════════════════════════════════ */
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
             position: relative;
+            z-index: 2;
         }
 
-        .about-stat-row {
-            display: flex;
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
             align-items: center;
-            gap: 1.5rem;
-        }
-
-        .about-stat-num {
-            font-family: var(--font-primary);
-            font-size: 2.6rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ef870d 0%, #ef870d 28%, #f76020 50%, #ea321d 76%, #ff4d36 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            min-width: 90px;
-            line-height: 1;
-        }
-
-        .about-stat-label {
+            gap: 8px;
             font-family: var(--font-primary);
             font-size: 0.82rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 1.5rem;
         }
 
-        .about-stat-sub {
-            font-size: 0.85rem;
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Studio Commitments & Telemetry Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
             color: var(--text-muted);
-            line-height: 1.4;
         }
 
-        .values-grid {
+        .telemetry-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 4rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
-        .value-card {
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Capabilities Grid ─── */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .capability-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2.25rem 2rem;
-            box-shadow: 0 4px 16px rgba(128, 15, 53, 0.03);
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
             transition: transform var(--transition-fast), border-color var(--transition-fast);
         }
 
-        .value-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--rose-light);
+        .capability-card:hover {
+            transform: translateY(-4px);
+            border-color: #ef870d;
         }
 
-        .value-number {
-            font-family: var(--font-primary);
+        .capability-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .capability-num {
+            font-family: var(--font-mono, monospace);
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--burgundy);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
+            color: #ef870d;
         }
 
-        .value-title {
+        .capability-icon {
+            font-size: 1.4rem;
+            color: var(--burgundy);
+        }
+
+        .capability-title {
             font-family: var(--font-primary);
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
         }
 
-        .value-desc {
+        .capability-desc {
             font-size: 0.92rem;
             line-height: 1.65;
             color: var(--text-secondary);
-            margin: 0;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .founder-box {
-            background: linear-gradient(135deg, #FDF8F9 0%, #FAF0F1 100%);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 3rem 2.5rem;
-            margin: 4rem 0;
+        .capability-tags {
             display: flex;
-            align-items: center;
-            gap: 2.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--border);
         }
 
-        .founder-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: var(--blush);
+        .capability-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            background: rgba(128, 15, 53, 0.06);
             color: var(--burgundy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            border: 2px solid var(--border);
-            flex-shrink: 0;
+            padding: 4px 9px;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
-        .founder-info h3 {
+        /* ─── Chronicle / Decade in Production ─── */
+        .chronicle-section {
+            margin: 5rem 0;
+        }
+
+        .chronicle-timeline {
+            position: relative;
+            margin-top: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .chronicle-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 140px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .chronicle-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2.5rem;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .chronicle-era {
+            text-align: right;
+            padding-right: 1.75rem;
+            position: relative;
+        }
+
+        .chronicle-years {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ef870d;
+        }
+
+        .chronicle-dot {
+            position: absolute;
+            right: -6px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2.5px solid #ef870d;
+            box-shadow: 0 0 0 4px var(--surface);
+        }
+
+        .chronicle-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2rem 2.25rem;
+            box-shadow: 0 4px 20px rgba(128, 15, 53, 0.03);
+        }
+
+        .chronicle-title {
             font-family: var(--font-primary);
-            font-size: 1.45rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--text-primary);
-            margin: 0 0 0.35rem 0;
+            margin: 0 0 0.5rem 0;
         }
 
-        .founder-role {
-            font-family: var(--font-primary);
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--burgundy);
-            margin-bottom: 0.85rem;
-        }
-
-        .founder-bio {
+        .chronicle-text {
             font-size: 0.95rem;
             line-height: 1.65;
             color: var(--text-secondary);
             margin: 0;
         }
 
+        /* ─── Operating Standards ─── */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .standard-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2.25rem;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            position: relative;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .standard-card:hover {
+            transform: translateY(-3px);
+            border-color: #ef870d;
+        }
+
+        .standard-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ef870d;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.85rem;
+        }
+
+        .standard-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .standard-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── Fit Profiles (Who We Work With) ─── */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .fit-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+        }
+
+        .fit-badge {
+            display: inline-block;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 4px 10px;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .fit-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
+        }
+
+        .fit-desc {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .fit-symptom {
+            background: rgba(239, 135, 13, 0.07);
+            border-left: 3px solid #ef870d;
+            padding: 0.75rem 1rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .fit-symptom strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ─── Founders & Philosophy ─── */
+        .philosophy-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.04) 0%, rgba(239, 135, 13, 0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin: 4rem 0 5rem;
+            position: relative;
+        }
+
+        .philosophy-quote {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text-primary);
+            max-width: 820px;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .philosophy-author {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .founder-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-3px);
+            border-color: #ef870d;
+        }
+
+        .founder-role {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ef870d;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-name {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .founder-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .founder-email:hover {
+            color: #ef870d;
+        }
+
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-banner-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── Dark Mode Overrides ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .capability-card,
+        [data-theme="dark"] .chronicle-body,
+        [data-theme="dark"] .standard-card,
+        [data-theme="dark"] .fit-card,
+        [data-theme="dark"] .founder-card {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .capability-tag {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .fit-badge {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .fit-symptom {
+            background: rgba(239, 135, 13, 0.12);
+            border-left-color: #ef870d;
+        }
+
+        [data-theme="dark"] .philosophy-banner {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .founder-email {
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
         @media (max-width: 900px) {
-            .about-split-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2.5rem !important;
+            .telemetry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
-            .values-grid {
-                grid-template-columns: 1fr !important;
+            .capabilities-grid,
+            .standards-grid,
+            .fit-grid,
+            .founders-grid {
+                grid-template-columns: 1fr;
             }
-            .founder-box {
-                flex-direction: column !important;
-                text-align: center !important;
+            .chronicle-timeline::before {
+                left: 20px;
+            }
+            .chronicle-entry {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding-left: 45px;
+            }
+            .chronicle-era {
+                text-align: left;
+                padding-right: 0;
+            }
+            .chronicle-dot {
+                left: -31px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
             }
         }
     </style>
@@ -329,7 +802,7 @@
             <div class="nav-inner">
                 <!-- Brand Logo -->
                 <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
-                    <img src="logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
                     <span class="logo-text">AppVertex</span>
                 </a>
 
@@ -380,125 +853,343 @@
         </div>
     </div>
 <main id="mainContent">
-    <!-- Subpage Hero Banner -->
-    <section class="subpage-hero" aria-label="About Overview">
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION: AN IDEATECH ALIGNED & APPVERTEX THEMED
+         ═══════════════════════════════════════════════════ -->
+    <section class="subpage-hero" aria-label="About AppVertex Studio">
         <div class="container subpage-hero-content">
             <h1 class="subpage-title">
-                We craft digital software that <span class="accent">endures.</span>
+                Websites &amp; software built around how your <span class="gradient-text">team works.</span>
             </h1>
             <p class="subpage-desc">
-                AppVertex was founded on a simple conviction: modern businesses deserve software built with uncompromising engineering discipline, emotive visual design, and direct founder collaboration.
+                We build websites, customer portals, and internal tools that eliminate friction, replace messy spreadsheets, and fit how your organization actually runs.
             </p>
             <div class="subpage-actions">
-                <a href="work.html" class="btn btn-primary">VIEW OUR WORK <span class="arr">→</span></a>
-                <a href="contact.html" class="btn btn-secondary">GET IN TOUCH</a>
+                <a href="contact.html#booking-calendar" class="btn btn-primary">START A PROJECT <span class="arr">→</span></a>
+                <a href="work.html" class="btn btn-secondary">SEE OUR WORK</a>
+            </div>
+
+            <!-- Studio Telemetry & Commitments Card -->
+            <div class="telemetry-card">
+                <div class="telemetry-header">
+                    <div class="telemetry-tag">Independent Digital Studio / Active Sprints</div>
+                    <div class="telemetry-status"><i class="fa-solid fa-globe"></i> Mangalore, Karnataka &bull; Global Remote Delivery</div>
+                </div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">01 //</span>
+                        <div class="pillar-title">Direct Founder Access</div>
+                        <div class="pillar-desc">You talk directly with the engineers architecting your platform, not account managers.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">02 //</span>
+                        <div class="pillar-title">Clear Timelines &amp; PRDs</div>
+                        <div class="pillar-desc">Every deliverable is defined in writing before sprint kickoff. No ambiguous scope creep.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">03 //</span>
+                        <div class="pillar-title">No Junior Handoffs</div>
+                        <div class="pillar-desc">Senior craftsmanship only. Every repository commit is engineered and vetted with care.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">04 //</span>
+                        <div class="pillar-title">100% Code Ownership</div>
+                        <div class="pillar-desc">Clean documentation, unencumbered intellectual property, and zero vendor lock-in.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main About Content -->
-    <section class="container" style="padding: 4rem 1.5rem;">
-        <div class="about-split-grid">
-            <div class="about-story-text">
-                <p class="section-eyebrow">OUR ORIGIN &amp; PHILOSOPHY</p>
-                <h2 class="section-title">Bridging High-End Design with Architectural Rigor</h2>
-                <p>
-                    Most digital agencies force founders into a painful compromise: you either hire a design studio that creates gorgeous interfaces on Figma that collapse under real-world performance loads, or you hire traditional software contractors who build functional code with clunky, outdated interfaces.
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 1: OUR CAPABILITIES (WHAT WE BUILD)
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" style="padding: 1.5rem 1.5rem 5rem;">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem;">
+            <p class="section-eyebrow">OUR CAPABILITIES</p>
+            <h2 class="section-title">What We Build</h2>
+            <p class="section-lead">
+                Every business reaches an inflection point where off-the-shelf tools, bloated SaaS plugins, and generic site builders create more friction than value. That is where we step in.
+            </p>
+        </div>
+
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <div class="capability-header">
+                    <span class="capability-num">// 01</span>
+                    <i class="fa-solid fa-window-restore capability-icon"></i>
+                </div>
+                <h3 class="capability-title">High-Converting Corporate &amp; Brand Websites</h3>
+                <p class="capability-desc">
+                    Custom-engineered digital headquarters structured to establish undeniable market authority, drive qualified inbound inquiries, and load under 800 milliseconds worldwide.
                 </p>
-                <p>
-                    <strong>AppVertex was built to eliminate that compromise.</strong> We operate as an elite digital workshop where design and engineering are completely synchronized. Every line of code is structured for sub-second speeds, modular scale, and uncompromising aesthetic delight.
+                <div class="capability-tags">
+                    <span class="capability-tag">Semantic HTML5</span>
+                    <span class="capability-tag">Bespoke Design</span>
+                    <span class="capability-tag">Core Web Vitals</span>
+                    <span class="capability-tag">SEO Architecture</span>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-header">
+                    <span class="capability-num">// 02</span>
+                    <i class="fa-solid fa-cubes capability-icon"></i>
+                </div>
+                <h3 class="capability-title">Custom Web Applications &amp; Client Portals</h3>
+                <p class="capability-desc">
+                    Purpose-built software platforms with authenticated role-based dashboards, secure data pipelines, and responsive UX tailored for students, customers, and operations teams.
                 </p>
-                <p>
-                    We reject bloated third-party templates, unnecessary junior handoffs, and corporate red tape. When you partner with AppVertex, you collaborate directly with senior product builders who treat your business vision with institutional respect.
+                <div class="capability-tags">
+                    <span class="capability-tag">React &amp; Node</span>
+                    <span class="capability-tag">Firebase &amp; SQL</span>
+                    <span class="capability-tag">Auth &amp; RBAC</span>
+                    <span class="capability-tag">REST / GraphQL</span>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-header">
+                    <span class="capability-num">// 03</span>
+                    <i class="fa-solid fa-gears capability-icon"></i>
+                </div>
+                <h3 class="capability-title">Internal Tools, Operations &amp; Automation</h3>
+                <p class="capability-desc">
+                    Replacing fragmented WhatsApp groups, duplicated spreadsheets, and manual clerical bottlenecks with robust, tailored operating panels that give leaders absolute visibility.
+                </p>
+                <div class="capability-tags">
+                    <span class="capability-tag">Workflow Automation</span>
+                    <span class="capability-tag">Data Ingestion</span>
+                    <span class="capability-tag">Audit Trails</span>
+                    <span class="capability-tag">Telemetry</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 2: CHRONICLE (A DECADE IN PRODUCTION)
+             ═══════════════════════════════════════════════════ -->
+        <div class="chronicle-section">
+            <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;">
+                <p class="section-eyebrow">A DECADE IN PRODUCTION</p>
+                <h2 class="section-title">How We Arrived Here</h2>
+                <p class="section-lead">
+                    A decade of building for the web has taught us what survives trends, what creates lasting commercial leverage, and what is just fleeting hype.
                 </p>
             </div>
 
-            <div class="about-stats-panel">
-                <div class="about-stat-row">
-                    <div class="about-stat-num">5+</div>
-                    <div>
-                        <div class="about-stat-label">Production Ships</div>
-                        <div class="about-stat-sub">Enterprise portals, institutional hubs, and SaaS products actively deployed.</div>
+            <div class="chronicle-timeline">
+                <!-- Milestone 1 -->
+                <div class="chronicle-entry">
+                    <div class="chronicle-era">
+                        <div class="chronicle-years">2016 – 2018</div>
+                        <div class="chronicle-dot"></div>
+                    </div>
+                    <div class="chronicle-body">
+                        <h3 class="chronicle-title">The Foundation: Lightweight, High-Performance Web</h3>
+                        <p class="chronicle-text">
+                            Starting out, we noticed that 90% of business websites were dragged down by heavy CMS templates, bloated plugins, and sluggish databases. We committed to hand-crafted, semantic, lightweight architectures that outranked and outperformed bloated alternatives.
+                        </p>
                     </div>
                 </div>
-                <div class="about-stat-row">
-                    <div class="about-stat-num">100%</div>
-                    <div>
-                        <div class="about-stat-label">Client Satisfaction</div>
-                        <div class="about-stat-sub">Direct collaboration, transparent sprints, and zero unresolved tickets.</div>
+
+                <!-- Milestone 2 -->
+                <div class="chronicle-entry">
+                    <div class="chronicle-era">
+                        <div class="chronicle-years">2019 – 2021</div>
+                        <div class="chronicle-dot"></div>
+                    </div>
+                    <div class="chronicle-body">
+                        <h3 class="chronicle-title">Application Scale: Portals, Auth &amp; Real-Time Data</h3>
+                        <p class="chronicle-text">
+                            As client demands matured from brochure sites to complex operational hubs, we expanded deeply into stateful web applications, real-time database synchronization, automated billing engines, and institutional academic software.
+                        </p>
                     </div>
                 </div>
-                <div class="about-stat-row">
-                    <div class="about-stat-num">3+</div>
-                    <div>
-                        <div class="about-stat-label">Branches Served</div>
-                        <div class="about-stat-sub">Multi-hub digital infrastructure synchronizing distributed operations.</div>
+
+                <!-- Milestone 3 -->
+                <div class="chronicle-entry">
+                    <div class="chronicle-era">
+                        <div class="chronicle-years">2022 – 2024</div>
+                        <div class="chronicle-dot"></div>
+                    </div>
+                    <div class="chronicle-body">
+                        <h3 class="chronicle-title">Unified Operating Systems &amp; Institutional Transformation</h3>
+                        <p class="chronicle-text">
+                            Deployed multi-branch digital hubs like Loretto Central School's institutional portal, synchronizing academic records, fee tracking, and community notices into one fault-tolerant, unified platform serving thousands of daily active users.
+                        </p>
                     </div>
                 </div>
-                <div class="about-stat-row">
-                    <div class="about-stat-num">24/7</div>
-                    <div>
-                        <div class="about-stat-label">Active Monitoring</div>
-                        <div class="about-stat-sub">Proactive uptime checks, cloud database backups, and rapid triage.</div>
+
+                <!-- Milestone 4 -->
+                <div class="chronicle-entry">
+                    <div class="chronicle-era">
+                        <div class="chronicle-years">2025 – PRESENT</div>
+                        <div class="chronicle-dot"></div>
+                    </div>
+                    <div class="chronicle-body">
+                        <h3 class="chronicle-title">Modern Edge Systems &amp; The AppVertex Studio Standard</h3>
+                        <p class="chronicle-text">
+                            Today, AppVertex operates as a specialized product engineering studio. We combine edge serverless infrastructure, modern reactivity, emotive design systems, and rigorous founder-led sprints for teams worldwide.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 4 Core Principles -->
-        <div style="margin: 5rem 0 3rem; text-align: center;">
-            <p class="section-eyebrow">HOW WE OPERATE</p>
-            <h2 class="section-title">Four Uncompromising Principles</h2>
-            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">These four tenets guide every line of code we ship and every interface we create.</p>
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 3: OPERATING STANDARDS (HOW WE MAKE DECISIONS)
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">OPERATING STANDARDS</p>
+            <h2 class="section-title">How We Make Decisions</h2>
+            <p class="section-lead" style="max-width: 680px; margin: 0 auto;">
+                Four principles govern how we write specifications, write code, and communicate with partners every day.
+            </p>
         </div>
 
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-number">// PRINCIPLE 01</div>
-                <h3 class="value-title">Speed as an Essential Feature</h3>
-                <p class="value-desc">Slow software kills conversions. We engineer our platforms with lean asset budgets, semantic markup, and optimized rendering pipelines to guarantee instantaneous page transitions.</p>
+        <div class="standards-grid">
+            <div class="standard-card">
+                <div class="standard-num">// STANDARD 01</div>
+                <h3 class="standard-title">Diagnose Before We Build</h3>
+                <p class="standard-desc">
+                    We never start writing code based on surface-level feature requests. We examine your actual administrative routines, identify where manual errors occur, and write a strict specification that solves the root problem rather than masking symptoms.
+                </p>
             </div>
-            <div class="value-card">
-                <div class="value-number">// PRINCIPLE 02</div>
-                <h3 class="value-title">Direct Founder-to-Founder Sprints</h3>
-                <p class="value-desc">No account managers or disconnected telephone games. You collaborate directly with the lead engineers shaping your platform, resulting in rapid decisions and flawless alignment.</p>
+
+            <div class="standard-card">
+                <div class="standard-num">// STANDARD 02</div>
+                <h3 class="standard-title">Fit Daily Routines</h3>
+                <p class="standard-desc">
+                    Software fails when teams find it too cumbersome to adopt. We design interfaces that mirror how your staff already thinks, eliminating steep learning curves and ensuring enthusiastic day-one adoption across all roles.
+                </p>
             </div>
-            <div class="value-card">
-                <div class="value-number">// PRINCIPLE 03</div>
-                <h3 class="value-title">Institutional Reliability</h3>
-                <p class="value-desc">Whether supporting school portals with thousands of concurrent users or mission-critical commercial workflows, we design data structures and failover fallbacks built for durability.</p>
+
+            <div class="standard-card">
+                <div class="standard-num">// STANDARD 03</div>
+                <h3 class="standard-title">Honest Scope &amp; Realistic Budgets</h3>
+                <p class="standard-desc">
+                    If an idea adds high complexity with minimal commercial return, we tell you directly. We protect your budget and timeline by prioritizing high-leverage features first and preventing non-essential scope creep.
+                </p>
             </div>
-            <div class="value-card">
-                <div class="value-number">// PRINCIPLE 04</div>
-                <h3 class="value-title">Bespoke Aesthetic Distinction</h3>
-                <p class="value-desc">We never use generic off-the-shelf templates. Every color token, typography pairing, and micro-interaction is custom-crafted to elevate your brand far above commodity competitors.</p>
+
+            <div class="standard-card">
+                <div class="standard-num">// STANDARD 04</div>
+                <h3 class="standard-title">Production Longevity &amp; Zero Lock-In</h3>
+                <p class="standard-desc">
+                    We write clean, modular, self-documenting code in modern industry-standard languages. You receive 100% repository ownership, clear deployment scripts, and complete independence to host and evolve your system wherever you choose.
+                </p>
             </div>
         </div>
 
-        <!-- Founders Spotlight -->
-        <div style="margin: 5rem 0 2rem; text-align: center;">
-            <p class="section-eyebrow"><span class="dash"></span> WHO WE ARE</p>
-            <h2 class="section-title">Leadership &amp; Engineering</h2>
-            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">Direct collaboration with the founders on every project from day one to launch.</p>
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 4: WHO WE WORK WITH (WHERE OUR WORK FITS BEST)
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">WHO WE WORK WITH</p>
+            <h2 class="section-title">Where Our Work Fits Best</h2>
+            <p class="section-lead" style="max-width: 680px; margin: 0 auto;">
+                We partner with three types of organizations where our bespoke engineering yields maximum impact.
+            </p>
         </div>
 
-        <div class="founders-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+        <div class="fit-grid">
+            <div class="fit-card">
+                <span class="fit-badge">PROFILE 01</span>
+                <h3 class="fit-title">Growing Businesses Outgrowing Manual Workflows</h3>
+                <p class="fit-desc">
+                    Companies managing inquiries across emails, tracking client records in messy spreadsheets, and losing hours to duplicated clerical entry every single week.
+                </p>
+                <div class="fit-symptom">
+                    <strong>Common Symptom:</strong>
+                    "Our team spends more time updating spreadsheets and chasing updates on WhatsApp than actually serving clients."
+                </div>
+            </div>
+
+            <div class="fit-card">
+                <span class="fit-badge">PROFILE 02</span>
+                <h3 class="fit-title">Educational Institutions &amp; Multi-Branch Hubs</h3>
+                <p class="fit-desc">
+                    Schools, academies, and multi-location institutions needing unified portals where parents, students, teachers, and admins collaborate securely without paper trails.
+                </p>
+                <div class="fit-symptom">
+                    <strong>Common Symptom:</strong>
+                    "Our public site looks dated, and administrative communications are fragmented across three separate disconnected channels."
+                </div>
+            </div>
+
+            <div class="fit-card">
+                <span class="fit-badge">PROFILE 03</span>
+                <h3 class="fit-title">Founders Launching Scalable MVPs</h3>
+                <p class="fit-desc">
+                    Entrepreneurs with validated market demand who need a production-ready, beautifully designed web product built right the first time on a fixed schedule.
+                </p>
+                <div class="fit-symptom">
+                    <strong>Common Symptom:</strong>
+                    "We need an engineering partner who understands product design, database architecture, and won't cut corners on security."
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 5: LEADERSHIP & FOUNDER PHILOSOPHY
+             ═══════════════════════════════════════════════════ -->
+        <div class="philosophy-banner">
+            <p class="philosophy-quote">
+                &ldquo;Most software fails not because of bad code, but because of bad communication. When you eliminate middle managers and put business owners directly in touch with senior developers, software becomes simple, fast, and remarkably durable.&rdquo;
+            </p>
+            <div class="philosophy-author">
+                <div>
+                    <strong style="color: var(--text-primary); font-family: var(--font-primary); font-size: 1.1rem; display: block;">The AppVertex Studio Commitment</strong>
+                    <span style="font-size: 0.88rem; color: var(--text-muted); font-family: var(--font-mono, monospace);">Architected for Performance &bull; Handcrafted with Integrity</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <p class="section-eyebrow">STUDIO LEADERSHIP</p>
+            <h2 class="section-title">Senior Craftsmanship On Every Project</h2>
+        </div>
+
+        <div class="founders-grid">
             <div class="founder-card">
                 <span class="founder-role">FOUNDER &amp; LEAD DEVELOPER</span>
                 <h3 class="founder-name">Leston Coelho</h3>
                 <p class="founder-bio">
-                    Turning ideas into elegant code. Leston leads development ensuring every site is fast, scalable, and built to last.
+                    Oversees core system architecture, cloud deployment pipelines, database integrity, and high-performance frontend engineering. Ensures every release runs with sub-second responsiveness and zero tech debt.
                 </p>
-                <a href="mailto:leston@appvertex.in" class="founder-email">leston@appvertex.in</a>
+                <a href="mailto:leston@appvertex.in" class="founder-email">
+                    <i class="fa-regular fa-envelope"></i> leston@appvertex.in
+                </a>
             </div>
 
             <div class="founder-card">
                 <span class="founder-role">CO-FOUNDER &amp; CREATIVE DIRECTOR</span>
                 <h3 class="founder-name">Lenstar Monteiro</h3>
                 <p class="founder-bio">
-                    Where design meets strategy. Lenstar crafts interfaces that are both beautiful and intuitive.
+                    Leads product design, brand identity systems, user experience hierarchies, and design systems. Translates intricate business workflows into intuitive, human-centered digital interfaces.
                 </p>
-                <a href="mailto:lenstar@appvertex.in" class="founder-email">lenstar@appvertex.in</a>
+                <a href="mailto:lenstar@appvertex.in" class="founder-email">
+                    <i class="fa-regular fa-envelope"></i> lenstar@appvertex.in
+                </a>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 6: CLOSING DIAGNOSTIC BANNER
+             ═══════════════════════════════════════════════════ -->
+        <div class="closing-banner">
+            <h2 class="closing-banner-title">Tell us what is no longer working as it should.</h2>
+            <p class="closing-banner-desc">
+                Whether you're replacing legacy systems, consolidating fragmented spreadsheets into a custom portal, or launching a new product, we'll give you a clear, honest assessment of what to build and what to leave out.
+            </p>
+            <div class="closing-banner-actions">
+                <a href="contact.html#booking-calendar" class="btn btn-primary" style="padding: 15px 34px; font-size: 1rem;">
+                    BOOK A DISCOVERY CALL <span class="arr">→</span>
+                </a>
+                <a href="work.html" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1rem;">
+                    VIEW SHIPPED WORK
+                </a>
             </div>
         </div>
     </section>
@@ -558,7 +1249,7 @@
          STRUCTURED STUDIO FOOTER
          ═══════════════════════════════════════════════════ -->
     <footer id="siteFooter"></footer>
-    <script type="module" src="footer.js"></script>
+    <script type="module" src="/src/components/footer.js"></script>
 
     <script>
         // ─── Mobile Drawer Toggle ───
