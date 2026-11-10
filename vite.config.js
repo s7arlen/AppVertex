@@ -1,7 +1,8 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/AppVertex/' : '/',
   root: '.',
   build: {
     outDir: 'dist',
@@ -22,4 +23,4 @@ export default defineConfig({
     host: true,
     port: 5173,
   },
-});
+}));
