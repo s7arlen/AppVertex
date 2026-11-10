@@ -3278,11 +3278,56 @@ select.form-control option {
    17. STRUCTURED STUDIO FOOTER
    ───────────────────────────────────────────────────────────────── */
 #siteFooter {
-  padding: 80px 0 36px;
+  padding: 72px 0 36px;
   position: relative;
   z-index: 2;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
+  overflow: hidden;
+  border-top: 1px solid rgba(26, 21, 20, 0.12);
+  background: 
+    radial-gradient(80% 120% at 90% 10%, rgba(239, 135, 13, 0.06) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(250, 248, 245, 0.95) 0%, rgba(253, 251, 249, 0.92) 50%, rgba(245, 240, 234, 0.88) 100%);
+  box-shadow: 
+    0 -16px 40px -12px rgba(26, 21, 20, 0.05),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+#siteFooter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 135, 13, 0.2) 20%, #ef870d 50%, rgba(239, 135, 13, 0.2) 80%, transparent 100%);
+  display: block;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#siteFooter > * {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="dark"] #siteFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: 
+    radial-gradient(80% 120% at 85% 15%, rgba(239, 135, 13, 0.14) 0%, transparent 60%),
+    radial-gradient(40% 40% at 10% 90%, rgba(255, 87, 34, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(239, 135, 13, 0.06) 100%),
+    rgba(15, 19, 29, 0.65);
+  box-shadow: 
+    0 -24px 50px -12px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+[data-theme="dark"] #siteFooter::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 135, 13, 0.3) 25%, #ef870d 50%, rgba(255, 87, 34, 0.3) 75%, transparent 100%);
 }
 
 .footer-cta-card {

@@ -1,18 +1,6 @@
 // AppVertex - Global Studio Footer Component
 const footerHTML = `
 <div class="container">
-    <!-- Pre-Footer CTA Card -->
-    <div class="footer-cta-card">
-        <h3 class="footer-cta-title">Let's Build Something Together</h3>
-        <p class="footer-cta-desc">
-            Have a project in mind or need an honest review of your existing systems? We're ready to engineer your digital advantage.
-        </p>
-        <a href="contact.html" class="footer-cta-btn">
-            <span>START YOUR PROJECT</span>
-            <span class="arr">→</span>
-        </a>
-    </div>
-
     <!-- Footer 4-Column Directory -->
     <div class="footer-grid-4">
         <!-- Col 1: Brand & Bio -->
