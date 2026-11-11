@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppVertex | We Build Brands Online</title>
+    <meta name="description" content="AppVertex crafts high-performance websites, custom web applications, and dependable digital systems built around how your business works.">
+    <meta name="keywords" content="AppVertex, web development, custom software, UI UX design, school management portal, e-commerce, digital products, Mangalore, India">
+    <meta name="author" content="AppVertex">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://s7arlen.github.io/AppVertex/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s7arlen.github.io/AppVertex/">
+    <meta property="og:title" content="AppVertex | We Build Brands Online">
+    <meta property="og:description" content="Websites and custom software built around the way your business works. High conversion, clean code, dependable systems.">
+    <meta property="og:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s7arlen.github.io/AppVertex/">
+    <meta property="twitter:title" content="AppVertex | We Build Brands Online">
+    <meta property="twitter:description" content="Websites and custom software built around the way your business works. High conversion, clean code, dependable systems.">
+    <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
+
+    <!-- Preconnect & Google Fonts: Manrope (400-900), Barlow Semi Condensed (500-700), JetBrains Mono (400-600) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="shortcut icon" href="/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/logo.png">
+
+    <!-- Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('appvertex-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Production Stylesheet -->
+    <link rel="stylesheet" href="/src/styles/style.css">
+</head>
+
+<body>
+    <!-- ═══════════════════════════════════════════════════
+         FIXED BACKGROUND SYSTEM (BURGUNDY BRANDING)
+         ═══════════════════════════════════════════════════ -->
+    <div id="fixedBackgroundLayer" class="fixed-background-system" aria-hidden="true">
+        <!-- Solid Base Foundation -->
+        <div class="fixed-bg-base"></div>
+
+        <!-- Technical Architectural Micro-Grid, Fluted Louvers & Precision Ticks -->
+        <svg class="fixed-bg-grid" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <!-- Fluted Louvers (Vertical Pinstripes) -->
+                <pattern id="appv-fluted-louvers" width="8" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="4" y1="0" x2="4" y2="24" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.25"></line>
+                </pattern>
+                <!-- 24px Micro Grid -->
+                <pattern id="appv-micro-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.65" stroke-opacity="0.35"></path>
+                </pattern>
+                <!-- 72px Macro Crosshair Ticks -->
+                <pattern id="appv-macro-ticks" width="72" height="72" patternUnits="userSpaceOnUse">
+                    <path d="M 72 0 L 0 0 0 72" fill="none" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55"></path>
+                    <path d="M -3 0 L 3 0 M 0 -3 L 0 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 0 L 75 0 M 72 -3 L 72 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M -3 72 L 3 72 M 0 69 L 0 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 72 L 75 72 M 72 69 L 72 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#appv-fluted-louvers)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-micro-grid)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-macro-ticks)"></rect>
+        </svg>
+
+        <!-- Preserved Fine Grain Texture Layer -->
+        <div class="fixed-bg-grain"></div>
+
+        <!-- Ambient Atmospheric Glows (Burgundy in Light / Stronger in Dark) -->
+        <div class="fixed-bg-ambient-top"></div>
+        <div class="fixed-bg-ambient-bottom"></div>
+
+        <!-- Stationary Organic Curved Ribbon Layer (Burgundy / Rose Gradients) -->
+        <div class="fixed-bg-ribbon-curves" aria-hidden="true">
+            <svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Ambient Rich Burgundy Spotlight Glow -->
+                    <linearGradient id="fixedGlowBase" x1="100%" y1="20%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.32"/>
+                        <stop offset="50%" stop-color="#FF5722" stop-opacity="0.16"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+
+                    <!-- Rich Signature Velvet Burgundy Wave -->
+                    <linearGradient id="fixedWaveBurgundy" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.75"/>
+                        <stop offset="45%" stop-color="#F76020" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#EA321D" stop-opacity="0.20"/>
+                    </linearGradient>
+
+                    <!-- Wave Alias for backwards compatibility -->
+                    <linearGradient id="fixedWaveCyan" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.75"/>
+                        <stop offset="45%" stop-color="#F76020" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#EA321D" stop-opacity="0.20"/>
+                    </linearGradient>
+
+                    <!-- Crisp Frosted Glass Ribbon with Luminous Edge -->
+                    <linearGradient id="fixedWaveFrosted" x1="100%" y1="20%" x2="0%" y2="85%">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92"/>
+                        <stop offset="40%" stop-color="#FDFBF9" stop-opacity="0.72"/>
+                        <stop offset="100%" stop-color="#FEF5EC" stop-opacity="0.35"/>
+                    </linearGradient>
+
+                    <!-- Deep Imperial Bordeaux / Wine Anchoring Crest -->
+                    <linearGradient id="fixedWaveDeepBurgundy" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#FF5722" stop-opacity="0.45"/>
+                        <stop offset="55%" stop-color="#EF870D" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+
+                    <!-- Crest Alias for backwards compatibility -->
+                    <linearGradient id="fixedWaveRosewood" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#FF5722" stop-opacity="0.45"/>
+                        <stop offset="55%" stop-color="#EF870D" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Ambient Burgundy Spotlight in right-center -->
+                <circle cx="1200" cy="550" r="460" fill="url(#fixedGlowBase)"/>
+
+                <!-- Outer Rich Burgundy Fluid Wave -->
+                <path d="M 1440 220 C 1220 320 1060 460 1100 620 C 1140 760 920 860 680 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveBurgundy)"/>
+
+                <!-- Frosted Glass Ribbon with Crisp White Rim Light -->
+                <path d="M 1440 360 C 1200 460 1020 580 980 720 C 950 820 820 880 620 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveFrosted)" 
+                      stroke="rgba(255, 255, 255, 0.95)" 
+                      stroke-width="2"/>
+
+                <!-- Deep Velvet Imperial Burgundy Crest -->
+                <path d="M 1440 540 C 1260 620 1120 740 1060 840 C 1030 890 980 900 880 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveDeepBurgundy)"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         HEADER & NAVIGATION
+         Three-part layout: [Logo] [Nav Links] [Theme | CTA]
+         ═══════════════════════════════════════════════════ -->
+    <header id="siteHeader">
+        <div class="container">
+            <div class="nav-inner">
+                <!-- Brand Logo: logo.png (32px) + AppVertex text -->
+                <a href="#hero" class="brand-logo" aria-label="AppVertex Home">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <span class="logo-text">AppVertex</span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="nav-menu" aria-label="Main Navigation">
+                    <a href="index.html" class="nav-link active">HOME</a>
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="work.html" class="nav-link">WORK</a>
+                    <a href="process.html" class="nav-link">PROCESS</a>
+                    <a href="about.html" class="nav-link">ABOUT</a>
+                    <a href="upskill.html" class="nav-link">UPSKILL</a>
+                    <a href="contact.html" class="nav-link">CONTACT</a>
+                </nav>
+
+                <!-- Actions: Dark Mode Toggle + Book a Call CTA -->
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <a href="#contact" class="nav-cta-btn">Book a Call</a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">✕</button>
+        <a href="index.html" class="nav-link mobile-link active">HOME</a>
+        <a href="services.html" class="nav-link mobile-link">SERVICES</a>
+        <a href="work.html" class="nav-link mobile-link">WORK</a>
+        <a href="process.html" class="nav-link mobile-link">PROCESS</a>
+        <a href="about.html" class="nav-link mobile-link">ABOUT</a>
+        <a href="upskill.html" class="nav-link mobile-link">UPSKILL</a>
+        <a href="contact.html" class="nav-link mobile-link">CONTACT</a>
+        <div style="margin-top: 1.5rem; display: flex; gap: 14px; align-items: center;">
+            <button class="theme-toggle-btn" id="drawerThemeToggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="drawerThemeIcon"></i>
+            </button>
+            <a href="#contact" class="btn btn-primary mobile-link" style="font-size: 0.95rem; padding: 12px 26px;">Book a Call <span class="arr">→</span></a>
+        </div>
+    </div>
+
+    <main>
+        <!-- ═══════════════════════════════════════════════════
+             SECTION C: HERO SECTION (ANIDEATECH ARCHITECTURAL DESIGN)
+             Left-Aligned Full Viewport Hero with Floating Card & Integrated Stats
+             ═══════════════════════════════════════════════════ -->
+        <section id="hero" class="hero-anidea-section" aria-label="Hero Overview">
+            <div class="container hero-container">
+                <!-- 1. Monumental 3-Line Left-Aligned Headline -->
+                <div class="hero-headline-group">
+                    <span class="hero-line hero-line-top">WE BUILD</span>
+                    <h1 class="hero-line hero-line-main">DEPENDABLE SYSTEMS</h1>
+                    <span class="hero-line hero-line-bottom">FOR GROWING BUSINESSES.</span>
+                </div>
+
+                <!-- 2. Floating Translucent Glass Info Panel Card -->
+                <div class="hero-info-panel">
+                    <div class="hero-info-left">
+                        <p class="hero-desc">
+                            Websites and custom software built around the way your business works. Customers find what they need without confusion, and your team gets reliable tools to handle daily orders, inquiries, and handoffs.
+                        </p>
+                        <p class="hero-subnote">
+                            A first conversation to understand the situation before deciding what to build.
+                        </p>
+                    </div>
+                    <div class="hero-info-right">
+                        <a href="#contact" class="hero-btn-pill-primary">
+                            <span>Book Discovery Call</span>
+                            <span class="hero-btn-arrow-circle" aria-hidden="true">
+                                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="#process" class="hero-btn-pill-secondary">
+                            <span>Our Process</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Key Performance Indicators / Statistics Grid (Exact 4-Column Layout) -->
+                <div id="metrics" class="hero-metrics-grid">
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-num metric-number" data-target="50">50+</span>
+                        <span class="hero-stat-label">BUSINESSES SERVED</span>
+                        <span class="hero-stat-sub">Across India &amp; overseas</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-num metric-number" data-target="30">30+</span>
+                        <span class="hero-stat-label">PROJECTS DELIVERED</span>
+                        <span class="hero-stat-sub">Websites &amp; custom apps</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-num metric-number" data-target="10">10+</span>
+                        <span class="hero-stat-label">YEARS EXPERIENCE</span>
+                        <span class="hero-stat-sub">Engineering since 2016</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-num metric-number">24h</span>
+                        <span class="hero-stat-label">WEEKDAY RESPONSE</span>
+                        <span class="hero-stat-sub">Replies within 24 hours</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION E: SERVICES SECTION (8 SERVICES)
+             Split-Screen Sticky Index + Morphing Stage
+             ═══════════════════════════════════════════════════ -->
+        <section id="services" aria-label="Our Services">
+            <div class="container">
+                <div class="services-header-split reveal-on-scroll">
+                    <div class="services-header-left">
+                        <p class="section-eyebrow">WHAT WE BUILD</p>
+                        <h2 class="section-title">
+                            Services that drive<br>
+                            <span class="accent-text">real results.</span>
+                        </h2>
+                    </div>
+                    <div class="services-header-right">
+                        <p class="section-subtitle">
+                            From conversion-focused websites to bespoke software systems, we build digital infrastructure tailored to how your business actually runs.
+                        </p>
+                        <a href="#contact" class="editorial-link" style="margin-top: 16px;">
+                            EXPLORE ALL SERVICES <span class="arr">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- React Bits ScrollStack Stacking Deck Container -->
+                <div class="scroll-stack scroll-stack--window" id="servicesScrollStack">
+                    <div class="scroll-stack__inner" id="servicesStackInner">
+                        <!-- Card 01: Website Development -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 1;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">01</span>
+                                        <span class="service-stack-badge">Web Development</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">Website Development</h3>
+                                        <p class="service-stack-desc">
+                                            Fast, modern websites designed to turn visitors into clients. Built with seamless mobile responsiveness, SEO best practices, and effortless content management.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/web-development</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-web-design.jpg" alt="Website Development Agency Landing Page" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 02: Custom Web Applications -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 2;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">02</span>
+                                        <span class="service-stack-badge">Custom Software</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">Custom Web Applications</h3>
+                                        <p class="service-stack-desc">
+                                            Tailored web platforms, client portals, and workflow tools designed around how your business actually runs. Automate repetitive tasks and give your team reliable tools.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/cloud-apps</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-custom-web-apps.jpg" alt="Custom Web Application SaaS Dashboard Interface" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 03: UI/UX Design -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 3;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">03</span>
+                                        <span class="service-stack-badge">Product Design</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">UI/UX Design</h3>
+                                        <p class="service-stack-desc">
+                                            Intuitive, clean interfaces built to guide users effortlessly from their first click to checkout or inquiry. We turn complicated workflows into simple, elegant digital products.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/ui-ux-design</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-ui-ux.jpg" alt="UI/UX Design System Artboard and Tokens" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 04: Branding & Digital Identity -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 4;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">04</span>
+                                        <span class="service-stack-badge">Brand Identity</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">Branding &amp; Digital Identity</h3>
+                                        <p class="service-stack-desc">
+                                            Memorable visual identities that help your business stand out and build immediate trust with your audience across web, print, and social media.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/brand-identity</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-brand-identity.jpg" alt="Brand Identity and Typography Guidelines" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 05: School Management Portals -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 5;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">05</span>
+                                        <span class="service-stack-badge">Education Portals</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">School Management Portals</h3>
+                                        <p class="service-stack-desc">
+                                            Comprehensive institutional portals that bring student admissions, fee payments, attendance tracking, and parent communication into one secure, unified system.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>lorettocentralschool.edu.in</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-school-portal.jpg" alt="Institutional Academic School Management Portal" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 06: E-commerce Development -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 6;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">06</span>
+                                        <span class="service-stack-badge">E-Commerce</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">E-commerce Development</h3>
+                                        <p class="service-stack-desc">
+                                            Fast, friction-free online stores designed to boost conversions. From quick product discovery to smooth one-click checkout and automated inventory management.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/ecommerce-engine</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-ecommerce.jpg" alt="Headless E-Commerce Digital Storefront" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 07: SEO & Digital Growth -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 260px; z-index: 7;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">07</span>
+                                        <span class="service-stack-badge">Search Optimization</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">SEO &amp; Digital Growth</h3>
+                                        <p class="service-stack-desc">
+                                            Targeted search optimization and technical speed tuning that help your business rank higher on Google and attract high-intent local and global customers.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/growth-engine</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-seo.jpg" alt="SEO Performance and Growth Telemetry" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 08: Website Maintenance -->
+                        <div class="scroll-stack__slot" data-stack-slot style="top: 110px; margin-bottom: 60px; z-index: 8;">
+                            <div class="scroll-stack-card service-stack-card">
+                                <div class="service-stack-card__header">
+                                    <div class="service-stack-meta">
+                                        <span class="service-stack-num">08</span>
+                                        <span class="service-stack-badge">Support &amp; Care</span>
+                                    </div>
+                                </div>
+                                <div class="service-stack-card__body">
+                                    <div class="service-stack-main">
+                                        <h3 class="service-stack-title">Website Maintenance</h3>
+                                        <p class="service-stack-desc">
+                                            Peace of mind for your online presence. We handle regular security patches, automated cloud backups, uptime monitoring, and fast support when you need updates.
+                                        </p>
+                                        <div class="service-stack-actions">
+                                            <a href="#contact" class="btn btn-primary btn-sm">Start a Project <span class="arr">→</span></a>
+                                            <a href="services.html" class="btn btn-secondary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
+                                    <div class="service-stack-browser-frame">
+                                        <div class="service-browser-topbar">
+                                            <div class="service-browser-dots">
+                                                <span class="s-dot s-dot-red"></span>
+                                                <span class="s-dot s-dot-yellow"></span>
+                                                <span class="s-dot s-dot-green"></span>
+                                            </div>
+                                            <div class="service-browser-address">
+                                                <i class="fa-solid fa-lock"></i>
+                                                <span>appvertex.in/maintenance-sre</span>
+                                            </div>
+                                        </div>
+                                        <div class="service-browser-viewport">
+                                            <img src="/services/srv-maintenance.jpg" alt="24/7 Cloud Server Uptime and Maintenance Telemetry" loading="lazy" class="service-browser-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="scroll-stack-card__shade" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Stack End Spacer (holdDistance) -->
+                        <div class="scroll-stack__end" id="servicesStackEnd" style="height: 220px;" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION F: PORTFOLIO / SELECTED WORK
+             Interactive 3D Fan Carousel
+             ═══════════════════════════════════════════════════ -->
+        <section id="projects" aria-label="Selected Projects">
+            <div class="container">
+                <div class="projects-editorial-header reveal-on-scroll">
+                    <div class="projects-meta-bar">
+                        <p class="section-eyebrow">SELECTED WORK</p>
+                        <div class="projects-counter-badge" aria-live="polite">
+                            <span class="counter-prefix">PROJECT</span>
+                            <span class="counter-curr" id="projectCounterCurrent">01</span>
+                            <span class="counter-divider">/</span>
+                            <span class="counter-total" id="projectCounterTotal">03</span>
+                        </div>
+                    </div>
+                    <div class="projects-editorial-intro">
+                        <h2 class="section-title">Engineered with purpose,<br><span class="accent-text">designed to convert.</span></h2>
+                        <p class="section-subtitle">Real digital products shipped for forward-thinking clients.</p>
+                    </div>
+                </div>
+
+                <!-- 3D Fan Carousel Stage -->
+                <div class="fan-carousel-stage" id="fanCarouselStage" tabindex="0" role="region" aria-label="Interactive 3D Fan Carousel of Projects">
+                    <div class="fan-deck" id="fanDeck">
+                        <!-- Populated and dynamically managed by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Synchronized Project Information Panel -->
+                <div class="project-info-stage reveal-on-scroll" id="projectInfoStage" aria-live="polite">
+                    <div class="project-info-top">
+                        <span class="project-info-category" id="projectInfoCategory">Education Portal</span>
+                        <div class="project-info-tech" id="projectInfoTech">
+                            <span class="fan-tech-pill">HTML/CSS</span>
+                            <span class="fan-tech-pill">Firebase</span>
+                            <span class="fan-tech-pill">JavaScript</span>
+                        </div>
+                    </div>
+                    <h3 class="project-info-title" id="projectInfoTitle">Loretto Central School</h3>
+                    <p class="project-info-desc" id="projectInfoDesc">A complete school management portal with admissions, circulars and parent communication built for Loretto Central School.</p>
+                    <div class="project-info-actions">
+                        <a href="https://lorettocentralschool.edu.in" target="_blank" rel="noopener noreferrer" class="fan-action-btn fan-action-primary" id="fanPrimaryBtn">
+                            <span>View Live Project</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square arr" aria-hidden="true"></i>
+                        </a>
+                        <a href="#contact" class="fan-action-btn fan-action-secondary" id="fanSecondaryBtn">
+                            <span>Start Similar Project</span>
+                            <i class="fa-solid fa-arrow-right arr" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fan Pagination Indicators -->
+                <div class="fan-pagination-row" id="fanPaginationRow" role="tablist" aria-label="Select project">
+                    <!-- Dots dynamically rendered -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION G: ABOUT APPVERTEX
+             Horizontal Split Layout & Background Watermark
+             ═══════════════════════════════════════════════════ -->
+        <section id="about" aria-label="About AppVertex">
+            <div class="about-bg-text" aria-hidden="true">STUDIO</div>
+
+            <div class="container">
+                <div class="about-split-layout">
+                    <!-- Left Column: Manifesto -->
+                    <div class="about-split-left reveal-on-scroll">
+                        <p class="section-eyebrow"><span class="dash"></span> ABOUT APPVERTEX</p>
+                        <h2 class="section-title">
+                            Built by creators,<br>
+                            <span class="accent-text">for creators.</span>
+                        </h2>
+                        <p class="about-manifesto-text">
+                            We're <strong>AppVertex</strong> — an independent app studio founded by two friends obsessed with making the internet work better for small businesses. Quality software, honest pricing, and direct collaboration from day one.
+                        </p>
+                        <a href="#contact" class="editorial-link">
+                            GET IN TOUCH <span class="arr">→</span>
+                        </a>
+                    </div>
+
+                    <!-- Right Column: Who We Are / Founders -->
+                    <div class="about-split-right reveal-on-scroll">
+                        <p class="section-eyebrow who-we-are-eyebrow"><span class="dash"></span> WHO WE ARE</p>
+
+                        <!-- Founder Card 1: Leston Coelho -->
+                        <div class="founder-card">
+                            <span class="founder-role">FOUNDER &amp; LEAD DEVELOPER</span>
+                            <h3 class="founder-name">Leston Coelho</h3>
+                            <p class="founder-bio">
+                                Turning ideas into elegant code. Leston leads development ensuring every site is fast, scalable, and built to last.
+                            </p>
+                            <a href="mailto:leston@appvertex.in" class="founder-email">leston@appvertex.in</a>
+                        </div>
+
+                        <!-- Founder Card 2: Lenstar Monteiro -->
+                        <div class="founder-card">
+                            <span class="founder-role">CO-FOUNDER &amp; CREATIVE DIRECTOR</span>
+                            <h3 class="founder-name">Lenstar Monteiro</h3>
+                            <p class="founder-bio">
+                                Where design meets strategy. Lenstar crafts interfaces that are both beautiful and intuitive.
+                            </p>
+                            <a href="mailto:lenstar@appvertex.in" class="founder-email">lenstar@appvertex.in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION H: OUR PROCESS (4 STEPS)
+             4-Step Grid
+             ═══════════════════════════════════════════════════ -->
+        <section id="process">
+            <div class="container">
+                <div class="services-header-split reveal-on-scroll" style="margin-bottom: 0;">
+                    <div>
+                        <p class="section-eyebrow">OUR PROCESS</p>
+                        <h2 class="section-title">
+                            From raw idea to<br>
+                            <span class="accent-text">dependable system.</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <p class="section-subtitle">
+                            A clear, disciplined roadmap that keeps you completely aligned at every milestone without surprises.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="process-pipeline-container">
+                    <!-- Desktop External Pipeline Rail (Above Cards) -->
+                    <div class="process-pipeline-track" aria-hidden="true">
+                        <div class="process-track-line"></div>
+                        <div class="process-track-milestones">
+                            <div class="process-milestone" data-step="1">
+                                <span class="process-milestone-disc">01</span>
+                            </div>
+                            <div class="process-milestone" data-step="2">
+                                <span class="process-milestone-disc">02</span>
+                            </div>
+                            <div class="process-milestone" data-step="3">
+                                <span class="process-milestone-disc">03</span>
+                            </div>
+                            <div class="process-milestone" data-step="4">
+                                <span class="process-milestone-disc">04</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Clean, Human-Designed Cards -->
+                    <div class="process-grid-4">
+                        <!-- Step 01: Discover -->
+                        <div class="process-step-item reveal-on-scroll" data-step="1">
+                            <div class="process-step-top">
+                                <span class="process-step-num-mobile">01</span>
+                                <h3 class="process-step-title">Discover</h3>
+                                <i class="fas fa-comments process-step-icon" aria-hidden="true"></i>
+                            </div>
+                            <p class="process-step-desc">
+                                We learn how your business actually operates — the real workflows, not the ideal ones.
+                            </p>
+                        </div>
+
+                        <!-- Step 02: Design -->
+                        <div class="process-step-item reveal-on-scroll" data-step="2">
+                            <div class="process-step-top">
+                                <span class="process-step-num-mobile">02</span>
+                                <h3 class="process-step-title">Design</h3>
+                                <i class="fas fa-pen-ruler process-step-icon" aria-hidden="true"></i>
+                            </div>
+                            <p class="process-step-desc">
+                                We map the user journey and build a prototype that your team can react to before we write code.
+                            </p>
+                        </div>
+
+                        <!-- Step 03: Build -->
+                        <div class="process-step-item reveal-on-scroll" data-step="3">
+                            <div class="process-step-top">
+                                <span class="process-step-num-mobile">03</span>
+                                <h3 class="process-step-title">Build</h3>
+                                <i class="fas fa-code process-step-icon" aria-hidden="true"></i>
+                            </div>
+                            <p class="process-step-desc">
+                                Clean, maintainable code. No bloat. We build what's needed and nothing that isn't.
+                            </p>
+                        </div>
+
+                        <!-- Step 04: Launch & Support -->
+                        <div class="process-step-item reveal-on-scroll" data-step="4">
+                            <div class="process-step-top">
+                                <span class="process-step-num-mobile">04</span>
+                                <h3 class="process-step-title">Launch &amp; Support</h3>
+                                <i class="fas fa-rocket process-step-icon" aria-hidden="true"></i>
+                            </div>
+                            <p class="process-step-desc">
+                                We deploy, monitor, and stay available. Fast fixes, honest communication.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION I: OUR METHOD
+             Why We Work Differently From Typical Agencies
+             ═══════════════════════════════════════════════════ -->
+        <section id="method">
+            <div class="container">
+                <div class="services-header-split reveal-on-scroll" style="margin-bottom: 0;">
+                    <div>
+                        <p class="section-eyebrow">OUR METHOD</p>
+                        <h2 class="section-title">
+                            Why we work differently from<br>
+                            <span class="accent-text">typical agencies.</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <p class="section-subtitle">
+                            We don't hand over templates and vanish. Here is how we ensure your software creates real business value.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="method-grid">
+                    <div class="method-card reveal-on-scroll">
+                        <span class="method-num">01 / DIAGNOSIS</span>
+                        <h3 class="method-card-title">We diagnose before we build</h3>
+                        <p class="method-card-desc">
+                            Most agencies skip discovery. We spend real time understanding the problem before writing a line of code.
+                        </p>
+                    </div>
+
+                    <div class="method-card reveal-on-scroll">
+                        <span class="method-num">02 / USABILITY</span>
+                        <h3 class="method-card-title">We build for real use</h3>
+                        <p class="method-card-desc">
+                            Software that your team fights against is worse than no software. We build tools your people will actually use.
+                        </p>
+                    </div>
+
+                    <div class="method-card reveal-on-scroll">
+                        <span class="method-num">03 / COMMITMENT</span>
+                        <h3 class="method-card-title">We stay after launch</h3>
+                        <p class="method-card-desc">
+                            We're not a hand-off studio. We stick around, respond fast, and keep your systems running.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION J: TESTIMONIALS (GENUINE CLIENT VOICES)
+             3-Column Grid
+             ═══════════════════════════════════════════════════ -->
+        <section id="testimonials">
+            <div class="container">
+                <p class="section-eyebrow">CLIENT PERSPECTIVES</p>
+                <h2 class="section-title">What partners say about us.</h2>
+
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card reveal-on-scroll">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "AppVertex built exactly what we needed. The portal handles admissions, circulars and parent communication without any fuss. Our staff picked it up immediately."
+                        </p>
+                        <div class="testimonial-author-row">
+                            <div class="author-avatar">SM</div>
+                            <div>
+                                <div class="author-name">Sr. Mary Thomas</div>
+                                <div class="author-role">Principal, Loretto Central School</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card reveal-on-scroll">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "They understood what we wanted right from the first call. The website is clean, loads fast and represents our work well. Very professional team."
+                        </p>
+                        <div class="testimonial-author-row">
+                            <div class="author-avatar">PN</div>
+                            <div>
+                                <div class="author-name">Priya Nair</div>
+                                <div class="author-role">Vimasneha Trust</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card reveal-on-scroll">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "Quick turnaround, responsive team, and the website looks great on mobile. Would recommend AppVertex to any business looking for a no-nonsense web team."
+                        </p>
+                        <div class="testimonial-author-row">
+                            <div class="author-avatar">RD</div>
+                            <div>
+                                <div class="author-name">Rahul D.</div>
+                                <div class="author-role">Business Owner, Mangaluru</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION K: CONTACT / DISCOVERY CALL SECTION
+             Split Layout: Direct Details + Proposal Form
+             ═══════════════════════════════════════════════════ -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-grid-split">
+                    <!-- Left: Editorial Inquiries & WhatsApp Card -->
+                    <div class="contact-info-col reveal-on-scroll">
+                        <p class="section-eyebrow">GET IN TOUCH</p>
+                        <h2 class="section-title">
+                            Ready to build something<br>
+                            <span class="accent-text">that works?</span>
+                        </h2>
+                        <p class="section-subtitle" style="margin-bottom: 24px;">
+                            Tell us about your business and what you're trying to solve. We'll come back with an honest assessment and a clear plan.
+                        </p>
+
+                        <!-- Email Direct -->
+                        <a href="mailto:info@appvertex.in" class="contact-direct-card">
+                            <div class="contact-direct-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="contact-direct-label">DIRECT EMAIL</span>
+                                <span class="contact-direct-val">info@appvertex.in</span>
+                            </div>
+                        </a>
+
+                        <!-- WhatsApp Direct Card -->
+                        <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project." target="_blank" rel="noopener noreferrer" class="contact-direct-card">
+                            <div class="contact-direct-icon" style="background: rgba(37, 211, 102, 0.15); color: #25D366;">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="contact-direct-label">WHATSAPP CHAT</span>
+                                <span class="contact-direct-val">+91 93229 71253</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Right: High-End Contact Proposal Form -->
+                    <div class="contact-card reveal-on-scroll">
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label class="form-label" for="contactName">Your Name</label>
+                                <input type="text" id="contactName" name="name" class="form-control" placeholder="Jane Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="jane@company.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contactService">Service / Project Type</label>
+                                <select id="contactService" name="service" class="form-control" required>
+                                    <option value="Website Development">Website Development</option>
+                                    <option value="Custom Web Applications">Custom Web Applications</option>
+                                    <option value="UI/UX Design">UI/UX Design</option>
+                                    <option value="Branding & Digital Identity">Branding &amp; Digital Identity</option>
+                                    <option value="School Management Portals">School Management Portals</option>
+                                    <option value="E-commerce Development">E-commerce Development</option>
+                                    <option value="SEO & Digital Growth">SEO &amp; Digital Growth</option>
+                                    <option value="Website Maintenance">Website Maintenance &amp; Support</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contactBudget">Estimated Budget (Optional)</label>
+                                <select id="contactBudget" name="budget" class="form-control">
+                                    <option value="Flexible">Select budget range...</option>
+                                    <option value="Under 25k">Under ₹25,000</option>
+                                    <option value="25k-50k">₹25,000 – ₹50,000</option>
+                                    <option value="50k-100k">₹50,000 – ₹1,00,000</option>
+                                    <option value="100k+">₹1,00,000+</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contactMessage">Project Overview</label>
+                                <textarea id="contactMessage" name="message" class="form-control" rows="4" placeholder="Tell us about your business, what you're trying to achieve, and desired timelines..." required></textarea>
+                            </div>
+
+                            <!-- Bot Honeypot -->
+                            <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+
+                            <button type="submit" id="contactBtn" class="form-submit-btn">
+                                <span>SEND PROPOSAL REQUEST</span>
+                                <span class="arr">→</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════
+         FLOATING UTILITIES (WHATSAPP, SCROLL-TO-TOP, DOCK)
+         ═══════════════════════════════════════════════════ -->
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="floating-whatsapp-btn" 
+       aria-label="Chat with AppVertex on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button (With Reading Progress Ring) -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top of page" title="Scroll to top">
+        <svg class="scroll-progress-ring" width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+            <circle class="progress-ring-bg" cx="23" cy="23" r="20"></circle>
+            <circle class="progress-ring-fill" id="scrollProgressCircle" cx="23" cy="23" r="20"></circle>
+        </svg>
+        <i class="fa-solid fa-arrow-up scroll-top-icon" aria-hidden="true"></i>
+    </button>
+
+    <!-- Mobile Bottom Navigation Dock (4 Tabs) -->
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
+        <div class="dock-items-row">
+            <a href="index.html" class="dock-item active" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span>HOME</span>
+            </a>
+            <a href="services.html" class="dock-item" aria-label="Services">
+                <i class="fas fa-th-large"></i>
+                <span>SERVICES</span>
+            </a>
+            <a href="work.html" class="dock-item" aria-label="Work">
+                <i class="fas fa-briefcase"></i>
+                <span>WORK</span>
+            </a>
+            <a href="upskill.html" class="dock-item" aria-label="Upskill">
+                <i class="fas fa-graduation-cap"></i>
+                <span>UPSKILL</span>
+            </a>
+            <a href="contact.html" class="dock-item" aria-label="Contact">
+                <i class="fas fa-envelope"></i>
+                <span>CONTACT</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════
+         SECTION L: STRUCTURED STUDIO FOOTER
+         ═══════════════════════════════════════════════════ -->
+    <footer id="siteFooter">
+        <div class="container">
+            <!-- Footer 4-Column Directory -->
+            <div class="footer-grid-4">
+                <!-- Col 1: Brand & Bio -->
+                <div class="footer-col">
+                    <div class="footer-brand-title">
+                        <img src="/logo.png" alt="AppVertex Logo" width="28" height="28">
+                        <span class="logo-text" style="font-size: 1.25rem;">AppVertex</span>
+                    </div>
+                    <p class="footer-brand-desc">
+                        We Build Brands Online. High-performance websites, custom web apps, and dependable software solutions.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero" class="footer-link">Home</a></li>
+                        <li><a href="#services" class="footer-link">Services</a></li>
+                        <li><a href="#projects" class="footer-link">Selected Work</a></li>
+                        <li><a href="#process" class="footer-link">Our Process</a></li>
+                        <li><a href="#about" class="footer-link">About Studio</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Services</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#services" class="footer-link">Website Development</a></li>
+                        <li><a href="#services" class="footer-link">Custom Web Applications</a></li>
+                        <li><a href="#services" class="footer-link">UI/UX Design</a></li>
+                        <li><a href="#services" class="footer-link">School Management Portals</a></li>
+                        <li><a href="#services" class="footer-link">E-commerce Stores</a></li>
+                        <li><a href="#services" class="footer-link">Website Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Connect -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Connect</h4>
+                    <ul class="footer-links-list">
+                        <li>
+                            <a href="mailto:info@appvertex.in" class="footer-link">
+                                <i class="fas fa-envelope" style="margin-right: 6px;"></i> info@appvertex.in
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/919322971253" target="_blank" rel="noopener noreferrer" class="footer-link">
+                                <i class="fab fa-whatsapp" style="margin-right: 6px;"></i> +91 93229 71253
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                                <i class="fab fa-linkedin" style="margin-right: 6px;"></i> LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom-row">
+                <div class="footer-bottom-left">
+                    <p class="footer-text">© 2024 AppVertex. All rights reserved.</p>
+                    <span>•</span>
+                    <span>Built with precision &amp; modern web architectures</span>
+                </div>
+                <div>
+                    <span>Mangaluru, India · Worldwide Remote</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════
+         INTERACTIONS, JAVASCRIPT CONTROLLERS & CLOUD SYNC
+         ═══════════════════════════════════════════════════ -->
+    <script>
+        /* 1. Theme Management (Light & Dark Mode) */
+        (function() {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const drawerToggleBtn = document.getElementById('drawerThemeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const drawerIcon = document.getElementById('drawerThemeIcon');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('appvertex-theme', theme);
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+                if (drawerIcon) {
+                    drawerIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            }
+
+            const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(initialTheme);
+
+            function toggleTheme() {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+            }
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
+        })();
+
+        /* 2. API Endpoint Resolver */
+        const getApiEndpoint = () => {
+            return 'https://us-central1-appvertex-e09c8.cloudfunctions.net/contact';
+        };
+
+        /* 3. Header & Bottom Nav Scroll State */
+        (() => {
+            const header = document.getElementById('siteHeader');
+            const bottomNav = document.getElementById('mobileBottomNav');
+            const onScroll = () => {
+                const isScrolled = window.scrollY > 40;
+                if (header) {
+                    header.classList.toggle('scrolled', isScrolled);
+                }
+                if (bottomNav) {
+                    bottomNav.classList.toggle('scrolled', isScrolled);
+                }
+                document.body.classList.toggle('scrolled', isScrolled);
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* 4. Mobile Hamburger Drawer */
+        (() => {
+            const btn = document.getElementById('mobileMenuBtn');
+            const drawer = document.getElementById('mobileDrawer');
+            const closeBtn = document.getElementById('mobileDrawerClose');
+            if (!btn || !drawer) return;
+
+            function closeMenu() {
+                drawer.classList.remove('open');
+                btn.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                drawer.classList.add('open');
+                btn.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (drawer.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMenu();
+                });
+            }
+
+            drawer.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawer.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+        })();
+
+        /* 5. Mobile Bottom Nav & Header Nav Active Scroll-Spy */
+        (() => {
+            const bottomNav = document.getElementById('mobileBottomNav');
+            const headerNav = document.querySelector('.nav-menu');
+            const sectionIds = ['hero', 'services', 'projects', 'about', 'process', 'method', 'testimonials', 'contact'];
+
+            function updateActiveTabs() {
+                const scrollPos = window.scrollY + window.innerHeight * 0.35;
+                let activeId = 'hero';
+
+                for (let i = sectionIds.length - 1; i >= 0; i--) {
+                    const sec = document.getElementById(sectionIds[i]);
+                    if (sec && sec.offsetTop <= scrollPos) {
+                        activeId = sectionIds[i];
+                        break;
+                    }
+                }
+
+                // Update mobile dock
+                if (bottomNav) {
+                    const items = bottomNav.querySelectorAll('.dock-item');
+                    items.forEach((item) => {
+                        const href = (item.getAttribute('href') || '').replace('#', '');
+                        const isActive = (href === activeId) || (href === 'hero' && activeId === 'hero') || (href === 'projects' && activeId === 'projects');
+                        item.classList.toggle('active', isActive);
+                    });
+                }
+
+                // Update desktop header
+                if (headerNav) {
+                    headerNav.querySelectorAll('.nav-link').forEach(link => {
+                        const href = (link.getAttribute('href') || '').replace('#', '');
+                        const isActive = (href === activeId);
+                        link.classList.toggle('active', isActive);
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', updateActiveTabs, { passive: true });
+            updateActiveTabs();
+        })();
+
+        /* 6. Projects Showcase — Interactive 3D Fan Carousel */
+        (() => {
+            const defaultProjects = [
+                {
+                    id: 'loretto-central-school',
+                    title: 'Loretto Central School',
+                    name: 'Loretto Central School',
+                    category: 'Education Portal',
+                    categoryLabel: 'Education Portal',
+                    description: 'A complete school management portal with admissions, circulars and parent communication built for Loretto Central School.',
+                    previewImage: 'hero-rosewood-showcase.png',
+                    image: 'hero-rosewood-showcase.png',
+                    technologies: ['HTML/CSS', 'Firebase', 'JavaScript'],
+                    liveUrl: 'https://lorettocentralschool.edu.in',
+                    link: 'https://lorettocentralschool.edu.in',
+                    caseStudyUrl: '#contact',
+                    altText: 'Loretto Central School portal showcase',
+                    year: '2026',
+                    urlDisplay: 'lorettocentral.in'
+                },
+                {
+                    id: 'vimasneha',
+                    title: 'Vimasneha Trust',
+                    name: 'Vimasneha Trust',
+                    category: 'Non-Profit Website',
+                    categoryLabel: 'Non-Profit Website',
+                    description: 'A clean, accessible website for Vimasneha trust showcasing their social initiatives and enabling donations.',
+                    previewImage: 'hero-floating-phones-transparent.png',
+                    image: 'hero-floating-phones-transparent.png',
+                    technologies: ['HTML/CSS', 'JavaScript'],
+                    liveUrl: 'https://vimasneha.org',
+                    link: 'https://vimasneha.org',
+                    caseStudyUrl: '#contact',
+                    altText: 'Vimasneha non-profit website preview',
+                    year: '2025',
+                    urlDisplay: 'vimasneha.org'
+                },
+                {
+                    id: 'appvertex-studio',
+                    title: 'AppVertex Studio',
+                    name: 'AppVertex Studio',
+                    category: 'Digital Agency',
+                    categoryLabel: 'Digital Agency',
+                    description: 'Our own studio website — a showcase of AppVertex\'s capabilities, services and portfolio.',
+                    previewImage: 'hero-devices.png',
+                    image: 'hero-devices.png',
+                    technologies: ['HTML/CSS', 'Firebase'],
+                    liveUrl: 'https://s7arlen.github.io/AppVertex/',
+                    link: 'https://s7arlen.github.io/AppVertex/',
+                    caseStudyUrl: '#about',
+                    altText: 'AppVertex Studio showcase preview',
+                    year: '2024',
+                    urlDisplay: 'appvertex.in'
+                }
+            ];
+
+            const fallbackImages = [
+                'hero-rosewood-showcase.png',
+                'hero-floating-phones-transparent.png',
+                'hero-devices.png',
+                'hero-rosewood-stage.png',
+                'hero-machine.png'
+            ];
+
+            function safeImageSrc(val) {
+                if (!val || typeof val !== 'string') return '';
+                const s = val.trim();
+                if (/^(https?:\/\/|data:image\/|hero-|logo\.|\.\/)/i.test(s) || /\.(png|jpg|jpeg|webp|svg)$/i.test(s)) return s;
+                return '';
+            }
+
+            function normalizeProject(raw, idx = 0) {
+                if (!raw) return null;
+                let title = (raw.title || raw.name || 'Featured Project').trim();
+                
+                // Format clean human-readable title if stored as raw domain
+                if (!title || title === 'lorettocentralschool.edu.in' || title.toLowerCase().includes('loreto') || title.toLowerCase().includes('loretto')) {
+                    if (title.toLowerCase().includes('portal') || (raw.link && raw.link.includes('portal'))) {
+                        title = 'Loretto Central School Portal';
+                    } else {
+                        title = 'Loretto Central School Platform';
+                    }
+                } else if (title === 'www.surgeonsuhas.in' || title.toLowerCase().includes('suhas')) {
+                    title = 'Dr. Suhas S Kumar — Surgical Practice';
+                } else if (/^[a-z0-9-]+\.(edu\.in|com|org|in|io|dev|net|co)$/i.test(title)) {
+                    // If any raw domain is stored as title, format cleanly
+                    const cleanName = title.split('.')[0];
+                    title = cleanName.charAt(0).toUpperCase() + cleanName.slice(1) + ' Platform';
+                }
+
+                let img = safeImageSrc(raw.previewImage || raw.image);
+                if (!img) {
+                    img = fallbackImages[idx % fallbackImages.length];
+                }
+                const link = raw.liveUrl || raw.link || '#contact';
+                let urlDisplay = raw.urlDisplay;
+                if (!urlDisplay) {
+                    if (link && link.startsWith('http')) {
+                        try {
+                            urlDisplay = new URL(link).hostname.replace(/^www\./, '');
+                        } catch(e) {
+                            urlDisplay = 'appvertex.in';
+                        }
+                    } else {
+                        urlDisplay = 'appvertex.in';
+                    }
+                }
+                const catRaw = raw.categoryLabel || raw.category || 'Digital Platform';
+
+                return {
+                    id: raw.id || `proj-${idx}`,
+                    title: title,
+                    name: raw.name || title,
+                    category: catRaw,
+                    description: raw.description || 'High-performance digital system engineered for clean conversions and daily operations.',
+                    previewImage: img,
+                    image: img,
+                    technologies: Array.isArray(raw.technologies)
+                        ? raw.technologies
+                        : (typeof raw.technologies === 'string' ? raw.technologies.split(',').map(s=>s.trim()).filter(Boolean) : ['Custom Stack']),
+                    liveUrl: link,
+                    link: link,
+                    caseStudyUrl: raw.caseStudyUrl || link || '#contact',
+                    altText: raw.altText || title,
+                    year: String(raw.year || '2026'),
+                    urlDisplay: urlDisplay
+                };
+            }
+
+            let projects = defaultProjects.map((p, i) => normalizeProject(p, i));
+            try {
+                const cachedP = localStorage.getItem('appvertex_projects');
+                if (cachedP) {
+                    const parsed = JSON.parse(cachedP);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        projects = parsed.map((p, i) => normalizeProject(p, i)).filter(Boolean);
+                    }
+                }
+            } catch(e) {}
+
+            let activeIndex = 0;
+            let isAnimating = false;
+
+            const stage = document.getElementById('fanCarouselStage');
+            const deck = document.getElementById('fanDeck');
+            const counterCurrent = document.getElementById('projectCounterCurrent');
+            const counterTotal = document.getElementById('projectCounterTotal');
+            const paginationRow = document.getElementById('fanPaginationRow');
+
+            const infoCategory = document.getElementById('projectInfoCategory');
+            const infoTech = document.getElementById('projectInfoTech');
+            const infoTitle = document.getElementById('projectInfoTitle');
+            const infoDesc = document.getElementById('projectInfoDesc');
+            const primaryBtn = document.getElementById('fanPrimaryBtn');
+            const secondaryBtn = document.getElementById('fanSecondaryBtn');
+            const infoStage = document.getElementById('projectInfoStage');
+
+            if (!stage || !deck) return;
+
+            const sanitizeStr = (s) => String(s || '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+
+            function renderDeck() {
+                deck.innerHTML = '';
+                if (paginationRow) paginationRow.innerHTML = '';
+
+                if (counterTotal) {
+                    counterTotal.textContent = String(projects.length).padStart(2, '0');
+                }
+
+                projects.forEach((proj, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'fan-card';
+                    card.dataset.index = idx;
+                    card.setAttribute('role', 'group');
+                    card.setAttribute('aria-label', `${proj.title} project preview`);
+                    card.tabIndex = 0;
+
+                    card.innerHTML = `
+                        <div class="fan-card-chrome">
+                            <div class="browser-dots" aria-hidden="true">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <div class="browser-address-bar">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <span>${sanitizeStr(proj.urlDisplay || 'appvertex.in')}</span>
+                            </div>
+                            <span class="card-year-badge">${sanitizeStr(proj.year || '2026')}</span>
+                        </div>
+                        <div class="fan-card-preview">
+                            <img src="${sanitizeStr(proj.previewImage)}" 
+                                 alt="${sanitizeStr(proj.altText || proj.title)}" 
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='hero-devices.png';">
+                        </div>
+                        <div class="fan-card-caption">
+                            <span class="fan-card-cat">${sanitizeStr(proj.category)}</span>
+                            <span class="fan-card-title">${sanitizeStr(proj.title)}</span>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        if (hasMovedDuringDrag) return;
+                        if (idx !== activeIndex) {
+                            goToProject(idx, true);
+                        } else if (proj.liveUrl && /^https?:\/\//i.test(proj.liveUrl)) {
+                            window.open(proj.liveUrl, '_blank', 'noopener,noreferrer');
+                        }
+                    });
+
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            if (idx !== activeIndex) {
+                                goToProject(idx, true);
+                            } else if (proj.liveUrl && /^https?:\/\//i.test(proj.liveUrl)) {
+                            window.open(proj.liveUrl, '_blank', 'noopener,noreferrer');
+                        }
+                        }
+                    });
+
+                    deck.appendChild(card);
+
+                    if (paginationRow) {
+                        const dot = document.createElement('button');
+                        dot.className = `fan-page-dot ${idx === activeIndex ? 'active' : ''}`;
+                        dot.setAttribute('aria-label', `Go to project ${idx + 1}: ${proj.title}`);
+                        dot.addEventListener('click', () => goToProject(idx, true));
+                        paginationRow.appendChild(dot);
+                    }
+                });
+
+                updateFanGeometry();
+                updateInfoPanel();
+            }
+
+            function updateFanGeometry() {
+                const total = projects.length;
+                if (total === 0) return;
+
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth <= 1024 && !isMobile;
+                const cards = deck.querySelectorAll('.fan-card');
+
+                cards.forEach((card, idx) => {
+                    let offset = idx - activeIndex;
+                    if (offset > total / 2) offset -= total;
+                    if (offset < -total / 2) offset += total;
+
+                    const absOffset = Math.abs(offset);
+                    const dir = offset < 0 ? -1 : (offset > 0 ? 1 : 0);
+
+                    if (offset === 0) {
+                        card.classList.add('is-active');
+                        card.style.transform = `translate3d(0, 0, 0) rotateZ(0deg) scale(1)`;
+                        card.style.zIndex = '20';
+                        card.style.opacity = '1';
+                        card.style.visibility = 'visible';
+                        card.style.pointerEvents = 'auto';
+                    } else if (absOffset === 1) {
+                        card.classList.remove('is-active');
+                        const x = isMobile ? dir * 115 : (isTablet ? dir * 180 : dir * 240);
+                        const y = isMobile ? 16 : 24;
+                        const z = isMobile ? -50 : -70;
+                        const rot = isMobile ? dir * 5.5 : dir * 9;
+                        const sc = isMobile ? 0.88 : 0.92;
+
+                        card.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateZ(${rot}deg) scale(${sc})`;
+                        card.style.zIndex = '15';
+                        card.style.opacity = '0.94';
+                        card.style.visibility = 'visible';
+                        card.style.pointerEvents = 'auto';
+                    } else {
+                        card.classList.remove('is-active');
+                        const x = isMobile ? dir * 160 : (isTablet ? dir * 220 : dir * 280);
+                        card.style.transform = `translate3d(${x}px, 40px, -150px) scale(0.75)`;
+                        card.style.zIndex = '5';
+                        card.style.opacity = '0';
+                        card.style.visibility = 'hidden';
+                        card.style.pointerEvents = 'none';
+                    }
+                });
+
+                if (paginationRow) {
+                    const dots = paginationRow.querySelectorAll('.fan-page-dot');
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === activeIndex);
+                    });
+                }
+
+                if (counterCurrent) {
+                    counterCurrent.textContent = String(activeIndex + 1).padStart(2, '0');
+                }
+            }
+
+            function updateInfoPanel() {
+                const cur = projects[activeIndex];
+                if (!cur || !infoStage) return;
+
+                infoStage.style.opacity = '0';
+                infoStage.style.transform = 'translateY(6px)';
+
+                setTimeout(() => {
+                    if (infoCategory) infoCategory.textContent = cur.category;
+                    if (infoTitle) infoTitle.textContent = cur.title;
+                    if (infoDesc) infoDesc.textContent = cur.description;
+
+                    if (infoTech) {
+                        infoTech.innerHTML = (cur.technologies || []).map(t => `<span class="fan-tech-pill">${sanitizeStr(t)}</span>`).join('');
+                    }
+
+                    if (primaryBtn) {
+                        primaryBtn.href = cur.liveUrl || '#contact';
+                    }
+
+                    if (secondaryBtn) {
+                        secondaryBtn.href = cur.caseStudyUrl || '#contact';
+                    }
+
+                    infoStage.style.opacity = '1';
+                    infoStage.style.transform = 'translateY(0)';
+                }, 140);
+            }
+
+            const AUTOPLAY_INTERVAL = 4500;
+            let autoPlayTimer = null;
+            let isSectionInView = true;
+            let isUserHovering = false;
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                autoPlayTimer = setInterval(() => {
+                    if (!isDragging && !isAnimating && isSectionInView && !isUserHovering && !document.hidden) {
+                        nextProject(false);
+                    }
+                }, AUTOPLAY_INTERVAL);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayTimer) {
+                    clearInterval(autoPlayTimer);
+                    autoPlayTimer = null;
+                }
+            }
+
+            function goToProject(idx, isUserAction = false) {
+                if (isAnimating) return;
+                isAnimating = true;
+                const total = projects.length;
+                activeIndex = (idx + total) % total;
+                updateFanGeometry();
+                updateInfoPanel();
+                if (isUserAction) {
+                    stopAutoPlay();
+                    setTimeout(startAutoPlay, 5000);
+                }
+                setTimeout(() => { isAnimating = false; }, 450);
+            }
+
+            function nextProject(isUserAction = false) {
+                goToProject(activeIndex + 1, isUserAction);
+            }
+
+            function prevProject(isUserAction = false) {
+                goToProject(activeIndex - 1, isUserAction);
+            }
+
+            stage.addEventListener('mouseenter', () => { isUserHovering = true; stopAutoPlay(); });
+            stage.addEventListener('mouseleave', () => { isUserHovering = false; if (isSectionInView) startAutoPlay(); });
+
+            let isDragging = false;
+            let startX = 0;
+            let hasMovedDuringDrag = false;
+
+            stage.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                hasMovedDuringDrag = false;
+                startX = e.clientX;
+                stage.classList.add('is-dragging');
+                stopAutoPlay();
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                if (Math.abs(e.clientX - startX) > 8) hasMovedDuringDrag = true;
+            });
+
+            window.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                stage.classList.remove('is-dragging');
+                if (hasMovedDuringDrag) {
+                    const deltaX = e.clientX - startX;
+                    if (deltaX < -45) nextProject(true);
+                    else if (deltaX > 45) prevProject(true);
+                    setTimeout(() => { hasMovedDuringDrag = false; }, 50);
+                }
+            });
+
+            stage.addEventListener('touchstart', (e) => {
+                if (!e.touches || e.touches.length === 0) return;
+                startX = e.touches[0].clientX;
+                hasMovedDuringDrag = false;
+                stopAutoPlay();
+            }, { passive: true });
+
+            stage.addEventListener('touchend', (e) => {
+                if (!e.changedTouches || e.changedTouches.length === 0) return;
+                const deltaX = e.changedTouches[0].clientX - startX;
+                if (Math.abs(deltaX) > 35) {
+                    if (deltaX < 0) nextProject(true);
+                    else prevProject(true);
+                }
+            });
+
+            window.addEventListener('resize', updateFanGeometry);
+
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isSectionInView = entry.isIntersecting;
+                        if (isSectionInView) startAutoPlay();
+                        else stopAutoPlay();
+                    });
+                }, { threshold: 0.1 });
+                obs.observe(stage);
+            } else {
+                startAutoPlay();
+            }
+
+            renderDeck();
+
+            window.updateFanCarouselData = (newData) => {
+                if (Array.isArray(newData) && newData.length > 0) {
+                    projects = newData.map((p, i) => normalizeProject(p, i)).filter(Boolean);
+                    if (activeIndex >= projects.length) activeIndex = 0;
+                    renderDeck();
+                }
+            };
+
+            // Real-time synchronization with Admin Panel
+            const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('appvertex_sync') : null;
+            if (syncChannel) {
+                syncChannel.onmessage = (e) => {
+                    if (e.data && (e.data.type === 'PROJECTS_UPDATED' || e.data.type === 'FULL_SYNC') && Array.isArray(e.data.projects)) {
+                        window.updateFanCarouselData(e.data.projects);
+                    }
+                    if (e.data && e.data.settings) {
+                        applyDynamicSettings(e.data.settings);
+                    }
+                };
+            }
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'appvertex_projects' && e.newValue) {
+                    try {
+                        const parsed = JSON.parse(e.newValue);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            window.updateFanCarouselData(parsed);
+                        }
+                    } catch(err) {}
+                }
+                if (e.key === 'appvertex_settings' && e.newValue) {
+                    try { applyDynamicSettings(JSON.parse(e.newValue)); } catch(err){}
+                }
+                if (e.key === 'appvertex_footer' && e.newValue) {
+                    try {
+                        const yr = JSON.parse(e.newValue).year;
+                        if (yr) applyDynamicSettings({ footerYear: yr });
+                    } catch(err){}
+                }
+            });
+
+            // Tab focus / visibility check: automatically reload projects if changed in admin panel
+            function checkLocalStorageUpdate() {
+                try {
+                    const raw = localStorage.getItem('appvertex_projects');
+                    if (raw) {
+                        const parsed = JSON.parse(raw);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            const currentIds = projects.map(p => p.id).join(',');
+                            const newIds = parsed.map((p, i) => p.id || `proj-${i}`).join(',');
+                            if (currentIds !== newIds) {
+                                window.updateFanCarouselData(parsed);
+                            }
+                        }
+                    }
+                } catch(e) {}
+            }
+            window.addEventListener('focus', checkLocalStorageUpdate);
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) checkLocalStorageUpdate();
+            });
+        })();
+
+        /* 7. Metrics Counter Animation */
+        (() => {
+            const metricsSection = document.getElementById('metrics');
+            if (!metricsSection) return;
+
+            function animateCounters() {
+                const counterEls = metricsSection.querySelectorAll('.metric-number[data-target]');
+                counterEls.forEach(numberEl => {
+                    const target = parseInt(numberEl.getAttribute('data-target'), 10);
+                    if (isNaN(target)) return;
+
+                    const duration = 1800;
+                    const startTime = performance.now();
+
+                    function updateNum(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const ease = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.round(ease * target);
+                        numberEl.textContent = `${current}+`;
+                        if (progress < 1) {
+                            requestAnimationFrame(updateNum);
+                        } else {
+                            numberEl.textContent = `${target}+`;
+                        }
+                    }
+                    requestAnimationFrame(updateNum);
+                });
+            }
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounters();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.25 });
+                observer.observe(metricsSection);
+            } else {
+                animateCounters();
+            }
+        })();
+
+        /* 8. Lead Recording & Form Submission */
+        async function recordInquiry(newInq) {
+            try {
+                const existing = JSON.parse(localStorage.getItem('appvertex_inquiries') || '[]');
+                existing.unshift(newInq);
+                localStorage.setItem('appvertex_inquiries', JSON.stringify(existing));
+                    if ('BroadcastChannel' in window) {
+                        try {
+                            const syncChannel = new BroadcastChannel('appvertex_sync');
+                            syncChannel.postMessage({ type: 'NEW_INQUIRY', data: newInq });
+                        } catch(e){}
+                    }
+                window.dispatchEvent(new StorageEvent('storage', {
+                    key: 'appvertex_inquiries',
+                    newValue: JSON.stringify(existing)
+                }));
+            } catch (e) {
+                console.warn('Local inquiry cache warning:', e);
+            }
+
+            try {
+                if (window.__appvertex_db) {
+                    const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                    await setDoc(doc(window.__appvertex_db, "inquiries", newInq.id), newInq);
+                }
+            } catch (e) {
+                console.warn('Cloud Firestore intake fallback:', e);
+            }
+
+            try {
+                const response = await fetch(getApiEndpoint(), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: newInq.name,
+                        email: newInq.email,
+                        message: newInq.message,
+                        website: ''
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Contact notification failed with status ${response.status}`);
+                }
+            } catch (e) {
+                console.warn('Contact notification delivery failed:', e);
+                throw e;
+            }
+        }
+
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('contactBtn');
+            const form = e.target;
+
+            const honeypot = form.querySelector('[name="website"]');
+            if (honeypot && honeypot.value.trim() !== '') return;
+
+            const name = form.querySelector('[name="name"]').value.trim();
+            const email = form.querySelector('[name="email"]').value.trim();
+            const service = form.querySelector('[name="service"]').value;
+            const budget = form.querySelector('[name="budget"]') ? form.querySelector('[name="budget"]').value : '';
+            const message = form.querySelector('[name="message"]').value.trim();
+
+            const newInq = {
+                id: 'inq-' + Date.now(),
+                name: name,
+                email: email,
+                phone: '',
+                company: '',
+                service: service || 'Custom Software / Web',
+                budget: budget || 'Flexible',
+                message: `Project Type: ${service}\nBudget: ${budget}\n\nDetails:\n${message}`,
+                date: 'Just now',
+                status: 'unread'
+            };
+
+            const originalText = btn.innerHTML;
+            btn.textContent = 'SENDING PROPOSAL...';
+            btn.disabled = true;
+
+            try {
+                await recordInquiry(newInq);
+                btn.textContent = 'PROPOSAL RECEIVED ✓';
+                btn.style.backgroundColor = '#10B981';
+                btn.style.borderColor = '#10B981';
+                form.reset();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                }, 4000);
+            } catch (err) {
+                btn.textContent = 'DELIVERY FAILED — TRY AGAIN';
+                btn.style.backgroundColor = '';
+                btn.style.borderColor = '';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                }, 4000);
+            }
+        }
+
+        /* 9. Cloud Data Sync (Firebase & Local Cache) */
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
+
+        function renderDynamicTestimonials(testimonialsData) {
+            if (!testimonialsData || testimonialsData.length === 0) return;
+            const grid = document.getElementById('testimonialsGrid');
+            if (!grid) return;
+            grid.innerHTML = testimonialsData.map(t => `
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">${'★'.repeat(Math.max(1, Math.min(5, Number(t.rating) || 5)))}</div>
+                    <p class="testimonial-quote">"${escapeHTML(t.text)}"</p>
+                    <div class="testimonial-author-row">
+                        <div class="author-avatar">${escapeHTML(t.initials || (t.name ? t.name.charAt(0) : 'AV'))}</div>
+                        <div>
+                            <div class="author-name">${escapeHTML(t.name)}</div>
+                            <div class="author-role">${escapeHTML(t.role)}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function applyDynamicSettings(settings) {
+            if (!settings) return;
+            if (settings.footerYear) {
+                document.querySelectorAll('.footer-text').forEach(el => {
+                    el.textContent = el.textContent.replace(/© \d{4}|c \d{4}/i, `© ${settings.footerYear}`);
+                });
+            }
+            if (settings.status) {
+                const statusEl = document.querySelector('.status-dot + span, .availability-badge span');
+                if (statusEl) statusEl.textContent = settings.status;
+            }
+        }
+
+        try {
+            const locS = localStorage.getItem('appvertex_settings');
+            if (locS) applyDynamicSettings(JSON.parse(locS));
+            const locF = localStorage.getItem('appvertex_footer');
+            if (locF) {
+                const yr = JSON.parse(locF).year;
+                if (yr) applyDynamicSettings({ footerYear: yr });
+            }
+        } catch(e) {}
+
+        function mergeProjects(localList, cloudList, deletedIds = []) {
+            const delSet = new Set(deletedIds || []);
+            const map = new Map();
+
+            if (Array.isArray(cloudList)) {
+                cloudList.forEach(cp => {
+                    const id = cp.id || cp.name;
+                    if (id && !delSet.has(id)) {
+                        map.set(id, cp);
+                    }
+                });
+            }
+
+            if (Array.isArray(localList)) {
+                localList.forEach(lp => {
+                    const id = lp.id || lp.name;
+                    if (id && !delSet.has(id)) {
+                        map.set(id, { ...(map.get(id) || {}), ...lp });
+                    }
+                });
+            }
+
+            return Array.from(map.values());
+        }
+
+        function mergeTestimonials(localList, cloudList, deletedIds = []) {
+            const delSet = new Set(deletedIds || []);
+            const map = new Map();
+            if (Array.isArray(cloudList)) {
+                cloudList.forEach(ct => {
+                    const id = ct.id || ct.name;
+                    if (id && !delSet.has(id)) map.set(id, ct);
+                });
+            }
+            if (Array.isArray(localList)) {
+                localList.forEach(lt => {
+                    const id = lt.id || lt.name;
+                    if (id && !delSet.has(id)) map.set(id, { ...(map.get(id) || {}), ...lt });
+                });
+            }
+            return Array.from(map.values());
+        }
+
+        try {
+            const locT = localStorage.getItem('appvertex_testimonials');
+            if (locT) {
+                const parsedT = JSON.parse(locT);
+                if (Array.isArray(parsedT) && parsedT.length > 0) renderDynamicTestimonials(parsedT);
+            }
+        } catch(e) {}
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'appvertex_testimonials' && e.newValue) {
+                try {
+                    const parsed = JSON.parse(e.newValue);
+                    if (Array.isArray(parsed) && parsed.length > 0) renderDynamicTestimonials(parsed);
+                } catch(err){}
+            }
+        });
+
+        async function syncWithCloud() {
+            try {
+                const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+                const { getFirestore, doc, collection, onSnapshot } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                const { default: firebaseConfig } = await import("/src/config/firebase-config.js");
+
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                window.__appvertex_db = db;
+
+                onSnapshot(collection(db, "testimonials"), (snapshot) => {
+                    if (!snapshot.empty) {
+                        const cloudTestimonials = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+                        const localRaw = localStorage.getItem('appvertex_testimonials');
+                        const localTestimonials = localRaw ? JSON.parse(localRaw) : [];
+                        const delRaw = localStorage.getItem('appvertex_deleted_testimonials');
+                        const deletedIds = delRaw ? JSON.parse(delRaw) : [];
+
+                        const merged = mergeTestimonials(localTestimonials, cloudTestimonials, deletedIds);
+                        localStorage.setItem('appvertex_testimonials', JSON.stringify(merged));
+                        renderDynamicTestimonials(merged);
+                    }
+                }, () => {});
+
+                onSnapshot(collection(db, "projects"), (snapshot) => {
+                    if (!snapshot.empty) {
+                        const cloudProjects = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+                        const localRaw = localStorage.getItem('appvertex_projects');
+                        const localProjects = localRaw ? JSON.parse(localRaw) : [];
+                        const delRaw = localStorage.getItem('appvertex_deleted_projects');
+                        const deletedIds = delRaw ? JSON.parse(delRaw) : [];
+
+                        const merged = mergeProjects(localProjects, cloudProjects, deletedIds);
+                        localStorage.setItem('appvertex_projects', JSON.stringify(merged));
+                        if (window.updateFanCarouselData) window.updateFanCarouselData(merged);
+                    }
+                }, () => {});
+
+                onSnapshot(doc(db, "settings", "studio"), (snap) => {
+                    if (snap.exists()) {
+                        applyDynamicSettings(snap.data());
+                    }
+                }, () => {});
+
+                onSnapshot(doc(db, "settings", "footer"), (snap) => {
+                    if (snap.exists() && snap.data()?.year) {
+                        applyDynamicSettings({ footerYear: snap.data().year });
+                    }
+                }, () => {});
+            } catch (err) {
+                // Fallback to static content
+            }
+        }
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => syncWithCloud());
+        } else {
+            setTimeout(syncWithCloud, 600);
+        }
+
+        /* 10. Scroll to Top Button & Reading Progress */
+        (function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            const circle = document.getElementById('scrollProgressCircle');
+            if (!btn) return;
+
+            const totalLength = 125.66;
+            let ticking = false;
+
+            function updateScrollProgress() {
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+                if (scrollY > 320) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+
+                if (circle && docHeight > 0) {
+                    const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
+                    const offset = totalLength - (progress * totalLength);
+                    circle.style.strokeDashoffset = offset.toFixed(2);
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateScrollProgress);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            updateScrollProgress();
+        })();
+
+        /* 11. Apple-Style Services Card Takeover Controller */
+        (function() {
+            const root = document.getElementById('servicesScrollStack');
+            const inner = document.getElementById('servicesStackInner');
+            if (!root || !inner) return;
+
+            const slots = Array.from(inner.querySelectorAll('[data-stack-slot]'));
+            if (!slots.length) return;
+
+            const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            let frame = 0;
+
+            const update = () => {
+                frame = 0;
+                if (motion.matches) return;
+
+                const stackTop = window.innerWidth <= 900 ? 84 : 110;
+                const tops = slots.map(slot => slot.getBoundingClientRect().top);
+                const heights = slots.map(slot => slot.offsetHeight || 420);
+
+                slots.forEach((slot, i) => {
+                    const card = slot.firstElementChild;
+                    if (!card) return;
+
+                    let covered = 0;
+                    if (i < slots.length - 1) {
+                        const nextTop = tops[i + 1];
+                        const span = heights[i] || 420;
+                        const overlap = (stackTop + span) - nextTop;
+                        covered = Math.min(1, Math.max(0, overlap / span));
+                    }
+
+                    // Smooth subtle scale down as next card arrives over it
+                    const scale = 1 - covered * 0.05;
+                    // Fade out cleanly once covered by more than 80%
+                    const opacity = covered > 0.8 ? Math.max(0, (1 - covered) / 0.2) : 1;
+
+                    card.style.transform = `scale(${scale.toFixed(4)})`;
+                    card.style.opacity = opacity.toFixed(3);
+                });
+            };
+
+            const schedule = () => {
+                if (!frame) frame = requestAnimationFrame(update);
+            };
+
+            window.addEventListener('scroll', schedule, { passive: true });
+            window.addEventListener('resize', schedule, { passive: true });
+
+            if (typeof ResizeObserver !== 'undefined') {
+                const observer = new ResizeObserver(schedule);
+                observer.observe(inner);
+            }
+
+            update();
+        })();
+
+        /* 12. Subtle Scroll Reveal Observer */
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+                return;
+            }
+
+            const candidates = document.querySelectorAll(
+                'section > .container > .section-header, ' +
+                'section > .container > .section-title, ' +
+                '.process-step-item, .method-card, .testimonial-card, .about-tile, .founder-card, ' +
+                '.metrics-bar-container, .contact-card, .footer-cta-card'
+            );
+            candidates.forEach(el => {
+                if (!el.classList.contains('reveal-on-scroll')) {
+                    el.classList.add('reveal-on-scroll');
+                }
+            });
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px -8% 0px',
+                    threshold: 0.1
+                });
+
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+            } else {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+            }
+        })();
+
+        /* 13. Accessible Theme-Compliant Custom Select Controller */
+        (function() {
+            function initCustomSelects() {
+                const selects = document.querySelectorAll('select.form-control:not([data-customized])');
+                selects.forEach(select => {
+                    select.setAttribute('data-customized', 'true');
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'custom-select-wrapper';
+                    select.parentNode.insertBefore(wrapper, select);
+                    wrapper.appendChild(select);
+                    select.classList.add('custom-select-hidden');
+
+                    const trigger = document.createElement('button');
+                    trigger.type = 'button';
+                    trigger.className = 'custom-select-trigger';
+                    trigger.setAttribute('aria-haspopup', 'listbox');
+                    trigger.setAttribute('aria-expanded', 'false');
+
+                    const selectedOpt = select.options[select.selectedIndex] || select.options[0];
+                    const label = document.createElement('span');
+                    label.className = 'custom-select-label';
+                    label.textContent = selectedOpt ? selectedOpt.text : 'Select...';
+
+                    const arrow = document.createElement('span');
+                    arrow.className = 'custom-select-arrow';
+                    arrow.setAttribute('aria-hidden', 'true');
+                    arrow.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    `;
+
+                    trigger.appendChild(label);
+                    trigger.appendChild(arrow);
+                    wrapper.appendChild(trigger);
+
+                    const dropdown = document.createElement('div');
+                    dropdown.className = 'custom-select-dropdown';
+                    dropdown.setAttribute('role', 'listbox');
+                    dropdown.setAttribute('tabindex', '-1');
+
+                    Array.from(select.options).forEach((opt, idx) => {
+                        const optEl = document.createElement('div');
+                        optEl.className = 'custom-select-option' + (idx === select.selectedIndex ? ' is-selected' : '');
+                        optEl.setAttribute('role', 'option');
+                        optEl.setAttribute('aria-selected', idx === select.selectedIndex ? 'true' : 'false');
+                        optEl.dataset.value = opt.value;
+
+                        const text = document.createElement('span');
+                        text.className = 'custom-select-option-text';
+                        text.textContent = opt.text;
+
+                        const check = document.createElement('i');
+                        check.className = 'fas fa-check custom-select-check';
+                        check.setAttribute('aria-hidden', 'true');
+
+                        optEl.appendChild(text);
+                        optEl.appendChild(check);
+
+                        optEl.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            select.selectedIndex = idx;
+                            label.textContent = opt.text;
+
+                            dropdown.querySelectorAll('.custom-select-option').forEach(o => {
+                                o.classList.remove('is-selected');
+                                o.setAttribute('aria-selected', 'false');
+                            });
+                            optEl.classList.add('is-selected');
+                            optEl.setAttribute('aria-selected', 'true');
+
+                            closeDropdown();
+                            select.dispatchEvent(new Event('change', { bubbles: true }));
+                            trigger.focus();
+                        });
+
+                        dropdown.appendChild(optEl);
+                    });
+
+                    wrapper.appendChild(dropdown);
+
+                    function openDropdown() {
+                        document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+                            if (w !== wrapper) {
+                                w.classList.remove('is-open');
+                                const t = w.querySelector('.custom-select-trigger');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+
+                        wrapper.classList.add('is-open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                        const selectedOption = dropdown.querySelector('.is-selected');
+                        if (selectedOption) {
+                            selectedOption.scrollIntoView({ block: 'nearest' });
+                        }
+                    }
+
+                    function closeDropdown() {
+                        wrapper.classList.remove('is-open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    }
+
+                    function toggleDropdown() {
+                        if (wrapper.classList.contains('is-open')) {
+                            closeDropdown();
+                        } else {
+                            openDropdown();
+                        }
+                    }
+
+                    trigger.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                    });
+
+                    // Keyboard navigation
+                    trigger.addEventListener('keydown', (e) => {
+                        if (e.key === ' ' || e.key === 'Enter') {
+                            e.preventDefault();
+                            toggleDropdown();
+                        } else if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            if (!wrapper.classList.contains('is-open')) {
+                                openDropdown();
+                            } else {
+                                const nextIdx = Math.min(select.options.length - 1, select.selectedIndex + 1);
+                                dropdown.children[nextIdx]?.click();
+                            }
+                        } else if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            if (!wrapper.classList.contains('is-open')) {
+                                openDropdown();
+                            } else {
+                                const prevIdx = Math.max(0, select.selectedIndex - 1);
+                                dropdown.children[prevIdx]?.click();
+                            }
+                        } else if (e.key === 'Escape') {
+                            closeDropdown();
+                        }
+                    });
+
+                    // Update custom select when native select value changes programmatically
+                    select.addEventListener('change', () => {
+                        const curOpt = select.options[select.selectedIndex];
+                        if (curOpt) {
+                            label.textContent = curOpt.text;
+                            dropdown.querySelectorAll('.custom-select-option').forEach((o, i) => {
+                                const isSel = i === select.selectedIndex;
+                                o.classList.toggle('is-selected', isSel);
+                                o.setAttribute('aria-selected', isSel ? 'true' : 'false');
+                            });
+                        }
+                    });
+                });
+
+                // Global outside click handler
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.custom-select-wrapper')) {
+                        document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+                            w.classList.remove('is-open');
+                            const t = w.querySelector('.custom-select-trigger');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                        });
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCustomSelects);
+            } else {
+                initCustomSelects();
+            }
+        })();
+    </script>
+</body>
+
+</html>

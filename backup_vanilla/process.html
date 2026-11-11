@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process &amp; Blueprint | AppVertex Digital Studio</title>
+    <meta name="description" content="Discover the AppVertex 5-phase engineering blueprint — from architectural discovery to production deployment with predictable timelines.">
+        <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s7arlen.github.io/AppVertex/process.html">
+    <meta property="og:title" content="Process & Blueprint | AppVertex Digital Studio">
+    <meta property="og:description" content="Discover the AppVertex 5-phase engineering blueprint — from discovery and design systems to high-performance production code and long-term scaling.">
+    <meta property="og:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s7arlen.github.io/AppVertex/process.html">
+    <meta property="twitter:title" content="Process & Blueprint | AppVertex Digital Studio">
+    <meta property="twitter:description" content="Discover the AppVertex 5-phase engineering blueprint — from discovery and design systems to high-performance production code and long-term scaling.">
+    <meta property="twitter:image" content="https://s7arlen.github.io/AppVertex/hero-devices.png">
+    <link rel="canonical" href="https://s7arlen.github.io/AppVertex/process.html">
+    <link rel="icon" href="/logo.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Master Juniper & Desert Sand Stylesheet -->
+    <link rel="stylesheet" href="/src/styles/style.css">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           PROCESS PAGE ARCHITECTURAL STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode System
+           ═══════════════════════════════════════════════════════════════ */
+
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 740px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Sprint Telemetry Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── The Four Phases Stack ─── */
+        .phases-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .phase-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .phase-block:hover {
+            border-color: #ef870d;
+            box-shadow: 0 16px 36px rgba(239, 135, 13, 0.08);
+        }
+
+        .phase-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 2rem;
+        }
+
+        .phase-num-title {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .phase-badge-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ef870d;
+            line-height: 1;
+        }
+
+        .phase-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .phase-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .phase-content-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .phase-points-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .phase-point-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .phase-point-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef870d;
+            margin-top: 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .phase-point-item h4 {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+        }
+
+        .phase-point-item p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .phase-deliverables-box {
+            background: var(--surface-raised, #FAF8F5);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 1.5rem;
+        }
+
+        .deliverables-lbl {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .deliverables-chips {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .deliv-chip-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .deliv-chip-item i {
+            color: #ef870d;
+            font-size: 0.85rem;
+        }
+
+        /* ─── Day-to-Day Operations Grid ─── */
+        .daily-ops-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .daily-op-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .daily-op-card:hover {
+            transform: translateY(-4px);
+            border-color: #ef870d;
+            box-shadow: 0 12px 28px rgba(239, 135, 13, 0.08);
+        }
+
+        .daily-op-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 1.5rem;
+        }
+
+        .daily-op-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ef870d;
+            line-height: 1;
+        }
+
+        .daily-op-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .daily-op-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
+        }
+
+        .daily-op-desc {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── After Launch Dual Cards (An Idea Tech Exact Structure) ─── */
+        .after-launch-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .after-launch-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .after-launch-card:hover {
+            border-color: #ef870d;
+            transform: translateY(-3px);
+        }
+
+        .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.04) 0%, rgba(239, 135, 13, 0.07) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        .after-launch-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ef870d;
+            margin-bottom: 1rem;
+        }
+
+        .after-launch-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1rem 0;
+            line-height: 1.25;
+        }
+
+        .after-launch-card p {
+            font-size: 0.94rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1.75rem 0;
+        }
+
+        .after-launch-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+            margin-top: auto;
+        }
+
+        .after-launch-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        .after-launch-point i {
+            color: #10b981;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .after-launch-point strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ─── Diagnostic Reality Gap Section ─── */
+        .diagnostic-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .comparison-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-col.bad {
+            border-color: rgba(239, 68, 68, 0.25);
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, var(--surface) 100%);
+        }
+
+        .comparison-col.good {
+            border-color: rgba(16, 185, 129, 0.35);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, var(--surface) 100%);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-col.bad .comparison-header {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-header {
+            color: #10b981;
+        }
+
+        .comparison-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .comparison-item i {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .comparison-col.bad .comparison-item i {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-item i {
+            color: #10b981;
+        }
+
+        /* ─── Interactive Process FAQ Accordion ─── */
+        .process-faq-accordion {
+            max-width: 900px;
+            margin: 3.5rem auto 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .faq-item.active {
+            border-color: #ef870d;
+            box-shadow: 0 8px 24px rgba(239, 135, 13, 0.08);
+        }
+
+        .faq-question {
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            cursor: pointer;
+            user-select: none;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: #ef870d;
+        }
+
+        .faq-icon {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #ef870d;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            padding: 0 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-banner-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── DARK THEME OVERRIDES ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .phase-block,
+        [data-theme="dark"] .daily-op-card,
+        [data-theme="dark"] .after-launch-card,
+        [data-theme="dark"] .comparison-col,
+        [data-theme="dark"] .faq-item {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .phase-block:hover,
+        [data-theme="dark"] .daily-op-card:hover,
+        [data-theme="dark"] .after-launch-card:hover {
+            border-color: #ef870d;
+        }
+
+        [data-theme="dark"] .phase-header,
+        [data-theme="dark"] .daily-op-top {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .phase-deliverables-box {
+            background: rgba(18, 18, 18, 0.75);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.18) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .telemetry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .phase-content-grid,
+            .daily-ops-grid,
+            .after-launch-grid,
+            .diagnostic-comparison-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            .phase-block,
+            .after-launch-card {
+                padding: 2rem 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
+            }
+        }
+    </style>
+    <!-- Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('appvertex-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════
+         FIXED BACKGROUND SYSTEM (STATIONARY CANVAS LAYER)
+         Directly inspired by anideatech.com:
+         Fixed full-viewport background with smooth scrolling foreground.
+         ═══════════════════════════════════════════════════ -->
+    <div id="fixedBackgroundLayer" class="fixed-background-system" aria-hidden="true">
+        <!-- Solid Base Foundation -->
+        <div class="fixed-bg-base"></div>
+
+        <!-- Technical Architectural Micro-Grid, Fluted Louvers & Precision Ticks -->
+        <svg class="fixed-bg-grid" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <!-- Fluted Louvers (Vertical Architectural Pinstripes) -->
+                <pattern id="appv-fluted-louvers" width="8" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="4" y1="0" x2="4" y2="24" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.25"></line>
+                </pattern>
+                <!-- 24px Micro Grid -->
+                <pattern id="appv-micro-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.65" stroke-opacity="0.35"></path>
+                </pattern>
+                <!-- 72px Macro Crosshair Ticks -->
+                <pattern id="appv-macro-ticks" width="72" height="72" patternUnits="userSpaceOnUse">
+                    <path d="M 72 0 L 0 0 0 72" fill="none" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55"></path>
+                    <path d="M -3 0 L 3 0 M 0 -3 L 0 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 0 L 75 0 M 72 -3 L 72 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M -3 72 L 3 72 M 0 69 L 0 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                    <path d="M 69 72 L 75 72 M 72 69 L 72 75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8"></path>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#appv-fluted-louvers)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-micro-grid)"></rect>
+            <rect width="100%" height="100%" fill="url(#appv-macro-ticks)"></rect>
+        </svg>
+
+        <!-- Preserved Fine Grain Texture Layer -->
+        <div class="fixed-bg-grain"></div>
+
+        <!-- Ambient Atmospheric Glows (Stationary) -->
+        <div class="fixed-bg-ambient-top"></div>
+        <div class="fixed-bg-ambient-bottom"></div>
+
+                <!-- Stationary Organic Curved Ribbon Layer (Fixed Brand Signature) -->
+        <div class="fixed-bg-ribbon-curves" aria-hidden="true">
+            <svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Ambient Rich Burgundy Spotlight Glow -->
+                    <linearGradient id="fixedGlowBase" x1="100%" y1="20%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.32"/>
+                        <stop offset="50%" stop-color="#FF5722" stop-opacity="0.16"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+
+                    <!-- Rich Signature Velvet Burgundy Wave -->
+                    <linearGradient id="fixedWaveBurgundy" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.75"/>
+                        <stop offset="45%" stop-color="#F76020" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#EA321D" stop-opacity="0.20"/>
+                    </linearGradient>
+
+                    <!-- Wave Alias for backwards compatibility -->
+                    <linearGradient id="fixedWaveCyan" x1="100%" y1="10%" x2="15%" y2="90%">
+                        <stop offset="0%" stop-color="#EF870D" stop-opacity="0.75"/>
+                        <stop offset="45%" stop-color="#F76020" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#EA321D" stop-opacity="0.20"/>
+                    </linearGradient>
+
+                    <!-- Crisp Frosted Glass Ribbon with Luminous Edge -->
+                    <linearGradient id="fixedWaveFrosted" x1="100%" y1="20%" x2="0%" y2="85%">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92"/>
+                        <stop offset="40%" stop-color="#FDFBF9" stop-opacity="0.72"/>
+                        <stop offset="100%" stop-color="#FEF5EC" stop-opacity="0.35"/>
+                    </linearGradient>
+
+                    <!-- Deep Imperial Bordeaux / Wine Anchoring Crest -->
+                    <linearGradient id="fixedWaveDeepBurgundy" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#FF5722" stop-opacity="0.45"/>
+                        <stop offset="55%" stop-color="#EF870D" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+
+                    <!-- Crest Alias for backwards compatibility -->
+                    <linearGradient id="fixedWaveRosewood" x1="100%" y1="35%" x2="25%" y2="100%">
+                        <stop offset="0%" stop-color="#FF5722" stop-opacity="0.45"/>
+                        <stop offset="55%" stop-color="#EF870D" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Ambient Burgundy Spotlight in right-center -->
+                <circle cx="1200" cy="550" r="460" fill="url(#fixedGlowBase)"/>
+
+                <!-- Outer Rich Burgundy Fluid Wave -->
+                <path d="M 1440 220 C 1220 320 1060 460 1100 620 C 1140 760 920 860 680 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveBurgundy)"/>
+
+                <!-- Frosted Glass Ribbon with Crisp White Rim Light -->
+                <path d="M 1440 360 C 1200 460 1020 580 980 720 C 950 820 820 880 620 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveFrosted)" 
+                      stroke="rgba(255, 255, 255, 0.95)" 
+                      stroke-width="2"/>
+
+                <!-- Deep Velvet Imperial Burgundy Crest -->
+                <path d="M 1440 540 C 1260 620 1120 740 1060 840 C 1030 890 980 900 880 900 L 1440 900 Z" 
+                      fill="url(#fixedWaveDeepBurgundy)"/>
+            </svg>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         HEADER / NAVIGATION
+         ═══════════════════════════════════════════════════ -->
+        <header id="siteHeader">
+        <div class="container">
+            <div class="nav-inner">
+                <!-- Brand Logo -->
+                <a href="index.html" class="brand-logo" aria-label="AppVertex Home">
+                    <img src="/logo.png" alt="AppVertex Logo" class="brand-logo-img" width="32" height="32">
+                    <span class="logo-text">AppVertex</span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="nav-menu" aria-label="Main Navigation">
+                    <a href="index.html" class="nav-link">HOME</a>
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="work.html" class="nav-link">WORK</a>
+                    <a href="process.html" class="nav-link active">PROCESS</a>
+                    <a href="about.html" class="nav-link">ABOUT US</a>
+                    <a href="upskill.html" class="nav-link">UPSKILL</a>
+                    <a href="contact.html" class="nav-link">CONTACT</a>
+                </nav>
+
+                <!-- Actions: Theme Toggle + CTA -->
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <a href="contact.html" class="nav-cta-btn">Book a Call</a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+        <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">✕</button>
+        <a href="index.html" class="nav-link mobile-link">HOME</a>
+        <a href="services.html" class="nav-link mobile-link">SERVICES</a>
+        <a href="work.html" class="nav-link mobile-link">WORK</a>
+        <a href="process.html" class="nav-link mobile-link active">PROCESS</a>
+        <a href="about.html" class="nav-link mobile-link">ABOUT US</a>
+        <a href="upskill.html" class="nav-link mobile-link">UPSKILL</a>
+        <a href="contact.html" class="nav-link mobile-link">CONTACT</a>
+        <div style="margin-top: 1.5rem; display: flex; gap: 14px; align-items: center;">
+            <button class="theme-toggle-btn" id="drawerThemeToggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="drawerThemeIcon"></i>
+            </button>
+            <a href="contact.html" class="btn btn-primary mobile-link" style="font-size: 0.95rem; padding: 12px 26px;">Book a Call <span class="arr">→</span></a>
+        </div>
+    </div>
+<main id="mainContent">
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 0: HERO + SPRINT TELEMETRY CARD
+         ═══════════════════════════════════════════════════ -->
+    <section class="subpage-hero" aria-label="Process Overview">
+        <div class="container subpage-hero-content">
+            <h1 class="subpage-title">
+                What working together<br>
+                <span class="gradient-text">looks like.</span>
+            </h1>
+            <p class="subpage-desc">
+                Every project follows a clear sequence, from understanding the issue to getting the website or application into day-to-day use. Progress and items needing your input stay visible in the client portal.
+            </p>
+            <div class="subpage-actions">
+                <a href="contact.html#booking-calendar" class="btn btn-primary">Book Discovery Call <span class="arr">→</span></a>
+                <a href="#fourPhases" class="btn btn-secondary">Explore The Method</a>
+            </div>
+
+            <!-- Studio Sprint Telemetry Card -->
+            <div class="telemetry-card">
+                <div class="telemetry-header">
+                    <div class="telemetry-tag">Independent Studio / Fixed-Scope Sprints</div>
+                    <div class="telemetry-status"><i class="fa-solid fa-clock-rotate-left"></i> Typical Sprint: 2–6 Weeks &bull; Zero Scope Creep</div>
+                </div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">01 //</span>
+                        <div class="pillar-title">Predictable Milestones</div>
+                        <div class="pillar-desc">Every deliverable is defined in a written PRD before development kickoff.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">02 //</span>
+                        <div class="pillar-title">Working Builds Over Decks</div>
+                        <div class="pillar-desc">Private staging access from Week 2 onward; verify live software in real browsers.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">03 //</span>
+                        <div class="pillar-title">Direct Founder Comms</div>
+                        <div class="pillar-desc">Direct WhatsApp and Slack channel connecting your team with lead engineers.</div>
+                    </div>
+                    <div class="telemetry-pillar">
+                        <span class="pillar-num">04 //</span>
+                        <div class="pillar-title">30-Day Code Warranty</div>
+                        <div class="pillar-desc">Post-launch bug warranty, telemetry monitoring, and clean repository handover.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SECTION 1: THE FOUR PHASES
+         ═══════════════════════════════════════════════════ -->
+    <section class="container" id="fourPhases" style="padding: 1.5rem 1.5rem 5rem;">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem;">
+            <p class="section-eyebrow">THE METHOD</p>
+            <h2 class="section-title">The Four Phases</h2>
+            <p class="section-lead">Each phase has a defined start, clear review points, and concrete deliverables. You always know where the project stands and what comes next.</p>
+        </div>
+
+        <div class="phases-stack">
+            <!-- PHASE 1: DISCOVERY, SCOPE & PRD -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 1</span>
+                        <h3 class="phase-title">Discovery, Scope &amp; PRD</h3>
+                    </div>
+                    <p class="phase-sub">Understanding the situation and aligning on the direction before deciding what to build.</p>
+                </div>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Discovery</h4>
+                                <p>We examine what is happening in the business: customer touchpoints, where inquiries stall, and what manual spreadsheets slow your team down.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Alignment &amp; Architectural Boundaries</h4>
+                                <p>We establish technical boundaries, verify data schemas, review third-party integration constraints, and define who does what.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>PRD (Product Requirement Document)</h4>
+                                <p>A formal, unambiguous specification detailing every feature, database entity, and API contract with transparent sprint timelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Approved Technical Scope &amp; PRD</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Entity Relationship Schemas</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Fixed-Price Sprint Timeline</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Integration Feasibility Audit</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 2: BUILD & BETA -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 2</span>
+                        <h3 class="phase-title">Build &amp; Beta</h3>
+                    </div>
+                    <p class="phase-sub">Turning approved wireframes and database models into living, production-grade software.</p>
+                </div>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Component Architecture</h4>
+                                <p>We engineer modular, type-safe components in TypeScript, linking databases, storage buckets, and payment APIs without legacy baggage.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Interactive Staging Access</h4>
+                                <p>You receive access to a private, password-protected staging URL from Week 2 onward to test real features as they are built.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Weekly Review Rounds</h4>
+                                <p>Structured weekly milestones with screen-recorded walkthroughs and focused feedback loops so adjustments happen immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Live Staging Sandbox URL</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Full Git Repository Access</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Weekly Screen-Recorded Demos</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Working Auth &amp; Database CRUD</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 3: REVIEW, REVISE & LAUNCH -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 3</span>
+                        <h3 class="phase-title">Review, Revise &amp; Launch</h3>
+                    </div>
+                    <p class="phase-sub">Rigorous cross-device quality assurance, DNS cutover, and seamless production deployment.</p>
+                </div>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>User Acceptance Testing (UAT)</h4>
+                                <p>We run real user scenario tests across iOS, Android, macOS, and Windows to catch edge-case bugs and usability friction.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Performance &amp; Security Auditing</h4>
+                                <p>We optimize assets for 95+ Core Web Vitals, implement automated Cloudflare SSL, configure CORS rules, and secure environment variables.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Zero-Downtime Cutover</h4>
+                                <p>We manage DNS records, setup live MX/SPF/DKIM email records, and transfer 100% intellectual property directly to your team.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Verified Production DNS Launch</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>100% IP &amp; Code Ownership Transfer</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Comprehensive Admin Handover Guide</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>30-Day Guaranteed Code Warranty</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 4: MAINTAIN & EVOLVE -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-num-title">
+                        <span class="phase-badge-num">Phase 4</span>
+                        <h3 class="phase-title">Maintain &amp; Evolve</h3>
+                    </div>
+                    <p class="phase-sub">Dependable ongoing care to keep your systems fast, secure, and continuously adapted to your business growth.</p>
+                </div>
+                <div class="phase-content-grid">
+                    <div class="phase-points-list">
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Proactive Infrastructure Care</h4>
+                                <p>Routine database vacuuming, dependency security patching, uptime monitors, and automated off-site cloud backups.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Emergency Triage SLA</h4>
+                                <p>Under 1-hour response SLA for any critical outages, domain disruptions, or payment gateway failures.</p>
+                            </div>
+                        </div>
+                        <div class="phase-point-item">
+                            <span class="phase-point-dot"></span>
+                            <div>
+                                <h4>Iterative Sprints</h4>
+                                <p>As your user base expands, we design and deploy new portal features, CRM automations, and reporting modules on dedicated sprints.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-deliverables-box">
+                        <span class="deliverables-lbl">Phase Deliverables</span>
+                        <div class="deliverables-chips">
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Annual Maintenance Contract (AMC)</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Monthly Performance &amp; Uptime Reports</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Priority Engineering Support Line</span></div>
+                            <div class="deliv-chip-item"><i class="fa-solid fa-check"></i> <span>Quarterly Evolution Roadmaps</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 2: HOW WE RUN A PROJECT, DAY TO DAY
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">DAY-TO-DAY OPERATIONS</p>
+            <h2 class="section-title">How We Run a Project, Day to Day</h2>
+            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">Tools and habits that fit into your team's regular routine and make everyday progress clear.</p>
+        </div>
+
+        <div class="daily-ops-grid">
+            <!-- 01 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">01</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-table-columns"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Client portal visibility</h3>
+                    <p class="daily-op-desc">Progress and items requiring your input remain visible in the dedicated portal. You can review active tasks, upcoming reviews, and completed items directly in your portal without chasing email updates.</p>
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">02</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Working versions for review</h3>
+                    <p class="daily-op-desc">We share working versions in stages so you can experience how the website or application behaves in a real browser. Reviewing interactive builds makes feedback straightforward and practical.</p>
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="daily-op-card">
+                <div>
+                    <div class="daily-op-top">
+                        <span class="daily-op-num">03</span>
+                        <div class="daily-op-icon"><i class="fa-solid fa-circle-play"></i></div>
+                    </div>
+                    <h3 class="daily-op-title">Structured walkthroughs &amp; documentation</h3>
+                    <p class="daily-op-desc">Before launch, our engineers test in the environments where your team will use the application. At launch, we provide clear documentation and screen walkthroughs so your team feels comfortable operating the system from day one.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 3: AFTER LAUNCH (DUAL POST-LAUNCH CARDS)
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">AFTER LAUNCH</p>
+            <h2 class="section-title">Dependable Care &amp; Sensible Growth</h2>
+            <p class="section-lead" style="max-width: 660px; margin: 0 auto;">Launch day is the start of real-world use. We provide ongoing care to keep your systems stable, alongside a clear, sensible process for building new capabilities as you grow.</p>
+        </div>
+
+        <div class="after-launch-grid">
+            <!-- Card A: Ongoing Care (AMC) -->
+            <div class="after-launch-card featured">
+                <div class="after-launch-header">
+                    <i class="fa-solid fa-shield-halved"></i> ANNUAL MAINTENANCE CONTRACT (AMC)
+                </div>
+                <h3>Dependable ongoing care.</h3>
+                <p>
+                    An Annual Maintenance Contract (AMC) gives you peace of mind after deployment. We handle routine technical upkeep so your software and websites stay fast, secure, and operational every day.
+                </p>
+                <div class="after-launch-points">
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Continuous monitoring &amp; updates</strong>
+                            Regular security patches, dependency upgrades, and routine cloud backups to keep your system stable and protected.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Fast issue resolution</strong>
+                            Prompt fixes and triage handled immediately if unexpected errors or browser incompatibilities surface.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Defined response times</strong>
+                            Technical tickets receive a reply within 24 hours on working days, with urgent care for critical incidents around the clock.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card B: Sensible Growth -->
+            <div class="after-launch-card">
+                <div class="after-launch-header">
+                    <i class="fa-solid fa-chart-line"></i> FEATURE ITERATION
+                </div>
+                <h3>Sensible growth as your needs expand.</h3>
+                <p>
+                    As your business grows, your digital tools need to grow with it. When you need a new internal workflow, an external integration, or a new customer feature, you work with the team that already knows your system.
+                </p>
+                <div class="after-launch-points">
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Familiar architecture</strong>
+                            Because we built your foundation, new features connect cleanly into existing database models without breaking workflows.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Upfront scoping</strong>
+                            Every new requirement is reviewed together, scoped clearly, and quoted transparently before any development starts.
+                        </div>
+                    </div>
+                    <div class="after-launch-point">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Flexible rollout</strong>
+                            New additions are thoroughly tested in staging sandboxes and deployed smoothly without disrupting daily operations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 4: DIAGNOSTIC REALITY GAP
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">THE REALITY GAP</p>
+            <h2 class="section-title">Why Traditional Agency Projects Drag On</h2>
+            <p class="section-lead" style="max-width: 660px; margin: 0 auto;">Most software projects fail to launch on time because of vague verbal agreements and detached middle managers. Here is why the AppVertex model delivers on schedule.</p>
+        </div>
+
+        <div class="diagnostic-comparison-grid">
+            <!-- Bad Column -->
+            <div class="comparison-col bad">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Traditional Agencies &amp; Contractors
+                </div>
+                <h3 class="comparison-title">Scope Creep, Delays &amp; Black Boxes</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Vague Verbal Promises:</strong> Loose definitions of features that lead to endless disputes, budget ballooning, and delayed launches.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Account Manager Telephone Game:</strong> You communicate through intermediaries who don't write code, distorting requirements.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>The 3-Month Black Box:</strong> You see nothing until a rushed launch day, when dozens of architectural flaws suddenly appear.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div><strong>Zero Post-Launch Ownership:</strong> Handoffs with zero documentation, leaving you locked into expensive proprietary maintenance contracts.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Good Column -->
+            <div class="comparison-col good">
+                <div class="comparison-header">
+                    <i class="fa-solid fa-circle-check"></i> The AppVertex Sprint Standard
+                </div>
+                <h3 class="comparison-title">Transparent Sprints &amp; Founder Collaboration</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Written PRD Specifications:</strong> Every deliverable, database schema, and API endpoint is formally approved before writing code.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Direct Senior Developer Access:</strong> Direct Slack/WhatsApp channel with lead engineers architecting your platform.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>Staging Sandbox from Week 2:</strong> Clickable previews and live testing environments updated with every sprint milestone.</div>
+                    </li>
+                    <li class="comparison-item">
+                        <i class="fa-solid fa-check"></i>
+                        <div><strong>100% Code Ownership &amp; Warranty:</strong> Complete repository rights, clean documentation, and 30 days of guaranteed bug triage.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 5: INTERACTIVE PROCESS FAQ ACCORDION
+             ═══════════════════════════════════════════════════ -->
+        <div style="margin: 6rem 0 3rem; text-align: center;">
+            <p class="section-eyebrow">COMMON QUESTIONS</p>
+            <h2 class="section-title">Frequently Asked Questions About Our Process</h2>
+            <p class="section-lead" style="max-width: 640px; margin: 0 auto;">Everything you need to know about our sprints, communication rhythms, and delivery guarantees.</p>
+        </div>
+
+        <div class="process-faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item active">
+                <div class="faq-question">
+                    <span>How quickly can a project kick off after the Discovery Call?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Following our initial 30-minute discovery call, we prepare your architectural scope and Product Requirement Document (PRD) within 3 to 5 business days. Once the specification and sprint schedule are approved, development officially kicks off within 48 hours.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do weekly sprint reviews and feedback work?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    At the end of each sprint cycle, we publish an interactive staging build and record a concise 5-minute video walkthrough showcasing completed functionality. Your team tests the live staging link and provides consolidated feedback directly in the client portal or via Slack.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What happens if our requirements evolve mid-development?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    We maintain strict timeline protection. If you need new capabilities that fall outside the approved PRD, we discuss them transparently, provide an isolated scope and quote, and schedule them either into a rapid sprint adjustment or an immediate Phase 4 release without delaying the primary launch.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do we own 100% of the code and digital infrastructure?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely. From day one of launch, 100% of the source code, repository rights, database schemas, domain records, and deployment keys are transferred directly to your organization. We believe in complete client independence with zero proprietary lock-in.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is included in the 30-day post-launch warranty?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Every project deployed by AppVertex includes a complimentary 30-day post-launch warranty covering bug fixes, edge-case browser adjustments, Core Web Vitals telemetry monitoring, and server configuration tuning. Following the warranty, you can opt into our Annual Maintenance Contract (AMC).
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 6: CLOSING DIAGNOSTIC BANNER
+             ═══════════════════════════════════════════════════ -->
+        <div class="closing-banner">
+            <h2 class="closing-banner-title">Tell Us About Your Project</h2>
+            <p class="closing-banner-desc">
+                Share what is no longer working as it should. We use the Discovery Call to understand the situation together and identify the right starting point.
+            </p>
+            <div class="closing-banner-actions">
+                <a href="contact.html#booking-calendar" class="btn btn-primary" style="padding: 15px 34px; font-size: 1rem;">
+                    BOOK DISCOVERY CALL <span class="arr">→</span>
+                </a>
+                <a href="services.html" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1rem;">
+                    EXPLORE SERVICES
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- ═══════════════════════════════════════════════════
+         FLOATING WHATSAPP BUTTON
+         ═══════════════════════════════════════════════════ -->
+    <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="floating-whatsapp-btn" 
+       aria-label="Chat with AppVertex on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ═══════════════════════════════════════════════════
+         SCROLL TO TOP BUTTON (WITH READING PROGRESS)
+         ═══════════════════════════════════════════════════ -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top of page" title="Scroll to top">
+        <svg class="scroll-progress-ring" width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+            <circle class="progress-ring-bg" cx="23" cy="23" r="20"></circle>
+            <circle class="progress-ring-fill" id="scrollProgressCircle" cx="23" cy="23" r="20"></circle>
+        </svg>
+        <i class="fa-solid fa-arrow-up scroll-top-icon" aria-hidden="true"></i>
+    </button>
+
+    <!-- ═══════════════════════════════════════════════════
+         MOBILE BOTTOM NAVIGATION DOCK (4 TABS)
+         ═══════════════════════════════════════════════════ -->
+    <nav class="mobile-bottom-dock" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
+        <div class="dock-items-row">
+            <a href="index.html" class="dock-item" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span>HOME</span>
+            </a>
+            <a href="services.html" class="dock-item " aria-label="Services">
+                <i class="fas fa-th-large"></i>
+                <span>SERVICES</span>
+            </a>
+            <a href="work.html" class="dock-item " aria-label="Work">
+                <i class="fas fa-briefcase"></i>
+                <span>WORK</span>
+            </a>
+            <a href="upskill.html" class="dock-item " aria-label="Upskill">
+                <i class="fas fa-graduation-cap"></i>
+                <span>UPSKILL</span>
+            </a>
+            <a href="contact.html" class="dock-item " aria-label="Contact">
+                <i class="fas fa-envelope"></i>
+                <span>CONTACT</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════
+         STRUCTURED STUDIO FOOTER
+         ═══════════════════════════════════════════════════ -->
+    <footer id="siteFooter"></footer>
+    <script type="module" src="/src/components/footer.js"></script>
+
+    <script>
+        // ─── Mobile Drawer Toggle ───
+        (function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const drawer = document.getElementById('mobileDrawer');
+            const drawerClose = document.getElementById('mobileDrawerClose');
+            if (!menuBtn || !drawer) return;
+
+            function openDrawer() {
+                drawer.classList.add('open');
+                menuBtn.classList.add('active');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeDrawer() {
+                drawer.classList.remove('open');
+                menuBtn.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', () => {
+                if (drawer.classList.contains('open')) closeDrawer();
+                else openDrawer();
+            });
+
+            if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+            drawer.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
+        })();
+
+        // ─── Scroll to Top Button & Reading Progress ───
+        (function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            const circle = document.getElementById('scrollProgressCircle');
+            if (!btn) return;
+
+            const totalLength = 125.66;
+            let ticking = false;
+
+            function updateScrollProgress() {
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+                if (scrollY > 320) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+
+                if (circle && docHeight > 0) {
+                    const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
+                    const offset = totalLength - (progress * totalLength);
+                    circle.style.strokeDashoffset = offset.toFixed(2);
+                }
+
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateScrollProgress);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            updateScrollProgress();
+        })();
+
+        // ─── Header Scroll Background Elevation ───
+        (function() {
+            const header = document.getElementById('siteHeader');
+            if (!header) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        })();
+    </script>
+
+<script>
+        // ═══════════════════════════════════════════════════
+        // SUBTLE SCROLL REVEAL OBSERVER (ANIDEATECH INSPIRED)
+        // Restrained fade-and-rise animations as sections enter view
+        // ═══════════════════════════════════════════════════
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+                return;
+            }
+
+            const candidates = document.querySelectorAll(
+                'section > .container > .section-header, ' +
+                'section > .container > h2, ' +
+                '.service-card, .founder-tile, .project-card, .process-card, .testimonial-card, ' +
+                '.metrics-grid, .about-split-left, .about-split-right, .contact-card'
+            );
+            candidates.forEach(el => {
+                if (!el.classList.contains('reveal-on-scroll')) {
+                    el.classList.add('reveal-on-scroll');
+                }
+            });
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px -8% 0px',
+                    threshold: 0.1
+                });
+
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+            } else {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+            }
+        })();
+
+    </script>
+
+    <!-- Theme Management (Light & Dark Mode) -->
+    <script>
+        (function() {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const drawerToggleBtn = document.getElementById('drawerThemeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const drawerIcon = document.getElementById('drawerThemeIcon');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('appvertex-theme', theme);
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+                if (drawerIcon) {
+                    drawerIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            }
+
+            const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(initialTheme);
+
+            function toggleTheme() {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+            }
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
+        })();
+    </script>
+
+    <!-- Interactive Process FAQ Accordion Script -->
+    <script>
+        (function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                if (!question) return;
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
+
