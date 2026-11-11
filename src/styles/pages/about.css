@@ -1,0 +1,643 @@
+/* ═══════════════════════════════════════════════════════════════
+           ABOUT PAGE COMPREHENSIVE STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode
+           ═══════════════════════════════════════════════════════════════ */
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Studio Commitments & Telemetry Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Capabilities Grid ─── */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .capability-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .capability-card:hover {
+            transform: translateY(-4px);
+            border-color: #ef870d;
+        }
+
+        .capability-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .capability-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .capability-icon {
+            font-size: 1.4rem;
+            color: var(--burgundy);
+        }
+
+        .capability-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
+        }
+
+        .capability-desc {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .capability-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .capability-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            background: rgba(128, 15, 53, 0.06);
+            color: var(--burgundy);
+            padding: 4px 9px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* ─── Chronicle / Decade in Production ─── */
+        .chronicle-section {
+            margin: 5rem 0;
+        }
+
+        .chronicle-timeline {
+            position: relative;
+            margin-top: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .chronicle-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 140px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .chronicle-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2.5rem;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .chronicle-era {
+            text-align: right;
+            padding-right: 1.75rem;
+            position: relative;
+        }
+
+        .chronicle-years {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ef870d;
+        }
+
+        .chronicle-dot {
+            position: absolute;
+            right: -6px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2.5px solid #ef870d;
+            box-shadow: 0 0 0 4px var(--surface);
+        }
+
+        .chronicle-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2rem 2.25rem;
+            box-shadow: 0 4px 20px rgba(128, 15, 53, 0.03);
+        }
+
+        .chronicle-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .chronicle-text {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── Operating Standards ─── */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .standard-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2.25rem;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            position: relative;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .standard-card:hover {
+            transform: translateY(-3px);
+            border-color: #ef870d;
+        }
+
+        .standard-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ef870d;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.85rem;
+        }
+
+        .standard-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .standard-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── Fit Profiles (Who We Work With) ─── */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .fit-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+        }
+
+        .fit-badge {
+            display: inline-block;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 4px 10px;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .fit-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
+        }
+
+        .fit-desc {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .fit-symptom {
+            background: rgba(239, 135, 13, 0.07);
+            border-left: 3px solid #ef870d;
+            padding: 0.75rem 1rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .fit-symptom strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ─── Founders & Philosophy ─── */
+        .philosophy-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.04) 0%, rgba(239, 135, 13, 0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin: 4rem 0 5rem;
+            position: relative;
+        }
+
+        .philosophy-quote {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text-primary);
+            max-width: 820px;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .philosophy-author {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .founder-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-3px);
+            border-color: #ef870d;
+        }
+
+        .founder-role {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ef870d;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-name {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .founder-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .founder-email:hover {
+            color: #ef870d;
+        }
+
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-banner-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── Dark Mode Overrides ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .capability-card,
+        [data-theme="dark"] .chronicle-body,
+        [data-theme="dark"] .standard-card,
+        [data-theme="dark"] .fit-card,
+        [data-theme="dark"] .founder-card {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .capability-tag {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .fit-badge {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .fit-symptom {
+            background: rgba(239, 135, 13, 0.12);
+            border-left-color: #ef870d;
+        }
+
+        [data-theme="dark"] .philosophy-banner {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .founder-email {
+            color: #ef870d;
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .telemetry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .capabilities-grid,
+            .standards-grid,
+            .fit-grid,
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+            .chronicle-timeline::before {
+                left: 20px;
+            }
+            .chronicle-entry {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding-left: 45px;
+            }
+            .chronicle-era {
+                text-align: left;
+                padding-right: 0;
+            }
+            .chronicle-dot {
+                left: -31px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
+            }
+        }

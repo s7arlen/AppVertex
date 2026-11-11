@@ -1,0 +1,729 @@
+/* ═══════════════════════════════════════════════════════════════
+           PROCESS PAGE ARCHITECTURAL STYLES (AN IDEATECH MIRRORED)
+           Preserving AppVertex Theme, Flame Accent, Dual Mode System
+           ═══════════════════════════════════════════════════════════════ */
+
+        .subpage-hero {
+            padding: calc(72px + 2.5rem) 1.5rem 1.5rem;
+            min-height: unset;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subpage-hero-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subpage-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--burgundy, #800F35);
+            background: rgba(128, 15, 53, 0.08);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(128, 15, 53, 0.15);
+        }
+
+        .subpage-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subpage-desc {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 740px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .subpage-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Sprint Telemetry Card ─── */
+        .telemetry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2.5rem;
+            box-shadow: 0 16px 40px rgba(128, 15, 53, 0.05);
+            margin: 0 auto 1.5rem;
+            max-width: 1060px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telemetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef870d 0%, #f76020 50%, #ea321d 100%);
+        }
+
+        .telemetry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .telemetry-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telemetry-tag::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        .telemetry-status {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .telemetry-pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef870d;
+        }
+
+        .pillar-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        /* ─── The Four Phases Stack ─── */
+        .phases-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .phase-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .phase-block:hover {
+            border-color: #ef870d;
+            box-shadow: 0 16px 36px rgba(239, 135, 13, 0.08);
+        }
+
+        .phase-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 2rem;
+        }
+
+        .phase-num-title {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .phase-badge-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ef870d;
+            line-height: 1;
+        }
+
+        .phase-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .phase-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .phase-content-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .phase-points-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .phase-point-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .phase-point-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef870d;
+            margin-top: 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .phase-point-item h4 {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+        }
+
+        .phase-point-item p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .phase-deliverables-box {
+            background: var(--surface-raised, #FAF8F5);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 1.5rem;
+        }
+
+        .deliverables-lbl {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .deliverables-chips {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .deliv-chip-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .deliv-chip-item i {
+            color: #ef870d;
+            font-size: 0.85rem;
+        }
+
+        /* ─── Day-to-Day Operations Grid ─── */
+        .daily-ops-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .daily-op-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(128, 15, 53, 0.03);
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .daily-op-card:hover {
+            transform: translateY(-4px);
+            border-color: #ef870d;
+            box-shadow: 0 12px 28px rgba(239, 135, 13, 0.08);
+        }
+
+        .daily-op-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid var(--border-light, #E8E4E7);
+            margin-bottom: 1.5rem;
+        }
+
+        .daily-op-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ef870d;
+            line-height: 1;
+        }
+
+        .daily-op-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .daily-op-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.3;
+        }
+
+        .daily-op-desc {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── After Launch Dual Cards (An Idea Tech Exact Structure) ─── */
+        .after-launch-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .after-launch-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.75rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .after-launch-card:hover {
+            border-color: #ef870d;
+            transform: translateY(-3px);
+        }
+
+        .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.04) 0%, rgba(239, 135, 13, 0.07) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        .after-launch-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ef870d;
+            margin-bottom: 1rem;
+        }
+
+        .after-launch-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1rem 0;
+            line-height: 1.25;
+        }
+
+        .after-launch-card p {
+            font-size: 0.94rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1.75rem 0;
+        }
+
+        .after-launch-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+            margin-top: auto;
+        }
+
+        .after-launch-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        .after-launch-point i {
+            color: #10b981;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .after-launch-point strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ─── Diagnostic Reality Gap Section ─── */
+        .diagnostic-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem;
+        }
+
+        .comparison-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-col.bad {
+            border-color: rgba(239, 68, 68, 0.25);
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, var(--surface) 100%);
+        }
+
+        .comparison-col.good {
+            border-color: rgba(16, 185, 129, 0.35);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, var(--surface) 100%);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-col.bad .comparison-header {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-header {
+            color: #10b981;
+        }
+
+        .comparison-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .comparison-item i {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .comparison-col.bad .comparison-item i {
+            color: #ef4444;
+        }
+
+        .comparison-col.good .comparison-item i {
+            color: #10b981;
+        }
+
+        /* ─── Interactive Process FAQ Accordion ─── */
+        .process-faq-accordion {
+            max-width: 900px;
+            margin: 3.5rem auto 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .faq-item.active {
+            border-color: #ef870d;
+            box-shadow: 0 8px 24px rgba(239, 135, 13, 0.08);
+        }
+
+        .faq-question {
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            cursor: pointer;
+            user-select: none;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: #ef870d;
+        }
+
+        .faq-icon {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #ef870d;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            padding: 0 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* ─── Closing Diagnostic Banner ─── */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
+            border: 1px solid rgba(128, 15, 53, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-banner-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .closing-banner-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .closing-banner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── DARK THEME OVERRIDES ─── */
+        [data-theme="dark"] .subpage-eyebrow {
+            background: rgba(239, 135, 13, 0.12);
+            color: #ef870d;
+            border-color: rgba(239, 135, 13, 0.25);
+        }
+
+        [data-theme="dark"] .telemetry-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .phase-block,
+        [data-theme="dark"] .daily-op-card,
+        [data-theme="dark"] .after-launch-card,
+        [data-theme="dark"] .comparison-col,
+        [data-theme="dark"] .faq-item {
+            background: rgba(26, 26, 26, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .phase-block:hover,
+        [data-theme="dark"] .daily-op-card:hover,
+        [data-theme="dark"] .after-launch-card:hover {
+            border-color: #ef870d;
+        }
+
+        [data-theme="dark"] .phase-header,
+        [data-theme="dark"] .daily-op-top {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .phase-deliverables-box {
+            background: rgba(18, 18, 18, 0.75);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .after-launch-card.featured {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.18) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        [data-theme="dark"] .closing-banner {
+            background: linear-gradient(135deg, rgba(128, 15, 53, 0.25) 0%, rgba(239, 135, 13, 0.2) 100%);
+            border-color: rgba(239, 135, 13, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .telemetry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .phase-content-grid,
+            .daily-ops-grid,
+            .after-launch-grid,
+            .diagnostic-comparison-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            .phase-block,
+            .after-launch-card {
+                padding: 2rem 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+            }
+            .telemetry-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .subpage-hero {
+                padding: 5.5rem 1rem 2.5rem;
+            }
+        }

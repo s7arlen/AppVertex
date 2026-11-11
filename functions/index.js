@@ -93,7 +93,7 @@ exports.contact = functions.https.onRequest(async (req, res) => {
 
   const runtimeConfig = functions.config() || {};
   const RESEND_API_KEY = (runtimeConfig.resend && runtimeConfig.resend.key) || process.env.RESEND_API_KEY;
-  const CONTACT_RECEIVER = (runtimeConfig.contact && runtimeConfig.contact.receiver) || "leston@appvertex.in";
+  const CONTACT_RECEIVER = (runtimeConfig.contact && runtimeConfig.contact.receiver) || "info@appvertex.in";
 
   if (!RESEND_API_KEY) {
     console.error("Missing RESEND_API_KEY in functions config");

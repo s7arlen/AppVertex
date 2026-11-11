@@ -45,8 +45,8 @@ const footerHTML = `
             <h4 class="footer-col-title">Connect</h4>
             <ul class="footer-links-list">
                 <li>
-                    <a href="mailto:appvertex.in@gmail.com" class="footer-link">
-                        <i class="fas fa-envelope" style="margin-right: 6px;"></i> appvertex.in@gmail.com
+                    <a href="mailto:info@appvertex.in" class="footer-link">
+                        <i class="fas fa-envelope" style="margin-right: 6px;"></i> info@appvertex.in
                     </a>
                 </li>
                 <li>
