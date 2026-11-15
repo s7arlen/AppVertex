@@ -2085,11 +2085,9 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   color: #cbd5e1;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .service-stack-browser-frame {
-    height: 210px;
-    min-height: 210px;
-    margin-top: 0.5rem;
+    display: none !important;
   }
 }
 
@@ -2190,7 +2188,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
   }
   .service-stack-card__body {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 0;
   }
 }
 
@@ -3667,6 +3665,10 @@ select.form-control option {
   flex-wrap: wrap;
 }
 
+.footer-mobile-micro {
+  display: none;
+}
+
 /* ─────────────────────────────────────────────────────────────────
    18. FLOATING UTILITIES (WHATSAPP, SCROLL-TO-TOP, DOCK)
    ───────────────────────────────────────────────────────────────── */
@@ -4127,14 +4129,76 @@ select.form-control option {
   .footer-cta-card {
     padding: 28px 18px;
   }
-  .footer-grid-4 {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  #siteFooter {
+    padding: 36px 0 calc(84px + env(safe-area-inset-bottom, 16px)) !important;
   }
-  .footer-bottom-row {
+  .footer-desktop-only {
+    display: none !important;
+  }
+  .footer-mobile-micro {
+    display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
     text-align: center;
+    gap: 12px;
+  }
+  .footer-mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-mobile-brand img {
+    width: 22px;
+    height: 22px;
+  }
+  .footer-mobile-brand .logo-text {
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+  .footer-mobile-tagline {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .footer-mobile-socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 4px 0 6px;
+  }
+  .footer-mobile-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+  .footer-mobile-social-icon:hover {
+    color: #ef870d;
+    border-color: rgba(239, 135, 13, 0.4);
+    background: rgba(239, 135, 13, 0.08);
+  }
+  .footer-mobile-legal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .footer-mobile-legal a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+  .footer-mobile-legal a:hover {
+    color: #ef870d;
   }
   .floating-whatsapp-btn {
     bottom: calc(72px + env(safe-area-inset-bottom, 0px));

@@ -13,8 +13,8 @@ export default function Footer() {
   return (
     <footer id="siteFooter">
       <div className="container">
-        {/* Footer 4-Column Directory */}
-        <div className="footer-grid-4">
+        {/* Desktop Directory Grid (> 768px) */}
+        <div className="footer-grid-4 footer-desktop-only">
           {/* Col 1: Brand & Bio */}
           <div className="footer-col">
             <div className="footer-brand-title">
@@ -76,8 +76,37 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom Row */}
-        <div className="footer-bottom-row">
+        {/* Mobile Micro Footer (<= 768px - Option B) */}
+        <div className="footer-mobile-micro">
+          <div className="footer-mobile-brand">
+            <img src={assetUrl('/logo.png')} alt="AppVertex Logo" width="22" height="22" />
+            <span className="logo-text">AppVertex</span>
+          </div>
+          <p className="footer-mobile-tagline">We Build Brands Online.</p>
+
+          <div className="footer-mobile-socials">
+            <a href={`https://wa.me/${cleanWa}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="footer-mobile-social-icon">
+              <i className="fab fa-whatsapp"></i>
+            </a>
+            <a href={`mailto:${email}`} aria-label="Email" className="footer-mobile-social-icon">
+              <i className="fas fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="footer-mobile-social-icon">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+
+          <div className="footer-mobile-legal">
+            <span>© {year} AppVertex</span>
+            <span>·</span>
+            <Link to="/privacy">Privacy</Link>
+            <span>·</span>
+            <Link to="/terms">Terms</Link>
+          </div>
+        </div>
+
+        {/* Desktop Bottom Row (> 768px) */}
+        <div className="footer-bottom-row footer-desktop-only">
           <div className="footer-bottom-left">
             <p className="footer-text">© {year} AppVertex. All rights reserved.</p>
             <span>•</span>
