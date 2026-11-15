@@ -1,12 +1,13 @@
+import { assetUrl } from '../utils/assetHelper';
 import React from 'react';
 import { useStudioData, DEFAULT_TESTIMONIALS } from '../context/StudioDataContext';
 import '../styles/components/unique-testimonials.css';
 
 const FALLBACK_AVATARS = [
-  '/testimonials/testimonial_alex.jpg',
-  '/testimonials/testimonial_scarlett_highres.jpg',
-  '/testimonials/testimonial_ethan.jpg',
-  '/services/srv-school-portal.jpg'
+  assetUrl('/testimonials/testimonial_alex.jpg'),
+  assetUrl('/testimonials/testimonial_scarlett_highres.jpg'),
+  assetUrl('/testimonials/testimonial_ethan.jpg'),
+  assetUrl('/services/srv-school-portal.jpg')
 ];
 
 export default function UniqueTestimonials() {

@@ -1,3 +1,4 @@
+import { assetUrl } from '../utils/assetHelper';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -244,7 +245,7 @@ export default function Home() {
       title: 'Website Development',
       desc: 'Fast, modern websites designed to turn visitors into clients. Built with seamless mobile responsiveness, SEO best practices, and effortless content management.',
       url: 'appvertex.in/web-development',
-      img: '/services/srv-web-design.jpg',
+      img: assetUrl('/services/srv-web-design.jpg'),
       alt: 'Website Development Agency Landing Page',
       slotZ: 1
     },
@@ -254,7 +255,7 @@ export default function Home() {
       title: 'Custom Web Applications',
       desc: 'Tailored web platforms, client portals, and workflow tools designed around how your business actually runs. Automate repetitive tasks and give your team reliable tools.',
       url: 'appvertex.in/cloud-apps',
-      img: '/services/srv-custom-web-apps.jpg',
+      img: assetUrl('/services/srv-custom-web-apps.jpg'),
       alt: 'Custom Web Application SaaS Dashboard Interface',
       slotZ: 2
     },
@@ -264,7 +265,7 @@ export default function Home() {
       title: 'UI/UX Design',
       desc: 'Intuitive, clean interfaces built to guide users effortlessly from their first click to checkout or inquiry. We turn complicated workflows into simple, elegant digital products.',
       url: 'appvertex.in/ui-ux-design',
-      img: '/services/srv-ui-ux.jpg',
+      img: assetUrl('/services/srv-ui-ux.jpg'),
       alt: 'UI/UX Product Design Wireframing and Prototyping',
       slotZ: 3
     },
@@ -274,7 +275,7 @@ export default function Home() {
       title: 'Branding & Digital Identity',
       desc: 'Memorable visual identities that help your business stand out and build immediate trust with your audience across web, print, and social media.',
       url: 'appvertex.in/brand-identity',
-      img: '/services/srv-brand-identity.jpg',
+      img: assetUrl('/services/srv-brand-identity.jpg'),
       alt: 'Brand Identity and Typography Guidelines',
       slotZ: 4
     },
@@ -284,7 +285,7 @@ export default function Home() {
       title: 'School Management Portals',
       desc: 'Comprehensive institutional portals that bring student admissions, fee payments, attendance tracking, and parent communication into one secure, unified system.',
       url: 'lorettocentralschool.edu.in',
-      img: '/services/srv-school-portal.jpg',
+      img: assetUrl('/services/srv-school-portal.jpg'),
       alt: 'Institutional Academic School Management Portal',
       slotZ: 5
     },
@@ -294,7 +295,7 @@ export default function Home() {
       title: 'E-commerce Development',
       desc: 'Fast, friction-free online stores designed to boost conversions. From quick product discovery to smooth one-click checkout and automated inventory management.',
       url: 'appvertex.in/ecommerce-engine',
-      img: '/services/srv-ecommerce.jpg',
+      img: assetUrl('/services/srv-ecommerce.jpg'),
       alt: 'Headless E-Commerce Digital Storefront',
       slotZ: 6
     },
@@ -304,7 +305,7 @@ export default function Home() {
       title: 'SEO & Digital Growth',
       desc: 'Targeted search optimization and technical speed tuning that help your business rank higher on Google and attract high-intent local and global customers.',
       url: 'appvertex.in/growth-engine',
-      img: '/services/srv-seo.jpg',
+      img: assetUrl('/services/srv-seo.jpg'),
       alt: 'SEO Performance and Growth Telemetry',
       slotZ: 7
     },
@@ -314,7 +315,7 @@ export default function Home() {
       title: 'Website Maintenance',
       desc: 'Peace of mind for your online presence. We handle regular security patches, automated cloud backups, uptime monitoring, and fast support when you need updates.',
       url: 'appvertex.in/maintenance-sre',
-      img: '/services/srv-maintenance.jpg',
+      img: assetUrl('/services/srv-maintenance.jpg'),
       alt: '24/7 Cloud Server Uptime and Maintenance Telemetry',
       slotZ: 8,
       isLast: true
@@ -634,7 +635,7 @@ export default function Home() {
                         src={proj.previewImage || 'hero-devices.png'}
                         alt={proj.altText || proj.title || proj.name || 'Featured Project'}
                         loading="lazy"
-                        onError={(e) => { e.currentTarget.src = '/hero-devices.png'; }}
+                        onError={(e) => { e.currentTarget.src = assetUrl('/hero-devices.png'); }}
                       />
                     </div>
                     <div className="fan-card-caption">

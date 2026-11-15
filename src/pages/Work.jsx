@@ -1,3 +1,4 @@
+import { assetUrl } from '../utils/assetHelper';
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useStudioData } from '../context/StudioDataContext';
@@ -11,7 +12,7 @@ const CURATED_TESTIMONIALS = [
     rating: 5,
     text: "AppVertex built exactly what we needed. The institutional portal handles admissions, fee records, circulars, and parent communication without any fuss. Our staff picked it up immediately.",
     initials: "SM",
-    image: "/services/srv-school-portal.jpg"
+    image: assetUrl("/services/srv-school-portal.jpg")
   },
   {
     id: "alex-turner",
@@ -20,7 +21,7 @@ const CURATED_TESTIMONIALS = [
     rating: 5,
     text: "From architecture to production deployment, AppVertex shipped our complete platform in record time. Median load speed dropped under 800ms, and our conversion rate jumped 38% in the first month.",
     initials: "AT",
-    image: "/testimonials/testimonial_alex.jpg"
+    image: assetUrl("/testimonials/testimonial_alex.jpg")
   },
   {
     id: "scarlett-rivers",
@@ -29,7 +30,7 @@ const CURATED_TESTIMONIALS = [
     rating: 5,
     text: "Partnering with AppVertex was a turning point. Having direct access to senior founding engineers instead of account managers meant every architectural decision was crystal clear, rock-solid, and delivered in record time.",
     initials: "SR",
-    image: "/testimonials/testimonial_scarlett_highres.jpg"
+    image: assetUrl("/testimonials/testimonial_scarlett_highres.jpg")
   },
   {
     id: "launchpad-lead",
@@ -46,7 +47,7 @@ const CURATED_TESTIMONIALS = [
     rating: 5,
     text: "AppVertex engineered our high-speed operational systems effortlessly — clean code, instantaneous reactivity, and total ownership from day one.",
     initials: "EK",
-    image: "/testimonials/testimonial_ethan.jpg"
+    image: assetUrl("/testimonials/testimonial_ethan.jpg")
   },
   {
     id: "nf-fashion",
@@ -65,7 +66,7 @@ const CASE_STUDIES = [
     tag: 'Education & Institutional',
     title: 'Loretto Central School Platform',
     desc: "Rebuilt the institution's digital portal to eliminate exam server crashes, automate parent circular dissemination, and streamline high-volume online admission intake.",
-    image: '/hero-rosewood-showcase.png',
+    image: assetUrl('/hero-rosewood-showcase.png'),
     client: 'Loretto Central School (CBSE)',
     link: 'https://lorettocentralschool.edu.in',
     externalLink: true,
@@ -91,7 +92,7 @@ const CASE_STUDIES = [
     tag: 'College & Autonomous',
     title: 'St. Philomena Autonomous College Cloud',
     desc: 'Engineered high-concurrency examination result infrastructure and automated merit admissions portal for autonomous higher education.',
-    image: '/hero-floating-phones-transparent.png',
+    image: assetUrl('/hero-floating-phones-transparent.png'),
     client: 'St. Philomena Autonomous',
     link: 'https://stphilomenacollege.edu.in',
     externalLink: true,
@@ -117,7 +118,7 @@ const CASE_STUDIES = [
     tag: 'Cloud & DevOps SaaS',
     title: 'PulseFlow Observability Engine',
     desc: 'High-throughput real-time telemetry console processing 12M+ time-series data points with sub-second WebSocket visual dashboards.',
-    image: '/hero-devices.png',
+    image: assetUrl('/hero-devices.png'),
     client: 'PulseFlow Systems',
     link: '/contact',
     externalLink: false,
@@ -143,7 +144,7 @@ const CASE_STUDIES = [
     tag: 'Enterprise ERP & Logistics',
     title: 'Nexus Multi-Warehouse ERP',
     desc: 'Role-based logistics and inventory intelligence platform tracking 45,000+ SKUs across automated multi-location dispatch routes.',
-    image: '/hero-machine.png',
+    image: assetUrl('/hero-machine.png'),
     client: 'Nexus Distribution',
     link: '/contact',
     externalLink: false,
@@ -169,7 +170,7 @@ const CASE_STUDIES = [
     tag: 'Luxury E-Commerce',
     title: 'Maison Vellum Luxury Boutique',
     desc: 'Editorial headless e-commerce store with zero layout shift, sub-second checkout transitions, and international currency conversions.',
-    image: '/hero-rosewood-stage.png',
+    image: assetUrl('/hero-rosewood-stage.png'),
     client: 'Maison Vellum',
     link: '/contact',
     externalLink: false,

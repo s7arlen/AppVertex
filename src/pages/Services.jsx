@@ -1,3 +1,4 @@
+import { assetUrl } from '../utils/assetHelper';
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import '../styles/pages/services.css';
@@ -55,7 +56,7 @@ export default function Services() {
                 {/* SERVICE 01: WEBSITE DEVELOPMENT */}
                 <article className="service-card-item" id="service-01">
                     <div className="service-card-media">
-                        <img src="/services/srv-web-design.jpg" alt="Website Development Agency Landing Page" loading="lazy" />
+                        <img src={assetUrl("/services/srv-web-design.jpg")} alt="Website Development Agency Landing Page" loading="lazy" />
                         <span className="service-category-pill">Web Architecture</span>
                     </div>
                     <div className="service-card-body">
@@ -82,7 +83,7 @@ export default function Services() {
                 {/* SERVICE 02: CUSTOM WEB APPLICATIONS */}
                 <article className="service-card-item" id="service-02">
                     <div className="service-card-media">
-                        <img src="/services/srv-custom-web-apps.jpg" alt="Custom Web Application SaaS Dashboard Interface" loading="lazy" />
+                        <img src={assetUrl("/services/srv-custom-web-apps.jpg")} alt="Custom Web Application SaaS Dashboard Interface" loading="lazy" />
                         <span className="service-category-pill">Custom Software</span>
                     </div>
                     <div className="service-card-body">
@@ -109,7 +110,7 @@ export default function Services() {
                 {/* SERVICE 03: UI/UX DESIGN */}
                 <article className="service-card-item" id="service-03">
                     <div className="service-card-media">
-                        <img src="/services/srv-ui-ux.jpg" alt="UI/UX Product Design Wireframing and Prototyping" loading="lazy" />
+                        <img src={assetUrl("/services/srv-ui-ux.jpg")} alt="UI/UX Product Design Wireframing and Prototyping" loading="lazy" />
                         <span className="service-category-pill">Product Design</span>
                     </div>
                     <div className="service-card-body">
@@ -136,7 +137,7 @@ export default function Services() {
                 {/* SERVICE 04: BRANDING & DIGITAL IDENTITY */}
                 <article className="service-card-item" id="service-04">
                     <div className="service-card-media">
-                        <img src="/services/srv-brand-identity.jpg" alt="Brand Identity and Typography Guidelines" loading="lazy" />
+                        <img src={assetUrl("/services/srv-brand-identity.jpg")} alt="Brand Identity and Typography Guidelines" loading="lazy" />
                         <span className="service-category-pill">Brand Identity</span>
                     </div>
                     <div className="service-card-body">
@@ -163,7 +164,7 @@ export default function Services() {
                 {/* SERVICE 05: SCHOOL MANAGEMENT PORTALS */}
                 <article className="service-card-item" id="service-05">
                     <div className="service-card-media">
-                        <img src="/services/srv-school-portal.jpg" alt="Institutional Academic School Management Portal" loading="lazy" />
+                        <img src={assetUrl("/services/srv-school-portal.jpg")} alt="Institutional Academic School Management Portal" loading="lazy" />
                         <span className="service-category-pill">Education Portals</span>
                     </div>
                     <div className="service-card-body">
@@ -190,7 +191,7 @@ export default function Services() {
                 {/* SERVICE 06: E-COMMERCE DEVELOPMENT */}
                 <article className="service-card-item" id="service-06">
                     <div className="service-card-media">
-                        <img src="/services/srv-ecommerce.jpg" alt="Headless E-Commerce Digital Storefront" loading="lazy" />
+                        <img src={assetUrl("/services/srv-ecommerce.jpg")} alt="Headless E-Commerce Digital Storefront" loading="lazy" />
                         <span className="service-category-pill">E-Commerce</span>
                     </div>
                     <div className="service-card-body">
@@ -217,7 +218,7 @@ export default function Services() {
                 {/* SERVICE 07: SEO & DIGITAL GROWTH */}
                 <article className="service-card-item" id="service-07">
                     <div className="service-card-media">
-                        <img src="/services/srv-seo.jpg" alt="SEO Performance and Growth Telemetry" loading="lazy" />
+                        <img src={assetUrl("/services/srv-seo.jpg")} alt="SEO Performance and Growth Telemetry" loading="lazy" />
                         <span className="service-category-pill">Search Optimization</span>
                     </div>
                     <div className="service-card-body">
@@ -244,7 +245,7 @@ export default function Services() {
                 {/* SERVICE 08: WEBSITE MAINTENANCE & SUPPORT */}
                 <article className="service-card-item" id="service-08">
                     <div className="service-card-media">
-                        <img src="/services/srv-maintenance.jpg" alt="24/7 Cloud Server Uptime and Maintenance Telemetry" loading="lazy" />
+                        <img src={assetUrl("/services/srv-maintenance.jpg")} alt="24/7 Cloud Server Uptime and Maintenance Telemetry" loading="lazy" />
                         <span className="service-category-pill">Support &amp; Care</span>
                     </div>
                     <div className="service-card-body">

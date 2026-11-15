@@ -1,3 +1,4 @@
+import { assetUrl } from '../utils/assetHelper';
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const FIRESTORE_BASE = 'https://firestore.googleapis.com/v1/projects/appvertex-e09c8/databases/(default)/documents';
@@ -10,8 +11,8 @@ export const DEFAULT_PROJECTS = [
     category: "school",
     categoryLabel: "Education & Institutional",
     year: 2026,
-    image: "/hero-rosewood-showcase.png",
-    previewImage: "/hero-rosewood-showcase.png",
+    image: assetUrl("/hero-rosewood-showcase.png"),
+    previewImage: assetUrl("/hero-rosewood-showcase.png"),
     emoji: "🎓",
     color: "linear-gradient(135deg,#1e1b4b,#4338ca)",
     description: "Rebuilt the institution's digital portal to eliminate exam server crashes, automate parent circular dissemination, and streamline high-volume online admission intake.",
@@ -33,8 +34,8 @@ export const DEFAULT_PROJECTS = [
     category: "school",
     categoryLabel: "Higher Ed • Architecture Prototype",
     year: 2025,
-    image: "/hero-floating-phones-transparent.png",
-    previewImage: "/hero-floating-phones-transparent.png",
+    image: assetUrl("/hero-floating-phones-transparent.png"),
+    previewImage: assetUrl("/hero-floating-phones-transparent.png"),
     emoji: "🚀",
     color: "linear-gradient(135deg,#0f172a,#0284c7)",
     description: "Engineered high-concurrency examination result infrastructure and automated merit admissions portal for autonomous higher education institutions.",
@@ -56,8 +57,8 @@ export const DEFAULT_PROJECTS = [
     category: "startup",
     categoryLabel: "Cloud SaaS • Studio Lab",
     year: 2025,
-    image: "/hero-devices.png",
-    previewImage: "/hero-devices.png",
+    image: assetUrl("/hero-devices.png"),
+    previewImage: assetUrl("/hero-devices.png"),
     emoji: "⚡",
     color: "linear-gradient(135deg,#064e3b,#059669)",
     description: "High-throughput real-time telemetry console processing 12M+ time-series data points with sub-second WebSocket visual dashboards.",
@@ -79,8 +80,8 @@ export const DEFAULT_PROJECTS = [
     category: "brand",
     categoryLabel: "Non-Profit & Community",
     year: 2024,
-    image: "/hero-devices.png",
-    previewImage: "/hero-devices.png",
+    image: assetUrl("/hero-devices.png"),
+    previewImage: assetUrl("/hero-devices.png"),
     emoji: "🤝",
     color: "linear-gradient(135deg,#7c2d12,#ea580c)",
     description: "Clean, accessible community platform for Vimasneha Trust showcasing their social initiatives, transparent audit trails, and enabling community outreach.",
@@ -102,8 +103,8 @@ export const DEFAULT_PROJECTS = [
     category: "ecommerce",
     categoryLabel: "Brand & E-Commerce",
     year: 2024,
-    image: "/hero-rosewood-stage.png",
-    previewImage: "/hero-rosewood-stage.png",
+    image: assetUrl("/hero-rosewood-stage.png"),
+    previewImage: assetUrl("/hero-rosewood-stage.png"),
     emoji: "🎨",
     color: "linear-gradient(135deg,#14532d,#22c55e)",
     description: "High-conversion luxury showcase and fluid e-commerce experience engineered with sub-second page transitions and direct WhatsApp shopping.",
@@ -128,7 +129,7 @@ export const DEFAULT_TESTIMONIALS = [
     rating: 5,
     text: "From architecture to production deployment, AppVertex shipped our complete platform in record time. Median load speed dropped under 800ms, and our conversion rate jumped 38% in the first month.",
     initials: "AT",
-    image: "/testimonials/testimonial_alex.jpg"
+    image: assetUrl("/testimonials/testimonial_alex.jpg")
   },
   {
     id: "scarlett-rivers",
@@ -137,7 +138,7 @@ export const DEFAULT_TESTIMONIALS = [
     rating: 5,
     text: "Partnering with AppVertex was a turning point. As a non-technical founder, having direct access to their senior founding engineers instead of account managers meant every architectural decision was crystal clear, rock-solid, and delivered in record time.",
     initials: "SR",
-    image: "/testimonials/testimonial_scarlett_highres.jpg"
+    image: assetUrl("/testimonials/testimonial_scarlett_highres.jpg")
   },
   {
     id: "ethan-knight",
@@ -146,7 +147,7 @@ export const DEFAULT_TESTIMONIALS = [
     rating: 5,
     text: "AppVertex engineered our high-speed operational systems effortlessly — clean code, instantaneous reactivity, and total ownership from day one.",
     initials: "EK",
-    image: "/testimonials/testimonial_ethan.jpg"
+    image: assetUrl("/testimonials/testimonial_ethan.jpg")
   },
   {
     id: "loretto-principal",
@@ -155,7 +156,7 @@ export const DEFAULT_TESTIMONIALS = [
     rating: 5,
     text: "AppVertex built exactly what we needed. The institutional portal handles admissions, fee records, circulars, and parent communication without any fuss. Our staff picked it up immediately.",
     initials: "SM",
-    image: "/services/srv-school-portal.jpg"
+    image: assetUrl("/services/srv-school-portal.jpg")
   }
 ];
 

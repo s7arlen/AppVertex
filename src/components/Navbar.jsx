@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
+import { assetUrl } from '../utils/assetHelper';
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -78,7 +79,7 @@ export default function Navbar() {
           <div className="nav-inner">
             {/* Brand Logo: logo.png (32px) + AppVertex text */}
             <Link to="/" className="brand-logo" aria-label="AppVertex Home">
-              <img src="/logo.png" alt="AppVertex Logo" className="brand-logo-img" width="32" height="32" />
+              <img src={assetUrl('/logo.png')} alt="AppVertex Logo" className="brand-logo-img" width="32" height="32" />
               <span className="logo-text">AppVertex</span>
             </Link>
 
@@ -140,7 +141,7 @@ export default function Navbar() {
           {/* Clean Studio Header */}
           <div className="island-header">
             <div className="island-brand">
-              <img src="/logo.png" alt="AppVertex Logo" width="24" height="24" className="island-logo-img" />
+              <img src={assetUrl('/logo.png')} alt="AppVertex Logo" width="24" height="24" className="island-logo-img" />
               <span className="island-brand-name">AppVertex</span>
             </div>
             <button

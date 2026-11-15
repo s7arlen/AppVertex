@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useStudioData } from '../context/StudioDataContext';
+import { assetUrl } from '../utils/assetHelper';
 
 export default function Footer() {
   const { settings } = useStudioData();
@@ -17,7 +18,7 @@ export default function Footer() {
           {/* Col 1: Brand & Bio */}
           <div className="footer-col">
             <div className="footer-brand-title">
-              <img src="/logo.png" alt="AppVertex Logo" width="28" height="28" />
+              <img src={assetUrl('/logo.png')} alt="AppVertex Logo" width="28" height="28" />
               <span className="logo-text" style={{ fontSize: '1.25rem' }}>AppVertex</span>
             </div>
             <p className="footer-brand-desc">

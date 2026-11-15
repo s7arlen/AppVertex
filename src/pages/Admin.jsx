@@ -1,3 +1,4 @@
+import { assetUrl } from '../utils/assetHelper';
 import React, { useEffect } from 'react';
 import '../styles/pages/admin.css';
 
@@ -101,7 +102,7 @@ export default function Admin() {
         <div className="login-card">
             <div className="login-header">
                 <div className="login-logo">
-                    <img src="/logo.png" alt="AppVertex Logo" />
+                    <img src={assetUrl("/logo.png")} alt="AppVertex Logo" />
                     <span>AppVertex <strong>Studio</strong></span>
                 </div>
                 <h1 className="login-title" id="authTitle">Sign In</h1>
@@ -183,7 +184,7 @@ export default function Admin() {
     {/* RESPONSIVE MOBILE TOP BAR */}
     <div className="mobile-top-bar" id="mobileTopBar">
         <div className="mobile-brand">
-            <img src="/logo.png" alt="AppVertex" />
+            <img src={assetUrl("/logo.png")} alt="AppVertex" />
             <span>AppVertex <strong>Studio</strong></span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -208,7 +209,7 @@ export default function Admin() {
             <aside className="sidebar" id="sidebar">
                 <div className="sidebar-header">
                     <div className="logo">
-                        <img src="/logo.png" alt="AppVertex Logo" />
+                        <img src={assetUrl("/logo.png")} alt="AppVertex Logo" />
                         AppVertex <span>Studio</span>
                     </div>
                     <button className="close-sidebar-btn" data-onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
