@@ -96,10 +96,10 @@
   --dusty-rose: #ff5722;
 
   /* Typography */
-  --text-primary: #f0f4f8;
-  --text-secondary: #a6b4c7;
-  --text-third: #94a3b8;
-  --text-muted: #94a3b8;
+  --text-primary: #ffffff;
+  --text-secondary: #f1f5f9;
+  --text-third: #e2e8f0;
+  --text-muted: #cbd5e1;
 
   /* Lines & Borders */
   --line: #ffffff1f;
@@ -1261,7 +1261,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 [data-theme="dark"] .hero-info-panel .hero-subnote {
-  color: #94a3b8;
+  color: #cbd5e1;
   font-family: var(--font-primary);
   font-size: 0.84rem;
   line-height: 1.45;
@@ -2082,7 +2082,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 [data-theme="dark"] .service-browser-address {
   background: #121826;
   border-color: #26334D;
-  color: #94A3B8;
+  color: #cbd5e1;
 }
 
 @media (max-width: 860px) {
@@ -2746,7 +2746,7 @@ html:not([data-theme="dark"]) .hero-btn-pill-secondary:hover {
 }
 
 [data-theme="dark"] .founder-bio {
-  color: #94A3B8;
+  color: var(--text-secondary);
 }
 
 .founder-email {

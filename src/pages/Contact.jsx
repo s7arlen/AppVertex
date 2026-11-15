@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useStudioData } from '../context/StudioDataContext';
 import CustomSelect from '../components/CustomSelect';
 import '../styles/pages/contact.css';
 
@@ -40,6 +41,10 @@ const serviceMap = {
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
+  const { submitInquiry, settings } = useStudioData();
+  const studioEmail = settings?.email || 'info@appvertex.in';
+  const studioWhatsApp = settings?.whatsapp || '+91 93229 71253';
+  const cleanWa = studioWhatsApp.replace(/[^0-9]/g, '') || '919322971253';
   const [activeTab, setActiveTab] = useState('calendar'); // 'calendar' | 'proposal'
   const [requestedService, setRequestedService] = useState('');
   const [openFaq, setOpenFaq] = useState(0); // first FAQ open by default
@@ -59,7 +64,7 @@ export default function Contact() {
 
   useScrollReveal([activeTab, openFaq]);
 
-  // Pre-select service from URL parameter
+  // Pre-select service from URL parameter or hash
   useEffect(() => {
     const s = searchParams.get('service');
     if (s) {
@@ -68,6 +73,10 @@ export default function Contact() {
       if (serviceMap[s]) {
         setFormData(prev => ({ ...prev, service: serviceMap[s] }));
       }
+    } else if (window.location.hash === '#proposalPanel' || window.location.hash === '#proposal') {
+      setActiveTab('proposal');
+    } else if (window.location.hash === '#calendarPanel' || window.location.hash === '#booking-calendar') {
+      setActiveTab('calendar');
     }
   }, [searchParams]);
 
@@ -129,52 +138,20 @@ export default function Contact() {
     setSubmitting(true);
     setSubmitStatus(null);
 
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-
-    const inquiry = {
-      id: 'inq-' + Date.now(),
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      company: formData.company.trim(),
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
       service: requestedService || formData.service || '',
       budget: formData.budget || '',
-      message: requestedService
+      details: requestedService
         ? `Requested service: ${requestedService}\n\n${formData.details.trim()}`
-        : formData.details.trim(),
-      date: 'Just now',
-      status: 'unread'
+        : formData.details.trim()
     };
 
     try {
-      const existing = JSON.parse(localStorage.getItem('appvertex_inquiries') || '[]');
-      existing.unshift(inquiry);
-      localStorage.setItem('appvertex_inquiries', JSON.stringify(existing));
-
-      if ('BroadcastChannel' in window) {
-        const syncChannel = new BroadcastChannel('appvertex_sync');
-        syncChannel.postMessage({ type: 'NEW_INQUIRY', data: inquiry });
-        syncChannel.close();
-      }
-
-      try {
-        const response = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: inquiry.name,
-            email: inquiry.email,
-            message: inquiry.message,
-            website: ''
-          })
-        });
-        if (!response.ok) {
-          console.warn(`Contact endpoint response status: ${response.status}`);
-        }
-      } catch (netErr) {
-        console.warn('Contact endpoint network notice (inquiry stored locally):', netErr);
-      }
-
+      await submitInquiry(payload);
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -187,7 +164,7 @@ export default function Contact() {
       });
       setTimeout(() => setSubmitStatus(null), 6000);
     } catch (err) {
-      console.warn('Project proposal delivery failed:', err);
+      console.warn('Project proposal delivery notice:', err);
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 6000);
     } finally {
@@ -385,7 +362,7 @@ export default function Contact() {
                             </div>
                         </div>
                     </div>
-        
+
                     {/* Panel B: Interactive Project Estimator & Proposal Form (Cloud Synced) */}
                     <div className="intake-panel" id="proposalPanel">
                         <div className="intake-form-wrapper">
@@ -394,27 +371,27 @@ export default function Contact() {
                                 <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Tell Us About Your Project</h3>
                                 <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', margin: '0' }}>We review every project proposal within 24 hours and reply with transparent scope breakdown and feasibility notes.</p>
                             </div>
-        
+
                             <form id="contactPageForm">
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="contactName">Your Name</label>
-                                        <input type="text" id="contactName" name="name" className="form-control" placeholder="John Doe" required />
+                                        <input type="text" id="contactName" name="name" className="form-control" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="contactEmail">Work Email</label>
-                                        <input type="email" id="contactEmail" name="email" className="form-control" placeholder="john@company.com" required />
+                                        <input type="email" id="contactEmail" name="email" className="form-control" placeholder="john@company.com" value={formData.email} onChange={handleInputChange} required />
                                     </div>
                                 </div>
-        
+
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="contactPhone">Phone / WhatsApp</label>
-                                        <input type="tel" id="contactPhone" name="phone" className="form-control" placeholder="+91 93229 71253" />
+                                        <input type="tel" id="contactPhone" name="phone" className="form-control" placeholder="+91 93229 71253" value={formData.phone} onChange={handleInputChange} />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="contactCompany">Company / Organization</label>
-                                        <input type="text" id="contactCompany" name="company" className="form-control" placeholder="Acme Studio" />
+                                        <input type="text" id="contactCompany" name="company" className="form-control" placeholder="Acme Studio" value={formData.company} onChange={handleInputChange} />
                                     </div>
                                 </div>
         
@@ -628,7 +605,7 @@ export default function Contact() {
                                 <span className="direct-card-label">DIRECT EMAIL</span>
                                 <i className="fa-regular fa-envelope direct-card-icon"></i>
                             </div>
-                            <a href="mailto:info@appvertex.in" className="direct-card-main-link">info@appvertex.in</a>
+                            <a href={`mailto:${studioEmail}`} className="direct-card-main-link">{studioEmail}</a>
                             <p className="direct-card-note">Monitored daily. We reply within 24 hours on business days with engineering scope feedback.</p>
                         </div>
         
@@ -638,19 +615,19 @@ export default function Contact() {
                                 <span className="direct-card-label">WHATSAPP / QUICK CHAT</span>
                                 <i className="fa-brands fa-whatsapp direct-card-icon"></i>
                             </div>
-                            <a href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27d%20like%20to%20discuss%20a%20project." 
-                               target="_blank" rel="noopener noreferrer" className="direct-card-main-link">+91 93229 71253</a>
+                            <a href={`https://wa.me/${cleanWa}?text=Hi%20AppVertex%21%20I%27d%20like%20to%20discuss%20a%20project.`} 
+                               target="_blank" rel="noopener noreferrer" className="direct-card-main-link">{studioWhatsApp}</a>
                             <p className="direct-card-note">Direct line for quick scoping questions, urgent technical reviews, and immediate availability.</p>
                         </div>
         
-                        {/* Channel 3: Studio Location */}
+                        {/* Channel 3: Global Delivery & Remote-First */}
                         <div className="studio-direct-card">
                             <div className="direct-card-head">
-                                <span className="direct-card-label">STUDIO BASE</span>
-                                <i className="fa-solid fa-location-dot direct-card-icon"></i>
+                                <span className="direct-card-label">GLOBAL DELIVERY</span>
+                                <i className="fa-solid fa-globe direct-card-icon"></i>
                             </div>
-                            <div className="direct-card-main-text">Bangalore &amp; Mangaluru</div>
-                            <p className="direct-card-note">Karnataka, India &bull; Operating across Indian Standard Time (IST &bull; UTC+5:30) with global client overlap.</p>
+                            <div className="direct-card-main-text">Worldwide &bull; Remote-First</div>
+                            <p className="direct-card-note">Digital-first studio serving clients across India, US, Europe &amp; worldwide with flexible timezone overlap and async collaboration.</p>
                         </div>
                     </div>
                 </div>

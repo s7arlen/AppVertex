@@ -172,7 +172,7 @@
         [data-theme="dark"] .services-scroll-cue {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(255, 255, 255, 0.09);
-            color: #94A3B8;
+            color: #CBD5E1;
         }
 
         .services-scroll-cue:hover {
@@ -231,7 +231,7 @@
         }
 
         [data-theme="dark"] .section-lead {
-            color: #94A3B8 !important;
+            color: #F1F5F9 !important;
         }
 
         /* Mobile Spacing Optimizations (Centers content in middle of mobile screen) */
@@ -648,7 +648,7 @@
         }
 
         [data-theme="dark"] .service-action-secondary {
-            color: #94A3B8;
+            color: #CBD5E1;
         }
 
         [data-theme="dark"] .service-action-secondary:hover {

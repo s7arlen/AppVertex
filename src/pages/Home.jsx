@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useStudioData } from '../context/StudioDataContext';
 import CustomSelect from '../components/CustomSelect';
 import UniqueTestimonials from '../components/UniqueTestimonials';
 
@@ -30,7 +31,7 @@ const DEFAULT_PROJECTS = [
     name: 'Loretto Central School',
     category: 'Education Portal',
     categoryLabel: 'Education Portal',
-    description: 'A complete school management portal with admissions, circulars and parent communication built for Loretto Central School.',
+    description: 'A complete school management portal with online admissions intake, circulars, and parent communication built for Loretto Central School (CBSE).',
     previewImage: 'hero-rosewood-showcase.png',
     image: 'hero-rosewood-showcase.png',
     technologies: ['HTML/CSS', 'Firebase', 'JavaScript'],
@@ -45,34 +46,34 @@ const DEFAULT_PROJECTS = [
     id: 'vimasneha',
     title: 'Vimasneha Trust',
     name: 'Vimasneha Trust',
-    category: 'Non-Profit Website',
-    categoryLabel: 'Non-Profit Website',
-    description: 'A clean, accessible website for Vimasneha trust showcasing their social initiatives and enabling donations.',
+    category: 'Non-Profit Platform',
+    categoryLabel: 'Non-Profit Platform',
+    description: 'A clean, accessible community platform for Vimasneha Trust showcasing their social initiatives and enabling community outreach.',
     previewImage: 'hero-floating-phones-transparent.png',
     image: 'hero-floating-phones-transparent.png',
     technologies: ['HTML/CSS', 'JavaScript'],
-    liveUrl: 'https://vimasneha.org',
-    link: 'https://vimasneha.org',
+    liveUrl: '',
+    link: '#contact',
     caseStudyUrl: '#contact',
     altText: 'Vimasneha non-profit website preview',
     year: '2025',
-    urlDisplay: 'vimasneha.org'
+    urlDisplay: 'vimasneha (Case Study)'
   },
   {
     id: 'appvertex-studio',
     title: 'AppVertex Studio',
     name: 'AppVertex Studio',
-    category: 'Digital Agency',
-    categoryLabel: 'Digital Agency',
-    description: "Our own studio website — a showcase of AppVertex's capabilities, services and portfolio.",
+    category: 'Studio Flagship',
+    categoryLabel: 'Studio Flagship',
+    description: "Our official studio platform — a showcase of AppVertex's high-speed architectures, dark mode design systems, and responsive performance.",
     previewImage: 'hero-devices.png',
     image: 'hero-devices.png',
-    technologies: ['HTML/CSS', 'Firebase'],
-    liveUrl: 'https://s7arlen.github.io/AppVertex/',
-    link: 'https://s7arlen.github.io/AppVertex/',
+    technologies: ['React', 'Vite', 'Firebase'],
+    liveUrl: 'https://appvertex.in',
+    link: 'https://appvertex.in',
     caseStudyUrl: '#about',
     altText: 'AppVertex Studio showcase preview',
-    year: '2024',
+    year: '2026',
     urlDisplay: 'appvertex.in'
   }
 ];
@@ -113,39 +114,19 @@ export default function Home() {
   }, [metricsAnimated]);
 
   // 3D Fan Carousel State
-  const [projects, setProjects] = useState(DEFAULT_PROJECTS);
+  const { projects, submitInquiry, settings } = useStudioData();
+  const studioEmail = settings?.email || 'info@appvertex.in';
+  const studioWhatsApp = settings?.whatsapp || '+91 93229 71253';
+  const cleanWa = studioWhatsApp.replace(/[^0-9]/g, '') || '919322971253';
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const stageRef = useRef(null);
   const dragInfoRef = useRef({ isDragging: false, startX: 0, hasMoved: false });
 
-  // Sync projects from localStorage or BroadcastChannel
-  useEffect(() => {
-    try {
-      const cached = localStorage.getItem('appvertex_projects');
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setProjects(parsed);
-        }
-      }
-    } catch (e) {}
-
-    if ('BroadcastChannel' in window) {
-      const channel = new BroadcastChannel('appvertex_sync');
-      channel.onmessage = (e) => {
-        if (e.data && (e.data.type === 'PROJECTS_UPDATED' || e.data.type === 'FULL_SYNC') && Array.isArray(e.data.projects)) {
-          setProjects(e.data.projects);
-        }
-      };
-      return () => channel.close();
-    }
-  }, []);
-
   // Autoplay for 3D Carousel
   useEffect(() => {
     const timer = setInterval(() => {
-      if (!dragInfoRef.current.isDragging && !isAnimating && !document.hidden) {
+      if (!dragInfoRef.current.isDragging && !isAnimating && !document.hidden && projects.length > 0) {
         setActiveIndex((prev) => (prev + 1) % projects.length);
       }
     }, 4500);
@@ -153,13 +134,13 @@ export default function Home() {
   }, [projects.length, isAnimating]);
 
   const goToProject = (idx) => {
-    if (isAnimating) return;
+    if (isAnimating || projects.length === 0) return;
     setIsAnimating(true);
     setActiveIndex((idx + projects.length) % projects.length);
     setTimeout(() => setIsAnimating(false), 450);
   };
 
-  const currentProject = projects[activeIndex] || projects[0];
+  const currentProject = projects[activeIndex] || projects[0] || {};
 
   // Services Scroll Stack logic
   const stackRef = useRef(null);
@@ -227,45 +208,16 @@ export default function Home() {
     setSubmitting(true);
     setSubmitStatus(null);
 
-    const newInq = {
-      id: 'inq-' + Date.now(),
+    const payload = {
       name: formData.name.trim(),
       email: formData.email.trim(),
-      phone: '',
-      company: '',
-      service: formData.service || 'Custom Software / Web',
+      service: formData.service || 'Website Development',
       budget: formData.budget || 'Flexible',
-      message: `Project Type: ${formData.service}\nBudget: ${formData.budget}\n\nDetails:\n${formData.message.trim()}`,
-      date: 'Just now',
-      status: 'unread'
+      details: `Project Type: ${formData.service}\nBudget: ${formData.budget}\n\nDetails:\n${formData.message.trim()}`
     };
 
     try {
-      const existing = JSON.parse(localStorage.getItem('appvertex_inquiries') || '[]');
-      existing.unshift(newInq);
-      localStorage.setItem('appvertex_inquiries', JSON.stringify(existing));
-
-      if ('BroadcastChannel' in window) {
-        const syncChannel = new BroadcastChannel('appvertex_sync');
-        syncChannel.postMessage({ type: 'NEW_INQUIRY', data: newInq });
-        syncChannel.close();
-      }
-
-      const response = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: newInq.name,
-          email: newInq.email,
-          message: newInq.message,
-          website: ''
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Contact notification failed with status ${response.status}`);
-      }
-
+      await submitInquiry(payload);
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -275,11 +227,11 @@ export default function Home() {
         message: '',
         website: ''
       });
-      setTimeout(() => setSubmitStatus(null), 4000);
+      setTimeout(() => setSubmitStatus(null), 5000);
     } catch (err) {
-      console.warn('Contact notification delivery error:', err);
+      console.warn('Contact notification notice:', err);
       setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus(null), 4000);
+      setTimeout(() => setSubmitStatus(null), 5000);
     } finally {
       setSubmitting(false);
     }
@@ -714,16 +666,27 @@ export default function Home() {
               {currentProject?.description || 'Engineered with precision, speed, and clean code.'}
             </p>
             <div className="project-info-actions">
-              <a
-                href={currentProject?.liveUrl || '#contact'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="fan-action-btn fan-action-primary"
-                id="fanPrimaryBtn"
-              >
-                <span>View Live Project</span>
-                <i className="fa-solid fa-arrow-up-right-from-square arr" aria-hidden="true"></i>
-              </a>
+              {currentProject?.liveUrl ? (
+                <a
+                  href={currentProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fan-action-btn fan-action-primary"
+                  id="fanPrimaryBtn"
+                >
+                  <span>View Live Project</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square arr" aria-hidden="true"></i>
+                </a>
+              ) : (
+                <a
+                  href={currentProject?.caseStudyUrl || '#contact'}
+                  className="fan-action-btn fan-action-primary"
+                  id="fanPrimaryBtn"
+                >
+                  <span>Discuss Case Study</span>
+                  <i className="fa-solid fa-arrow-right arr" aria-hidden="true"></i>
+                </a>
+              )}
               <a
                 href={currentProject?.caseStudyUrl || '#contact'}
                 className="fan-action-btn fan-action-secondary"
@@ -943,18 +906,18 @@ export default function Home() {
                 Tell us about your business and what you're trying to solve. We'll come back with an honest assessment and a clear plan.
               </p>
 
-              <a href="mailto:info@appvertex.in" className="contact-direct-card">
+              <a href={`mailto:${studioEmail}`} className="contact-direct-card">
                 <div className="contact-direct-icon">
                   <i className="fas fa-envelope"></i>
                 </div>
                 <div>
                   <span className="contact-direct-label">DIRECT EMAIL</span>
-                  <span className="contact-direct-val">info@appvertex.in</span>
+                  <span className="contact-direct-val">{studioEmail}</span>
                 </div>
               </a>
 
               <a
-                href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project."
+                href={`https://wa.me/${cleanWa}?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-direct-card"
@@ -964,7 +927,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="contact-direct-label">WHATSAPP CHAT</span>
-                  <span className="contact-direct-val">+91 93229 71253</span>
+                  <span className="contact-direct-val">{studioWhatsApp}</span>
                 </div>
               </a>
             </div>

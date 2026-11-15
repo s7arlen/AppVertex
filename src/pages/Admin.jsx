@@ -74,6 +74,10 @@ export default function Admin() {
     document.addEventListener('input', handleInput);
     document.addEventListener('change', handleChange);
 
+    if (typeof window.initAdminConsole === 'function') {
+      window.initAdminConsole();
+    }
+
     const scriptEl = document.createElement('script');
     scriptEl.type = 'module';
     scriptEl.src = '/admin-legacy.js?v=' + Date.now();
@@ -104,7 +108,7 @@ export default function Admin() {
                 <p className="login-subtitle" id="authSubtitle">Enter your credentials to access the admin console</p>
             </div>
             
-            <form className="login-form" id="loginForm" data-onsubmit="handleAuthSubmit(event)">
+            <form className="login-form" id="loginForm" data-onsubmit="handleAuthSubmit(event)" onSubmit={(e) => { e.preventDefault(); if (typeof window.handleAuthSubmit === 'function') window.handleAuthSubmit(e); }}>
                 <div className="form-group">
                     <label className="form-label" htmlFor="loginEmail">Email Address</label>
                     <div className="login-input-wrap">
@@ -115,12 +119,12 @@ export default function Admin() {
                 <div className="form-group">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
                         <label className="form-label" htmlFor="loginPassword" style={{ marginBottom: '0' }}>Password</label>
-                        <button type="button" id="forgotPassLink" data-onclick="handleForgotPassword()" style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'inherit', padding: '0', textDecoration: 'underline' }}>Forgot Password?</button>
+                        <button type="button" id="forgotPassLink" data-onclick="handleForgotPassword()" onClick={() => { if (typeof window.handleForgotPassword === 'function') window.handleForgotPassword(); }} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'inherit', padding: '0', textDecoration: 'underline' }}>Forgot Password?</button>
                     </div>
                     <div className="login-input-wrap">
                         <i className="fas fa-lock"></i>
                         <input type="password" id="loginPassword" placeholder="••••••••" autoComplete="current-password" required />
-                        <button type="button" className="password-toggle-btn" data-onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                        <button type="button" className="password-toggle-btn" data-onclick="togglePasswordVisibility()" onClick={() => { if (typeof window.togglePasswordVisibility === 'function') window.togglePasswordVisibility(); }} aria-label="Toggle password visibility">
                             <i className="fas fa-eye" id="passwordToggleIcon"></i>
                         </button>
                     </div>
@@ -139,6 +143,7 @@ export default function Admin() {
                           id="quickLocalBtn" 
                           className="btn" 
                           data-onclick="handleLocalMode(false)"
+                          onClick={() => { if (typeof window.handleLocalMode === 'function') window.handleLocalMode(false); }}
                           style={{
                               width: '100%',
                               marginTop: '0.85rem',
@@ -168,7 +173,7 @@ export default function Admin() {
             </div>
 
             <div className="login-footer">
-                <a href="index.html" className="back-link">
+                <a href="/" className="back-link">
                     <i className="fas fa-arrow-left"></i> Return to Live Website
                 </a>
             </div>
@@ -252,7 +257,7 @@ export default function Admin() {
 
                 <div className="nav-section">
                     <div className="nav-title">LIVE WEBSITE</div>
-                    <a href="index.html" target="_blank" rel="noopener noreferrer" className="nav-item">
+                    <a href="/" target="_blank" rel="noopener noreferrer" className="nav-item">
                         <div className="nav-item-left"><i className="fas fa-external-link-alt"></i> Open Public Site</div>
                         <i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.75rem' }}></i>
                     </a>
@@ -614,22 +619,22 @@ export default function Admin() {
                         <div className="form-row" style={{ marginTop: '1.25rem' }}>
                             <div className="form-group">
                                 <label className="form-label">Copyright Year</label>
-                                <input type="number" className="form-input" id="footerYear" aria-label="Copyright year" value="2026" />
+                                <input type="number" className="form-input" id="footerYear" aria-label="Copyright year" defaultValue="2026" />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Studio Availability Status</label>
-                                <input type="text" className="form-input" id="studioStatus" aria-label="Studio availability status" value="Open for Select Q4 / 2026 Engagements" />
+                                <input type="text" className="form-input" id="studioStatus" aria-label="Studio availability status" defaultValue="Open for Select Q4 / 2026 Engagements" />
                             </div>
                         </div>
 
                         <div className="form-row">
                             <div className="form-group">
                                 <label className="form-label">Direct Studio Email</label>
-                                <input type="email" className="form-input" id="studioEmail" aria-label="Studio contact email" value="info@appvertex.in" />
+                                <input type="email" className="form-input" id="studioEmail" aria-label="Studio contact email" defaultValue="info@appvertex.in" />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">WhatsApp Contact Number</label>
-                                <input type="text" className="form-input" id="studioWhatsApp" aria-label="Studio WhatsApp number" value="+91 93229 71253" />
+                                <input type="text" className="form-input" id="studioWhatsApp" aria-label="Studio WhatsApp number" defaultValue="+91 93229 71253" />
                             </div>
                         </div>
 
@@ -715,7 +720,7 @@ export default function Admin() {
                     </div>
                     <div className="form-group">
                         <label className="form-label">Year</label>
-                        <input type="number" className="form-input" id="projectYear" aria-label="Project release year" value="2026" />
+                        <input type="number" className="form-input" id="projectYear" aria-label="Project release year" defaultValue="2026" />
                     </div>
                 </div>
 

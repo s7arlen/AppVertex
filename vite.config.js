@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => ({
     outDir: 'dist',
   },
   server: {
-    host: true,
-    port: 5173,
+    host: 'localhost',
+    port: 3000,
   },
 }));

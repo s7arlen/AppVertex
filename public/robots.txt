@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin.html
 
-Sitemap: https://s7arlen.github.io/AppVertex/sitemap.xml
+Sitemap: https://appvertex.in/sitemap.xml

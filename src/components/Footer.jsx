@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useStudioData } from '../context/StudioDataContext';
 
 export default function Footer() {
+  const { settings } = useStudioData();
+  const year = settings?.footerYear || '2026';
+  const email = settings?.email || 'info@appvertex.in';
+  const whatsapp = settings?.whatsapp || '+91 93229 71253';
+  const cleanWa = whatsapp.replace(/[^0-9]/g, '') || '919322971253';
+
   return (
     <footer id="siteFooter">
       <div className="container">
@@ -27,6 +34,7 @@ export default function Footer() {
               <li><Link to="/work" className="footer-link">Selected Work</Link></li>
               <li><Link to="/process" className="footer-link">Our Process</Link></li>
               <li><Link to="/about" className="footer-link">About Studio</Link></li>
+              <li><Link to="/upskill" className="footer-link">Upskill Mentorship</Link></li>
               <li><Link to="/contact" className="footer-link">Contact</Link></li>
             </ul>
           </div>
@@ -49,13 +57,13 @@ export default function Footer() {
             <h4 className="footer-col-title">Connect</h4>
             <ul className="footer-links-list">
               <li>
-                <a href="mailto:info@appvertex.in" className="footer-link">
-                  <i className="fas fa-envelope" style={{ marginRight: '6px' }}></i> info@appvertex.in
+                <a href={`mailto:${email}`} className="footer-link">
+                  <i className="fas fa-envelope" style={{ marginRight: '6px' }}></i> {email}
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/919322971253" target="_blank" rel="noopener noreferrer" className="footer-link">
-                  <i className="fab fa-whatsapp" style={{ marginRight: '6px' }}></i> +91 93229 71253
+                <a href={`https://wa.me/${cleanWa}`} target="_blank" rel="noopener noreferrer" className="footer-link">
+                  <i className="fab fa-whatsapp" style={{ marginRight: '6px' }}></i> {whatsapp}
                 </a>
               </li>
               <li>
@@ -70,12 +78,14 @@ export default function Footer() {
         {/* Footer Bottom Row */}
         <div className="footer-bottom-row">
           <div className="footer-bottom-left">
-            <p className="footer-text">© 2024 AppVertex. All rights reserved.</p>
+            <p className="footer-text">© {year} AppVertex. All rights reserved.</p>
             <span>•</span>
-            <span>Built with precision &amp; modern web architectures</span>
+            <Link to="/privacy" className="footer-link" style={{ fontSize: '0.85rem' }}>Privacy Policy</Link>
+            <span>•</span>
+            <Link to="/terms" className="footer-link" style={{ fontSize: '0.85rem' }}>Terms of Service</Link>
           </div>
           <div>
-            <span>Mangaluru, India · Worldwide Remote</span>
+            <span>Digital-First Studio · Worldwide Remote</span>
           </div>
         </div>
       </div>

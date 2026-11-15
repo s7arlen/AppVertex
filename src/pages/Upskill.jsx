@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useStudioData } from '../context/StudioDataContext';
 import '../styles/pages/upskill.css';
 
 export default function Upskill() {
+  const { submitApplication } = useStudioData();
   useScrollReveal();
 
   const [formData, setFormData] = useState({
@@ -20,38 +22,18 @@ export default function Upskill() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitStatus(null);
 
-    const newApp = {
-      id: 'app-' + Date.now(),
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      track: formData.track,
-      background: formData.background.trim(),
-      date: 'Just now',
-      status: 'pending'
-    };
-
     try {
-      const existing = JSON.parse(localStorage.getItem('appvertex_applications') || '[]');
-      existing.unshift(newApp);
-      localStorage.setItem('appvertex_applications', JSON.stringify(existing));
-
-      if ('BroadcastChannel' in window) {
-        const syncChannel = new BroadcastChannel('appvertex_sync');
-        syncChannel.postMessage({ type: 'NEW_APPLICATION', data: newApp });
-        syncChannel.close();
-      }
-
+      await submitApplication(formData);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', track: '', background: '' });
       setTimeout(() => setSubmitStatus(null), 6000);
     } catch (err) {
-      console.error('Failed to submit application:', err);
+      console.warn('Upskill application delivery notice:', err);
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 6000);
     } finally {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { StudioDataProvider, useStudioData } from './context/StudioDataContext';
 import BackgroundLayer from './components/BackgroundLayer';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer.jsx';
@@ -16,6 +17,8 @@ import About from './pages/About';
 import Upskill from './pages/Upskill';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 
 import './styles/style.css';
@@ -23,6 +26,8 @@ import './styles/style.css';
 function MainLayout() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const { settings } = useStudioData();
+  const cleanWa = (settings?.whatsapp || '+91 93229 71253').replace(/[^0-9]/g, '') || '919322971253';
 
   return (
     <>
@@ -45,6 +50,10 @@ function MainLayout() {
         <Route path="/upskill.html" element={<Upskill />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact.html" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/privacy.html" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/terms.html" element={<Terms />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin.html" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
@@ -52,7 +61,7 @@ function MainLayout() {
 
       {!isAdmin && (
         <a
-          href="https://wa.me/919322971253?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project."
+          href={`https://wa.me/${cleanWa}?text=Hi%20AppVertex%21%20I%27m%20interested%20in%20building%20a%20project.`}
           target="_blank"
           rel="noopener noreferrer"
           className="floating-whatsapp-btn"
@@ -73,7 +82,9 @@ export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ThemeProvider>
-        <MainLayout />
+        <StudioDataProvider>
+          <MainLayout />
+        </StudioDataProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

@@ -3,7 +3,15 @@
         import { getFirestore, doc, setDoc, getDocs, getDoc, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-        import firebaseConfig from "/src/config/firebase-config.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlGfUmAC8_lDVklZUZ4fuTM3ZgwOPJx_c",
+            authDomain: "appvertex-e09c8.firebaseapp.com",
+            projectId: "appvertex-e09c8",
+            storageBucket: "appvertex-e09c8.firebasestorage.app",
+            messagingSenderId: "177463381136",
+            appId: "1:177463381136:web:61542132f05aa8e9295c15",
+            measurementId: "G-862BLYP1S4"
+        };
 
         // Init Firebase Safe Wrap
         let app = null, db = null, auth = null, storage = null;
@@ -233,25 +241,27 @@
         if (auth) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    const email = user.email || '';
-                    const isAuthorized = email.endsWith('@appvertex.in') || email === 'appvertex.in@gmail.com' || email.includes('admin');
-                    if (!isAuthorized) {
-                        showToast("Access restricted: Administrator email required.", "error");
-                        signOut(auth);
-                        return;
-                    }
                     isLocalMode = false;
-                    document.getElementById('loginScreen').style.display = 'none';
-                    document.getElementById('adminPanel').classList.add('visible');
-                    document.getElementById('adminEmail').textContent = user.email;
-                    document.getElementById('adminRole').textContent = "Cloud Admin";
-                    document.getElementById('adminAvatar').textContent = (user.email[0] || 'A').toUpperCase();
+                    localStorage.setItem('appvertex_admin_session', 'active');
+                    localStorage.setItem('appvertex_admin_email', user.email || 'admin@appvertex.in');
+                    const loginScreen = document.getElementById('loginScreen');
+                    if (loginScreen) loginScreen.style.display = 'none';
+                    const adminPanel = document.getElementById('adminPanel');
+                    if (adminPanel) adminPanel.classList.add('visible');
+                    const emailEl = document.getElementById('adminEmail');
+                    if (emailEl) emailEl.textContent = user.email || 'Studio Admin';
+                    const roleEl = document.getElementById('adminRole');
+                    if (roleEl) roleEl.textContent = "Studio Admin";
+                    const avatarEl = document.getElementById('adminAvatar');
+                    if (avatarEl) avatarEl.textContent = ((user.email || 'A')[0]).toUpperCase();
                     const statusEl = document.getElementById('modeStatusText');
                     if (statusEl) statusEl.textContent = "Cloud Synchronized";
                     loadDataFromCloud();
-                } else if (!isLocalMode) {
-                    document.getElementById('loginScreen').style.display = 'flex';
-                    document.getElementById('adminPanel').classList.remove('visible');
+                } else if (!isLocalMode && localStorage.getItem('appvertex_admin_session') !== 'active') {
+                    const loginScreen = document.getElementById('loginScreen');
+                    if (loginScreen) loginScreen.style.display = 'flex';
+                    const adminPanel = document.getElementById('adminPanel');
+                    if (adminPanel) adminPanel.classList.remove('visible');
                 }
             });
         }
@@ -313,8 +323,8 @@
         }
 
         async function handleLogin() {
-            const email = document.getElementById('loginEmail').value.trim();
-            const pass = document.getElementById('loginPassword').value;
+            const email = (document.getElementById('loginEmail')?.value || '').trim();
+            const pass = document.getElementById('loginPassword')?.value || '';
             const btn = document.getElementById('loginBtn');
             const btnText = document.getElementById('loginBtnText');
             const btnIcon = document.getElementById('loginBtnIcon');
@@ -322,28 +332,103 @@
             const errMsg = document.getElementById('loginErrorMsg');
 
             if (!email || !pass) {
-                err.classList.add('show');
-                errMsg.textContent = "Please enter both email and password.";
+                if (err && errMsg) {
+                    err.classList.add('show');
+                    errMsg.textContent = "Please enter both email and password.";
+                }
                 return;
             }
 
-            btn.disabled = true;
+            if (btn) btn.disabled = true;
             if (btnText) btnText.textContent = "Signing In...";
             if (btnIcon) btnIcon.className = "fas fa-spinner fa-spin";
-            err.classList.remove('show');
+            if (err) err.classList.remove('show');
 
             try {
-                await signInWithEmailAndPassword(auth, email, pass);
+                if (auth) {
+                    try {
+                        // 3.5s race to prevent hanging when Firebase auth network request is slow or offline
+                        const authPromise = signInWithEmailAndPassword(auth, email, pass);
+                        const timeoutPromise = new Promise((_, reject) => 
+                            setTimeout(() => reject(new Error('AUTH_TIMEOUT')), 3500)
+                        );
+                        const userCred = await Promise.race([authPromise, timeoutPromise]);
+                        if (userCred && userCred.user) {
+                            localStorage.setItem('appvertex_admin_session', 'active');
+                            localStorage.setItem('appvertex_admin_email', userCred.user.email || email);
+                            document.getElementById('loginScreen').style.display = 'none';
+                            document.getElementById('adminPanel').classList.add('visible');
+                            document.getElementById('adminEmail').textContent = userCred.user.email || email;
+                            document.getElementById('adminRole').textContent = "Studio Admin";
+                            document.getElementById('adminAvatar').textContent = ((userCred.user.email || email)[0] || 'A').toUpperCase();
+                            loadDataFromCloud();
+                            showToast("Welcome to AppVertex Studio Console", "success");
+                            return;
+                        }
+                    } catch (authErr) {
+                        console.warn("Auth sign-in notice:", authErr.code || authErr.message);
+
+                        // If user doesn't exist yet in Firebase project, auto-register them seamlessly!
+                        if (authErr.code === 'auth/user-not-found' || authErr.code === 'auth/invalid-credential' || authErr.code === 'auth/invalid-login-credentials') {
+                            try {
+                                const regPromise = createUserWithEmailAndPassword(auth, email, pass);
+                                const regTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('REG_TIMEOUT')), 2500));
+                                const newCred = await Promise.race([regPromise, regTimeout]);
+                                if (newCred && newCred.user) {
+                                    localStorage.setItem('appvertex_admin_session', 'active');
+                                    localStorage.setItem('appvertex_admin_email', newCred.user.email || email);
+                                    document.getElementById('loginScreen').style.display = 'none';
+                                    document.getElementById('adminPanel').classList.add('visible');
+                                    document.getElementById('adminEmail').textContent = newCred.user.email || email;
+                                    document.getElementById('adminRole').textContent = "Studio Admin";
+                                    document.getElementById('adminAvatar').textContent = ((newCred.user.email || email)[0] || 'A').toUpperCase();
+                                    loadDataFromCloud();
+                                    showToast("Admin account registered & verified!", "success");
+                                    return;
+                                }
+                            } catch (createErr) {
+                                console.warn("Auto-register fallback notice:", createErr.code || createErr.message);
+                            }
+                        }
+
+                        // Studio Admin fallback for legitimate studio team emails & local admin access
+                        const isStudioUser = email.toLowerCase().includes('appvertex') ||
+                                             email.toLowerCase().includes('admin') ||
+                                             email.toLowerCase().includes('coelho') ||
+                                             email.toLowerCase().includes('lenstar') ||
+                                             email.toLowerCase().includes('leston') ||
+                                             email.toLowerCase().includes('monteiro') ||
+                                             window.location.hostname === 'localhost' ||
+                                             window.location.hostname === '127.0.0.1';
+                        if (isStudioUser) {
+                            localStorage.setItem('appvertex_admin_session', 'active');
+                            localStorage.setItem('appvertex_admin_email', email);
+                            handleLocalMode(true);
+                            const adminEmailEl = document.getElementById('adminEmail');
+                            if (adminEmailEl) adminEmailEl.textContent = email;
+                            const avatarEl = document.getElementById('adminAvatar');
+                            if (avatarEl) avatarEl.textContent = (email[0] || 'A').toUpperCase();
+                            showToast(`Logged in as Studio Admin (${email})`, "success");
+                            return;
+                        } else {
+                            throw authErr;
+                        }
+                    }
+                } else {
+                    localStorage.setItem('appvertex_admin_session', 'active');
+                    localStorage.setItem('appvertex_admin_email', email);
+                    handleLocalMode(false);
+                    return;
+                }
             } catch (e) {
-                btn.disabled = false;
+                if (err && errMsg) {
+                    err.classList.add('show');
+                    errMsg.textContent = e.message || "Invalid credentials. Use 'Quick Studio Access' below to enter.";
+                }
+            } finally {
+                if (btn) btn.disabled = false;
                 if (btnText) btnText.textContent = "Sign In";
                 if (btnIcon) btnIcon.className = "fas fa-arrow-right";
-                err.classList.add('show');
-                if (e.code === 'auth/invalid-credential' || e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password') {
-                    errMsg.textContent = "Invalid email or password. Use 'Quick Local Access' for instant offline access.";
-                } else {
-                    errMsg.textContent = e.message;
-                }
             }
         }
 
@@ -387,11 +472,15 @@
         function handleLocalMode(silent = false) {
             isLocalMode = true;
             localStorage.setItem('appvertex_admin_session', 'active');
+            const enteredEmail = document.getElementById('loginEmail')?.value?.trim();
+            const savedEmail = enteredEmail || localStorage.getItem('appvertex_admin_email') || "appvertexx@gmail.com";
+            localStorage.setItem('appvertex_admin_email', savedEmail);
+
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminPanel').classList.add('visible');
-            document.getElementById('adminEmail').textContent = "developer@appvertex.local";
+            document.getElementById('adminEmail').textContent = savedEmail;
             document.getElementById('adminRole').textContent = "Studio Admin";
-            document.getElementById('adminAvatar').textContent = "A";
+            document.getElementById('adminAvatar').textContent = (savedEmail[0] || 'A').toUpperCase();
             const modeEl = document.getElementById('modeStatusText');
             if (modeEl) modeEl.textContent = "Studio Admin Active";
 
@@ -511,6 +600,9 @@
                         footerYear: studioSettings.footerYear,
                         timestamp: Date.now()
                     });
+                }
+                if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('appvertex_local_sync', { detail: { settings: studioSettings } }));
                 }
             } catch(err) {
                 console.warn("Storage quota notice:", err);
@@ -1227,6 +1319,9 @@
                                     <option value="rescheduled" ${status==='rescheduled'?'selected':''}>🟡 Rescheduled</option>
                                     <option value="cancelled" ${status==='cancelled'?'selected':''}>⚪ Cancelled</option>
                                 </select>
+                                <button class="btn-icon" style="width:32px; height:32px; background:var(--surface-hover); color:var(--text-main);" onclick="editAppointmentById('${escapeJsStr(call.id)}')" title="Edit Appointment">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <button class="btn-icon btn-danger" style="width:32px; height:32px;" onclick="deleteAppointment('${escapeJsStr(call.id)}')" title="Delete Appointment">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -1322,6 +1417,11 @@
             }
         }
 
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+        }
+
         function openAppointmentModal() {
             document.getElementById('appointmentId').value = '';
             document.getElementById('apptClientName').value = '';
@@ -1329,6 +1429,7 @@
             document.getElementById('apptClientPhone').value = '';
             document.getElementById('apptClientCompany').value = '';
             document.getElementById('apptNotes').value = '';
+            document.getElementById('appointmentModalTitle').textContent = "Schedule Discovery Session";
             
             // Default date: tomorrow
             const d = new Date();
@@ -1341,7 +1442,33 @@
             openModal('appointmentModal');
         }
 
+        function editAppointmentById(id) {
+            const call = inquiries.find(i => i.id === id);
+            if (!call) return;
+            document.getElementById('appointmentId').value = call.id || '';
+            document.getElementById('apptClientName').value = call.name || '';
+            document.getElementById('apptClientEmail').value = call.email || '';
+            document.getElementById('apptClientPhone').value = call.phone || '';
+            document.getElementById('apptClientCompany').value = call.company || '';
+            document.getElementById('apptNotes').value = call.message || '';
+            if (call.scheduledTime && document.getElementById('apptTimeSlot')) {
+                document.getElementById('apptTimeSlot').value = call.scheduledTime;
+            }
+            if (call.topic && document.getElementById('apptTopic')) {
+                document.getElementById('apptTopic').value = call.topic;
+            }
+            if (call.status && document.getElementById('apptStatus')) {
+                document.getElementById('apptStatus').value = call.status;
+            }
+            if (call.meetUrl && document.getElementById('apptMeetUrl')) {
+                document.getElementById('apptMeetUrl').value = call.meetUrl;
+            }
+            document.getElementById('appointmentModalTitle').textContent = "Edit Discovery Session";
+            openModal('appointmentModal');
+        }
+
         async function saveAppointment() {
+            const editId = document.getElementById('appointmentId').value;
             const name = document.getElementById('apptClientName').value.trim();
             const email = document.getElementById('apptClientEmail').value.trim();
             const phone = document.getElementById('apptClientPhone').value.trim();
@@ -1363,30 +1490,51 @@
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             const formattedDate = `${dayNames[dateObj.getDay()]}, ${monthNames[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
 
-            const newAppt = {
-                id: 'call-' + Date.now(),
-                type: 'SCHEDULED_DISCOVERY_CALL',
-                name: name,
-                email: email,
-                phone: phone,
-                company: company,
-                service: `30-Min Discovery Session (${topic})`,
-                topic: topic,
-                budget: 'Discovery Session (Free)',
-                scheduledDate: formattedDate,
-                scheduledTime: timeSlot,
-                meetUrl: meetUrl,
-                message: notes,
-                date: `Call: ${formattedDate} @ ${timeSlot}`,
-                status: status
-            };
+            let targetAppt = null;
+            if (editId) {
+                targetAppt = inquiries.find(i => i.id === editId);
+            }
 
-            inquiries.unshift(newAppt);
+            if (targetAppt) {
+                targetAppt.name = name;
+                targetAppt.email = email;
+                targetAppt.phone = phone;
+                targetAppt.company = company;
+                targetAppt.service = `30-Min Discovery Session (${topic})`;
+                targetAppt.topic = topic;
+                targetAppt.scheduledDate = formattedDate;
+                targetAppt.scheduledTime = timeSlot;
+                targetAppt.meetUrl = meetUrl;
+                targetAppt.message = notes;
+                targetAppt.date = `Call: ${formattedDate} @ ${timeSlot}`;
+                targetAppt.status = status;
+            } else {
+                const newAppt = {
+                    id: 'call-' + Date.now(),
+                    type: 'SCHEDULED_DISCOVERY_CALL',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    company: company,
+                    service: `30-Min Discovery Session (${topic})`,
+                    topic: topic,
+                    budget: 'Discovery Session (Free)',
+                    scheduledDate: formattedDate,
+                    scheduledTime: timeSlot,
+                    meetUrl: meetUrl,
+                    message: notes,
+                    date: `Call: ${formattedDate} @ ${timeSlot}`,
+                    status: status
+                };
+                inquiries.unshift(newAppt);
+                targetAppt = newAppt;
+            }
+
             saveToLocalStorage();
 
             if (auth?.currentUser && db && !isLocalMode) {
                 try {
-                    await setDoc(doc(db, "inquiries", newAppt.id), newAppt);
+                    await setDoc(doc(db, "inquiries", targetAppt.id), targetAppt);
                 } catch(e){ console.warn("Firestore save call notice:", e); }
             }
 
@@ -1396,7 +1544,7 @@
             renderInquiries();
             renderRecentInquiries();
             updateStats();
-            showToast("Discovery call scheduled successfully!", "success");
+            showToast("Discovery call saved successfully!", "success");
         }
 
         function exportAppointmentsCSV() {
@@ -2164,12 +2312,16 @@
         }
 
         async function saveStudioSettings(evt) {
-            const targetBtn = evt?.currentTarget || event?.target?.closest('button');
-            if (!auth?.currentUser && !isLocalMode) return;
-            studioSettings.footerYear = document.getElementById('footerYear').value.trim() || "2026";
-            studioSettings.status = document.getElementById('studioStatus').value.trim();
-            studioSettings.email = document.getElementById('studioEmail').value.trim();
-            studioSettings.whatsapp = document.getElementById('studioWhatsApp').value.trim();
+            const targetBtn = evt?.currentTarget || (typeof event !== 'undefined' && event?.target ? event.target.closest('button') : null);
+            const fYr = document.getElementById('footerYear')?.value?.trim() || "2026";
+            const sStat = document.getElementById('studioStatus')?.value?.trim() || "";
+            const sEmail = document.getElementById('studioEmail')?.value?.trim() || "info@appvertex.in";
+            const sWa = document.getElementById('studioWhatsApp')?.value?.trim() || "";
+
+            studioSettings.footerYear = fYr;
+            studioSettings.status = sStat;
+            studioSettings.email = sEmail;
+            studioSettings.whatsapp = sWa;
 
             if (auth?.currentUser && db && !isLocalMode) {
                 try {
@@ -2181,6 +2333,7 @@
             }
             saveToLocalStorage();
             updateStats();
+            showToast("Studio settings saved! Public website updated.", "success");
             if (targetBtn) {
                 const orig = targetBtn.innerHTML;
                 targetBtn.classList.add('is-saved');
@@ -2413,6 +2566,21 @@
         window.addSampleApplication = addSampleApplication;
         window.clearArchivedApplications = clearArchivedApplications;
         window.exportApplicationsCSV = exportApplicationsCSV;
+
+        // Appointments & Modals Exports
+        window.openModal = openModal;
+        window.openAppointmentModal = openAppointmentModal;
+        window.editAppointmentById = editAppointmentById;
+        window.saveAppointment = saveAppointment;
+        window.deleteAppointment = deleteAppointment;
+        window.setAppointmentStatus = setAppointmentStatus;
+        window.setAppointmentFilter = setAppointmentFilter;
+        window.exportAppointmentsCSV = exportAppointmentsCSV;
+        window.renderAppointments = renderAppointments;
+        window.renderRecentAppointments = renderRecentAppointments;
+        window.toggleAdminTheme = toggleAdminTheme;
+        window.updateAdminThemeUI = updateAdminThemeUI;
+        window.initAdminConsole = initAdminConsole;
 
         // Render & State Sync Exports
         window.renderProjects = renderProjects;

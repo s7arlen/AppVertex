@@ -33,7 +33,7 @@
   max-width: 660px;
 }
 
-/* 3-CARD ASYMMETRIC GRID */
+/* 3-CARD ASYMMETRIC GRID & MARQUEE TRACK */
 .unique-testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -41,6 +41,84 @@
   align-items: stretch;
   max-width: 1060px;
   margin: 0 auto;
+}
+
+/* ─── CONTINUOUS INFINITE MARQUEE TRACK (OPTION 3) ─── */
+.testimonials-marquee-viewport {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  position: relative;
+  padding: 18px 0 28px;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.testimonials-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeScroll 45s linear infinite;
+}
+
+.testimonials-marquee-viewport:hover .testimonials-marquee-track,
+.testimonials-marquee-viewport:focus-within .testimonials-marquee-track {
+  animation-play-state: paused;
+}
+
+.testimonials-marquee-track .asym-card {
+  width: clamp(320px, 28vw, 360px);
+  flex-shrink: 0;
+  height: 420px;
+}
+
+.testimonials-marquee-track .card-two-tone {
+  flex-direction: column !important;
+  height: 420px !important;
+  grid-column: auto !important;
+}
+
+.testimonials-marquee-track .two-tone-top-media {
+  width: 100% !important;
+  height: 180px !important;
+}
+
+.testimonials-marquee-track .two-tone-bottom-block {
+  width: 100% !important;
+}
+
+.testimonials-marquee-track .two-tone-wave-seam {
+  display: block !important;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Reduced Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee-track {
+    animation-duration: 90s;
+  }
 }
 
 /* BASE ASYMMETRIC CARD STYLES */
@@ -508,7 +586,7 @@
 .modal-author-identity {
   font-family: var(--font-primary);
   font-size: 0.88rem;
-  color: #94a3b8;
+  color: #cbd5e1;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 16px;
 }

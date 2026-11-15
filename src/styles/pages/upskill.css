@@ -398,7 +398,9 @@
             border-radius: var(--radius-lg);
             padding: 4rem 2.5rem;
             text-align: center;
-            margin: 5rem 0 3rem;
+            margin: 5rem auto 3rem;
+            max-width: 920px;
+            width: 100%;
             position: relative;
             overflow: hidden;
         }

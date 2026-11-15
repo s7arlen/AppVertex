@@ -617,29 +617,31 @@
         .closing-banner {
             background: linear-gradient(135deg, rgba(128, 15, 53, 0.08) 0%, rgba(239, 135, 13, 0.1) 100%);
             border: 1px solid rgba(128, 15, 53, 0.2);
-            border-radius: var(--radius-lg);
-            padding: 4rem 2.5rem;
+            border-radius: 20px;
+            padding: clamp(2.25rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
             text-align: center;
-            margin: 5rem 0 3rem;
+            margin: 4rem auto 2.5rem;
+            max-width: 760px;
+            width: 100%;
             position: relative;
             overflow: hidden;
         }
 
         .closing-banner-title {
             font-family: var(--font-primary);
-            font-size: clamp(2rem, 3.8vw, 3rem);
-            font-weight: 900;
+            font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+            font-weight: 800;
             letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.85rem;
         }
 
         .closing-banner-desc {
-            font-size: 1.1rem;
-            line-height: 1.7;
+            font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+            line-height: 1.65;
             color: var(--text-secondary);
-            max-width: 680px;
-            margin: 0 auto 2.25rem;
+            max-width: 580px;
+            margin: 0 auto 1.75rem;
         }
 
         .closing-banner-actions {
