@@ -1,8 +1,6 @@
 import { assetUrl } from '../utils/assetHelper';
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
-const FIRESTORE_BASE = 'https://firestore.googleapis.com/v1/projects/appvertex-e09c8/databases/(default)/documents';
-
 export const DEFAULT_PROJECTS = [
   {
     id: "loretto-portal",
@@ -167,46 +165,6 @@ export const DEFAULT_SETTINGS = {
   whatsapp: "+91 93229 71253"
 };
 
-function parseFirestoreDoc(doc) {
-  if (!doc || !doc.fields) return null;
-  const res = {};
-  for (const [key, val] of Object.entries(doc.fields)) {
-    if (val.stringValue !== undefined) res[key] = val.stringValue;
-    else if (val.integerValue !== undefined) res[key] = Number(val.integerValue);
-    else if (val.booleanValue !== undefined) res[key] = val.booleanValue;
-    else if (val.arrayValue !== undefined) {
-      res[key] = (val.arrayValue.values || []).map((v) => v.stringValue || v.integerValue || v);
-    } else if (val.mapValue !== undefined) {
-      res[key] = val.mapValue.fields;
-    }
-  }
-  if (!res.id && doc.name) {
-    res.id = doc.name.split('/').pop();
-  }
-  return res;
-}
-
-function toFirestoreFields(obj) {
-  const fields = {};
-  for (const [key, val] of Object.entries(obj)) {
-    if (val === undefined || val === null) continue;
-    if (typeof val === 'string') {
-      fields[key] = { stringValue: val };
-    } else if (typeof val === 'number') {
-      fields[key] = { integerValue: String(Math.round(val)) };
-    } else if (typeof val === 'boolean') {
-      fields[key] = { booleanValue: val };
-    } else if (Array.isArray(val)) {
-      fields[key] = {
-        arrayValue: {
-          values: val.map((v) => ({ stringValue: String(v) }))
-        }
-      };
-    }
-  }
-  return { fields };
-}
-
 const StudioDataContext = createContext(null);
 
 export function StudioDataProvider({ children }) {
@@ -280,70 +238,6 @@ export function StudioDataProvider({ children }) {
       }
     } catch (e) {}
   }, []);
-
-  // Sync with Firestore Cloud in background
-  const fetchCloudData = useCallback(async () => {
-    try {
-      // 1. Projects
-      const pRes = await fetch(`${FIRESTORE_BASE}/projects`);
-      if (pRes.ok) {
-        const pData = await pRes.json();
-        if (pData.documents && pData.documents.length > 0) {
-          const cloudProjects = pData.documents.map(parseFirestoreDoc).filter(Boolean);
-          if (cloudProjects.length > 0) {
-            setProjects((prev) => {
-              // Merge cloud with defaults if cloud has only a few
-              const mergedMap = new Map();
-              DEFAULT_PROJECTS.forEach(p => mergedMap.set(p.id, p));
-              cloudProjects.forEach(p => mergedMap.set(p.id, { ...mergedMap.get(p.id), ...p }));
-              const merged = Array.from(mergedMap.values());
-              try { localStorage.setItem('appvertex_projects', JSON.stringify(merged)); } catch(e){}
-              return merged;
-            });
-          }
-        }
-      }
-
-      // 2. Testimonials
-      const tRes = await fetch(`${FIRESTORE_BASE}/testimonials`);
-      if (tRes.ok) {
-        const tData = await tRes.json();
-        if (tData.documents && tData.documents.length > 0) {
-          const cloudTestimonials = tData.documents.map(parseFirestoreDoc).filter(Boolean);
-          if (cloudTestimonials.length > 0) {
-            setTestimonials((prev) => {
-              const mergedMap = new Map();
-              DEFAULT_TESTIMONIALS.forEach(t => mergedMap.set(t.id, t));
-              cloudTestimonials.forEach(t => mergedMap.set(t.id, { ...mergedMap.get(t.id), ...t }));
-              const merged = Array.from(mergedMap.values());
-              try { localStorage.setItem('appvertex_testimonials', JSON.stringify(merged)); } catch(e){}
-              return merged;
-            });
-          }
-        }
-      }
-
-      // 3. Settings
-      const sRes = await fetch(`${FIRESTORE_BASE}/settings/studio`);
-      if (sRes.ok) {
-        const sData = await sRes.json();
-        const cloudSettings = parseFirestoreDoc(sData);
-        if (cloudSettings) {
-          setSettings((prev) => {
-            const updated = { ...prev, ...cloudSettings };
-            try { localStorage.setItem('appvertex_settings', JSON.stringify(updated)); } catch(e){}
-            return updated;
-          });
-        }
-      }
-    } catch (e) {
-      console.warn("Notice: Firestore cloud background sync:", e.message);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchCloudData();
-  }, [fetchCloudData]);
 
   // Real-time inter-tab & Admin Panel listener via BroadcastChannel and Storage Events
   useEffect(() => {
@@ -459,32 +353,6 @@ export function StudioDataProvider({ children }) {
       channel.close();
     }
 
-    // 3. Send to Cloud Firestore
-    try {
-      fetch(`${FIRESTORE_BASE}/inquiries?documentId=${inq.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(toFirestoreFields(inq))
-      }).catch(() => {});
-    } catch (e) {}
-
-    // A visible success state must represent an acknowledged delivery, not just
-    // a browser-local cache write.
-    const notificationResponse = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: inq.name,
-        email: inq.email,
-        message: inq.message,
-        website: ''
-      })
-    });
-
-    if (!notificationResponse.ok) {
-      throw new Error('The project inquiry notification could not be delivered.');
-    }
-
     return { success: true, inquiry: inq };
   }, []);
 
@@ -524,15 +392,6 @@ export function StudioDataProvider({ children }) {
       channel.close();
     }
 
-    // 3. Send to Cloud Firestore
-    try {
-      fetch(`${FIRESTORE_BASE}/inquiries?documentId=${appt.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(toFirestoreFields(appt))
-      }).catch(() => {});
-    } catch (e) {}
-
     return { success: true, appointment: appt };
   }, []);
 
@@ -564,30 +423,6 @@ export function StudioDataProvider({ children }) {
       channel.close();
     }
 
-    // 3. Send to Cloud Firestore
-    try {
-      fetch(`${FIRESTORE_BASE}/applications?documentId=${app.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(toFirestoreFields(app))
-      }).catch(() => {});
-    } catch (e) {}
-
-    const notificationResponse = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: app.name,
-        email: app.email,
-        message: `[UP-SKILL MENTORSHIP APPLICATION]\nTrack: ${app.track}\nPhone: ${app.phone}\n\nExperience & Goals:\n${app.background}`,
-        website: ''
-      })
-    });
-
-    if (!notificationResponse.ok) {
-      throw new Error('The mentorship application notification could not be delivered.');
-    }
-
     return { success: true, application: app };
   }, []);
 
@@ -600,7 +435,7 @@ export function StudioDataProvider({ children }) {
     submitInquiry,
     submitAppointment,
     submitApplication,
-    refreshData: fetchCloudData
+    refreshData: () => {}
   };
 
   return (

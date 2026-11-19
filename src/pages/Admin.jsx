@@ -436,15 +436,15 @@ export default function Admin() {
                         <div id="dashboardRecentProjects" className="item-list"></div>
                     </div>
 
-                    {/* QUICK CLOUD / STORAGE SYNC */}
+                    {/* STUDIO STORAGE & BACKUP */}
                     <div className="card" style={{ background: 'var(--gradient-surface)' }}>
-                        <h3>Studio Sync &amp; Migration</h3>
+                        <h3>Studio Storage &amp; Backup</h3>
                         <p style={{ color: 'var(--text-muted)', margin: '0.5rem 0 1.25rem', fontSize: '0.9rem' }}>
-                            Synchronize your projects, reviews, and settings between your browser's local cache and Cloud Firestore.
+                            Manage your projects, reviews, and settings with local-first persistence and portable JSON backups.
                         </p>
                         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                             <button className="btn btn-primary" data-onclick="seedDefaultData()"><i className="fas fa-seedling"></i> Restore Default Content</button>
-                            <button className="btn btn-secondary" data-onclick="importLocalData()"><i className="fas fa-cloud-upload-alt"></i> Push to Cloud Firestore</button>
+                            <button className="btn btn-secondary" data-onclick="importLocalData()"><i className="fas fa-sync-alt"></i> Refresh Local Cache</button>
                             <button className="btn btn-secondary" data-onclick="downloadJSONBackup()"><i className="fas fa-download"></i> Download Full JSON Backup</button>
                         </div>
                     </div>

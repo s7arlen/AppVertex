@@ -29,3 +29,7 @@ scratch/
 *.bak*
 .archive/
 
+
+# Security audit records
+AUDIT.md
+*.audit.md

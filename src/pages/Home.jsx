@@ -370,9 +370,15 @@ export default function Home() {
       <section id="hero" className="hero-anidea-section" aria-label="Hero Overview">
         <div className="container hero-container">
           <div className="hero-headline-group">
-            <span className="hero-line hero-line-top">WE BUILD</span>
-            <h1 className="hero-line hero-line-main">DEPENDABLE SYSTEMS</h1>
-            <span className="hero-line hero-line-bottom">FOR GROWING BUSINESSES.</span>
+            <div className="hero-float-wrap hero-float-top">
+              <span className="hero-line hero-line-top">WE BUILD</span>
+            </div>
+            <div className="hero-float-wrap hero-float-main">
+              <h1 className="hero-line hero-line-main">DEPENDABLE SYSTEMS</h1>
+            </div>
+            <div className="hero-float-wrap hero-float-bottom">
+              <span className="hero-line hero-line-bottom">FOR GROWING BUSINESSES.</span>
+            </div>
           </div>
 
           <div className="hero-info-panel">

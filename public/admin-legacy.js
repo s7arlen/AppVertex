@@ -1,31 +1,6 @@
 
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, setDoc, getDocs, getDoc, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyAlGfUmAC8_lDVklZUZ4fuTM3ZgwOPJx_c",
-            authDomain: "appvertex-e09c8.firebaseapp.com",
-            projectId: "appvertex-e09c8",
-            storageBucket: "appvertex-e09c8.firebasestorage.app",
-            messagingSenderId: "177463381136",
-            appId: "1:177463381136:web:61542132f05aa8e9295c15",
-            measurementId: "G-862BLYP1S4"
-        };
-
-        // Init Firebase Safe Wrap
-        let app = null, db = null, auth = null, storage = null;
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-            storage = getStorage(app);
-        } catch (err) {
-            console.warn("Firebase initialization notice:", err);
-        }
-
-        // State Store
-        let isLocalMode = false;
+        // AppVertex Admin Console - Standalone Local Studio Admin
+let isLocalMode = true;
 
         function escapeJsStr(val) {
             return String(val ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/</g, '\\x3c').replace(/>/g, '\\x3e');
@@ -238,75 +213,8 @@
         ];
 
         // ─── AUTHENTICATION HANDLERS ───
-        if (auth) {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    isLocalMode = false;
-                    localStorage.setItem('appvertex_admin_session', 'active');
-                    localStorage.setItem('appvertex_admin_email', user.email || 'admin@appvertex.in');
-                    const loginScreen = document.getElementById('loginScreen');
-                    if (loginScreen) loginScreen.style.display = 'none';
-                    const adminPanel = document.getElementById('adminPanel');
-                    if (adminPanel) adminPanel.classList.add('visible');
-                    const emailEl = document.getElementById('adminEmail');
-                    if (emailEl) emailEl.textContent = user.email || 'Studio Admin';
-                    const roleEl = document.getElementById('adminRole');
-                    if (roleEl) roleEl.textContent = "Studio Admin";
-                    const avatarEl = document.getElementById('adminAvatar');
-                    if (avatarEl) avatarEl.textContent = ((user.email || 'A')[0]).toUpperCase();
-                    const statusEl = document.getElementById('modeStatusText');
-                    if (statusEl) statusEl.textContent = "Cloud Synchronized";
-                    loadDataFromCloud();
-                } else if (!isLocalMode && localStorage.getItem('appvertex_admin_session') !== 'active') {
-                    const loginScreen = document.getElementById('loginScreen');
-                    if (loginScreen) loginScreen.style.display = 'flex';
-                    const adminPanel = document.getElementById('adminPanel');
-                    if (adminPanel) adminPanel.classList.remove('visible');
-                }
-            });
-        }
-
-        let isRegisterMode = false;
-
-        function toggleAuthMode() {
-            // Registration disabled for public security
-        }
-
-        async function handleAuthSubmit(e) {
-            if (e) e.preventDefault();
-            await handleLogin();
-        }
-
-        async function handleForgotPassword() {
-            const emailInput = document.getElementById('loginEmail');
-            const email = emailInput ? emailInput.value.trim() : '';
-            const err = document.getElementById('loginError');
-            const errMsg = document.getElementById('loginErrorMsg');
-
-            if (!email) {
-                if (err && errMsg) {
-                    err.classList.add('show');
-                    errMsg.textContent = "Please enter your admin email above first, then click Forgot Password.";
-                }
-                if (emailInput) emailInput.focus();
-                return;
-            }
-
-            if (!auth) {
-                showToast("Firebase Auth is unavailable in offline demo mode.", "error");
-                return;
-            }
-
-            try {
-                await sendPasswordResetEmail(auth, email);
-                showToast(`Password reset link sent to ${email}! Check your inbox.`, "success");
-                if (err) err.classList.remove('show');
-            } catch(e) {
-                if (err && errMsg) {
-                    err.classList.add('show');
-                    errMsg.textContent = e.message || "Failed to send reset email.";
-                }
-            }
+        function handleForgotPassword() {
+            showToast("Admin access is available via your studio email or Quick Studio Access.", "info");
         }
 
         function togglePasswordVisibility() {
@@ -320,6 +228,11 @@
                 input.type = 'password';
                 icon.className = 'fas fa-eye';
             }
+        }
+
+        async function handleAuthSubmit(e) {
+            if (e) e.preventDefault();
+            await handleLogin();
         }
 
         async function handleLogin() {
@@ -345,127 +258,23 @@
             if (err) err.classList.remove('show');
 
             try {
-                if (auth) {
-                    try {
-                        // 3.5s race to prevent hanging when Firebase auth network request is slow or offline
-                        const authPromise = signInWithEmailAndPassword(auth, email, pass);
-                        const timeoutPromise = new Promise((_, reject) => 
-                            setTimeout(() => reject(new Error('AUTH_TIMEOUT')), 3500)
-                        );
-                        const userCred = await Promise.race([authPromise, timeoutPromise]);
-                        if (userCred && userCred.user) {
-                            localStorage.setItem('appvertex_admin_session', 'active');
-                            localStorage.setItem('appvertex_admin_email', userCred.user.email || email);
-                            document.getElementById('loginScreen').style.display = 'none';
-                            document.getElementById('adminPanel').classList.add('visible');
-                            document.getElementById('adminEmail').textContent = userCred.user.email || email;
-                            document.getElementById('adminRole').textContent = "Studio Admin";
-                            document.getElementById('adminAvatar').textContent = ((userCred.user.email || email)[0] || 'A').toUpperCase();
-                            loadDataFromCloud();
-                            showToast("Welcome to AppVertex Studio Console", "success");
-                            return;
-                        }
-                    } catch (authErr) {
-                        console.warn("Auth sign-in notice:", authErr.code || authErr.message);
-
-                        // If user doesn't exist yet in Firebase project, auto-register them seamlessly!
-                        if (authErr.code === 'auth/user-not-found' || authErr.code === 'auth/invalid-credential' || authErr.code === 'auth/invalid-login-credentials') {
-                            try {
-                                const regPromise = createUserWithEmailAndPassword(auth, email, pass);
-                                const regTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('REG_TIMEOUT')), 2500));
-                                const newCred = await Promise.race([regPromise, regTimeout]);
-                                if (newCred && newCred.user) {
-                                    localStorage.setItem('appvertex_admin_session', 'active');
-                                    localStorage.setItem('appvertex_admin_email', newCred.user.email || email);
-                                    document.getElementById('loginScreen').style.display = 'none';
-                                    document.getElementById('adminPanel').classList.add('visible');
-                                    document.getElementById('adminEmail').textContent = newCred.user.email || email;
-                                    document.getElementById('adminRole').textContent = "Studio Admin";
-                                    document.getElementById('adminAvatar').textContent = ((newCred.user.email || email)[0] || 'A').toUpperCase();
-                                    loadDataFromCloud();
-                                    showToast("Admin account registered & verified!", "success");
-                                    return;
-                                }
-                            } catch (createErr) {
-                                console.warn("Auto-register fallback notice:", createErr.code || createErr.message);
-                            }
-                        }
-
-                        // Studio Admin fallback for legitimate studio team emails & local admin access
-                        const isStudioUser = email.toLowerCase().includes('appvertex') ||
-                                             email.toLowerCase().includes('admin') ||
-                                             email.toLowerCase().includes('coelho') ||
-                                             email.toLowerCase().includes('lenstar') ||
-                                             email.toLowerCase().includes('leston') ||
-                                             email.toLowerCase().includes('monteiro') ||
-                                             window.location.hostname === 'localhost' ||
-                                             window.location.hostname === '127.0.0.1';
-                        if (isStudioUser) {
-                            localStorage.setItem('appvertex_admin_session', 'active');
-                            localStorage.setItem('appvertex_admin_email', email);
-                            handleLocalMode(true);
-                            const adminEmailEl = document.getElementById('adminEmail');
-                            if (adminEmailEl) adminEmailEl.textContent = email;
-                            const avatarEl = document.getElementById('adminAvatar');
-                            if (avatarEl) avatarEl.textContent = (email[0] || 'A').toUpperCase();
-                            showToast(`Logged in as Studio Admin (${email})`, "success");
-                            return;
-                        } else {
-                            throw authErr;
-                        }
-                    }
-                } else {
-                    localStorage.setItem('appvertex_admin_session', 'active');
-                    localStorage.setItem('appvertex_admin_email', email);
-                    handleLocalMode(false);
-                    return;
-                }
+                localStorage.setItem('appvertex_admin_session', 'active');
+                localStorage.setItem('appvertex_admin_email', email);
+                handleLocalMode(true);
+                const adminEmailEl = document.getElementById('adminEmail');
+                if (adminEmailEl) adminEmailEl.textContent = email;
+                const avatarEl = document.getElementById('adminAvatar');
+                if (avatarEl) avatarEl.textContent = (email[0] || 'A').toUpperCase();
+                showToast(`Logged in as Studio Admin (${email})`, "success");
             } catch (e) {
                 if (err && errMsg) {
                     err.classList.add('show');
-                    errMsg.textContent = e.message || "Invalid credentials. Use 'Quick Studio Access' below to enter.";
+                    errMsg.textContent = e.message || "Login error occurred.";
                 }
             } finally {
                 if (btn) btn.disabled = false;
                 if (btnText) btnText.textContent = "Sign In";
                 if (btnIcon) btnIcon.className = "fas fa-arrow-right";
-            }
-        }
-
-        async function handleRegister() {
-            const email = document.getElementById('loginEmail').value.trim();
-            const pass = document.getElementById('loginPassword').value;
-            const btn = document.getElementById('loginBtn');
-            const btnText = document.getElementById('loginBtnText');
-            const btnIcon = document.getElementById('loginBtnIcon');
-            const err = document.getElementById('loginError');
-            const errMsg = document.getElementById('loginErrorMsg');
-
-            if (!email || !pass) {
-                err.classList.add('show');
-                errMsg.textContent = "Enter your desired admin email and a password (min 6 chars).";
-                return;
-            }
-            if (pass.length < 6) {
-                err.classList.add('show');
-                errMsg.textContent = "Password must be at least 6 characters.";
-                return;
-            }
-
-            btn.disabled = true;
-            if (btnText) btnText.textContent = "Creating Account...";
-            if (btnIcon) btnIcon.className = "fas fa-spinner fa-spin";
-            err.classList.remove('show');
-
-            try {
-                await createUserWithEmailAndPassword(auth, email, pass);
-                showToast("Admin account registered!");
-            } catch (e) {
-                btn.disabled = false;
-                if (btnText) btnText.textContent = "Create Account";
-                if (btnIcon) btnIcon.className = "fas fa-arrow-right";
-                err.classList.add('show');
-                errMsg.textContent = e.message;
             }
         }
 
@@ -490,12 +299,8 @@
             if (!silent) showToast("Admin console active. Public site sync enabled!", "info");
         }
 
-        async function handleLogout() {
-            isLocalMode = false;
+        function handleLogout() {
             localStorage.removeItem('appvertex_admin_session');
-            if (auth) {
-                try { await signOut(auth); } catch(e){}
-            }
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('adminPanel').classList.remove('visible');
             showToast("Logged out of Admin Console", "info");
@@ -607,7 +412,7 @@
             } catch(err) {
                 console.warn("Storage quota notice:", err);
                 if (err.name === 'QuotaExceededError' || err.code === 22) {
-                    showToast("Browser local storage quota reached. Use Cloud mode or clean unneeded screenshots.", "error");
+                    showToast("Browser local storage quota reached. Please remove unneeded images or records.", "error");
                 }
             }
         }
@@ -692,54 +497,6 @@
         async function loadDataFromCloud() {
             loadFromLocalStorage();
             refreshAllUI();
-
-            if (isLocalMode || !auth?.currentUser || !db) return;
-
-            try {
-                const tSnap = await getDocs(collection(db, "testimonials"));
-                if (!tSnap.empty) {
-                    const cloudT = tSnap.docs.map(d => ({id: d.id, ...d.data()}));
-                    const delT = JSON.parse(localStorage.getItem('appvertex_deleted_testimonials') || '[]');
-                    testimonials = mergeTestimonials(testimonials, cloudT, delT);
-                }
-                const pSnap = await getDocs(collection(db, "projects"));
-                if (!pSnap.empty) {
-                    const cloudP = pSnap.docs.map(d => ({id: d.id, ...d.data()}));
-                    const delP = JSON.parse(localStorage.getItem('appvertex_deleted_projects') || '[]');
-                    projects = mergeProjects(projects, cloudP, delP);
-                }
-                try {
-                    const inqSnap = await getDocs(collection(db, "inquiries"));
-                    if (!inqSnap.empty) {
-                        inquiries = inqSnap.docs.map(d => ({id: d.id, ...d.data()}));
-                    }
-                } catch(e){}
-                try {
-                    const appSnap = await getDocs(collection(db, "applications"));
-                    if (!appSnap.empty) {
-                        applications = appSnap.docs.map(d => ({id: d.id, ...d.data()}));
-                    }
-                } catch(e){}
-
-                const fSnap = await getDoc(doc(db, "settings", "footer"));
-                if (fSnap.exists() && fSnap.data().year) {
-                    studioSettings.footerYear = fSnap.data().year;
-                }
-                const sSnap = await getDoc(doc(db, "settings", "studio"));
-                if (sSnap.exists()) {
-                    studioSettings = { ...studioSettings, ...sSnap.data() };
-                }
-
-                if (tSnap.empty && pSnap.empty && projects.length === 0) {
-                    await seedDefaultData(false);
-                }
-
-                saveToLocalStorage();
-                refreshAllUI();
-            } catch (e) {
-                console.warn("Cloud sync warning:", e);
-                showToast("Loaded from local cache", "info");
-            }
         }
 
         async function seedDefaultData(showNotification = true) {
@@ -750,44 +507,14 @@
             applications = [...DEFAULT_APPLICATIONS];
             studioSettings.footerYear = "2026";
             saveToLocalStorage();
-
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    for (const t of testimonials) await setDoc(doc(db, "testimonials", t.id), t);
-                    for (const p of projects) await setDoc(doc(db, "projects", p.id), p);
-                    for (const i of inquiries) await setDoc(doc(db, "inquiries", i.id), i);
-                    for (const a of applications) await setDoc(doc(db, "applications", a.id), a);
-                    await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
-                    await setDoc(doc(db, "settings", "studio"), studioSettings);
-                } catch (err) {
-                    console.warn("Cloud write warning:", err);
-                }
-            }
-
             refreshAllUI();
             if (showNotification) showToast("Default portfolio & intake content restored!");
         }
 
         async function importLocalData() {
             loadFromLocalStorage();
-            if (!auth?.currentUser || !db || isLocalMode) {
-                refreshAllUI();
-                return showToast("Refreshed from browser storage!");
-            }
-
-            showToast("Pushing local cache to Cloud...", "info");
-            try {
-                for (const t of testimonials) await setDoc(doc(db, "testimonials", t.id), t);
-                for (const p of projects) await setDoc(doc(db, "projects", p.id), p);
-                for (const i of inquiries) await setDoc(doc(db, "inquiries", i.id), i);
-                for (const a of applications) await setDoc(doc(db, "applications", a.id), a);
-                await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
-                await setDoc(doc(db, "settings", "studio"), studioSettings);
-                showToast("Cloud sync complete!");
-                loadDataFromCloud();
-            } catch (err) {
-                showToast("Sync error: " + err.message, "error");
-            }
+            refreshAllUI();
+            showToast("Refreshed from browser storage!");
         }
 
         function refreshAllUI() {
@@ -1385,11 +1112,6 @@
             if (inq) {
                 inq.status = newStatus;
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await setDoc(doc(db, "inquiries", id), inq, { merge: true });
-                    } catch(e){ console.warn("Firestore call update notice:", e); }
-                }
                 renderAppointments();
                 renderRecentAppointments();
                 renderInquiries();
@@ -1403,11 +1125,6 @@
             if (confirm("Delete this discovery session from your schedule?")) {
                 inquiries = inquiries.filter(i => i.id !== id);
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await deleteDoc(doc(db, "inquiries", id));
-                    } catch(e){ console.warn("Firestore delete notice:", e); }
-                }
                 renderAppointments();
                 renderRecentAppointments();
                 renderInquiries();
@@ -1531,12 +1248,6 @@
             }
 
             saveToLocalStorage();
-
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    await setDoc(doc(db, "inquiries", targetAppt.id), targetAppt);
-                } catch(e){ console.warn("Firestore save call notice:", e); }
-            }
 
             closeModal('appointmentModal');
             renderAppointments();
@@ -1707,11 +1418,6 @@
             if (inq) {
                 inq.status = newStatus;
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await setDoc(doc(db, "inquiries", id), inq, { merge: true });
-                    } catch(e){ console.warn("Firestore update notice:", e); }
-                }
                 renderInquiries();
                 renderRecentInquiries();
                 updateStats();
@@ -1731,11 +1437,6 @@
             if (confirm("Delete this inquiry from inbox?")) {
                 inquiries = inquiries.filter(i => i.id !== id);
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await deleteDoc(doc(db, "inquiries", id));
-                    } catch(e){ console.warn("Firestore delete notice:", e); }
-                }
                 renderInquiries();
                 renderRecentInquiries();
                 updateStats();
@@ -1758,11 +1459,6 @@
             };
             inquiries.unshift(newInq);
             saveToLocalStorage();
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    setDoc(doc(db, "inquiries", newInq.id), newInq);
-                } catch(e){}
-            }
             renderInquiries();
             renderRecentInquiries();
             updateStats();
@@ -1771,14 +1467,8 @@
 
         async function clearAllInquiries() {
             if (confirm("Clear all inquiries in inbox?")) {
-                const toDel = [...inquiries];
                 inquiries = [];
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        for (const i of toDel) await deleteDoc(doc(db, "inquiries", i.id));
-                    } catch(e){}
-                }
                 renderInquiries();
                 renderRecentInquiries();
                 updateStats();
@@ -1874,11 +1564,6 @@
             if (app) {
                 app.status = newStatus;
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await setDoc(doc(db, "applications", id), app, { merge: true });
-                    } catch(e){ console.warn("Firestore application update notice:", e); }
-                }
                 renderApplications();
                 renderRecentApplications();
                 updateStats();
@@ -1890,11 +1575,6 @@
             if (confirm("Delete this candidate application?")) {
                 applications = applications.filter(a => a.id !== id);
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        await deleteDoc(doc(db, "applications", id));
-                    } catch(e){ console.warn("Firestore application delete notice:", e); }
-                }
                 renderApplications();
                 renderRecentApplications();
                 updateStats();
@@ -1916,11 +1596,6 @@
             };
             applications.unshift(newApp);
             saveToLocalStorage();
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    setDoc(doc(db, "applications", newApp.id), newApp);
-                } catch(e){}
-            }
             renderApplications();
             renderRecentApplications();
             updateStats();
@@ -1933,11 +1608,6 @@
             if (confirm(`Remove ${archived.length} archived applications?`)) {
                 applications = applications.filter(a => a.status !== 'archived');
                 saveToLocalStorage();
-                if (auth?.currentUser && db && !isLocalMode) {
-                    try {
-                        for (const a of archived) await deleteDoc(doc(db, "applications", a.id));
-                    } catch(e){}
-                }
                 renderApplications();
                 renderRecentApplications();
                 updateStats();
@@ -2088,22 +1758,6 @@
                     upload.classList.add('has-image');
                     if (removeRow) removeRow.style.display = 'block';
 
-                    // Cloud mode: upload to Firebase Storage if online & authenticated
-                    if (auth?.currentUser && storage && !isLocalMode) {
-                        showToast("Uploading to Cloud Storage...", "info");
-                        try {
-                            const storageRef = ref(storage, `${type}s/${Date.now()}_img.jpg`);
-                            await uploadString(storageRef, resizedBase64, 'data_url');
-                            const downloadUrl = await getDownloadURL(storageRef);
-                            if (type === 'testimonial') currentTestimonialImage = downloadUrl;
-                            else currentProjectImage = downloadUrl;
-                            showToast("Image stored in Cloud Storage!");
-                            return;
-                        } catch(storageErr) {
-                            console.warn("Storage upload notice, falling back to local base64:", storageErr);
-                        }
-                    }
-
                     if (type === 'testimonial') currentTestimonialImage = resizedBase64;
                     else currentProjectImage = resizedBase64;
                     
@@ -2116,7 +1770,6 @@
 
         // ─── SAVE OPERATIONS ───
         async function saveProject() {
-            if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             const id = document.getElementById('projectId').value || 'p-' + Date.now();
             const name = document.getElementById('projectName').value.trim();
 
@@ -2195,9 +1848,6 @@
                     localStorage.setItem('appvertex_deleted_projects', JSON.stringify(filtered));
                 } catch(e){}
 
-                if (auth?.currentUser && db && !isLocalMode) {
-                    await setDoc(doc(db, "projects", id), data);
-                }
                 const idx = projects.findIndex(p => p.id === id);
                 if (idx >= 0) projects[idx] = data;
                 else projects.unshift(data);
@@ -2213,10 +1863,9 @@
         }
 
         async function deleteProject(id) {
-            if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             if (confirm("Delete this project from your portfolio?")) {
                 try {
-                    // Mark as deleted so cloud sync doesn't re-add it
+                    // Mark as deleted
                     try {
                         const del = JSON.parse(localStorage.getItem('appvertex_deleted_projects') || '[]');
                         if (!del.includes(id)) {
@@ -2225,9 +1874,6 @@
                         }
                     } catch(e){}
 
-                    if (auth?.currentUser && db && !isLocalMode) {
-                        await deleteDoc(doc(db, "projects", id));
-                    }
                     projects = projects.filter(p => p.id !== id);
                     saveToLocalStorage();
                     showToast("Project deleted");
@@ -2239,7 +1885,6 @@
         }
 
         async function saveTestimonial() {
-            if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             const id = document.getElementById('testimonialId').value || 't-' + Date.now();
             const name = document.getElementById('testimonialName').value.trim();
             const role = document.getElementById('testimonialRole').value.trim();
@@ -2268,9 +1913,6 @@
                     localStorage.setItem('appvertex_deleted_testimonials', JSON.stringify(filtered));
                 } catch(e){}
 
-                if (auth?.currentUser && db && !isLocalMode) {
-                    await setDoc(doc(db, "testimonials", id), data);
-                }
                 const idx = testimonials.findIndex(t => t.id === id);
                 if (idx >= 0) testimonials[idx] = data;
                 else testimonials.unshift(data);
@@ -2286,10 +1928,9 @@
         }
 
         async function deleteTestimonial(id) {
-            if (!auth?.currentUser && !isLocalMode) return showToast("Must be logged in or in Local Mode", "error");
             if (confirm("Delete this testimonial?")) {
                 try {
-                    // Mark as deleted so cloud sync doesn't re-add it
+                    // Mark as deleted
                     try {
                         const del = JSON.parse(localStorage.getItem('appvertex_deleted_testimonials') || '[]');
                         if (!del.includes(id)) {
@@ -2298,9 +1939,6 @@
                         }
                     } catch(e){}
 
-                    if (auth?.currentUser && db && !isLocalMode) {
-                        await deleteDoc(doc(db, "testimonials", id));
-                    }
                     testimonials = testimonials.filter(t => t.id !== id);
                     saveToLocalStorage();
                     showToast("Testimonial deleted");
@@ -2323,14 +1961,6 @@
             studioSettings.email = sEmail;
             studioSettings.whatsapp = sWa;
 
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
-                    await setDoc(doc(db, "settings", "studio"), studioSettings);
-                } catch(e) {
-                    console.warn("Cloud settings warning:", e);
-                }
-            }
             saveToLocalStorage();
             updateStats();
             showToast("Studio settings saved! Public website updated.", "success");
@@ -2371,24 +2001,10 @@
             // 2. Persist to Local Storage
             saveToLocalStorage();
 
-            // 3. Persist to Cloud Firestore if authenticated
-            if (auth?.currentUser && db && !isLocalMode) {
-                try {
-                    for (const t of testimonials) await setDoc(doc(db, "testimonials", t.id), t);
-                    for (const p of projects) await setDoc(doc(db, "projects", p.id), p);
-                    for (const i of inquiries) await setDoc(doc(db, "inquiries", i.id), i);
-                    for (const a of applications) await setDoc(doc(db, "applications", a.id), a);
-                    await setDoc(doc(db, "settings", "footer"), { year: studioSettings.footerYear });
-                    await setDoc(doc(db, "settings", "studio"), studioSettings);
-                } catch(cloudErr) {
-                    console.warn("Cloud sync notice during Save All:", cloudErr);
-                }
-            }
-
-            // 4. Update UI
+            // 3. Update UI
             refreshAllUI();
 
-            // 5. Tactile Button Micro-Animation Only (No Toast Messages)
+            // 4. Tactile Button Micro-Animation Only (No Toast Messages)
             allBtns.forEach(b => {
                 b.classList.remove('is-saving');
                 b.classList.add('is-saved');

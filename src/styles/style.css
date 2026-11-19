@@ -1018,7 +1018,40 @@ main {
   text-align: left;
   width: 100%;
   margin-bottom: clamp(1.6rem, 3.5vh, 2.75rem);
-  animation: heroSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Floating Text Wrappers & Harmonic Multi-Frequency Levitation */
+.hero-float-wrap {
+  display: block;
+  width: 100%;
+  will-change: transform, filter, opacity;
+}
+
+/* Layer 1: WE BUILD - 5.4s gentle float */
+.hero-float-top {
+  animation: 
+    heroFloatIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both,
+    ambientFloatTop 5.4s ease-in-out 1.05s infinite alternate;
+}
+
+/* Layer 2: DEPENDABLE SYSTEMS - 6.8s deeper swell + glowing shadow pulse */
+.hero-float-main {
+  animation: 
+    heroFloatIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both,
+    ambientFloatMain 6.8s ease-in-out 1.3s infinite alternate;
+}
+
+/* Layer 3: FOR GROWING BUSINESSES - 6.0s counter-float */
+.hero-float-bottom {
+  animation: 
+    heroFloatIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
+    ambientFloatBottom 6.0s ease-in-out 1.35s infinite alternate;
+}
+
+[data-theme="dark"] .hero-float-main {
+  animation: 
+    heroFloatIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both,
+    ambientFloatMainDark 6.8s ease-in-out 1.3s infinite alternate;
 }
 
 .hero-line-top,
@@ -3884,6 +3917,86 @@ select.form-control option {
 @keyframes heroSlideUp {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── FLOATING HERO TEXT KEYFRAMES ─── */
+@keyframes heroFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.97);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes ambientFloatTop {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-0.3deg);
+  }
+  100% {
+    transform: translateY(2px) rotate(0.2deg);
+  }
+}
+
+@keyframes ambientFloatMain {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 4px 16px rgba(239, 135, 13, 0.25));
+  }
+  50% {
+    transform: translateY(-7px);
+    filter: drop-shadow(0 14px 30px rgba(239, 135, 13, 0.42));
+  }
+  100% {
+    transform: translateY(3px);
+    filter: drop-shadow(0 2px 10px rgba(239, 135, 13, 0.20));
+  }
+}
+
+@keyframes ambientFloatMainDark {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 24px rgba(239, 135, 13, 0.3));
+  }
+  50% {
+    transform: translateY(-7px);
+    filter: drop-shadow(0 0 42px rgba(239, 135, 13, 0.55));
+  }
+  100% {
+    transform: translateY(3px);
+    filter: drop-shadow(0 0 20px rgba(239, 135, 13, 0.25));
+  }
+}
+
+@keyframes ambientFloatBottom {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float-wrap,
+  .hero-float-top,
+  .hero-float-main,
+  .hero-float-bottom {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
 }
 
 @keyframes heroFadeUp {
