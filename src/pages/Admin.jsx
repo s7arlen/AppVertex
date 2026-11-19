@@ -192,9 +192,6 @@ export default function Admin() {
             <button className="theme-toggle-btn" id="mobileThemeToggle" data-onclick="toggleAdminTheme()" aria-label="Toggle Theme" title="Toggle Theme" style={{ width: '32px', height: '32px' }}>
                 <i className="fas fa-moon" id="mobileThemeIcon"></i>
             </button>
-            <button className="btn btn-primary" id="mobileSaveBtn" data-onclick="saveAllChanges()" style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem', fontWeight: '700' }}>
-                <i className="fas fa-save"></i> Save All
-            </button>
             <button className="mobile-menu-btn" id="mobileMenuBtn" data-onclick="toggleSidebar()" aria-label="Toggle Navigation">
                 <i className="fas fa-bars"></i>
             </button>
@@ -250,10 +247,7 @@ export default function Admin() {
                 <div className="nav-section">
                     <div className="nav-title">CONFIGURATION</div>
                     <a className="nav-item" data-onclick="showSection('settings')">
-                        <div className="nav-item-left"><i className="fas fa-sliders-h"></i> Studio Settings</div>
-                    </a>
-                    <a className="nav-item" data-onclick="showSection('export')">
-                        <div className="nav-item-left"><i className="fas fa-database"></i> Backup &amp; Code</div>
+                        <div className="nav-item-left"><i className="fas fa-sliders-h"></i> Studio Settings &amp; Backup</div>
                     </a>
                 </div>
 
@@ -301,10 +295,6 @@ export default function Admin() {
                     <div className="banner-right" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                         <button className="theme-toggle-btn" id="desktopThemeToggle" data-onclick="toggleAdminTheme()" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
                             <i className="fas fa-moon" id="desktopThemeIcon"></i>
-                        </button>
-                        <button className="btn-save-master" id="btnSaveAll" data-onclick="saveAllChanges()" title="Save all changes (Ctrl+S)">
-                            <i className="fas fa-save"></i>
-                            <span id="saveAllBtnText">Save All</span>
                         </button>
                     </div>
                 </div>
@@ -402,7 +392,6 @@ export default function Admin() {
                                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Live intake pipeline from website proposal and contact forms</div>
                             </div>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                <button className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }} data-onclick="addSampleInquiry()"><i className="fas fa-bolt" style={{ color: 'var(--primary)' }}></i> Simulate Lead</button>
                                 <button className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }} data-onclick="showSection('inquiries')">Open Inbox →</button>
                             </div>
                         </div>
@@ -417,7 +406,6 @@ export default function Admin() {
                                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Live intake pipeline from the Upskill program</div>
                             </div>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                <button className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }} data-onclick="addSampleApplication()"><i className="fas fa-bolt" style={{ color: 'var(--primary)' }}></i> Simulate Candidate</button>
                                 <button className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }} data-onclick="showSection('applications')">Open Intake →</button>
                             </div>
                         </div>
@@ -435,19 +423,6 @@ export default function Admin() {
                         </div>
                         <div id="dashboardRecentProjects" className="item-list"></div>
                     </div>
-
-                    {/* STUDIO STORAGE & BACKUP */}
-                    <div className="card" style={{ background: 'var(--gradient-surface)' }}>
-                        <h3>Studio Storage &amp; Backup</h3>
-                        <p style={{ color: 'var(--text-muted)', margin: '0.5rem 0 1.25rem', fontSize: '0.9rem' }}>
-                            Manage your projects, reviews, and settings with local-first persistence and portable JSON backups.
-                        </p>
-                        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                            <button className="btn btn-primary" data-onclick="seedDefaultData()"><i className="fas fa-seedling"></i> Restore Default Content</button>
-                            <button className="btn btn-secondary" data-onclick="importLocalData()"><i className="fas fa-sync-alt"></i> Refresh Local Cache</button>
-                            <button className="btn btn-secondary" data-onclick="downloadJSONBackup()"><i className="fas fa-download"></i> Download Full JSON Backup</button>
-                        </div>
-                    </div>
                 </div>
 
                 {/* ═══════════════════════════════════════════
@@ -461,7 +436,6 @@ export default function Admin() {
                         </div>
                         <div className="header-actions">
                             <button className="btn btn-secondary" data-onclick="exportInquiriesCSV()"><i className="fas fa-file-csv"></i> Export CSV</button>
-                            <button className="btn btn-secondary" data-onclick="addSampleInquiry()"><i className="fas fa-plus"></i> Add Test Lead</button>
                             <button className="btn btn-danger-outline" data-onclick="clearAllInquiries()"><i className="fas fa-trash-alt"></i> Clear Inbox</button>
                         </div>
                     </div>
@@ -495,7 +469,6 @@ export default function Admin() {
                         </div>
                         <div className="header-actions">
                             <button className="btn btn-secondary" data-onclick="exportApplicationsCSV()"><i className="fas fa-file-csv"></i> Export CSV</button>
-                            <button className="btn btn-secondary" data-onclick="addSampleApplication()"><i className="fas fa-plus"></i> Simulate Candidate</button>
                             <button className="btn btn-danger-outline" data-onclick="clearArchivedApplications()"><i className="fas fa-archive"></i> Clean Archived</button>
                         </div>
                     </div>
@@ -641,31 +614,16 @@ export default function Admin() {
                         </div>
 
                         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
-                            <button className="btn btn-secondary" data-onclick="saveStudioSettings()">
-                                <i className="fas fa-sliders-h"></i> Save Settings Only
-                            </button>
-                            <button className="btn btn-primary" data-onclick="saveAllChanges()">
-                                <i className="fas fa-save"></i> Save All Studio Data
+                            <button className="btn btn-primary" data-onclick="saveStudioSettings()">
+                                <i className="fas fa-save"></i> Save Studio Settings
                             </button>
                         </div>
                     </div>
-                </div>
 
-                {/* ═══════════════════════════════════════════
-                     6. BACKUP & EXPORT SECTION
-                     ═══════════════════════════════════════════ */}
-                <div id="export" className="section-content">
-                    <div className="header">
-                        <div className="header-title-wrap">
-                            <h1>Data Backup &amp; Code Export</h1>
-                            <p className="header-subtitle">Export portable JSON backups or generate standalone code builds</p>
-                        </div>
-                    </div>
-
-                    <div className="card">
-                        <h3>Complete JSON Data Backup</h3>
+                    <div className="card" style={{ marginTop: '1.5rem' }}>
+                        <h3>Studio Data Backup &amp; Restore</h3>
                         <p style={{ color: 'var(--text-muted)', margin: '0.5rem 0 1.25rem', fontSize: '0.9rem' }}>
-                            Download or restore an exact snapshot of your projects, testimonials, and studio inquiries.
+                            Download or restore a portable JSON snapshot containing all projects, testimonials, and studio inquiries.
                         </p>
                         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                             <button className="btn btn-primary" data-onclick="downloadJSONBackup()"><i className="fas fa-download"></i> Export JSON Backup</button>
@@ -673,19 +631,7 @@ export default function Admin() {
                                 <i className="fas fa-upload"></i> Restore from JSON
                                 <input type="file" id="importJsonFileInput" aria-label="Import JSON backup file" accept=".json" style={{ display: 'none' }} data-onchange="importJSONBackup(this)" />
                             </label>
-                        </div>
-                    </div>
-
-                    <div className="card">
-                        <h3>Static index.html Build Generator</h3>
-                        <p style={{ color: 'var(--text-muted)', margin: '0.5rem 0 1.25rem', fontSize: '0.9rem' }}>
-                            Generates the live index.html with the synchronized copyright year and content embedded.
-                        </p>
-                        <button className="btn btn-primary" data-onclick="generateCode()"><i className="fas fa-code"></i> Generate Static index.html</button>
-                        <div id="codeOutput" className="code-preview" style={{ marginTop: '1.25rem' }}>Click 'Generate Static index.html' to review code...</div>
-                        <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem' }}>
-                            <button className="btn btn-secondary" data-onclick="copyCode()"><i className="fas fa-copy"></i> Copy to Clipboard</button>
-                            <button className="btn btn-primary" data-onclick="downloadCode()"><i className="fas fa-file-download"></i> Download index.html</button>
+                            <button className="btn btn-secondary" data-onclick="seedDefaultData()"><i className="fas fa-seedling"></i> Restore Default Content</button>
                         </div>
                     </div>
                 </div>

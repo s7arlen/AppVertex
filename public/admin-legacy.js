@@ -343,49 +343,6 @@ let isLocalMode = true;
             };
         }
 
-        function mergeProjects(localList, cloudList, deletedIds = []) {
-            const delSet = new Set(deletedIds || []);
-            const map = new Map();
-
-            if (Array.isArray(cloudList)) {
-                cloudList.forEach(cp => {
-                    const id = cp.id || cp.name;
-                    if (id && !delSet.has(id)) {
-                        map.set(id, cp);
-                    }
-                });
-            }
-
-            if (Array.isArray(localList)) {
-                localList.forEach(lp => {
-                    const id = lp.id || lp.name;
-                    if (id && !delSet.has(id)) {
-                        map.set(id, { ...(map.get(id) || {}), ...lp });
-                    }
-                });
-            }
-
-            return Array.from(map.values());
-        }
-
-        function mergeTestimonials(localList, cloudList, deletedIds = []) {
-            const delSet = new Set(deletedIds || []);
-            const map = new Map();
-            if (Array.isArray(cloudList)) {
-                cloudList.forEach(ct => {
-                    const id = ct.id || ct.name;
-                    if (id && !delSet.has(id)) map.set(id, ct);
-                });
-            }
-            if (Array.isArray(localList)) {
-                localList.forEach(lt => {
-                    const id = lt.id || lt.name;
-                    if (id && !delSet.has(id)) map.set(id, { ...(map.get(id) || {}), ...lt });
-                });
-            }
-            return Array.from(map.values());
-        }
-
         function saveToLocalStorage() {
             try {
                 localStorage.setItem('appvertex_testimonials', JSON.stringify(testimonials));
@@ -494,11 +451,6 @@ let isLocalMode = true;
             }
         });
 
-        async function loadDataFromCloud() {
-            loadFromLocalStorage();
-            refreshAllUI();
-        }
-
         async function seedDefaultData(showNotification = true) {
             if (showNotification) showToast("Seeding website content...", "info");
             projects = [...DEFAULT_PROJECTS];
@@ -509,12 +461,6 @@ let isLocalMode = true;
             saveToLocalStorage();
             refreshAllUI();
             if (showNotification) showToast("Default portfolio & intake content restored!");
-        }
-
-        async function importLocalData() {
-            loadFromLocalStorage();
-            refreshAllUI();
-            showToast("Refreshed from browser storage!");
         }
 
         function refreshAllUI() {
@@ -537,7 +483,7 @@ let isLocalMode = true;
             if (!container) return;
             const recent = inquiries.slice(0, 3);
             if (recent.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:0.88rem; padding:1rem; text-align:center; background:var(--bg-canvas); border-radius:var(--radius-sm);">No inquiries yet. Click "Simulate Lead" above to test the intake pipeline.</p>`;
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:0.88rem; padding:1rem; text-align:center; background:var(--bg-canvas); border-radius:var(--radius-sm);">No inquiries yet. Incoming client inquiries from website forms will appear here.</p>`;
                 return;
             }
             container.innerHTML = recent.map(inq => {
@@ -571,7 +517,7 @@ let isLocalMode = true;
             if (!container) return;
             const recent = applications.slice(0, 3);
             if (recent.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:0.88rem; padding:1rem; text-align:center; background:var(--bg-canvas); border-radius:var(--radius-sm);">No applicants yet. Click "Simulate Candidate" above to test the Upskill intake pipeline.</p>`;
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:0.88rem; padding:1rem; text-align:center; background:var(--bg-canvas); border-radius:var(--radius-sm);">No applicants yet. Incoming mentorship applications from the Upskill page will appear here.</p>`;
                 return;
             }
             container.innerHTML = recent.map(app => {
@@ -1444,27 +1390,6 @@ let isLocalMode = true;
             }
         }
 
-        function addSampleInquiry() {
-            const newInq = {
-                id: 'inq-' + Date.now(),
-                name: 'Kavita Menon',
-                email: 'kavita@zephyrlabs.com',
-                phone: '+91 98860 55432',
-                company: 'Zephyr Health Labs',
-                service: 'Fullstack Web Application',
-                budget: '₹50,000 – ₹1,00,000',
-                message: 'We are seeking a patient scheduling portal with WhatsApp reminders and automated billing.',
-                date: 'Just now',
-                status: 'new'
-            };
-            inquiries.unshift(newInq);
-            saveToLocalStorage();
-            renderInquiries();
-            renderRecentInquiries();
-            updateStats();
-            showToast("Test client lead added!");
-        }
-
         async function clearAllInquiries() {
             if (confirm("Clear all inquiries in inbox?")) {
                 inquiries = [];
@@ -1580,26 +1505,6 @@ let isLocalMode = true;
                 updateStats();
                 showToast("Candidate application removed");
             }
-        }
-
-        function addSampleApplication() {
-            const newApp = {
-                id: 'app-' + Date.now(),
-                name: 'Aditya Sharma',
-                email: 'aditya.sharma@techmail.com',
-                phone: '+91 99160 33455',
-                track: 'Track 02: Fullstack & Cloud Databases',
-                background: '2nd year engineering student. Built Node.js CRUD endpoints with MongoDB, looking to master cloud databases, auth security, and production deployment.',
-                date: 'Just now',
-                createdAt: new Date().toISOString(),
-                status: 'new'
-            };
-            applications.unshift(newApp);
-            saveToLocalStorage();
-            renderApplications();
-            renderRecentApplications();
-            updateStats();
-            showToast("Test candidate application added!");
         }
 
         async function clearArchivedApplications() {
@@ -2082,44 +1987,6 @@ let isLocalMode = true;
             input.value = "";
         }
 
-        // ─── CODE EXPORT ───
-        function generateCode() {
-            fetch('index.html').then(r => r.text()).then(html => {
-                let code = html;
-                code = code.replace(/© \d{4}/g, `© ${studioSettings.footerYear}`);
-                document.getElementById('codeOutput').textContent = code;
-                showToast("Generated code preview!");
-            }).catch(e => {
-                showToast("Could not read index.html: " + e.message, "error");
-            });
-        }
-
-        async function copyCode() {
-            const text = document.getElementById('codeOutput').textContent;
-            try {
-                await navigator.clipboard.writeText(text);
-                showToast("Copied code to clipboard!");
-            } catch (err) {
-                const ta = document.createElement('textarea');
-                ta.value = text;
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-                showToast("Copied code to clipboard!");
-            }
-        }
-
-        function downloadCode() {
-            const b = new Blob([document.getElementById('codeOutput').textContent], { type: 'text/html' });
-            const u = URL.createObjectURL(b);
-            const a = document.createElement('a');
-            a.href = u;
-            a.download = 'index.html';
-            a.click();
-            URL.revokeObjectURL(u);
-        }
-
         // ─── TOASTS ───
         function showToast(msg, type = "success") {
             const container = document.getElementById('toastContainer');
@@ -2147,7 +2014,6 @@ let isLocalMode = true;
         window.showSection = showSection;
         window.toggleSidebar = toggleSidebar;
         window.seedDefaultData = seedDefaultData;
-        window.importLocalData = importLocalData;
         window.openTestimonialModal = openTestimonialModal;
         window.editTestimonialById = editTestimonialById;
         window.saveTestimonial = saveTestimonial;
@@ -2163,21 +2029,16 @@ let isLocalMode = true;
         window.saveAllChanges = saveAllChanges;
         window.downloadJSONBackup = downloadJSONBackup;
         window.importJSONBackup = importJSONBackup;
-        window.generateCode = generateCode;
-        window.copyCode = copyCode;
-        window.downloadCode = downloadCode;
         window.setProjectCategoryFilter = setProjectCategoryFilter;
         window.setInquiryFilter = setInquiryFilter;
         window.setInquiryStatus = setInquiryStatus;
         window.toggleInquiryStatus = toggleInquiryStatus;
         window.deleteInquiry = deleteInquiry;
-        window.addSampleInquiry = addSampleInquiry;
         window.clearAllInquiries = clearAllInquiries;
         window.exportInquiriesCSV = exportInquiriesCSV;
         window.setApplicationFilter = setApplicationFilter;
         window.setApplicationStatus = setApplicationStatus;
         window.deleteApplication = deleteApplication;
-        window.addSampleApplication = addSampleApplication;
         window.clearArchivedApplications = clearArchivedApplications;
         window.exportApplicationsCSV = exportApplicationsCSV;
 
