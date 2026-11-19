@@ -715,7 +715,7 @@ let isLocalMode = true;
             // Set active nav item
             const navLinks = document.querySelectorAll('.sidebar .nav-item');
             navLinks.forEach(link => {
-                const clickAttr = link.getAttribute('onclick') || '';
+                const clickAttr = link.getAttribute('data-onclick') || link.getAttribute('onclick') || '';
                 if (clickAttr.includes(`'${id}'`)) link.classList.add('active');
             });
 
@@ -2140,11 +2140,9 @@ let isLocalMode = true;
         // Expose to window for inline onclick & oninput handlers
         window.handleAuthSubmit = handleAuthSubmit;
         window.handleLogin = handleLogin;
-        window.handleRegister = handleRegister;
         window.handleForgotPassword = handleForgotPassword;
         window.handleLocalMode = handleLocalMode;
         window.handleLogout = handleLogout;
-        window.toggleAuthMode = toggleAuthMode;
         window.togglePasswordVisibility = togglePasswordVisibility;
         window.showSection = showSection;
         window.toggleSidebar = toggleSidebar;
