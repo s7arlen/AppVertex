@@ -165,17 +165,39 @@
         }
 
         .phase-block {
+            position: relative;
+            overflow: hidden;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 2.75rem 2.5rem;
             box-shadow: 0 8px 24px rgba(128, 15, 53, 0.03);
-            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s ease,
+                        box-shadow 0.4s ease;
+        }
+
+        .phase-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #ef870d 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 2;
         }
 
         .phase-block:hover {
-            border-color: #ef870d;
-            box-shadow: 0 16px 36px rgba(239, 135, 13, 0.08);
+            transform: translateY(-6px);
+            border-color: rgba(239, 135, 13, 0.45);
+            box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.08), 0 0 35px -8px rgba(239, 135, 13, 0.14);
+        }
+
+        .phase-block:hover::before {
+            opacity: 1;
         }
 
         .phase-header {
@@ -201,6 +223,13 @@
             font-weight: 800;
             color: #ef870d;
             line-height: 1;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease;
+        }
+
+        .phase-block:hover .phase-badge-num {
+            transform: scale(1.08);
+            text-shadow: 0 0 16px rgba(239, 135, 13, 0.35);
         }
 
         .phase-title {
@@ -237,6 +266,11 @@
             display: flex;
             align-items: flex-start;
             gap: 0.85rem;
+            transition: transform 0.25s ease;
+        }
+
+        .phase-point-item:hover {
+            transform: translateX(4px);
         }
 
         .phase-point-dot {
@@ -246,6 +280,12 @@
             background: #ef870d;
             margin-top: 0.55rem;
             flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .phase-point-item:hover .phase-point-dot {
+            transform: scale(1.4);
+            box-shadow: 0 0 12px rgba(239, 135, 13, 0.8);
         }
 
         .phase-point-item h4 {
@@ -254,6 +294,11 @@
             font-weight: 700;
             color: var(--text-primary);
             margin: 0 0 0.25rem 0;
+            transition: color 0.2s ease;
+        }
+
+        .phase-point-item:hover h4 {
+            color: #ef870d;
         }
 
         .phase-point-item p {
@@ -268,6 +313,12 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.75rem 1.5rem;
+            transition: border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .phase-block:hover .phase-deliverables-box {
+            border-color: rgba(239, 135, 13, 0.35);
+            box-shadow: 0 8px 24px rgba(239, 135, 13, 0.06);
         }
 
         .deliverables-lbl {
@@ -294,11 +345,22 @@
             font-size: 0.86rem;
             font-weight: 600;
             color: var(--text-primary);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .deliv-chip-item:hover {
+            transform: translateX(4px);
+            color: #ef870d;
         }
 
         .deliv-chip-item i {
             color: #ef870d;
             font-size: 0.85rem;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .deliv-chip-item:hover i {
+            transform: scale(1.25);
         }
 
         /* ─── Day-to-Day Operations Grid ─── */
@@ -674,7 +736,16 @@
             box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
         }
 
-        [data-theme="dark"] .phase-block:hover,
+        [data-theme="dark"] .phase-block:hover {
+            border-color: rgba(239, 135, 13, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(239, 135, 13, 0.16);
+        }
+
+        [data-theme="dark"] .phase-block:hover .phase-deliverables-box {
+            border-color: rgba(239, 135, 13, 0.3);
+            background: rgba(24, 24, 28, 0.9);
+        }
+
         [data-theme="dark"] .daily-op-card:hover,
         [data-theme="dark"] .after-launch-card:hover {
             border-color: #ef870d;

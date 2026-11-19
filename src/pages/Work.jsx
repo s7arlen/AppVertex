@@ -1,5 +1,6 @@
 import { assetUrl } from '../utils/assetHelper';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useStudioData } from '../context/StudioDataContext';
 import '../styles/pages/work.css';
@@ -237,15 +238,15 @@ function CaseStudyCard({ study, filter }) {
     >
       <div className="case-media" style={study.customMedia ? { display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--surface-raised, #FAF8F5)' } : {}}>
         <span className="case-media-tag">{study.tag}</span>
-        <a
-          href={study.link}
-          target={study.externalLink ? '_blank' : undefined}
-          rel={study.externalLink ? 'noopener noreferrer' : undefined}
-          className="case-action-btn"
-          aria-label={`Open ${study.title}`}
-        >
-          <i className="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
+        {study.externalLink ? (
+          <a href={study.link} target="_blank" rel="noopener noreferrer" className="case-action-btn" aria-label={`Open ${study.title}`}>
+            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        ) : (
+          <Link to={study.link} className="case-action-btn" aria-label={`Open ${study.title}`}>
+            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+          </Link>
+        )}
         {study.image ? (
           <img src={study.image} alt={study.title} loading="lazy" />
         ) : (
@@ -317,15 +318,17 @@ function CaseStudyCard({ study, filter }) {
 
         <div className="case-footer">
           <span className="case-client">Client: {study.client}</span>
-          <a
-            href={study.link}
-            target={study.externalLink ? '_blank' : undefined}
-            rel={study.externalLink ? 'noopener noreferrer' : undefined}
-            className="case-cta-link"
-          >
-            <span>{study.ctaText || 'Read Case Study'}</span>
-            <i className="fa-solid fa-arrow-right"></i>
-          </a>
+          {study.externalLink ? (
+            <a href={study.link} target="_blank" rel="noopener noreferrer" className="case-cta-link">
+              <span>{study.ctaText || 'Read Case Study'}</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </a>
+          ) : (
+            <Link to={study.link} className="case-cta-link">
+              <span>{study.ctaText || 'Read Case Study'}</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -383,7 +386,7 @@ export default function Work() {
                       Websites, web applications, and internal tools built for educational institutions, service businesses, and retail operations across India &amp; global remote.
                   </p>
                   <div className="subpage-actions" style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                      <a href="/contact#calendarPanel" className="btn btn-primary">BOOK DISCOVERY CALL <span className="arr">→</span></a>
+                      <Link to="/contact" className="btn btn-primary">BOOK DISCOVERY CALL <span className="arr">→</span></Link>
                       <a href="#caseStudiesSection" className="btn btn-secondary">VIEW CASE STUDIES</a>
                   </div>
               </div>
@@ -528,12 +531,12 @@ export default function Work() {
                       From zero-downtime portals to ultra-fast web applications, we turn ambitious ideas into reliable production software.
                     </p>
                     <div className="closing-banner-actions">
-                      <a href="/contact#proposalPanel" className="closing-action-primary">
+                      <Link to="/contact" className="closing-action-primary">
                         <span>Discuss Your Project</span> <span className="arr">→</span>
-                      </a>
-                      <a href="/contact#calendarPanel" className="closing-action-secondary">
+                      </Link>
+                      <Link to="/contact" className="closing-action-secondary">
                         <span>Book a Discovery Call</span> <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

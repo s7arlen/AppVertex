@@ -749,3 +749,306 @@
             border-color: rgba(255, 255, 255, 0.12);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
+
+        /* ═══════════════════════════════════════════════════
+           MINIMAL ROUNDED CARDS UI SYSTEM (REFERENCE INSPIRED)
+           Ultra-sleek, 30px radius, clean typography, bottom visual anchor
+           ═══════════════════════════════════════════════════ */
+
+        .minimal-services-wrapper {
+            margin-top: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Filter Pills */
+        .minimal-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 2.75rem;
+            padding: 0 0.5rem;
+        }
+
+        .minimal-filter-btn {
+            background: rgba(18, 22, 32, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            color: #FFFFFF !important;
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            padding: 9px 20px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .minimal-filter-btn:hover {
+            color: #FFFFFF !important;
+            border-color: #EF870D;
+            background: rgba(239, 135, 13, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 135, 13, 0.25);
+        }
+
+        .minimal-filter-btn.active {
+            background: linear-gradient(135deg, #EF870D 0%, #FF5722 100%) !important;
+            color: #FFFFFF !important;
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 6px 22px rgba(239, 135, 13, 0.5);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        [data-theme="dark"] .minimal-filter-btn {
+            background: rgba(18, 22, 32, 0.8);
+            border-color: rgba(255, 255, 255, 0.22);
+            color: #FFFFFF !important;
+        }
+
+        [data-theme="dark"] .minimal-filter-btn:hover {
+            color: #FFFFFF !important;
+            border-color: #EF870D;
+            background: rgba(239, 135, 13, 0.28);
+        }
+
+        [data-theme="dark"] .minimal-filter-btn.active {
+            background: linear-gradient(135deg, #EF870D 0%, #FF5722 100%) !important;
+            color: #FFFFFF !important;
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 6px 24px rgba(239, 135, 13, 0.55);
+        }
+
+        /* Minimal Card Grid */
+        .minimal-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            width: 100%;
+        }
+
+        @media (max-width: 1080px) {
+            .minimal-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .minimal-filter-bar {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .minimal-filter-btn {
+                font-size: 0.78rem;
+                padding: 7px 14px;
+            }
+
+            .minimal-services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* The Minimal Card Base */
+        .minimal-card {
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.35s ease,
+                        border-color 0.35s ease,
+                        background-color 0.35s ease;
+            box-sizing: border-box;
+            min-height: 480px;
+        }
+
+        .minimal-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(239, 135, 13, 0.4);
+            box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .minimal-card .minimal-card-title {
+            color: #0F172A;
+            transition: color 0.3s ease;
+        }
+
+        .minimal-card .minimal-card-desc {
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        /* Dark Theme Card Overrides */
+        [data-theme="dark"] .minimal-card {
+            background: #0B0E14;
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="dark"] .minimal-card:hover {
+            border-color: rgba(239, 135, 13, 0.5);
+            box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(239, 135, 13, 0.14);
+        }
+
+        [data-theme="dark"] .minimal-card .minimal-card-title {
+            color: #FFFFFF;
+        }
+
+        [data-theme="dark"] .minimal-card .minimal-card-desc {
+            color: #CBD5E1;
+        }
+
+        /* Accent Highlight Cards (Card 02 & Card 05) */
+        .minimal-card--accent {
+            background: linear-gradient(145deg, #FF6F00 0%, #EF5310 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 16px 40px -10px rgba(239, 83, 16, 0.35);
+        }
+
+        .minimal-card--accent:hover {
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 26px 55px -10px rgba(239, 83, 16, 0.55);
+        }
+
+        .minimal-card--accent .minimal-card-title,
+        [data-theme="dark"] .minimal-card--accent .minimal-card-title {
+            color: #FFFFFF !important;
+        }
+
+        .minimal-card--accent .minimal-card-desc,
+        [data-theme="dark"] .minimal-card--accent .minimal-card-desc {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        /* Card Internal Padding and Content */
+        .minimal-card-top {
+            padding: clamp(2.25rem, 3.5vw, 2.75rem) clamp(1.75rem, 2.5vw, 2.25rem) 1.5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .minimal-card-title-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 0.95rem;
+        }
+
+        .minimal-card-title {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: clamp(1.6rem, 2.2vw, 1.95rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.16;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .minimal-card-corner-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--burgundy, #EF870D);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .minimal-card--accent .minimal-card-corner-arrow {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.35);
+            color: #FFFFFF;
+        }
+
+        .minimal-card:hover .minimal-card-corner-arrow {
+            transform: translate(3px, -3px);
+            background: var(--burgundy, #EF870D);
+            border-color: var(--burgundy, #EF870D);
+            color: #FFFFFF;
+        }
+
+        .minimal-card--accent:hover .minimal-card-corner-arrow {
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            color: #EF5310;
+        }
+
+        .minimal-card-desc {
+            font-family: var(--font-primary, 'Manrope', sans-serif);
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Bottom Graphic Anchor (Unobstructed, Clean 3D Visual Dock) */
+        .minimal-card-visual {
+            height: 230px;
+            width: 100%;
+            margin-top: auto;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .minimal-card-img-wrapper {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .minimal-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+            filter: contrast(1.04) brightness(0.96);
+        }
+
+        .minimal-card:hover .minimal-card-img {
+            transform: scale(1.06) translateY(-4px);
+            filter: contrast(1.08) brightness(1.02);
+        }
+
+        .minimal-card-visual-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11, 14, 20, 0) 30%, rgba(11, 14, 20, 0.65) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .minimal-card--accent .minimal-card-visual-gradient {
+            background: linear-gradient(180deg, rgba(239, 83, 16, 0) 25%, rgba(200, 60, 5, 0.75) 100%);
+        }

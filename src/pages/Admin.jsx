@@ -1,5 +1,6 @@
 import { assetUrl } from '../utils/assetHelper';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/pages/admin.css';
 
 export default function Admin() {
@@ -81,7 +82,7 @@ export default function Admin() {
 
     const scriptEl = document.createElement('script');
     scriptEl.type = 'module';
-    scriptEl.src = '/admin-legacy.js?v=' + Date.now();
+    scriptEl.src = assetUrl('/admin-legacy.js') + '?v=' + Date.now();
     document.body.appendChild(scriptEl);
 
     return () => {
@@ -174,9 +175,9 @@ export default function Admin() {
             </div>
 
             <div className="login-footer">
-                <a href="/" className="back-link">
+                <Link to="/" className="back-link">
                     <i className="fas fa-arrow-left"></i> Return to Live Website
-                </a>
+                </Link>
             </div>
         </div>
     </div>
@@ -258,10 +259,10 @@ export default function Admin() {
 
                 <div className="nav-section">
                     <div className="nav-title">LIVE WEBSITE</div>
-                    <a href="/" target="_blank" rel="noopener noreferrer" className="nav-item">
+                    <Link to="/" target="_blank" rel="noopener noreferrer" className="nav-item">
                         <div className="nav-item-left"><i className="fas fa-external-link-alt"></i> Open Public Site</div>
                         <i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.75rem' }}></i>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="sidebar-footer">
@@ -288,13 +289,13 @@ export default function Admin() {
                         <span id="modeStatusText" className="nav-badge" style={{ background: 'rgba(239,135,13,0.15)', border: '1px solid rgba(239,135,13,0.25)', color: 'var(--primary)', fontSize: '0.75rem', padding: '0.25rem 0.65rem', borderRadius: '9999px', marginRight: '0.75rem', fontWeight: '600' }}>Cloud Synchronized</span>
                         <div className="quick-page-links">
                             <span className="preview-label">Preview</span>
-                            <a href="/" className="page-link-pill" target="_blank" rel="noopener noreferrer">Home</a>
-                            <a href="/work" className="page-link-pill" target="_blank" rel="noopener noreferrer">Work</a>
-                            <a href="/services" className="page-link-pill" target="_blank" rel="noopener noreferrer">Services</a>
-                            <a href="/process" className="page-link-pill" target="_blank" rel="noopener noreferrer">Process</a>
-                            <a href="/about" className="page-link-pill" target="_blank" rel="noopener noreferrer">About</a>
-                            <a href="/upskill" className="page-link-pill" target="_blank" rel="noopener noreferrer">Upskill</a>
-                            <a href="/contact" className="page-link-pill" target="_blank" rel="noopener noreferrer">Contact</a>
+                            <Link to="/" className="page-link-pill" target="_blank" rel="noopener noreferrer">Home</Link>
+                            <Link to="/work" className="page-link-pill" target="_blank" rel="noopener noreferrer">Work</Link>
+                            <Link to="/services" className="page-link-pill" target="_blank" rel="noopener noreferrer">Services</Link>
+                            <Link to="/process" className="page-link-pill" target="_blank" rel="noopener noreferrer">Process</Link>
+                            <Link to="/about" className="page-link-pill" target="_blank" rel="noopener noreferrer">About</Link>
+                            <Link to="/upskill" className="page-link-pill" target="_blank" rel="noopener noreferrer">Upskill</Link>
+                            <Link to="/contact" className="page-link-pill" target="_blank" rel="noopener noreferrer">Contact</Link>
                         </div>
                     </div>
                     <div className="banner-right" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>

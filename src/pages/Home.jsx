@@ -5,6 +5,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useStudioData } from '../context/StudioDataContext';
 import CustomSelect from '../components/CustomSelect';
 import UniqueTestimonials from '../components/UniqueTestimonials';
+import '../styles/pages/services.css';
 
 const SERVICE_OPTIONS = [
   { value: 'Website Development', label: 'Website Development' },
@@ -143,18 +144,25 @@ export default function Home() {
 
   const currentProject = projects[activeIndex] || projects[0] || {};
 
-  // Services Scroll Stack logic
+  // Apple-Style Services Card Takeover Stacking Controller
   const stackRef = useRef(null);
   useEffect(() => {
     const inner = stackRef.current;
     if (!inner) return;
+
     const slots = Array.from(inner.querySelectorAll('[data-stack-slot]'));
     if (!slots.length) return;
 
-    const handleScroll = () => {
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      if (motion.matches) return;
+
       const stackTop = window.innerWidth <= 900 ? 84 : 110;
-      const tops = slots.map((s) => s.getBoundingClientRect().top);
-      const heights = slots.map((s) => s.offsetHeight || 420);
+      const tops = slots.map((slot) => slot.getBoundingClientRect().top);
+      const heights = slots.map((slot) => slot.offsetHeight || 420);
 
       slots.forEach((slot, i) => {
         const card = slot.firstElementChild;
@@ -168,20 +176,36 @@ export default function Home() {
           covered = Math.min(1, Math.max(0, overlap / span));
         }
 
-        const scale = 1 - covered * 0.05;
-        const opacity = covered > 0.8 ? Math.max(0, (1 - covered) / 0.2) : 1;
+        // Silky-smooth 60fps/120fps continuous fade and organic scale:
+        // As the next card glides in, card i scales down subtly (3%) and fades continuously past 75% coverage.
+        const scale = 1 - covered * 0.03;
+        const opacity = covered >= 0.75 ? Math.max(0, (1 - covered) / 0.25) : 1;
 
         card.style.transform = `scale(${scale.toFixed(4)})`;
         card.style.opacity = opacity.toFixed(3);
+        card.style.visibility = opacity <= 0.005 ? 'hidden' : 'visible';
       });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-    handleScroll();
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+
+    let observer;
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(schedule);
+      observer.observe(inner);
+    }
+
+    update();
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (observer) observer.disconnect();
+      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -241,76 +265,91 @@ export default function Home() {
   const servicesData = [
     {
       num: '01',
+      id: 'srv-web-dev',
       badge: 'Web Development',
       title: 'Website Development',
       desc: 'Fast, modern websites designed to turn visitors into clients. Built with seamless mobile responsiveness, SEO best practices, and effortless content management.',
       url: 'appvertex.in/web-development',
       img: assetUrl('/services/srv-web-design.jpg'),
       alt: 'Website Development Agency Landing Page',
-      slotZ: 1
+      slotZ: 1,
+      contactParam: 'Website Development'
     },
     {
       num: '02',
+      id: 'srv-custom-apps',
       badge: 'Custom Software',
       title: 'Custom Web Applications',
       desc: 'Tailored web platforms, client portals, and workflow tools designed around how your business actually runs. Automate repetitive tasks and give your team reliable tools.',
       url: 'appvertex.in/cloud-apps',
       img: assetUrl('/services/srv-custom-web-apps.jpg'),
       alt: 'Custom Web Application SaaS Dashboard Interface',
-      slotZ: 2
+      slotZ: 2,
+      contactParam: 'Custom Web Applications'
     },
     {
       num: '03',
+      id: 'srv-ui-ux',
       badge: 'Product Design',
       title: 'UI/UX Design',
       desc: 'Intuitive, clean interfaces built to guide users effortlessly from their first click to checkout or inquiry. We turn complicated workflows into simple, elegant digital products.',
       url: 'appvertex.in/ui-ux-design',
       img: assetUrl('/services/srv-ui-ux.jpg'),
       alt: 'UI/UX Product Design Wireframing and Prototyping',
-      slotZ: 3
+      slotZ: 3,
+      contactParam: 'UI UX Design'
     },
     {
       num: '04',
+      id: 'srv-brand-identity',
       badge: 'Brand Identity',
       title: 'Branding & Digital Identity',
       desc: 'Memorable visual identities that help your business stand out and build immediate trust with your audience across web, print, and social media.',
       url: 'appvertex.in/brand-identity',
       img: assetUrl('/services/srv-brand-identity.jpg'),
       alt: 'Brand Identity and Typography Guidelines',
-      slotZ: 4
+      slotZ: 4,
+      contactParam: 'Brand Identity'
     },
     {
       num: '05',
+      id: 'srv-school-portal',
       badge: 'Education Portals',
       title: 'School Management Portals',
       desc: 'Comprehensive institutional portals that bring student admissions, fee payments, attendance tracking, and parent communication into one secure, unified system.',
       url: 'lorettocentralschool.edu.in',
       img: assetUrl('/services/srv-school-portal.jpg'),
       alt: 'Institutional Academic School Management Portal',
-      slotZ: 5
+      slotZ: 5,
+      contactParam: 'School Management Portals'
     },
     {
       num: '06',
+      id: 'srv-ecommerce',
       badge: 'E-Commerce',
       title: 'E-commerce Development',
       desc: 'Fast, friction-free online stores designed to boost conversions. From quick product discovery to smooth one-click checkout and automated inventory management.',
       url: 'appvertex.in/ecommerce-engine',
       img: assetUrl('/services/srv-ecommerce.jpg'),
       alt: 'Headless E-Commerce Digital Storefront',
-      slotZ: 6
+      slotZ: 6,
+      contactParam: 'Ecommerce Development'
     },
     {
       num: '07',
+      id: 'srv-seo',
       badge: 'Search Optimization',
       title: 'SEO & Digital Growth',
       desc: 'Targeted search optimization and technical speed tuning that help your business rank higher on Google and attract high-intent local and global customers.',
       url: 'appvertex.in/growth-engine',
       img: assetUrl('/services/srv-seo.jpg'),
       alt: 'SEO Performance and Growth Telemetry',
-      slotZ: 7
+      slotZ: 7,
+      contactParam: 'SEO Digital Growth'
     },
     {
       num: '08',
+      id: 'srv-maintenance',
       badge: 'Support & Care',
       title: 'Website Maintenance',
       desc: 'Peace of mind for your online presence. We handle regular security patches, automated cloud backups, uptime monitoring, and fast support when you need updates.',
@@ -318,7 +357,8 @@ export default function Home() {
       img: assetUrl('/services/srv-maintenance.jpg'),
       alt: '24/7 Cloud Server Uptime and Maintenance Telemetry',
       slotZ: 8,
-      isLast: true
+      isLast: true,
+      contactParam: 'Website Maintenance'
     }
   ];
 
@@ -415,7 +455,6 @@ export default function Home() {
                   className="scroll-stack__slot"
                   data-stack-slot
                   style={{
-                    top: '110px',
                     marginBottom: item.isLast ? '60px' : '260px',
                     zIndex: item.slotZ
                   }}
@@ -432,7 +471,13 @@ export default function Home() {
                         <h3 className="service-stack-title">{item.title}</h3>
                         <p className="service-stack-desc">{item.desc}</p>
                         <div className="service-stack-actions">
-                          <a href="#contact" className="btn btn-primary btn-sm">
+                          <a
+                            href="#contact"
+                            className="btn btn-primary btn-sm"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, service: item.contactParam }));
+                            }}
+                          >
                             Start a Project <span className="arr">→</span>
                           </a>
                           <Link to="/services" className="btn btn-secondary btn-sm">

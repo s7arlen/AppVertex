@@ -2,7 +2,21 @@ import React from 'react';
 
 export default function BackgroundLayer() {
   return (
-    <div id="fixedBackgroundLayer" className="fixed-background-system" aria-hidden="true">
+    <div
+      id="fixedBackgroundLayer"
+      className="fixed-background-system"
+      aria-hidden="true"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
+        zIndex: 0,
+        overflow: 'hidden'
+      }}
+    >
       {/* Solid Base Foundation */}
       <div className="fixed-bg-base"></div>
 
@@ -85,9 +99,7 @@ export default function BackgroundLayer() {
                 fill="url(#fixedWaveBurgundy)"/>
 
           <path d="M 1440 360 C 1200 460 1020 580 980 720 C 950 820 820 880 620 900 L 1440 900 Z" 
-                fill="url(#fixedWaveFrosted)" 
-                stroke="rgba(255, 255, 255, 0.95)" 
-                strokeWidth="2"/>
+                fill="url(#fixedWaveFrosted)"/>
 
           <path d="M 1440 540 C 1260 620 1120 740 1060 840 C 1030 890 980 900 880 900 L 1440 900 Z" 
                 fill="url(#fixedWaveDeepBurgundy)"/>

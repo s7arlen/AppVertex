@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import '../styles/pages/about.css';
 
@@ -19,139 +20,105 @@ export default function About() {
                     We build websites, customer portals, and internal tools that eliminate friction, replace messy spreadsheets, and fit how your organization actually runs.
                 </p>
                 <div className="subpage-actions">
-                    <a href="/contact#booking-calendar" className="btn btn-primary">START A PROJECT <span className="arr">→</span></a>
-                    <a href="/work" className="btn btn-secondary">SEE OUR WORK</a>
+                    <Link to="/contact" className="btn btn-primary">START A PROJECT <span className="arr">→</span></Link>
+                    <Link to="/work" className="btn btn-secondary">SEE OUR WORK</Link>
                 </div>
             </div>
         </section>
     
         {/* ═══════════════════════════════════════════════════
-             SECTION 1: OUR CAPABILITIES (WHAT WE BUILD)
+             SECTION 1: WHO WE WORK WITH (LAYOUT 09)
              ═══════════════════════════════════════════════════ */}
-        <section className="container" style={{ padding: '1.5rem 1.5rem 5rem' }}>
+        <section className="container" style={{ padding: '0.5rem 1.5rem 5rem' }}>
+            <div className="who-we-work-section reveal-on-scroll" aria-label="Who We Work With">
+                <div className="who-we-work-layout">
+                    {/* LEFT SIDE (40%) */}
+                    <div className="who-we-work-left">
+                        <div className="who-we-work-eyebrow-wrap">
+                            <span className="who-we-work-eyebrow">WHO WE WORK WITH</span>
+                            <span className="who-we-work-eyebrow-line" aria-hidden="true"></span>
+                        </div>
+                        <h2 className="who-we-work-title">
+                            Different Challenges.<br />
+                            One <span className="who-we-work-accent">Engineering</span><br />
+                            Partner.
+                        </h2>
+                        <p className="who-we-work-desc">
+                            We partner with organizations that need reliable digital solutions, thoughtful engineering and technology built for long-term growth.
+                        </p>
+                        <div className="who-we-work-bottom-pill" aria-hidden="true"></div>
+                    </div>
+
+                    {/* VERTICAL DIVIDER */}
+                    <div className="who-we-work-divider" aria-hidden="true"></div>
+
+                    {/* RIGHT SIDE (60%) */}
+                    <div className="who-we-work-right">
+                        {/* 01 — Growing Businesses */}
+                        <div className="profile-row-item">
+                            <div className="profile-num-col">
+                                <span className="profile-num">01</span>
+                            </div>
+                            <div className="profile-main-col">
+                                <h3 className="profile-name">Growing Businesses</h3>
+                                <p className="profile-summary">
+                                    Managing client records &amp; inquiries beyond spreadsheets.
+                                </p>
+                            </div>
+                            <div className="profile-symptom-col">
+                                <p className="symptom-quote">
+                                    &ldquo;Our team spends more time updating sheets and chasing WhatsApp than actually serving clients.&rdquo;
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="profile-row-divider" aria-hidden="true"></div>
+
+                        {/* 02 — Educational Institutions */}
+                        <div className="profile-row-item">
+                            <div className="profile-num-col">
+                                <span className="profile-num">02</span>
+                            </div>
+                            <div className="profile-main-col">
+                                <h3 className="profile-name">Educational Institutions</h3>
+                                <p className="profile-summary">
+                                    Unified portals for academies &amp; multi-branch campuses.
+                                </p>
+                            </div>
+                            <div className="profile-symptom-col">
+                                <p className="symptom-quote">
+                                    &ldquo;Our public site looks dated, and communications are fragmented across disconnected channels.&rdquo;
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="profile-row-divider" aria-hidden="true"></div>
+
+                        {/* 03 — Founders Launching Scalable MVPs */}
+                        <div className="profile-row-item">
+                            <div className="profile-num-col">
+                                <span className="profile-num">03</span>
+                            </div>
+                            <div className="profile-main-col">
+                                <h3 className="profile-name">Founders Launching Scalable MVPs</h3>
+                                <p className="profile-summary">
+                                    Production-ready web applications on a fixed schedule.
+                                </p>
+                            </div>
+                            <div className="profile-symptom-col">
+                                <p className="symptom-quote">
+                                    &ldquo;We need an engineering partner who understands architecture and won't cut corners on security.&rdquo;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* ═══════════════════════════════════════════════════
-                 SECTION 2: CHRONICLE (FOUNDERS' BACKGROUND & LAUNCH)
+                 SECTION 2: STUDIO LEADERSHIP
                  ═══════════════════════════════════════════════════ */}
-            <div className="chronicle-section" style={{ marginTop: 0 }}>
-                <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 3rem' }}>
-                    <p className="section-eyebrow">FOUNDERS' BACKGROUND &amp; STUDIO LAUNCH</p>
-                    <h2 className="section-title">How AppVertex Came To Be</h2>
-                    <p className="section-lead">
-                        Years of seeing businesses struggle with bloated agency templates, slow page speeds, and impersonal handoffs led us to unite and build software the right way.
-                    </p>
-                </div>
-    
-                <div className="chronicle-timeline">
-                    {/* Milestone 1: The Background */}
-                    <div className="chronicle-entry">
-                        <div className="chronicle-era">
-                            <div className="chronicle-years">BACKGROUND</div>
-                            <div className="chronicle-dot"></div>
-                        </div>
-                        <div className="chronicle-body">
-                            <h3 className="chronicle-title">The Problem: Bloated Templates &amp; Shallow Agency Work</h3>
-                            <p className="chronicle-text">
-                                Working individually across engineering and product design, we repeatedly saw businesses trapped in sluggish CMS templates, fragile plugins, and outsourced junior teams. Software was handed off without real understanding of how the business operated, leading to high maintenance costs and frustrated users.
-                            </p>
-                        </div>
-                    </div>
-    
-                    {/* Milestone 2: The Experience */}
-                    <div className="chronicle-entry">
-                        <div className="chronicle-era">
-                            <div className="chronicle-years">EXPERIENCE</div>
-                            <div className="chronicle-dot"></div>
-                        </div>
-                        <div className="chronicle-body">
-                            <h3 className="chronicle-title">Proven Craftsmanship: Real Systems &amp; Live Deployments</h3>
-                            <p className="chronicle-text">
-                                Before uniting, our hands-on engineering focused on mission-critical applications—from institutional school portals handling admissions and communication to bespoke web applications where downtime and slow queries were unacceptable. We honed our standard: semantic code, sub-second load times, and intuitive design.
-                            </p>
-                        </div>
-                    </div>
-    
-                    {/* Milestone 3: Studio Launch */}
-                    <div className="chronicle-entry">
-                        <div className="chronicle-era">
-                            <div className="chronicle-years">2026 LAUNCH</div>
-                            <div className="chronicle-dot"></div>
-                        </div>
-                        <div className="chronicle-body">
-                            <h3 className="chronicle-title">2026: Uniting as AppVertex Studio</h3>
-                            <p className="chronicle-text">
-                                We officially launched AppVertex to offer growing businesses a better alternative: a founder-led product engineering studio where clients work directly with senior builders. No account managers, no junior handoffs—just clean, high-performance digital systems engineered to convert and built to last.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            {/* ═══════════════════════════════════════════════════
-                 SECTION 4: WHO WE WORK WITH (WHERE OUR WORK FITS BEST)
-                 ═══════════════════════════════════════════════════ */}
-            <div style={{ margin: '6rem 0 3rem', textAlign: 'center' }}>
-                <p className="section-eyebrow">WHO WE WORK WITH</p>
-                <h2 className="section-title">Where Our Work Fits Best</h2>
-                <p className="section-lead" style={{ maxWidth: '680px', margin: '0 auto' }}>
-                    We partner with three types of organizations where our bespoke engineering yields maximum impact.
-                </p>
-            </div>
-    
-            <div className="fit-grid">
-                <div className="fit-card">
-                    <span className="fit-badge">PROFILE 01</span>
-                    <h3 className="fit-title">Growing Businesses Outgrowing Manual Workflows</h3>
-                    <p className="fit-desc">
-                        Companies managing inquiries across emails, tracking client records in messy spreadsheets, and losing hours to duplicated clerical entry every single week.
-                    </p>
-                    <div className="fit-symptom">
-                        <strong>Common Symptom:</strong>
-                        "Our team spends more time updating spreadsheets and chasing updates on WhatsApp than actually serving clients."
-                    </div>
-                </div>
-    
-                <div className="fit-card">
-                    <span className="fit-badge">PROFILE 02</span>
-                    <h3 className="fit-title">Educational Institutions &amp; Multi-Branch Hubs</h3>
-                    <p className="fit-desc">
-                        Schools, academies, and multi-location institutions needing unified portals where parents, students, teachers, and admins collaborate securely without paper trails.
-                    </p>
-                    <div className="fit-symptom">
-                        <strong>Common Symptom:</strong>
-                        "Our public site looks dated, and administrative communications are fragmented across three separate disconnected channels."
-                    </div>
-                </div>
-    
-                <div className="fit-card">
-                    <span className="fit-badge">PROFILE 03</span>
-                    <h3 className="fit-title">Founders Launching Scalable MVPs</h3>
-                    <p className="fit-desc">
-                        Entrepreneurs with validated market demand who need a production-ready, beautifully designed web product built right the first time on a fixed schedule.
-                    </p>
-                    <div className="fit-symptom">
-                        <strong>Common Symptom:</strong>
-                        "We need an engineering partner who understands product design, database architecture, and won't cut corners on security."
-                    </div>
-                </div>
-            </div>
-    
-            {/* ═══════════════════════════════════════════════════
-                 SECTION 5: LEADERSHIP & FOUNDER PHILOSOPHY
-                 ═══════════════════════════════════════════════════ */}
-            <div className="philosophy-banner">
-                <p className="philosophy-quote">
-                    &ldquo;Most software fails not because of bad code, but because of bad communication. When you eliminate middle managers and put business owners directly in touch with senior developers, software becomes simple, fast, and remarkably durable.&rdquo;
-                </p>
-                <div className="philosophy-author">
-                    <div>
-                        <strong style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-primary)', fontSize: '1.1rem', display: 'block' }}>The AppVertex Studio Commitment</strong>
-                        <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono, monospace)' }}>Architected for Performance &bull; Handcrafted with Integrity</span>
-                    </div>
-                </div>
-            </div>
-    
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem', marginTop: '1rem' }}>
                 <p className="section-eyebrow">STUDIO LEADERSHIP</p>
                 <h2 className="section-title">Senior Craftsmanship On Every Project</h2>
             </div>
@@ -189,12 +156,12 @@ export default function About() {
                     Whether you're replacing legacy systems, consolidating fragmented spreadsheets into a custom portal, or launching a new product, we'll give you a clear, honest assessment of what to build and what to leave out.
                 </p>
                 <div className="closing-banner-actions">
-                    <a href="/contact#booking-calendar" className="btn btn-primary" style={{ padding: '15px 34px', fontSize: '1rem' }}>
+                    <Link to="/contact" className="btn btn-primary" style={{ padding: '15px 34px', fontSize: '1rem' }}>
                         BOOK A DISCOVERY CALL <span className="arr">→</span>
-                    </a>
-                    <a href="/work" className="btn btn-secondary" style={{ padding: '15px 30px', fontSize: '1rem' }}>
+                    </Link>
+                    <Link to="/work" className="btn btn-secondary" style={{ padding: '15px 30px', fontSize: '1rem' }}>
                         VIEW SHIPPED WORK
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

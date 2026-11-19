@@ -64,7 +64,7 @@ export const DEFAULT_PROJECTS = [
     description: "High-throughput real-time telemetry console processing 12M+ time-series data points with sub-second WebSocket visual dashboards.",
     technologies: ["React", "Go", "ClickHouse", "WebSockets"],
     link: "/contact#proposalPanel",
-    liveUrl: "https://launchpad.dev",
+    liveUrl: "",
     urlDisplay: "pulseflow.dev",
     client: "Studio Lab • High Concurrency",
     outcomes: [
@@ -468,19 +468,22 @@ export function StudioDataProvider({ children }) {
       }).catch(() => {});
     } catch (e) {}
 
-    // 4. Send to Cloud Functions notification endpoint (non-blocking)
-    try {
-      fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: inq.name,
-          email: inq.email,
-          message: inq.message,
-          website: ''
-        })
-      }).catch(() => {});
-    } catch (e) {}
+    // A visible success state must represent an acknowledged delivery, not just
+    // a browser-local cache write.
+    const notificationResponse = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: inq.name,
+        email: inq.email,
+        message: inq.message,
+        website: ''
+      })
+    });
+
+    if (!notificationResponse.ok) {
+      throw new Error('The project inquiry notification could not be delivered.');
+    }
 
     return { success: true, inquiry: inq };
   }, []);
@@ -570,19 +573,20 @@ export function StudioDataProvider({ children }) {
       }).catch(() => {});
     } catch (e) {}
 
-    // 4. Send to Cloud Functions notification endpoint (non-blocking)
-    try {
-      fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: app.name,
-          email: app.email,
-          message: `[UP-SKILL MENTORSHIP APPLICATION]\nTrack: ${app.track}\nPhone: ${app.phone}\n\nExperience & Goals:\n${app.background}`,
-          website: ''
-        })
-      }).catch(() => {});
-    } catch (e) {}
+    const notificationResponse = await fetch('https://us-central1-appvertex-e09c8.cloudfunctions.net/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: app.name,
+        email: app.email,
+        message: `[UP-SKILL MENTORSHIP APPLICATION]\nTrack: ${app.track}\nPhone: ${app.phone}\n\nExperience & Goals:\n${app.background}`,
+        website: ''
+      })
+    });
+
+    if (!notificationResponse.ok) {
+      throw new Error('The mentorship application notification could not be delivered.');
+    }
 
     return { success: true, application: app };
   }, []);

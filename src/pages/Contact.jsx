@@ -24,11 +24,16 @@ const CONTACT_BUDGET_OPTIONS = [
 
 const serviceMap = {
   'Solutions Consulting': 'web-design',
+  'Website Development': 'web-dev',
   'Website Design & Development': 'web-dev',
   'MVP Development': 'saas',
   'Custom Web Applications': 'web-dev',
+  'UI UX Design': 'web-design',
   'Ecommerce Solutions': 'ecommerce',
+  'Ecommerce Development': 'ecommerce',
+  'E-commerce Development': 'ecommerce',
   'Institutional & School Portals': 'portal',
+  'School Management Portals': 'portal',
   'Custom Software Solutions': 'saas',
   'Process Building': 'maintenance',
   'PRD (Product Requirement Document)': 'saas',
@@ -36,6 +41,9 @@ const serviceMap = {
   'Growth Consulting': 'web-design',
   'Brand Identity': 'web-design',
   'GBP & Local SEO': 'maintenance',
+  'SEO Digital Growth': 'maintenance',
+  'Website Maintenance': 'maintenance',
+  'Website Maintenance & Support': 'maintenance',
   'Domain & Hosting Architecture': 'maintenance'
 };
 
@@ -79,47 +87,6 @@ export default function Contact() {
       setActiveTab('calendar');
     }
   }, [searchParams]);
-
-  // Sync tab active classes
-  useEffect(() => {
-    const calBtn = document.getElementById('tabCalendarBtn');
-    const propBtn = document.getElementById('tabProposalBtn');
-    const calPanel = document.getElementById('calendarPanel');
-    const propPanel = document.getElementById('proposalPanel');
-
-    if (activeTab === 'calendar') {
-      calBtn?.classList.add('active');
-      propBtn?.classList.remove('active');
-      calPanel?.classList.add('active');
-      propPanel?.classList.remove('active');
-    } else {
-      propBtn?.classList.add('active');
-      calBtn?.classList.remove('active');
-      propPanel?.classList.add('active');
-      calPanel?.classList.remove('active');
-    }
-  }, [activeTab]);
-
-  // Sync FAQ active classes
-  useEffect(() => {
-    const faqItems = document.querySelectorAll('.faq-wrapper .faq-item');
-    faqItems.forEach((item, idx) => {
-      const isThisOpen = openFaq === idx;
-      item.classList.toggle('active', isThisOpen);
-      const btn = item.querySelector('.faq-btn');
-      if (btn) {
-        btn.setAttribute('aria-expanded', isThisOpen ? 'true' : 'false');
-      }
-    });
-  }, [openFaq]);
-
-  // Sync Conversation Columns active class & auto-cycle
-  useEffect(() => {
-    const cols = document.querySelectorAll('.anidea-col');
-    cols.forEach((col, idx) => {
-      col.classList.toggle('is-active', activeCol === idx);
-    });
-  }, [activeCol]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -173,49 +140,7 @@ export default function Contact() {
   };
 
   return (
-    <div
-      onClick={(e) => {
-        if (e.target.closest('#tabCalendarBtn')) {
-          setActiveTab('calendar');
-        } else if (e.target.closest('#tabProposalBtn')) {
-          setActiveTab('proposal');
-        }
-
-        const faqBtn = e.target.closest('.faq-btn');
-        if (faqBtn) {
-          const faqItem = faqBtn.closest('.faq-item');
-          const allItems = Array.from(document.querySelectorAll('.faq-wrapper .faq-item'));
-          const idx = allItems.indexOf(faqItem);
-          if (idx !== -1) {
-            setOpenFaq(prev => prev === idx ? null : idx);
-          }
-        }
-
-        const col = e.target.closest('.anidea-col');
-        if (col) {
-          const allCols = Array.from(document.querySelectorAll('.anidea-col'));
-          const idx = allCols.indexOf(col);
-          if (idx !== -1) {
-            setActiveCol(idx);
-          }
-        }
-      }}
-      onMouseEnter={(e) => {
-        const col = e.target.closest('.anidea-col');
-        if (col) {
-          const allCols = Array.from(document.querySelectorAll('.anidea-col'));
-          const idx = allCols.indexOf(col);
-          if (idx !== -1) {
-            setActiveCol(idx);
-          }
-        }
-      }}
-      onSubmit={(e) => {
-        if (e.target.id === 'contactPageForm') {
-          handleSubmit(e);
-        }
-      }}
-    >
+    <div>
       <main id="mainContent">
         
             {/* ═══════════════════════════════════════════════════
@@ -309,16 +234,16 @@ export default function Contact() {
         
                     {/* Intake Option Switcher Tabs */}
                     <div className="intake-tabs-bar">
-                        <button type="button" className="intake-tab-btn active" id="tabCalendarBtn">
+                        <button type="button" className={`intake-tab-btn ${activeTab === 'calendar' ? 'active' : ''}`} id="tabCalendarBtn" onClick={() => setActiveTab('calendar')}>
                             <i className="fa-solid fa-calendar-check"></i> 30-Min Discovery Call
                         </button>
-                        <button type="button" className="intake-tab-btn" id="tabProposalBtn">
+                        <button type="button" className={`intake-tab-btn ${activeTab === 'proposal' ? 'active' : ''}`} id="tabProposalBtn" onClick={() => setActiveTab('proposal')}>
                             <i className="fa-solid fa-paper-plane"></i> Direct Project Proposal
                         </button>
                     </div>
         
                     {/* Panel A: Founder Diagnostic Session (Option 4 - Human Studio Style) */}
-                    <div className="intake-panel active" id="calendarPanel">
+                    <div className={`intake-panel ${activeTab === 'calendar' ? 'active' : ''}`} id="calendarPanel">
                         <div className="founder-diag-card">
                             {/* Top Founder Header */}
                             <div className="founder-diag-header">
@@ -364,7 +289,7 @@ export default function Contact() {
                     </div>
 
                     {/* Panel B: Interactive Project Estimator & Proposal Form (Cloud Synced) */}
-                    <div className="intake-panel" id="proposalPanel">
+                    <div className={`intake-panel ${activeTab === 'proposal' ? 'active' : ''}`} id="proposalPanel">
                         <div className="intake-form-wrapper">
                             <div style={{ marginBottom: '1.75rem' }}>
                                 <span className="contact-eyebrow">PROJECT ESTIMATOR &amp; INTAKE</span>
@@ -372,7 +297,7 @@ export default function Contact() {
                                 <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', margin: '0' }}>We review every project proposal within 24 hours and reply with transparent scope breakdown and feasibility notes.</p>
                             </div>
 
-                            <form id="contactPageForm">
+                            <form id="contactPageForm" onSubmit={handleSubmit}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="contactName">Your Name</label>
@@ -484,7 +409,7 @@ export default function Contact() {
                     <div className="anidea-blueprint-frame">
                         <div className="anidea-grid">
                             {/* Column 01: Diagnose */}
-                            <div className="anidea-col reveal-on-scroll" style={{ transitionDelay: '0s' }}>
+                            <div className={`anidea-col reveal-on-scroll ${activeCol === 0 ? 'is-active' : ''}`} style={{ transitionDelay: '0s' }} onClick={() => setActiveCol(0)} onMouseEnter={() => setActiveCol(0)}>
                                 <div className="anidea-step-lead">
                                     <span className="anidea-step-num">01</span>
                                     <span className="anidea-step-tag">DIAGNOSE</span>
@@ -496,7 +421,7 @@ export default function Contact() {
                             </div>
         
                             {/* Column 02: Examine */}
-                            <div className="anidea-col reveal-on-scroll" style={{ transitionDelay: '0.1s' }}>
+                            <div className={`anidea-col reveal-on-scroll ${activeCol === 1 ? 'is-active' : ''}`} style={{ transitionDelay: '0.1s' }} onClick={() => setActiveCol(1)} onMouseEnter={() => setActiveCol(1)}>
                                 <div className="anidea-step-lead">
                                     <span className="anidea-step-num">02</span>
                                     <span className="anidea-step-tag">EXAMINE</span>
@@ -508,7 +433,7 @@ export default function Contact() {
                             </div>
         
                             {/* Column 03: Next Steps */}
-                            <div className="anidea-col reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+                            <div className={`anidea-col reveal-on-scroll ${activeCol === 2 ? 'is-active' : ''}`} style={{ transitionDelay: '0.2s' }} onClick={() => setActiveCol(2)} onMouseEnter={() => setActiveCol(2)}>
                                 <div className="anidea-step-lead">
                                     <span className="anidea-step-num">03</span>
                                     <span className="anidea-step-tag">NEXT STEPS</span>
@@ -538,8 +463,8 @@ export default function Contact() {
         
                     <div className="faq-wrapper">
                         {/* FAQ 1 */}
-                        <div className="faq-item active">
-                            <button type="button" className="faq-btn" aria-expanded="true">
+                        <div className={`faq-item ${openFaq === 0 ? 'active' : ''}`}>
+                            <button type="button" className="faq-btn" aria-expanded={openFaq === 0} onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}>
                                 <span>Do I need to know which service I need before getting in touch?</span>
                                 <div className="faq-icon-bubble">
                                     <i className="fa-solid fa-plus"></i>
@@ -553,8 +478,8 @@ export default function Contact() {
                         </div>
         
                         {/* FAQ 2 */}
-                        <div className="faq-item">
-                            <button type="button" className="faq-btn" aria-expanded="false">
+                        <div className={`faq-item ${openFaq === 1 ? 'active' : ''}`}>
+                            <button type="button" className="faq-btn" aria-expanded={openFaq === 1} onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}>
                                 <span>Can you work with the tools we already use?</span>
                                 <div className="faq-icon-bubble">
                                     <i className="fa-solid fa-plus"></i>
@@ -568,8 +493,8 @@ export default function Contact() {
                         </div>
         
                         {/* FAQ 3 */}
-                        <div className="faq-item">
-                            <button type="button" className="faq-btn" aria-expanded="false">
+                        <div className={`faq-item ${openFaq === 2 ? 'active' : ''}`}>
+                            <button type="button" className="faq-btn" aria-expanded={openFaq === 2} onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}>
                                 <span>What if I'm not sure where the problem starts?</span>
                                 <div className="faq-icon-bubble">
                                     <i className="fa-solid fa-plus"></i>

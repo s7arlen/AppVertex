@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   plugins: [react()],
-  base: command === 'build' ? '/AppVertex/' : '/',
+  base: '/',
   root: '.',
   build: {
     outDir: 'dist',
@@ -12,4 +12,4 @@ export default defineConfig(({ command }) => ({
     host: 'localhost',
     port: 3000,
   },
-}));
+});

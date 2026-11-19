@@ -8,6 +8,7 @@ export default function Footer() {
   const year = settings?.footerYear || '2026';
   const email = settings?.email || 'info@appvertex.in';
   const whatsapp = settings?.whatsapp || '+91 93229 71253';
+  const linkedin = settings?.linkedin?.trim();
   const cleanWa = whatsapp.replace(/[^0-9]/g, '') || '919322971253';
 
   return (
@@ -67,11 +68,13 @@ export default function Footer() {
                   <i className="fab fa-whatsapp" style={{ marginRight: '6px' }}></i> {whatsapp}
                 </a>
               </li>
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-link">
-                  <i className="fab fa-linkedin" style={{ marginRight: '6px' }}></i> LinkedIn
-                </a>
-              </li>
+              {linkedin && (
+                <li>
+                  <a href={linkedin} target="_blank" rel="noopener noreferrer" className="footer-link">
+                    <i className="fab fa-linkedin" style={{ marginRight: '6px' }}></i> LinkedIn
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -91,9 +94,11 @@ export default function Footer() {
             <a href={`mailto:${email}`} aria-label="Email" className="footer-mobile-social-icon">
               <i className="fas fa-envelope"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="footer-mobile-social-icon">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
+            {linkedin && (
+              <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="footer-mobile-social-icon">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            )}
           </div>
 
           <div className="footer-mobile-legal">

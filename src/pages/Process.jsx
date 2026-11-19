@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import '../styles/pages/process.css';
 
@@ -20,7 +21,7 @@ export default function Process() {
                     Every project follows a clear sequence, from understanding the issue to getting the website or application into day-to-day use. Progress and items needing your input stay visible in the client portal.
                 </p>
                 <div className="subpage-actions">
-                    <a href="/contact#booking-calendar" className="btn btn-primary">Book Discovery Call <span className="arr">→</span></a>
+                    <Link to="/contact" className="btn btn-primary">Book Discovery Call <span className="arr">→</span></Link>
                     <a href="#fourPhases" className="btn btn-secondary">Explore The Method</a>
                 </div>
             </div>
@@ -227,12 +228,12 @@ export default function Process() {
                     Book a 30-minute discovery session with our founding engineers to walk through technical scope, milestones, and fixed pricing.
                 </p>
                 <div className="closing-banner-actions">
-                    <a href="/contact#booking-calendar" className="btn btn-primary" style={{ padding: '14px 32px', fontSize: '0.98rem' }}>
+                    <Link to="/contact" className="btn btn-primary" style={{ padding: '14px 32px', fontSize: '0.98rem' }}>
                         BOOK DISCOVERY CALL <span className="arr">→</span>
-                    </a>
-                    <a href="/work" className="btn btn-secondary" style={{ padding: '14px 28px', fontSize: '0.98rem' }}>
+                    </Link>
+                    <Link to="/work" className="btn btn-secondary" style={{ padding: '14px 28px', fontSize: '0.98rem' }}>
                         VIEW SELECTED WORK
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

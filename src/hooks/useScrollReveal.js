@@ -11,7 +11,8 @@ export function useScrollReveal(deps = []) {
       'section > .container > .section-header, ' +
       'section > .container > .section-title, ' +
       '.process-step-item, .method-card, .testimonial-card, .about-tile, .founder-card, ' +
-      '.metrics-bar-container, .contact-card, .footer-cta-card, .service-card, .case-card, .subservice-card'
+      '.metrics-bar-container, .contact-card, .footer-cta-card, .service-card, .case-card, .subservice-card, ' +
+      '.phase-block, .daily-op-card, .after-launch-card, .who-we-work-section'
     );
 
     candidates.forEach(el => {
